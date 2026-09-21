@@ -1,0 +1,28 @@
+[
+  {
+    "directory": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records",
+    "protocol_sha256": "0186e647f1b3071b069ef26d5fcabe7a7521323f8712147a81ee1894bdfed1f6",
+    "training_attempts": 3072,
+    "independent_cpython_executions": 48,
+    "evaluation_attempts": 3072,
+    "semantically_verified_passes": 462,
+    "checkpoint_replay_attempts": 58,
+    "frozen_checkpoints": 12,
+    "recovered_evaluation_rows": 13,
+    "recovery_cpython_executions": 4,
+    "passed": true
+  },
+  {
+    "directory": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_code",
+    "protocol_sha256": "74143a8a83601079aa3bb95141440c0b22215e422d74fcf084ae85f07f5fdb65",
+    "training_attempts": 3072,
+    "evaluation_attempts": 3072,
+    "semantically_verified_passes": 4,
+    "checkpoint_replay_attempts": 64,
+    "frozen_checkpoints": 12,
+    "independent_cpython_executions": 4,
+    "recovered_evaluation_rows": 18,
+    "recovery_cpython_executions": 8,
+    "passed": true
+  }
+]

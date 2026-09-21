@@ -1,0 +1,22 @@
+{
+  "attempts": 128,
+  "accepted": 14,
+  "productive": 57,
+  "unique_accepted": 14,
+  "new_shapes": 7,
+  "statuses": {
+    "accepted": 14,
+    "behavior_replay": 6,
+    "experience_replay": 38,
+    "runtime_error": 18,
+    "source_replay": 22,
+    "syntax_error": 30
+  },
+  "task_passed": 55,
+  "task_statuses": {
+    "passed": 55,
+    "runtime_failed": 48,
+    "ineligible": 23,
+    "failed": 2
+  }
+}

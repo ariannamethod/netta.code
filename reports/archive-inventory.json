@@ -1,0 +1,264 @@
+{
+  "publication_date": "2026-09-21",
+  "scope": "All retained netta.code project reports and experiment receipts. Original experiment bytes are preserved.",
+  "historical_reports": [
+    "AUDIT_V2.md",
+    "V3_AUDIT.md",
+    "RESULTS_V2.md",
+    "RESULTS.md",
+    "RUNTIME_V3.md",
+    "CORPORA_V3.md",
+    "CALLER_V3.md",
+    "DOOM_V3.md",
+    "RESEARCH_V3.md"
+  ],
+  "archives": [
+    {
+      "path": "evidence/doom_ask_bundle.zip",
+      "files": 2,
+      "bytes": 41288,
+      "sha256": "816b3a63306efffc28a2bc11f21d3edbe7ef0685cc78a389cb8b502e30e1678a"
+    },
+    {
+      "path": "evidence/doom_ask_frozen.zip",
+      "files": 46,
+      "bytes": 600151,
+      "sha256": "f879f44ada5cffe8344b5ef20a772878581abc65688d3a70eecd4205be834a9a"
+    },
+    {
+      "path": "evidence/doom_doctor.zip",
+      "files": 8,
+      "bytes": 46857,
+      "sha256": "a500e6490b38f907fa9fbdeb72e0a2241b37920b2182fcb8c1230e21acb4adc0"
+    },
+    {
+      "path": "evidence/doom_freedoom2_start_1.zip",
+      "files": 3,
+      "bytes": 2412,
+      "sha256": "145ed5bc3c684e915860347e81d05d22ee0ed427150313831b919752fb74ab5c"
+    },
+    {
+      "path": "evidence/doom_freedoom2_start_2.zip",
+      "files": 3,
+      "bytes": 2494,
+      "sha256": "0ab9d3e3405cbdcd416e1ab4d1f3f4916d7445fcbf8d0a0a007045c9e4239346"
+    },
+    {
+      "path": "evidence/doom_freedoom2_start_3.zip",
+      "files": 3,
+      "bytes": 2419,
+      "sha256": "3638750b65670641a9ac6f1c1c0b2ad62c5d076041dfa85142d4367a56950ee2"
+    },
+    {
+      "path": "evidence/doom_lee_map02_train.zip",
+      "files": 338,
+      "bytes": 5169156,
+      "sha256": "775adfa6dc72fa109b0c7a713083c64e7d876219d061133a0ffa7f9db11c671b"
+    },
+    {
+      "path": "evidence/doom_lee_train.zip",
+      "files": 188,
+      "bytes": 3312220,
+      "sha256": "18cff4ca9d47526131ac413c02e5604e781bdf180328fb8644f92ea7aab29b61"
+    },
+    {
+      "path": "evidence/doom_monsters.zip",
+      "files": 8,
+      "bytes": 156008,
+      "sha256": "edf32248014c36ff6bd8049d973fc5bbf745888327ab6392380e7385621c11b7"
+    },
+    {
+      "path": "evidence/doom_paired_map02.zip",
+      "files": 528,
+      "bytes": 7945771,
+      "sha256": "2771109d06284794d90d402e8d3d0770a0e00fab2413cabe78324bb84b593981"
+    },
+    {
+      "path": "evidence/doom_probes.zip",
+      "files": 28,
+      "bytes": 169179,
+      "sha256": "6b61c0ef920bf93651d8ee8985d7ba4112f4b08187ba34c8c43f3727d2a1694c"
+    },
+    {
+      "path": "evidence/doom_real_replay_0.zip",
+      "files": 12,
+      "bytes": 226482,
+      "sha256": "2940684448018efa01fef4ea718758971349617332bf49496e1ca3e3413e4b4c"
+    },
+    {
+      "path": "evidence/doom_real_replay_1.zip",
+      "files": 12,
+      "bytes": 226483,
+      "sha256": "4fbdc17ff02ab09fb3e59f4a52da56edd56cc8b52b22a9de99a33623539915f7"
+    },
+    {
+      "path": "evidence/results_2048_dev_train.zip",
+      "files": 3,
+      "bytes": 350884,
+      "sha256": "7d4975a1762f7bd05cb567cc23e9300de66cb039e0a3b084de0243b053dd1f7c"
+    },
+    {
+      "path": "evidence/results_2048_release.zip",
+      "files": 22,
+      "bytes": 3450934,
+      "sha256": "b2b484b885760bd2d55365b9886770350c610c77c73966fec0b6d198b4d5b7b2"
+    },
+    {
+      "path": "evidence/results_development.zip",
+      "files": 15,
+      "bytes": 167965,
+      "sha256": "899a92a530a2a747a257a2c3bf658c944d1b5e2f57e742c9765c872c9468cec1"
+    },
+    {
+      "path": "evidence/results_doom_audio_disabled_probe.zip",
+      "files": 2,
+      "bytes": 1180,
+      "sha256": "d7c38373e906bebc1e9df6301dffedd03312317390a3f1ab3748ea9b52afea08"
+    },
+    {
+      "path": "evidence/results_doom_control_check.zip",
+      "files": 261,
+      "bytes": 251288,
+      "sha256": "ecc1b797f8de08afe1537b5f58e7b5d1bc6a083ebb4cc2852ed42d53749438c5"
+    },
+    {
+      "path": "evidence/results_doom_live_attempt.zip",
+      "files": 9,
+      "bytes": 76701,
+      "sha256": "e2c490b402d9fba20816284c7f94857d834969a81d198a0f2c7a6b29cc9094c9"
+    },
+    {
+      "path": "evidence/results_doom_v3_joystick_probe.zip",
+      "files": 2,
+      "bytes": 1487,
+      "sha256": "1ff395b3512d109385b9ba39eda2ac8f8b177ddd52ab26222cdbdfc0a4463075"
+    },
+    {
+      "path": "evidence/results_doom_v3_paired_identity.zip",
+      "files": 131,
+      "bytes": 104991,
+      "sha256": "1289544672d0eef633e3bdf448c62e38770faf44b6ba30f0080e5564dafd6991"
+    },
+    {
+      "path": "evidence/results_early_runs.zip",
+      "files": 115,
+      "bytes": 2695086,
+      "sha256": "48513ab7de62a99f721c9471f27820568ee26ec4e9e16383142e618cf0ea286b"
+    },
+    {
+      "path": "evidence/results_task_invariants_candidate.zip",
+      "files": 4,
+      "bytes": 53762,
+      "sha256": "05eae9361074c37ea8d0ff5413563d9778fc0e3ed408a3e6beb0f18959cae402"
+    },
+    {
+      "path": "evidence/results_task_iteration3_confirmation_art.zip",
+      "files": 1453,
+      "bytes": 4786732,
+      "sha256": "7dc9ddb81afe33a29bf3598e788bde0487cd8829ca5b505aaaac9f2ecb6825c5"
+    },
+    {
+      "path": "evidence/results_task_iteration3_confirmation_code.zip",
+      "files": 61,
+      "bytes": 3414071,
+      "sha256": "5ef93c762d6f5374a1e7bbc54908f54e65b662901dfb5f5b6a23efc2c290940f"
+    },
+    {
+      "path": "evidence/results_task_iteration3_confirmation_code_numbers.zip",
+      "files": 480,
+      "bytes": 3554693,
+      "sha256": "3181f5ec995410a296468b486f5583e02ba72118131ad344048fe9313789feaf"
+    },
+    {
+      "path": "evidence/results_task_iteration3_confirmation_records.zip",
+      "files": 523,
+      "bytes": 3579058,
+      "sha256": "955f54979753b9da7b29d4cc47f992ea90218f9d673bdbcd41b1361233b3c7af"
+    },
+    {
+      "path": "evidence/results_task_iteration3_development_art.zip",
+      "files": 263,
+      "bytes": 1028685,
+      "sha256": "1eeeb21132a5931c0d1b14927db897cf65b60d2f5f0ed5a73a8049f1565a8b9d"
+    },
+    {
+      "path": "evidence/results_task_iteration3_development_records.zip",
+      "files": 97,
+      "bytes": 718059,
+      "sha256": "702c50ab161637b5801d083594af09815a2521bb89ac2b23d88c205b321ecc69"
+    },
+    {
+      "path": "evidence/results_task_no_task_parity.zip",
+      "files": 6,
+      "bytes": 29589,
+      "sha256": "7b95ebeb37b0761d80c82bbf215b9eb735af136047ffed7274a9e1bbb9437b66"
+    },
+    {
+      "path": "evidence/results_v2_reference.zip",
+      "files": 21,
+      "bytes": 258590,
+      "sha256": "ca48c0aa102b0a0e6b0bec506bb1835823672576b6a98679ff53c4c3de69e1e6"
+    },
+    {
+      "path": "evidence/results_v3_birth.zip",
+      "files": 4,
+      "bytes": 217009,
+      "sha256": "824b8d69902c686e9da5222ee37cabc7c2d663c4325c466886e7346bc403a8fa"
+    },
+    {
+      "path": "evidence/results_v3_confirmatory.zip",
+      "files": 104,
+      "bytes": 5606091,
+      "sha256": "d0be7811fc4715afb51b71550ce703d5a26dd0bd7a237785ca2e9e82dbc48a57"
+    },
+    {
+      "path": "evidence/results_v3_dev.zip",
+      "files": 47,
+      "bytes": 2441464,
+      "sha256": "d254d58426514b323436a97602eab0a94a1667f0d86b06b2b1f6c01a3d5fd3e9"
+    },
+    {
+      "path": "evidence/results_v3_expanded.zip",
+      "files": 38,
+      "bytes": 4704164,
+      "sha256": "6ac5365b249d8877945d82522ce9e21fdbd7af4ca2ac80700f1ca5db0a7f8b91"
+    },
+    {
+      "path": "evidence/results_v3_migration_c_control.zip",
+      "files": 14,
+      "bytes": 720854,
+      "sha256": "33a99ec697ec7ccecdfccc8a73feeca031ee6210403077af7fec4f87b0c27654"
+    },
+    {
+      "path": "evidence/results_v3_migration_confirmatory.zip",
+      "files": 26,
+      "bytes": 1471591,
+      "sha256": "34fa8e05df156f91cfe2ba3aa9dd9fb1f1c8d0a57a4897eb1f02ed86a1188459"
+    },
+    {
+      "path": "evidence/results_v3_recovery.zip",
+      "files": 13,
+      "bytes": 492035,
+      "sha256": "7256b2ef6110f5513f4ec0c66abf948f72905c81e1df1902b6ed9389a93283db"
+    },
+    {
+      "path": "evidence/results_v3c_reference.zip",
+      "files": 5,
+      "bytes": 58823,
+      "sha256": "018f9e470564c7ef93415f1e21f7af71fa380fd72aa04dc3de2234271bc4cae6"
+    },
+    {
+      "path": "evidence/verification_tools_current.zip",
+      "files": 36,
+      "bytes": 120185,
+      "sha256": "3b9c1af6f37c9f0e1ee12c89c5c54af6c36684a3673fbd70cd52a2bdca5a429b"
+    }
+  ],
+  "excluded": [
+    "Python bytecode caches",
+    "Doom build objects and engine binaries",
+    "duplicate uncompressed PPM captures",
+    "external IWAD assets"
+  ],
+  "availability": "Separate retained experiment archives; ZIP payloads are not included in this reports directory."
+}

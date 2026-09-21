@@ -1,0 +1,69 @@
+{
+  "protocol": "v3-matched-continuation-v1",
+  "phase": "confirmatory",
+  "paths": {
+    "baseline": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/nettalee.py",
+    "candidate": "/workspace/scratch/aea72c843013/netta_python/nettalee.py",
+    "initial_state": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/states/strings.json",
+    "reader": "/workspace/scratch/aea72c843013/netta_python/tools/compare_v3.py"
+  },
+  "input_hashes": {
+    "baseline": "53411d28fad0f5f86a0949a66eb273dda098528a794fe0cb321a367014e32e07",
+    "candidate": "2d3dcf604b9e3fe354b09c266c94020c8d8d0469e4181615a70729b36049bcaf",
+    "initial_state": "7619e4e2a39eb92a09e283f1491cff543c4c0f4268663d11b3430918fd6942ab",
+    "reader": "3a980a35a35c5c80f53242954e30e38de675ae56f7ce3dd365f8d1084a6bf1a0"
+  },
+  "output": "/workspace/scratch/aea72c843013/netta_python/results/v3_confirmatory/strings",
+  "train_games": 1000,
+  "eval_attempts": 600,
+  "replicas": 3,
+  "train_seed": 1130000,
+  "eval_seed": 1630000,
+  "seed_stride": 1000000,
+  "workers": 4,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "metrics": {
+    "productive": "Meaningful execution and behavior outside the fixed original corpus, independently rerun.",
+    "fixed_memory_new": "Productive behavior absent from the common snapshot before continued learning.",
+    "final_memory_new": "Productive behavior absent from the evaluated arm's final memory.",
+    "completed_execution": "The common runtime completed, including executions classed as trivial."
+  },
+  "seed_intervals": [
+    {
+      "replica": 0,
+      "phase": "training",
+      "first": 1130000,
+      "last": 1130999
+    },
+    {
+      "replica": 0,
+      "phase": "evaluation",
+      "first": 1630000,
+      "last": 1630599
+    },
+    {
+      "replica": 1,
+      "phase": "training",
+      "first": 2130000,
+      "last": 2130999
+    },
+    {
+      "replica": 1,
+      "phase": "evaluation",
+      "first": 2630000,
+      "last": 2630599
+    },
+    {
+      "replica": 2,
+      "phase": "training",
+      "first": 3130000,
+      "last": 3130999
+    },
+    {
+      "replica": 2,
+      "phase": "evaluation",
+      "first": 3630000,
+      "last": 3630599
+    }
+  ]
+}

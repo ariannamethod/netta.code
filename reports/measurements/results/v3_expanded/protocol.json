@@ -1,0 +1,66 @@
+{
+  "protocol": "v3-expanded-release-fixed-budget-experience-ablation",
+  "role": "secondary comparison, expanded islands, one predeclared training trajectory each",
+  "paths": {
+    "lee": "/workspace/scratch/aea72c843013/netta_python/nettalee.py",
+    "code": "/workspace/scratch/aea72c843013/netta_python/nettacode.py",
+    "environment": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/nettalee.py",
+    "evaluator": "/workspace/scratch/aea72c843013/netta_python/tools/compare_v3.py",
+    "trainer": "/workspace/scratch/aea72c843013/netta_python/tools/train_expanded.py",
+    "birth_art": "/workspace/scratch/aea72c843013/netta_python/results/v3_birth/art.json",
+    "birth_strings": "/workspace/scratch/aea72c843013/netta_python/results/v3_birth/strings.json",
+    "birth_records": "/workspace/scratch/aea72c843013/netta_python/results/v3_birth/records.json",
+    "birth_code": "/workspace/scratch/aea72c843013/netta_python/results/v3_birth/code.json"
+  },
+  "input_hashes": {
+    "lee": "2d3dcf604b9e3fe354b09c266c94020c8d8d0469e4181615a70729b36049bcaf",
+    "code": "321a543a7b4a6f46b88fab526779b202fff6f00f954887e5640e0f3321a263f7",
+    "environment": "53411d28fad0f5f86a0949a66eb273dda098528a794fe0cb321a367014e32e07",
+    "evaluator": "3a980a35a35c5c80f53242954e30e38de675ae56f7ce3dd365f8d1084a6bf1a0",
+    "trainer": "ad3b08ed25888742bd7cf3fb8adda76269633c4bed40ebe02fef93301954d516",
+    "birth_art": "06157fbf4411ef17e690fb62083623f8fe461a44b05206eb800f7b4430e28e22",
+    "birth_strings": "afdc56672c6248b71d0ec9a16492662953ae4a6d30365364dfae463f3446acef",
+    "birth_records": "dca47d290714badec2bdbb60295ba7d1d6b5668f91801db8767345759f4d9634",
+    "birth_code": "14b8afe82a4a21bfb4b7164605b6674714069ac55f9e7ee007324cf5da588e4a"
+  },
+  "output": "/workspace/scratch/aea72c843013/netta_python/results/v3_expanded",
+  "states": "/workspace/scratch/aea72c843013/netta_python/states/v3_expanded",
+  "train_games": 2000,
+  "eval_attempts": 600,
+  "train_seed": 2100000,
+  "eval_seed": 2500000,
+  "workers": 2,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "domains": [
+    "art",
+    "strings",
+    "records",
+    "code"
+  ],
+  "preserved_ablation_fields": [
+    "behaviors",
+    "exploration",
+    "format",
+    "memory_strength",
+    "mode",
+    "order",
+    "pairs",
+    "programs",
+    "python_random_version",
+    "reference",
+    "rng",
+    "seed",
+    "seen",
+    "species",
+    "stats",
+    "visits"
+  ],
+  "reset_ablation_fields": [
+    "credit",
+    "explore_search",
+    "head",
+    "lived",
+    "search",
+    "syntax_head"
+  ]
+}

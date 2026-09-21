@@ -570,10 +570,10 @@ Freedoom IWAD from https://freedoom.github.io/download.html. No WAD is bundled.
 The Generic engine builds locally from doom/; it needs make and a C compiler.
 
 Examples (from the project directory):
-  python nettadoomer.py doctor --iwad /path/to/freedoom2.wad --map 2 --output runs/doctor
-  python nettadoomer.py train --island corpora/doom.txt --state states/my-doom.json \\
+  python doomer.py doctor --iwad /path/to/freedoom2.wad --map 2 --output runs/doctor
+  python doomer.py train --island corpora/doom.txt --state states/my-doom.json \\
     --iwad /path/to/freedoom2.wad --map 2 --attempts 24 --decisions 512 --output runs/train
-  python nettadoomer.py evaluate --state states/my-doom.json \\
+  python doomer.py evaluate --state states/my-doom.json \\
     --iwad /path/to/freedoom2.wad --map 2 --seed 90001 --output runs/evaluate
 NETTA_DOOM_IWAD may supply the IWAD path in place of --iwad.
 Vanilla Doom has 256 RNG phases; seeds separated by 256 select the same phase.

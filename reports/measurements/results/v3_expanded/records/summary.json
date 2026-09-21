@@ -1,0 +1,144 @@
+{
+  "domain": "records",
+  "training_games": 2000,
+  "training_seed": 2120000,
+  "evaluation_seed": 2520000,
+  "evaluation_attempts_each": 600,
+  "training_counts": {
+    "syntax_error": 649,
+    "runtime_error": 119,
+    "policy_rejected": 2,
+    "source_replay": 657,
+    "accepted": 117,
+    "experience_replay": 362,
+    "behavior_replay": 90,
+    "trivial": 4
+  },
+  "training_stats": {
+    "accepted": 117,
+    "behavior_replay": 90,
+    "experience_replay": 362,
+    "games": 2000,
+    "runtime_ok": 1226,
+    "source_replay": 657
+  },
+  "birth_state_sha256": "1f4628af722a47c36f32cc98f9e0f142eb17f18f52747810840e285435b0643b",
+  "checkpoint_path": "/workspace/scratch/aea72c843013/netta_python/states/v3_expanded/records.json",
+  "checkpoint_sha256_before": "bd7bd233c6198f921e7ae2e984cd744201e4bca68d087cfddd52cde53129d2f2",
+  "checkpoint_sha256_after": "bd7bd233c6198f921e7ae2e984cd744201e4bca68d087cfddd52cde53129d2f2",
+  "trained": {
+    "attempts": 600,
+    "status_syntax_error": 300,
+    "completed_execution_attempts": 261,
+    "meaningful_execution_attempts": 260,
+    "productive_attempts": 136,
+    "fixed_memory_new_attempts": 16,
+    "final_memory_new_attempts": 16,
+    "status_source_replay": 108,
+    "status_novel": 136,
+    "status_runtime_error": 38,
+    "status_behavior_replay": 16,
+    "status_policy_rejected": 1,
+    "status_trivial": 1,
+    "unique_productive_programs": 76,
+    "unique_productive_behaviors": 64,
+    "unique_fixed_memory_new_behaviors": 13,
+    "unique_final_memory_new_behaviors": 13,
+    "unique_productive_stdout": 62
+  },
+  "without_experience": {
+    "attempts": 600,
+    "status_syntax_error": 389,
+    "completed_execution_attempts": 165,
+    "meaningful_execution_attempts": 163,
+    "productive_attempts": 24,
+    "fixed_memory_new_attempts": 14,
+    "final_memory_new_attempts": 14,
+    "status_source_replay": 127,
+    "status_runtime_error": 43,
+    "status_novel": 24,
+    "status_behavior_replay": 12,
+    "status_limit": 1,
+    "status_trivial": 2,
+    "status_policy_rejected": 2,
+    "unique_productive_programs": 22,
+    "unique_productive_behaviors": 22,
+    "unique_fixed_memory_new_behaviors": 13,
+    "unique_final_memory_new_behaviors": 13,
+    "unique_productive_stdout": 22
+  },
+  "paired": {
+    "completed_execution": {
+      "candidate_only": 150,
+      "baseline_only": 54,
+      "ties": 396,
+      "difference": 96,
+      "two_sided_paired_binomial_p": 1.208570721277427e-11
+    },
+    "meaningful_execution": {
+      "candidate_only": 150,
+      "baseline_only": 53,
+      "ties": 397,
+      "difference": 97,
+      "two_sided_paired_binomial_p": 6.334979413164851e-12
+    },
+    "productive": {
+      "candidate_only": 130,
+      "baseline_only": 18,
+      "ties": 452,
+      "difference": 112,
+      "two_sided_paired_binomial_p": 4.0058206089284713e-22
+    },
+    "fixed_memory_new": {
+      "candidate_only": 14,
+      "baseline_only": 12,
+      "ties": 574,
+      "difference": 2,
+      "two_sided_paired_binomial_p": 0.8450189828872681
+    },
+    "final_memory_new": {
+      "candidate_only": 14,
+      "baseline_only": 12,
+      "ties": 574,
+      "difference": 2,
+      "two_sided_paired_binomial_p": 0.8450189828872681
+    },
+    "unique_count_differences": {
+      "unique_productive_programs": 54,
+      "unique_productive_behaviors": 42,
+      "unique_fixed_memory_new_behaviors": 0,
+      "unique_final_memory_new_behaviors": 0
+    }
+  },
+  "exclusion_behavior_count": 117,
+  "preserved_ablation_fields": [
+    "behaviors",
+    "exploration",
+    "format",
+    "memory_strength",
+    "mode",
+    "order",
+    "pairs",
+    "programs",
+    "python_random_version",
+    "reference",
+    "rng",
+    "seed",
+    "seen",
+    "species",
+    "stats",
+    "visits"
+  ],
+  "reset_ablation_fields": [
+    "credit",
+    "explore_search",
+    "head",
+    "lived",
+    "search",
+    "syntax_head"
+  ],
+  "reports": {
+    "trained": "/workspace/scratch/aea72c843013/netta_python/results/v3_expanded/records/trained_evaluation.json",
+    "without_experience": "/workspace/scratch/aea72c843013/netta_python/results/v3_expanded/records/without_experience_evaluation.json"
+  }
+}

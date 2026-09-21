@@ -1,0 +1,15 @@
+{
+  "attempts": 128,
+  "kills": 0,
+  "learning": false,
+  "mean_reward_per_attempt": null,
+  "played": 0,
+  "state_after": "4c35c79f2086da11eb5b3f0659f4d3d1c709123cf9fc841d604e6af0cb1a0b78",
+  "statuses": {
+    "corpus_behavior_replay": 42,
+    "invalid_action": 6,
+    "ready": 47,
+    "runtime_error": 3,
+    "syntax_error": 30
+  }
+}

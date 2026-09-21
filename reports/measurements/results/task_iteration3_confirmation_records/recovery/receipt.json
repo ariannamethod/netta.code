@@ -1,0 +1,375 @@
+{
+  "run": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records",
+  "request": "records:table",
+  "module_sha256": "a30834ae017ec4de268b47d8f31ddf0c01519c710a837ad7e917da5b0fec2110",
+  "original_logs_preserved": true,
+  "training_logs": [
+    {
+      "path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_00/generic_training.jsonl",
+      "rows": 512,
+      "sha256": "3b4bc4507d8ac20b6ec8bab06dbf172a04ed3b512245971f85d0d1b69549a6c6"
+    },
+    {
+      "path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_00/task_training.jsonl",
+      "rows": 512,
+      "sha256": "70fb6e2dd72f49a45f1f551229d1b77453fd9df8ff903e4741e5a5d49931464c"
+    },
+    {
+      "path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_01/generic_training.jsonl",
+      "rows": 512,
+      "sha256": "238665da34b760fae4bdc8dcdbc55396e28ca81de9c7e600e855daef27df5849"
+    },
+    {
+      "path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_01/task_training.jsonl",
+      "rows": 512,
+      "sha256": "a4de5fad1a9fbf390f93dc4b2de9899a547e2d0d187849ccde21d0ff013216b8"
+    },
+    {
+      "path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_02/generic_training.jsonl",
+      "rows": 512,
+      "sha256": "038da64d90cdf06d1b768110f6c309175d35e01da08452f5634290a645c9d950"
+    },
+    {
+      "path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_02/task_training.jsonl",
+      "rows": 512,
+      "sha256": "956df69523aad23f3b8bfbc288d46c204ef9fca3b814eea8f6c6ff48e6915161"
+    }
+  ],
+  "arms": [
+    {
+      "replica": 0,
+      "arm": "initial",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_00/initial/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "396dcc6402d10f3ae32d218e49b8f7dd881b4ca9505e7bfbdf30263c3a1a3da3",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 105,
+        "productive": 53,
+        "task_passed": 25,
+        "unique_passed_sources": 16,
+        "task_statuses": {
+          "ineligible": 52,
+          "passed": 25,
+          "failed": 28,
+          "runtime_failed": 151
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 0,
+      "arm": "generic_trained",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_00/generic_trained/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "547f7115fb9f89d668da8ab593b6e3b76d81c8d82fa6c839604bf86a60e03e45",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 108,
+        "productive": 50,
+        "task_passed": 28,
+        "unique_passed_sources": 20,
+        "task_statuses": {
+          "ineligible": 58,
+          "runtime_failed": 148,
+          "failed": 22,
+          "passed": 28
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 0,
+      "arm": "task_trained",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_00/task_trained/raw_attempts.jsonl",
+      "original_rows": 253,
+      "original_sha256": "7cc43e6a498b0b0e2aeb3c5533290655d53999a5764ddc41093b19eb1c445020",
+      "recovered_seeds": [
+        900000253,
+        900000254,
+        900000255
+      ],
+      "saved_state": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_00/task_trained.json",
+      "saved_state_sha256": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+      "recovered_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/recovery/replica_00/task_trained/raw_attempts.recovered.jsonl",
+      "recovered_sha256": "f5a382ba60dd592500f57aa2771645911c50c5d8c369f1bcf3438a3613e40398",
+      "independent_recovery_executions": 2,
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 134,
+        "productive": 93,
+        "task_passed": 83,
+        "unique_passed_sources": 18,
+        "task_statuses": {
+          "ineligible": 41,
+          "passed": 83,
+          "runtime_failed": 122,
+          "failed": 10
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 0,
+      "arm": "task_erased",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_00/task_erased/raw_attempts.jsonl",
+      "original_rows": 254,
+      "original_sha256": "1ab30e64d3c41db4b070b5a722092dd5dfff962bae4c9743fc9e50a2e10282f9",
+      "recovered_seeds": [
+        900000254,
+        900000255
+      ],
+      "saved_state": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_00/task_erased.json",
+      "saved_state_sha256": "4814ba89bef2974a4783872aad7779e14493eed011f4e354c055e7253c194c60",
+      "recovered_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/recovery/replica_00/task_erased/raw_attempts.recovered.jsonl",
+      "recovered_sha256": "1a88e40f9d3f617d5f70fc95f7a8df253c224be9bb8020a177ede73358aec6c0",
+      "independent_recovery_executions": 1,
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 122,
+        "productive": 55,
+        "task_passed": 23,
+        "unique_passed_sources": 9,
+        "task_statuses": {
+          "ineligible": 67,
+          "failed": 32,
+          "runtime_failed": 134,
+          "passed": 23
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 1,
+      "arm": "initial",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_01/initial/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "f2f680b41ed25fcdddc37abe1610732932d95702246217428db2469e0008cb29",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 101,
+        "productive": 47,
+        "task_passed": 25,
+        "unique_passed_sources": 17,
+        "task_statuses": {
+          "runtime_failed": 155,
+          "failed": 22,
+          "ineligible": 54,
+          "passed": 25
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 1,
+      "arm": "generic_trained",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_01/generic_trained/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "d21d3eb8cad6a429746b8ba968bebcded1e9e1fa9856ffc5e11568bf70aaa6b0",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 92,
+        "productive": 46,
+        "task_passed": 21,
+        "unique_passed_sources": 14,
+        "task_statuses": {
+          "runtime_failed": 164,
+          "failed": 25,
+          "ineligible": 46,
+          "passed": 21
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 1,
+      "arm": "task_trained",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_01/task_trained/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "e38eddb4f05cd0ec9048638185461e61051ac4a01b362063451cfd4559b5653a",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 113,
+        "productive": 95,
+        "task_passed": 93,
+        "unique_passed_sources": 15,
+        "task_statuses": {
+          "runtime_failed": 143,
+          "passed": 93,
+          "ineligible": 18,
+          "failed": 2
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 1,
+      "arm": "task_erased",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_01/task_erased/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "1694b6d9ad8eedb3b7ef24b463af90c32725b6b63af0ff6e7b496e991fd5fff3",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 102,
+        "productive": 49,
+        "task_passed": 32,
+        "unique_passed_sources": 19,
+        "task_statuses": {
+          "runtime_failed": 154,
+          "failed": 17,
+          "passed": 32,
+          "ineligible": 53
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 2,
+      "arm": "initial",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_02/initial/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "1e2a2588173ee626f09a089941d504747977870355f877a8bd8c45096da1edb6",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 94,
+        "productive": 28,
+        "task_passed": 17,
+        "unique_passed_sources": 15,
+        "task_statuses": {
+          "runtime_failed": 162,
+          "failed": 11,
+          "ineligible": 66,
+          "passed": 17
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 2,
+      "arm": "generic_trained",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_02/generic_trained/raw_attempts.jsonl",
+      "original_rows": 248,
+      "original_sha256": "d5629c719f1e833166a7d58cf0fdc01903557f0178125350850fd376c6b02579",
+      "recovered_seeds": [
+        902000248,
+        902000249,
+        902000250,
+        902000251,
+        902000252,
+        902000253,
+        902000254,
+        902000255
+      ],
+      "saved_state": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_02/generic_trained.json",
+      "saved_state_sha256": "8c3457cec2fda7729c975f09ae4e82a6f80bce892466f739df1abb2689b6a403",
+      "recovered_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/recovery/replica_02/generic_trained/raw_attempts.recovered.jsonl",
+      "recovered_sha256": "3dc9b3c520364600ca7706594420da447c1d18960d8957fe5e64ac0fce4e3623",
+      "independent_recovery_executions": 1,
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 100,
+        "productive": 36,
+        "task_passed": 16,
+        "unique_passed_sources": 13,
+        "task_statuses": {
+          "runtime_failed": 156,
+          "ineligible": 64,
+          "failed": 20,
+          "passed": 16
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 2,
+      "arm": "task_trained",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_02/task_trained/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "2609c782dcea8e030abc3caad2bf94902e1e3b06ca711189a9de770e00c68733",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 95,
+        "productive": 78,
+        "task_passed": 74,
+        "unique_passed_sources": 11,
+        "task_statuses": {
+          "runtime_failed": 161,
+          "passed": 74,
+          "ineligible": 17,
+          "failed": 4
+        },
+        "independent_executions": 4
+      }
+    },
+    {
+      "replica": 2,
+      "arm": "task_erased",
+      "original_path": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_records/replica_02/task_erased/raw_attempts.jsonl",
+      "original_rows": 256,
+      "original_sha256": "8d98803b3d7fd7ece32f8a1187bfd3abe17874222a5baf31fc20d494cc511c88",
+      "recovered_seeds": [],
+      "counts_match_summary": true,
+      "counts": {
+        "attempts": 256,
+        "runtime_ok": 97,
+        "productive": 45,
+        "task_passed": 25,
+        "unique_passed_sources": 16,
+        "task_statuses": {
+          "runtime_failed": 159,
+          "passed": 25,
+          "ineligible": 52,
+          "failed": 20
+        },
+        "independent_executions": 4
+      }
+    }
+  ],
+  "recovered_rows": 13,
+  "totals": {
+    "initial": {
+      "attempts": 768,
+      "runtime_ok": 300,
+      "productive": 128,
+      "task_passed": 67
+    },
+    "generic_trained": {
+      "attempts": 768,
+      "runtime_ok": 300,
+      "productive": 132,
+      "task_passed": 65
+    },
+    "task_trained": {
+      "attempts": 768,
+      "runtime_ok": 342,
+      "productive": 266,
+      "task_passed": 250
+    },
+    "task_erased": {
+      "attempts": 768,
+      "runtime_ok": 321,
+      "productive": 149,
+      "task_passed": 80
+    }
+  },
+  "all_counts_match": true
+}

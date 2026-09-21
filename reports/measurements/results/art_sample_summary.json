@@ -1,0 +1,17 @@
+{
+  "attempts": 64,
+  "accepted": 2,
+  "productive": 4,
+  "unique_accepted": 2,
+  "new_shapes": 2,
+  "statuses": {
+    "accepted": 2,
+    "behavior_replay": 1,
+    "experience_replay": 2,
+    "policy_rejected": 1,
+    "runtime_error": 3,
+    "source_replay": 22,
+    "syntax_error": 31,
+    "trivial": 2
+  }
+}

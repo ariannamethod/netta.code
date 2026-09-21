@@ -680,11 +680,11 @@ def run_cli():
             parser.error("control calls require --out DIRECTORY for episode records")
         kind = model.reference.get("kind", "doom")
         if kind == "doom":
-            filename = "nettadoomer.py"
+            filename = "doomer.py"
             arguments = ["evaluate", "--state", args.state, "--episodes", str(args.attempts),
                          "--seed", str(args.seed), "--output", args.out]
         elif kind == "2048":
-            filename = "netta2048.py"
+            filename = "2048.py"
             arguments = ["evaluate", "--state", args.state, "--attempts", str(args.attempts),
                          "--seed", str(args.seed), "--out", args.out]
         else:

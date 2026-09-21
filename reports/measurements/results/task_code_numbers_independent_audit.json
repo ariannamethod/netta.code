@@ -1,0 +1,17 @@
+[
+  {
+    "directory": "/workspace/scratch/aea72c843013/netta_python/results/task_iteration3_confirmation_code_numbers",
+    "protocol_sha256": "91a4e01943488407e5567589503487f1a553b37cdc85c8260bffc38f7cb1339b",
+    "training_attempts": 3072,
+    "evaluation_attempts": 3072,
+    "semantically_verified_passes": 424,
+    "checkpoint_replay_attempts": 55,
+    "frozen_checkpoints": 12,
+    "independent_cpython_executions": 29,
+    "replayed_training_attempts": 512,
+    "recovered_training_rows": 1,
+    "recovered_evaluation_rows": 8,
+    "recovery_cpython_executions": 4,
+    "passed": true
+  }
+]

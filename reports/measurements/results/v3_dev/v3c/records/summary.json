@@ -1,0 +1,28 @@
+{
+  "name": "records",
+  "version": "v3c",
+  "train": {
+    "syntax_error": 220,
+    "runtime_error": 25,
+    "source_replay": 160,
+    "behavior_replay": 29,
+    "experience_replay": 160,
+    "accepted": 3,
+    "policy_rejected": 2,
+    "trivial": 1
+  },
+  "eval": {
+    "behavior_replay": 17,
+    "syntax_error": 110,
+    "runtime_error": 18,
+    "experience_replay": 162,
+    "source_replay": 86,
+    "trivial": 2,
+    "limit": 1,
+    "accepted": 4
+  },
+  "unique": 27,
+  "fixed_new": 7,
+  "new": 4,
+  "seconds": 43.96320080757141
+}

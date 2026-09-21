@@ -1,0 +1,53 @@
+{
+  "arms": {
+    "baseline": {
+      "attempts": 32,
+      "engine_episodes": 0,
+      "kills": 0,
+      "played_policies": 0,
+      "statuses": {
+        "corpus_behavior_replay": 10,
+        "ready": 14,
+        "runtime_error": 1,
+        "syntax_error": 7
+      }
+    },
+    "trained": {
+      "attempts": 32,
+      "engine_episodes": 0,
+      "kills": 0,
+      "played_policies": 0,
+      "statuses": {
+        "corpus_behavior_replay": 10,
+        "ready": 14,
+        "runtime_error": 1,
+        "syntax_error": 7
+      }
+    }
+  },
+  "attempt_credit": null,
+  "complete_pairs": 32,
+  "final_states": {
+    "baseline": "a15c38fe8a9946c35c489375ea4596a311de36e1c2bcfe17d61413ad9d5d06fd",
+    "trained": "a15c38fe8a9946c35c489375ea4596a311de36e1c2bcfe17d61413ad9d5d06fd"
+  },
+  "gameplay": false,
+  "generated_pairs": 32,
+  "kills_per_attempt_per_game_seed": null,
+  "new_reactive_policy_rate": {
+    "bootstrap_95_interval": [
+      0.0,
+      0.0
+    ],
+    "bootstrap_resamples": 2000,
+    "equal": 32,
+    "mean_difference": 0.0,
+    "negative": 0,
+    "pairs": 32,
+    "positive": 0,
+    "two_sided_sign_p": 1.0
+  },
+  "requested_pairs": 32,
+  "states_unchanged": true,
+  "status": "complete"
+}

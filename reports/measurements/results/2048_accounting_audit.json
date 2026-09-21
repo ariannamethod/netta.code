@@ -1,0 +1,9 @@
+{
+  "input_sha256": "aa0e341c0f86a5dfbf78e9507f3cc76482927fd955e3c72ffecb1c0dd2ed688f",
+  "raw_attempts": 200,
+  "transitions": 8135,
+  "episodes": 73,
+  "completed": 73,
+  "highest_score": 1348,
+  "checks": "source identity; raw observations; mass and integer tile potential; seeded spawn; accumulated score and reward"
+}

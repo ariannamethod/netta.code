@@ -1,0 +1,212 @@
+[
+  {
+    "replica": 0,
+    "arms": {
+      "baseline": {
+        "train": {
+          "experience_replay": 22,
+          "source_replay": 32,
+          "syntax_error": 52,
+          "accepted": 9,
+          "runtime_error": 7,
+          "trivial": 2,
+          "behavior_replay": 4
+        },
+        "evaluation": {
+          "attempts": 192,
+          "status_syntax_error": 83,
+          "completed_execution_attempts": 96,
+          "meaningful_execution_attempts": 96,
+          "productive_attempts": 58,
+          "fixed_memory_new_attempts": 12,
+          "final_memory_new_attempts": 9,
+          "status_source_replay": 38,
+          "status_novel": 58,
+          "status_runtime_error": 13,
+          "unique_productive_programs": 26,
+          "unique_productive_behaviors": 24,
+          "unique_fixed_memory_new_behaviors": 10,
+          "unique_final_memory_new_behaviors": 8,
+          "unique_productive_stdout": 23
+        }
+      },
+      "stagnation": {
+        "train": {
+          "experience_replay": 38,
+          "source_replay": 25,
+          "syntax_error": 46,
+          "accepted": 8,
+          "runtime_error": 5,
+          "behavior_replay": 3,
+          "trivial": 3
+        },
+        "evaluation": {
+          "attempts": 192,
+          "status_syntax_error": 81,
+          "completed_execution_attempts": 98,
+          "meaningful_execution_attempts": 98,
+          "productive_attempts": 55,
+          "fixed_memory_new_attempts": 10,
+          "final_memory_new_attempts": 9,
+          "status_source_replay": 43,
+          "status_novel": 55,
+          "status_runtime_error": 12,
+          "status_policy_rejected": 1,
+          "unique_productive_programs": 26,
+          "unique_productive_behaviors": 25,
+          "unique_fixed_memory_new_behaviors": 10,
+          "unique_final_memory_new_behaviors": 9,
+          "unique_productive_stdout": 23
+        }
+      }
+    },
+    "paired": {
+      "completed_execution": {
+        "candidate_only": 16,
+        "baseline_only": 14,
+        "ties": 162,
+        "difference": 2,
+        "two_sided_paired_binomial_p": 0.855535551905632
+      },
+      "meaningful_execution": {
+        "candidate_only": 16,
+        "baseline_only": 14,
+        "ties": 162,
+        "difference": 2,
+        "two_sided_paired_binomial_p": 0.855535551905632
+      },
+      "productive": {
+        "candidate_only": 11,
+        "baseline_only": 14,
+        "ties": 167,
+        "difference": -3,
+        "two_sided_paired_binomial_p": 0.6900379657745361
+      },
+      "fixed_memory_new": {
+        "candidate_only": 5,
+        "baseline_only": 7,
+        "ties": 180,
+        "difference": -2,
+        "two_sided_paired_binomial_p": 0.7744140625
+      },
+      "final_memory_new": {
+        "candidate_only": 5,
+        "baseline_only": 5,
+        "ties": 182,
+        "difference": 0,
+        "two_sided_paired_binomial_p": 1.0
+      },
+      "unique_count_differences": {
+        "unique_productive_programs": 0,
+        "unique_productive_behaviors": 1,
+        "unique_fixed_memory_new_behaviors": 0,
+        "unique_final_memory_new_behaviors": 1
+      }
+    }
+  },
+  {
+    "replica": 1,
+    "arms": {
+      "baseline": {
+        "train": {
+          "source_replay": 39,
+          "syntax_error": 37,
+          "experience_replay": 36,
+          "runtime_error": 7,
+          "accepted": 4,
+          "behavior_replay": 5
+        },
+        "evaluation": {
+          "attempts": 192,
+          "status_syntax_error": 70,
+          "completed_execution_attempts": 104,
+          "meaningful_execution_attempts": 103,
+          "productive_attempts": 61,
+          "fixed_memory_new_attempts": 11,
+          "final_memory_new_attempts": 10,
+          "status_novel": 61,
+          "status_source_replay": 41,
+          "status_runtime_error": 18,
+          "status_behavior_replay": 1,
+          "status_trivial": 1,
+          "unique_productive_programs": 33,
+          "unique_productive_behaviors": 32,
+          "unique_fixed_memory_new_behaviors": 11,
+          "unique_final_memory_new_behaviors": 10,
+          "unique_productive_stdout": 32
+        }
+      },
+      "stagnation": {
+        "train": {
+          "source_replay": 50,
+          "syntax_error": 40,
+          "experience_replay": 24,
+          "runtime_error": 7,
+          "accepted": 4,
+          "behavior_replay": 3
+        },
+        "evaluation": {
+          "attempts": 192,
+          "status_syntax_error": 70,
+          "completed_execution_attempts": 107,
+          "meaningful_execution_attempts": 107,
+          "productive_attempts": 62,
+          "fixed_memory_new_attempts": 7,
+          "final_memory_new_attempts": 7,
+          "status_novel": 62,
+          "status_source_replay": 43,
+          "status_runtime_error": 15,
+          "status_behavior_replay": 2,
+          "unique_productive_programs": 26,
+          "unique_productive_behaviors": 25,
+          "unique_fixed_memory_new_behaviors": 7,
+          "unique_final_memory_new_behaviors": 7,
+          "unique_productive_stdout": 25
+        }
+      }
+    },
+    "paired": {
+      "completed_execution": {
+        "candidate_only": 14,
+        "baseline_only": 11,
+        "ties": 167,
+        "difference": 3,
+        "two_sided_paired_binomial_p": 0.6900379657745361
+      },
+      "meaningful_execution": {
+        "candidate_only": 14,
+        "baseline_only": 10,
+        "ties": 168,
+        "difference": 4,
+        "two_sided_paired_binomial_p": 0.5412561893463135
+      },
+      "productive": {
+        "candidate_only": 12,
+        "baseline_only": 11,
+        "ties": 169,
+        "difference": 1,
+        "two_sided_paired_binomial_p": 1.0
+      },
+      "fixed_memory_new": {
+        "candidate_only": 2,
+        "baseline_only": 6,
+        "ties": 184,
+        "difference": -4,
+        "two_sided_paired_binomial_p": 0.2890625
+      },
+      "final_memory_new": {
+        "candidate_only": 2,
+        "baseline_only": 5,
+        "ties": 185,
+        "difference": -3,
+        "two_sided_paired_binomial_p": 0.453125
+      },
+      "unique_count_differences": {
+        "unique_productive_programs": -7,
+        "unique_productive_behaviors": -7,
+        "unique_fixed_memory_new_behaviors": -4,
+        "unique_final_memory_new_behaviors": -3
+      }
+    }
+  }
+]

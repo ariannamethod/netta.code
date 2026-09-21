@@ -1,0 +1,21 @@
+{
+  "config_default_map": 1,
+  "map_from_state": 2,
+  "returncode": 0,
+  "state_file_sha256_after": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+  "state_file_sha256_before": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+  "state_unchanged": true,
+  "summary": {
+    "attempts": 4,
+    "kills": 2.0,
+    "kills_metric": "Doom killcount (includes monster infighting)",
+    "learning": false,
+    "mean_reward_per_attempt": 0.2932682348400449,
+    "played": 2,
+    "state_after": "46566c2e05d2babb451f8ea63aaae1dc1701c0bd4f814e11fc9af86a4aee15d0",
+    "statuses": {
+      "corpus_behavior_replay": 2,
+      "played": 2
+    }
+  }
+}

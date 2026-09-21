@@ -1,0 +1,33 @@
+{
+  "module_sha256": "a6a0b58f833f9ddab3e74e64302b3c794252b5438101a0ae28871623f221e9b3",
+  "state_sha256": "09f18f76d7a2956d3885440d102d9df9c863871b14cadc95e01d9d3b5aa4bca1",
+  "config_sha256": "81b742e1a9a5c75faaac11153e0960745e56ba159fd1210762935a4f2376bc30",
+  "verification_helper_sha256": "55cb226cc41dcba4f22777eddc7e8ae8f1078ff50bd296176255e64b4c9728bf",
+  "module_origin": "/workspace/scratch/aea72c843013/netta_python/nettalee.py",
+  "state_origin": "/workspace/scratch/aea72c843013/netta_python/states/art.json",
+  "request": "art:compact_picture",
+  "condition": {
+    "key": "2492d88be88d7af6b367bac3e2a99fc18d72d8b7e1a57aed44c8594ad561ab3b",
+    "profile": "art:compact_picture",
+    "mode": "art",
+    "output": {
+      "min_lines": 3,
+      "max_lines": 18,
+      "min_width": 3,
+      "max_width": 40
+    }
+  },
+  "train_games": 128,
+  "eval_games": 128,
+  "replicas": 1,
+  "train_seed": 400000000,
+  "eval_seed": 800000000,
+  "replica_seed_stride": 1000000,
+  "independent_checks_per_arm": 4,
+  "arms": [
+    "initial",
+    "generic_trained",
+    "task_trained",
+    "task_erased"
+  ]
+}

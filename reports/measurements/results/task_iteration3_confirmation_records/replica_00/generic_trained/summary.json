@@ -1,0 +1,16 @@
+{
+  "attempts": 256,
+  "runtime_ok": 108,
+  "productive": 50,
+  "task_passed": 28,
+  "unique_passed_sources": 20,
+  "task_statuses": {
+    "ineligible": 58,
+    "runtime_failed": 148,
+    "failed": 22,
+    "passed": 28
+  },
+  "frozen_state_sha256": "6ed0d3d8d47ffcefd347455b7bb281a3241c6ea4c357a8b50b401ddf12aebf07",
+  "independent_executions": 4,
+  "independent_mismatch_seeds": []
+}

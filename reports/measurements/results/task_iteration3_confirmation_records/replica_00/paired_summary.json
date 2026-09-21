@@ -1,0 +1,93 @@
+{
+  "replica": 0,
+  "arms": {
+    "initial": {
+      "attempts": 256,
+      "runtime_ok": 105,
+      "productive": 53,
+      "task_passed": 25,
+      "unique_passed_sources": 16,
+      "task_statuses": {
+        "ineligible": 52,
+        "passed": 25,
+        "failed": 28,
+        "runtime_failed": 151
+      },
+      "frozen_state_sha256": "e209eee8f56684d23ef42ce1b05d1ea86e78d09ea234499563af9b6645ff1636",
+      "independent_executions": 4,
+      "independent_mismatch_seeds": []
+    },
+    "generic_trained": {
+      "attempts": 256,
+      "runtime_ok": 108,
+      "productive": 50,
+      "task_passed": 28,
+      "unique_passed_sources": 20,
+      "task_statuses": {
+        "ineligible": 58,
+        "runtime_failed": 148,
+        "failed": 22,
+        "passed": 28
+      },
+      "frozen_state_sha256": "6ed0d3d8d47ffcefd347455b7bb281a3241c6ea4c357a8b50b401ddf12aebf07",
+      "independent_executions": 4,
+      "independent_mismatch_seeds": []
+    },
+    "task_trained": {
+      "attempts": 256,
+      "runtime_ok": 134,
+      "productive": 93,
+      "task_passed": 83,
+      "unique_passed_sources": 18,
+      "task_statuses": {
+        "ineligible": 41,
+        "passed": 83,
+        "runtime_failed": 122,
+        "failed": 10
+      },
+      "frozen_state_sha256": "f865aadbdf8c4f429ec363ec07b688fc7fb081b19492ebdcbf6e3a95bbcdfc89",
+      "independent_executions": 4,
+      "independent_mismatch_seeds": []
+    },
+    "task_erased": {
+      "attempts": 256,
+      "runtime_ok": 122,
+      "productive": 55,
+      "task_passed": 23,
+      "unique_passed_sources": 9,
+      "task_statuses": {
+        "ineligible": 67,
+        "failed": 32,
+        "runtime_failed": 134,
+        "passed": 23
+      },
+      "frozen_state_sha256": "f7ac83d6799f5f15a90dbca9e572f845e8d68b3508c9e00e3849a6de19c2d2d0",
+      "independent_executions": 4,
+      "independent_mismatch_seeds": []
+    }
+  },
+  "task_trained_vs": {
+    "initial": {
+      "pairs": 256,
+      "left_only": 68,
+      "right_only": 10,
+      "ties": 178,
+      "pass_difference": 58
+    },
+    "generic_trained": {
+      "pairs": 256,
+      "left_only": 66,
+      "right_only": 11,
+      "ties": 179,
+      "pass_difference": 55
+    },
+    "task_erased": {
+      "pairs": 256,
+      "left_only": 69,
+      "right_only": 9,
+      "ties": 178,
+      "pass_difference": 60
+    }
+  },
+  "task_erasure_preserved_other_state": true
+}

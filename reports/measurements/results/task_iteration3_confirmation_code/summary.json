@@ -1,0 +1,334 @@
+{
+  "protocol": {
+    "module_sha256": "f4c2d65839a18853079aea0faba06fc00ac2b18cba6b18df069161683c92d53c",
+    "state_sha256": "f01efe79263c9b2b37b514210dac9bb78ab6662886598135ce1cefec4b01cdde",
+    "config_sha256": "ea0e4a0b02e3c8a4938193a9721d40175da6dfd3f9b40a55d035a83139485d86",
+    "verification_helper_sha256": "55cb226cc41dcba4f22777eddc7e8ae8f1078ff50bd296176255e64b4c9728bf",
+    "module_origin": "/workspace/scratch/aea72c843013/netta_python/nettacode.py",
+    "state_origin": "/workspace/scratch/aea72c843013/netta_python/states/code.json",
+    "request": "code:table",
+    "condition": {
+      "key": "9006de8b2f760d4d929e1baa52596558a7de43c8dbf7708834002c93c4a9dd65",
+      "profile": "code:table",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "record"
+      }
+    },
+    "train_games": 512,
+    "eval_games": 256,
+    "replicas": 3,
+    "train_seed": 500000000,
+    "eval_seed": 900000000,
+    "replica_seed_stride": 1000000,
+    "independent_checks_per_arm": 4,
+    "prospective_export_replica": 0,
+    "arms": [
+      "initial",
+      "generic_trained",
+      "task_trained",
+      "task_erased"
+    ]
+  },
+  "replicas": [
+    {
+      "replica": 0,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 126,
+          "productive": 79,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "ineligible": 47,
+            "failed": 79,
+            "runtime_failed": 130
+          },
+          "frozen_state_sha256": "6e03513b74bdf6438cb1d8146bcdedc39a6148f3f1fa37d9abee9f866b891696",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 126,
+          "productive": 76,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "ineligible": 50,
+            "failed": 76,
+            "runtime_failed": 130
+          },
+          "frozen_state_sha256": "c110c442f828f5ccecc110b8e7d87a0f88e9dc0f4517cbcd79c4b96e3bee73c4",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 91,
+          "productive": 60,
+          "task_passed": 1,
+          "unique_passed_sources": 1,
+          "task_statuses": {
+            "ineligible": 31,
+            "failed": 59,
+            "runtime_failed": 165,
+            "passed": 1
+          },
+          "frozen_state_sha256": "118b677c84941a297d29aaeb6fbb681d63c622f4f021559c4d4a2b7a753bd0d6",
+          "independent_executions": 1,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 122,
+          "productive": 83,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "ineligible": 39,
+            "failed": 83,
+            "runtime_failed": 134
+          },
+          "frozen_state_sha256": "97278bfbe5594eb04ce2477d23d499020a4fcf84feafd1ecc6a32ef55df0d2b4",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 1,
+          "right_only": 0,
+          "ties": 255,
+          "pass_difference": 1
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 1,
+          "right_only": 0,
+          "ties": 255,
+          "pass_difference": 1
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 1,
+          "right_only": 0,
+          "ties": 255,
+          "pass_difference": 1
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    },
+    {
+      "replica": 1,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 137,
+          "productive": 83,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "runtime_failed": 119,
+            "ineligible": 54,
+            "failed": 83
+          },
+          "frozen_state_sha256": "6e03513b74bdf6438cb1d8146bcdedc39a6148f3f1fa37d9abee9f866b891696",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 131,
+          "productive": 76,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "runtime_failed": 125,
+            "failed": 76,
+            "ineligible": 55
+          },
+          "frozen_state_sha256": "aba9d1179137b4063698ecd67abf655ba5a31e2c657f7ed8420475cb8a67ec69",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 121,
+          "productive": 75,
+          "task_passed": 2,
+          "unique_passed_sources": 1,
+          "task_statuses": {
+            "runtime_failed": 135,
+            "failed": 73,
+            "ineligible": 46,
+            "passed": 2
+          },
+          "frozen_state_sha256": "e520ed096d5a898f9e5f93a091b34bd818a5f498843be96a0d1189e4e05f4536",
+          "independent_executions": 2,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 146,
+          "productive": 89,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "runtime_failed": 110,
+            "failed": 89,
+            "ineligible": 57
+          },
+          "frozen_state_sha256": "6a6cba21c00686c0eee13156786a58f7d58199af259ce531701c68c4e1be794e",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 2,
+          "right_only": 0,
+          "ties": 254,
+          "pass_difference": 2
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 2,
+          "right_only": 0,
+          "ties": 254,
+          "pass_difference": 2
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 2,
+          "right_only": 0,
+          "ties": 254,
+          "pass_difference": 2
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    },
+    {
+      "replica": 2,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 129,
+          "productive": 72,
+          "task_passed": 1,
+          "unique_passed_sources": 1,
+          "task_statuses": {
+            "runtime_failed": 127,
+            "ineligible": 57,
+            "failed": 71,
+            "passed": 1
+          },
+          "frozen_state_sha256": "6e03513b74bdf6438cb1d8146bcdedc39a6148f3f1fa37d9abee9f866b891696",
+          "independent_executions": 1,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 142,
+          "productive": 74,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "ineligible": 68,
+            "failed": 74,
+            "runtime_failed": 114
+          },
+          "frozen_state_sha256": "8ca23a15a6fe8d7021cf6d1a9518ac61ed670d15a259da6511ba3bae59467007",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 100,
+          "productive": 65,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "runtime_failed": 156,
+            "ineligible": 35,
+            "failed": 65
+          },
+          "frozen_state_sha256": "f4155c1e9587d6572571c9ab1e5628e0e85c6d000e94295132f3da17a5008c91",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 133,
+          "productive": 80,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "runtime_failed": 123,
+            "failed": 80,
+            "ineligible": 53
+          },
+          "frozen_state_sha256": "22fc0b0329bbae1a477972ef249d8f9cd38f229db9cdced500871ba53b8ad573",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 0,
+          "right_only": 1,
+          "ties": 255,
+          "pass_difference": -1
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 0,
+          "right_only": 0,
+          "ties": 256,
+          "pass_difference": 0
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 0,
+          "right_only": 0,
+          "ties": 256,
+          "pass_difference": 0
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    }
+  ],
+  "totals": {
+    "initial": {
+      "attempts": 768,
+      "runtime_ok": 392,
+      "productive": 234,
+      "task_passed": 1
+    },
+    "generic_trained": {
+      "attempts": 768,
+      "runtime_ok": 399,
+      "productive": 226,
+      "task_passed": 0
+    },
+    "task_trained": {
+      "attempts": 768,
+      "runtime_ok": 312,
+      "productive": 200,
+      "task_passed": 3
+    },
+    "task_erased": {
+      "attempts": 768,
+      "runtime_ok": 401,
+      "productive": 252,
+      "task_passed": 0
+    }
+  },
+  "independent_mismatches": 0
+}

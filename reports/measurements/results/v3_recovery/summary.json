@@ -1,0 +1,30 @@
+[
+  {
+    "role": "deterministic reconstruction of missing log tail; original files retained",
+    "original_partial_path": "/workspace/scratch/aea72c843013/netta_python/results/v3_confirmatory/records/replica_01/candidate/training.jsonl",
+    "partial_rows": 996,
+    "partial_sha256": "3624914d25d23c58f25475a01ccad4d8db502934fd7d13e64afb0e4f1102ae7e",
+    "recovered_rows": 1000,
+    "recovered_log_sha256": "c7051299a3960eec9f1cb01e5b0e861526f5b10a069ce4e6a0cb4100e485e746",
+    "prefix_bytes_equal": true,
+    "original_checkpoint_sha256": "8a6ba7bbb973e1bf49aa29d04b1970af379dd1eb17250bd2ffb3c0a1fe97ab11",
+    "recovered_checkpoint_sha256": "8a6ba7bbb973e1bf49aa29d04b1970af379dd1eb17250bd2ffb3c0a1fe97ab11",
+    "training_counts_equal": true,
+    "inputs_unchanged": true,
+    "original_partial_unchanged": true
+  },
+  {
+    "role": "deterministic reconstruction of missing log tail; original files retained",
+    "original_partial_path": "/workspace/scratch/aea72c843013/netta_python/results/v3_confirmatory/code/replica_01/baseline/training.jsonl",
+    "partial_rows": 989,
+    "partial_sha256": "26272e4ba04007d53c0f7cffa3b6bf9453105e0e410d2c9569e32f358205b854",
+    "recovered_rows": 1000,
+    "recovered_log_sha256": "44cff2e6022aea33fc92f0d4a90515e74bd1200be6afffd6846b879cc066ee81",
+    "prefix_bytes_equal": true,
+    "original_checkpoint_sha256": "3dcdf4bb08b02e4da4d8aa99c430744e9f5c0f6d727d2d3112052566a4e7a0d3",
+    "recovered_checkpoint_sha256": "3dcdf4bb08b02e4da4d8aa99c430744e9f5c0f6d727d2d3112052566a4e7a0d3",
+    "training_counts_equal": true,
+    "inputs_unchanged": true,
+    "original_partial_unchanged": true
+  }
+]

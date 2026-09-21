@@ -1,0 +1,140 @@
+{
+  "domain": "code",
+  "training_games": 2000,
+  "training_seed": 2130000,
+  "evaluation_seed": 2530000,
+  "evaluation_attempts_each": 600,
+  "training_counts": {
+    "syntax_error": 820,
+    "runtime_error": 189,
+    "source_replay": 357,
+    "accepted": 148,
+    "experience_replay": 423,
+    "behavior_replay": 56,
+    "trivial": 6,
+    "limit": 1
+  },
+  "training_stats": {
+    "accepted": 148,
+    "behavior_replay": 56,
+    "experience_replay": 423,
+    "games": 2000,
+    "runtime_ok": 984,
+    "source_replay": 357
+  },
+  "birth_state_sha256": "6f83e74867127465a0abd953ddb515dec29b82052dcae42dec383c1cbbf7b325",
+  "checkpoint_path": "/workspace/scratch/aea72c843013/netta_python/states/v3_expanded/code.json",
+  "checkpoint_sha256_before": "f01efe79263c9b2b37b514210dac9bb78ab6662886598135ce1cefec4b01cdde",
+  "checkpoint_sha256_after": "f01efe79263c9b2b37b514210dac9bb78ab6662886598135ce1cefec4b01cdde",
+  "trained": {
+    "attempts": 600,
+    "status_syntax_error": 242,
+    "completed_execution_attempts": 325,
+    "meaningful_execution_attempts": 324,
+    "productive_attempts": 205,
+    "fixed_memory_new_attempts": 29,
+    "final_memory_new_attempts": 29,
+    "status_novel": 205,
+    "status_source_replay": 117,
+    "status_trivial": 1,
+    "status_runtime_error": 33,
+    "status_behavior_replay": 2,
+    "unique_productive_programs": 71,
+    "unique_productive_behaviors": 62,
+    "unique_fixed_memory_new_behaviors": 26,
+    "unique_final_memory_new_behaviors": 26,
+    "unique_productive_stdout": 58
+  },
+  "without_experience": {
+    "attempts": 600,
+    "status_syntax_error": 457,
+    "completed_execution_attempts": 87,
+    "meaningful_execution_attempts": 85,
+    "productive_attempts": 19,
+    "fixed_memory_new_attempts": 12,
+    "final_memory_new_attempts": 12,
+    "status_novel": 19,
+    "status_runtime_error": 56,
+    "status_source_replay": 66,
+    "status_trivial": 2,
+    "unique_productive_programs": 19,
+    "unique_productive_behaviors": 19,
+    "unique_fixed_memory_new_behaviors": 12,
+    "unique_final_memory_new_behaviors": 12,
+    "unique_productive_stdout": 16
+  },
+  "paired": {
+    "completed_execution": {
+      "candidate_only": 256,
+      "baseline_only": 18,
+      "ties": 326,
+      "difference": 238,
+      "two_sided_paired_binomial_p": 4.737284010096494e-55
+    },
+    "meaningful_execution": {
+      "candidate_only": 257,
+      "baseline_only": 18,
+      "ties": 325,
+      "difference": 239,
+      "two_sided_paired_binomial_p": 2.5338066225568578e-55
+    },
+    "productive": {
+      "candidate_only": 197,
+      "baseline_only": 11,
+      "ties": 392,
+      "difference": 186,
+      "two_sided_paired_binomial_p": 3.105944651644908e-45
+    },
+    "fixed_memory_new": {
+      "candidate_only": 27,
+      "baseline_only": 10,
+      "ties": 563,
+      "difference": 17,
+      "two_sided_paired_binomial_p": 0.007632078602910042
+    },
+    "final_memory_new": {
+      "candidate_only": 27,
+      "baseline_only": 10,
+      "ties": 563,
+      "difference": 17,
+      "two_sided_paired_binomial_p": 0.007632078602910042
+    },
+    "unique_count_differences": {
+      "unique_productive_programs": 52,
+      "unique_productive_behaviors": 43,
+      "unique_fixed_memory_new_behaviors": 14,
+      "unique_final_memory_new_behaviors": 14
+    }
+  },
+  "exclusion_behavior_count": 148,
+  "preserved_ablation_fields": [
+    "behaviors",
+    "exploration",
+    "format",
+    "memory_strength",
+    "mode",
+    "order",
+    "pairs",
+    "programs",
+    "python_random_version",
+    "reference",
+    "rng",
+    "seed",
+    "seen",
+    "species",
+    "stats",
+    "visits"
+  ],
+  "reset_ablation_fields": [
+    "credit",
+    "explore_search",
+    "head",
+    "lived",
+    "search",
+    "syntax_head"
+  ],
+  "reports": {
+    "trained": "/workspace/scratch/aea72c843013/netta_python/results/v3_expanded/code/trained_evaluation.json",
+    "without_experience": "/workspace/scratch/aea72c843013/netta_python/results/v3_expanded/code/without_experience_evaluation.json"
+  }
+}

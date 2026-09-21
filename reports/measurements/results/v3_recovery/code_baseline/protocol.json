@@ -1,0 +1,19 @@
+{
+  "name": "code_baseline",
+  "original": "/workspace/scratch/aea72c843013/netta_python/results/v3_confirmatory/code/replica_01/baseline",
+  "recovery": "/workspace/scratch/aea72c843013/netta_python/results/v3_recovery/code_baseline",
+  "train_seed": 2140000,
+  "train_games": 1000,
+  "paths": {
+    "source": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/nettacode.py",
+    "initial": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/states/code.json",
+    "reader": "/workspace/scratch/aea72c843013/netta_python/tools/compare_v3.py",
+    "recovery": "/workspace/scratch/aea72c843013/netta_python/results/v3_recovery/recover.py"
+  },
+  "hashes": {
+    "source": "8640572669a4423901c25be25ba75aeea65b664eecc195c3d297c893e5cd5217",
+    "initial": "204886f825c60877040c227c30a22848bcc8bd84da1f31e98b7ef288a7aea01a",
+    "reader": "3a980a35a35c5c80f53242954e30e38de675ae56f7ce3dd365f8d1084a6bf1a0",
+    "recovery": "76f990a44bb1813c7c5d12415b5862822ddd91f03fe1828a391e5f2cac245809"
+  }
+}

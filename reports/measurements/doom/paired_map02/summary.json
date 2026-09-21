@@ -1,0 +1,76 @@
+{
+  "arms": {
+    "baseline": {
+      "attempts": 16,
+      "engine_episodes": 18,
+      "kills": 70.0,
+      "played_policies": 9,
+      "statuses": {
+        "corpus_behavior_replay": 6,
+        "played": 9,
+        "syntax_error": 1
+      }
+    },
+    "trained": {
+      "attempts": 16,
+      "engine_episodes": 22,
+      "kills": 83.0,
+      "played_policies": 11,
+      "statuses": {
+        "corpus_behavior_replay": 1,
+        "played": 11,
+        "runtime_error": 1,
+        "syntax_error": 3
+      }
+    }
+  },
+  "attempt_credit": {
+    "bootstrap_95_interval": [
+      -0.126730833312347,
+      0.3127769860830887
+    ],
+    "bootstrap_resamples": 2000,
+    "equal": 6,
+    "mean_difference": 0.09214354561467804,
+    "negative": 4,
+    "pairs": 16,
+    "positive": 6,
+    "two_sided_sign_p": 0.75390625
+  },
+  "complete_pairs": 16,
+  "final_states": {
+    "baseline": "ea36a3ac8797cee5851990eb2597b6e2c8222e87cd9a773c7ddd7755d30e4384",
+    "trained": "46566c2e05d2babb451f8ea63aaae1dc1701c0bd4f814e11fc9af86a4aee15d0"
+  },
+  "gameplay": true,
+  "generated_pairs": 16,
+  "kills_per_attempt_per_game_seed": {
+    "bootstrap_95_interval": [
+      -0.625,
+      1.40625
+    ],
+    "bootstrap_resamples": 2000,
+    "equal": 7,
+    "mean_difference": 0.40625,
+    "negative": 4,
+    "pairs": 16,
+    "positive": 5,
+    "two_sided_sign_p": 1.0
+  },
+  "new_reactive_policy_rate": {
+    "bootstrap_95_interval": [
+      -0.1875,
+      0.4375
+    ],
+    "bootstrap_resamples": 2000,
+    "equal": 10,
+    "mean_difference": 0.125,
+    "negative": 2,
+    "pairs": 16,
+    "positive": 4,
+    "two_sided_sign_p": 0.6875
+  },
+  "requested_pairs": 16,
+  "states_unchanged": true,
+  "status": "complete"
+}

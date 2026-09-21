@@ -1,0 +1,10 @@
+{
+  "command": "play",
+  "attempts": 200,
+  "sample_seed": 3100000,
+  "episode_seed": 3200000,
+  "max_moves": 128,
+  "state_sha256": "cc0eebd5b178b01ebf352785d54d823ca7e503dc7b2f0f89f7a6c8d8bb2d3b68",
+  "bridge_sha256": "8a62bedcc4c8cb2f3df94a47b5e11dec1060178f55bae9abd177263a0b96fcd6",
+  "core_sha256": "a6a0b58f833f9ddab3e74e64302b3c794252b5438101a0ae28871623f221e9b3"
+}

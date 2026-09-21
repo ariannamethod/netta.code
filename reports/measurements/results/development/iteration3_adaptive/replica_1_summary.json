@@ -1,0 +1,105 @@
+{
+  "replica": 1,
+  "arms": {
+    "baseline": {
+      "train": {
+        "source_replay": 39,
+        "syntax_error": 37,
+        "experience_replay": 36,
+        "runtime_error": 7,
+        "accepted": 4,
+        "behavior_replay": 5
+      },
+      "evaluation": {
+        "attempts": 192,
+        "status_syntax_error": 70,
+        "completed_execution_attempts": 104,
+        "meaningful_execution_attempts": 103,
+        "productive_attempts": 61,
+        "fixed_memory_new_attempts": 11,
+        "final_memory_new_attempts": 10,
+        "status_novel": 61,
+        "status_source_replay": 41,
+        "status_runtime_error": 18,
+        "status_behavior_replay": 1,
+        "status_trivial": 1,
+        "unique_productive_programs": 33,
+        "unique_productive_behaviors": 32,
+        "unique_fixed_memory_new_behaviors": 11,
+        "unique_final_memory_new_behaviors": 10,
+        "unique_productive_stdout": 32
+      }
+    },
+    "stagnation": {
+      "train": {
+        "source_replay": 50,
+        "syntax_error": 40,
+        "experience_replay": 24,
+        "runtime_error": 7,
+        "accepted": 4,
+        "behavior_replay": 3
+      },
+      "evaluation": {
+        "attempts": 192,
+        "status_syntax_error": 70,
+        "completed_execution_attempts": 107,
+        "meaningful_execution_attempts": 107,
+        "productive_attempts": 62,
+        "fixed_memory_new_attempts": 7,
+        "final_memory_new_attempts": 7,
+        "status_novel": 62,
+        "status_source_replay": 43,
+        "status_runtime_error": 15,
+        "status_behavior_replay": 2,
+        "unique_productive_programs": 26,
+        "unique_productive_behaviors": 25,
+        "unique_fixed_memory_new_behaviors": 7,
+        "unique_final_memory_new_behaviors": 7,
+        "unique_productive_stdout": 25
+      }
+    }
+  },
+  "paired": {
+    "completed_execution": {
+      "candidate_only": 14,
+      "baseline_only": 11,
+      "ties": 167,
+      "difference": 3,
+      "two_sided_paired_binomial_p": 0.6900379657745361
+    },
+    "meaningful_execution": {
+      "candidate_only": 14,
+      "baseline_only": 10,
+      "ties": 168,
+      "difference": 4,
+      "two_sided_paired_binomial_p": 0.5412561893463135
+    },
+    "productive": {
+      "candidate_only": 12,
+      "baseline_only": 11,
+      "ties": 169,
+      "difference": 1,
+      "two_sided_paired_binomial_p": 1.0
+    },
+    "fixed_memory_new": {
+      "candidate_only": 2,
+      "baseline_only": 6,
+      "ties": 184,
+      "difference": -4,
+      "two_sided_paired_binomial_p": 0.2890625
+    },
+    "final_memory_new": {
+      "candidate_only": 2,
+      "baseline_only": 5,
+      "ties": 185,
+      "difference": -3,
+      "two_sided_paired_binomial_p": 0.453125
+    },
+    "unique_count_differences": {
+      "unique_productive_programs": -7,
+      "unique_productive_behaviors": -7,
+      "unique_fixed_memory_new_behaviors": -4,
+      "unique_final_memory_new_behaviors": -3
+    }
+  }
+}

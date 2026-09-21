@@ -1,0 +1,49 @@
+# Experiment reports
+
+Current behavior is described in the [project README](../README.md). Technical changes belong in [NETTALEELOG](../NETTALEELOG.md) and [NETTACODELOG](../NETTACODELOG.md); visible outputs belong in [gallery.html](../gallery.html).
+
+## Current measurements
+
+| Experiment | Report |
+|---|---|
+| Lee / compact art | [JSON](measurements/results/task_iteration3_confirmation_art/summary.json) |
+| Lee / records table | [JSON](measurements/results/task_iteration3_confirmation_records/summary.json) |
+| Code / sorted numeric values | [JSON](measurements/results/task_iteration3_confirmation_code_numbers/summary.json) |
+| Code / table | [JSON](measurements/results/task_iteration3_confirmation_code/summary.json) |
+| 2048 / fresh evaluation | [JSON](measurements/results/2048_release/evaluate/summary.json) |
+| 2048 / independent transition audit | [JSON](measurements/results/2048_release/independent_accounting_audit.json) |
+| Doom / MAP02 training | [JSON](measurements/doom/lee_map02_train/summary.json) |
+| Doom / paired evaluation | [JSON](measurements/doom/paired_map02/summary.json) |
+| No-task behavior parity | [JSON](measurements/results/task_no_task_parity/summary.json) |
+
+The measurements directory also retains earlier summaries, experiment protocols, independent audits and deterministic-recovery receipts. These reports preserve the recorded source hashes, budgets and outcomes.
+
+## Historical reports
+
+Each document below describes its recorded stage. Original text and filenames are preserved; old commands, test counts and bridge names refer to that stage. Use the project README for current commands.
+
+| Report | Contents |
+|---|---|
+| [AUDIT_V2.md](historical/AUDIT_V2.md) | Early execution and novelty audit. |
+| [V3_AUDIT.md](historical/V3_AUDIT.md) | Fixed-budget comparisons, independent recounts and rejected migration changes. |
+| [RESULTS_V2.md](historical/RESULTS_V2.md) | Initial training and evaluation results. |
+| [RESULTS.md](historical/RESULTS.md) | Expanded islands, free-play comparisons and early command checks. |
+| [RUNTIME_V3.md](historical/RUNTIME_V3.md) | Exact CPython diagnostics and no-op accounting. |
+| [CORPORA_V3.md](historical/CORPORA_V3.md) | Corpus families, held-out sets and validation. |
+| [CALLER_V3.md](historical/CALLER_V3.md) | Original JSON command schema and output checks, before task-conditioned learning. |
+| [DOOM_V3.md](historical/DOOM_V3.md) | Early ViZDoom bridge and the engine-startup experiments preceding Doom Generic. |
+| [RESEARCH_V3.md](historical/RESEARCH_V3.md) | Research references and the mechanisms tested in the early implementation. |
+
+`AUDIT.md` was byte-identical to `V3_AUDIT.md`; only the latter is published here. The two superseded development READMEs remain with the separate working archives.
+
+## Verification and raw evidence
+
+- [Bridge renames, real game dispatch and unchanged saved states](verification/bridge-rename.json)
+- [166-test output after bridge renames](verification/bridge-rename-tests.log)
+- [Third-pass test output](verification/third-pass-tests-final.log)
+- [Published report file hashes](MANIFEST.json)
+- [Inventory of separate full experiment archives](archive-inventory.json)
+
+Raw per-attempt logs, frozen checkpoints, generated source and captured frames remain in the separate ZIP archives listed in the inventory. Their payloads are not uploaded here. This directory contains the readable reports, protocols and verification summaries.
+
+Add new experiment reports here, then link the corresponding technical decision in the appropriate model log. Keep historical measurements intact.

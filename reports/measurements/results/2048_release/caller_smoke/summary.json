@@ -1,0 +1,41 @@
+{
+  "trained": {
+    "raw_attempts": 2,
+    "played": 2,
+    "completed": 2,
+    "score_per_raw_attempt": 1224.0,
+    "mean_played_score": 1224.0,
+    "best_score": 1304,
+    "max_tile": 128,
+    "statuses": {
+      "move_limit": 1,
+      "terminal": 1
+    }
+  },
+  "without_experience": {
+    "raw_attempts": 2,
+    "played": 0,
+    "completed": 0,
+    "score_per_raw_attempt": 0.0,
+    "mean_played_score": 0.0,
+    "best_score": 0,
+    "max_tile": 0,
+    "statuses": {
+      "runtime_error": 1,
+      "syntax_error": 1
+    }
+  },
+  "random_legal": {
+    "raw_attempts": 2,
+    "played": 2,
+    "completed": 2,
+    "score_per_raw_attempt": 1084.0,
+    "mean_played_score": 1084.0,
+    "best_score": 1228,
+    "max_tile": 128,
+    "statuses": {
+      "move_limit": 1,
+      "terminal": 1
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "training_attempts": 800,
+  "evaluation_attempts_each": 256,
+  "training_sample_seed": 4700000,
+  "training_episode_seed": 4800000,
+  "evaluation_sample_seed": 5100000,
+  "evaluation_episode_seed": 5200000,
+  "max_moves": 128,
+  "initialization_seed": 71,
+  "inputs": {
+    "netta2048.py": "fd3842cef5e28a3b07254ab34a25d431c0a7a0a9215d5b1c980ae685c3928996",
+    "nettalee.py": "a30834ae017ec4de268b47d8f31ddf0c01519c710a837ad7e917da5b0fec2110",
+    "corpora/2048.txt": "a9aeeb7efe2c33d5fefbbd3a9cf4869baf8e7cbe1bf92e74df211d1fddfb6c52",
+    "tools/run_2048_release.py": "a84f45a0613ee696b27427f62b58b281693ed10943cff09ce469f9210804261f"
+  },
+  "selection": "final state after the fixed raw budget, no checkpoint selection",
+  "state_sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+  "frozen_inputs_verified": true
+}

@@ -1,0 +1,19 @@
+{
+  "trained": {
+    "raw_attempts": 800,
+    "played": 448,
+    "completed": 448,
+    "score_per_raw_attempt": 571.71,
+    "mean_played_score": 1020.9107142857143,
+    "best_score": 1780,
+    "max_tile": 256,
+    "statuses": {
+      "corpus_source_replay": 75,
+      "syntax_error": 113,
+      "runtime_error": 21,
+      "terminal": 175,
+      "move_limit": 273,
+      "corpus_probe_behavior_replay": 143
+    }
+  }
+}

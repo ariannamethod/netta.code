@@ -1,0 +1,25 @@
+{
+  "name": "art",
+  "version": "v3a",
+  "train": {
+    "source_replay": 105,
+    "syntax_error": 130,
+    "experience_replay": 148,
+    "accepted": 7,
+    "runtime_error": 7,
+    "trivial": 3
+  },
+  "eval": {
+    "syntax_error": 81,
+    "runtime_error": 4,
+    "experience_replay": 145,
+    "source_replay": 62,
+    "trivial": 4,
+    "accepted": 2,
+    "policy_rejected": 2
+  },
+  "unique": 15,
+  "fixed_new": 9,
+  "new": 2,
+  "seconds": 31.76049280166626
+}

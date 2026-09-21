@@ -1,0 +1,156 @@
+{
+  "protocol": {
+    "module_sha256": "a6a0b58f833f9ddab3e74e64302b3c794252b5438101a0ae28871623f221e9b3",
+    "state_sha256": "bd7bd233c6198f921e7ae2e984cd744201e4bca68d087cfddd52cde53129d2f2",
+    "config_sha256": "81b742e1a9a5c75faaac11153e0960745e56ba159fd1210762935a4f2376bc30",
+    "verification_helper_sha256": "55cb226cc41dcba4f22777eddc7e8ae8f1078ff50bd296176255e64b4c9728bf",
+    "module_origin": "/workspace/scratch/aea72c843013/netta_python/nettalee.py",
+    "state_origin": "/workspace/scratch/aea72c843013/netta_python/states/records.json",
+    "request": "records:table",
+    "condition": {
+      "key": "9006de8b2f760d4d929e1baa52596558a7de43c8dbf7708834002c93c4a9dd65",
+      "profile": "records:table",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "record"
+      }
+    },
+    "train_games": 128,
+    "eval_games": 128,
+    "replicas": 1,
+    "train_seed": 400000000,
+    "eval_seed": 800000000,
+    "replica_seed_stride": 1000000,
+    "independent_checks_per_arm": 4,
+    "arms": [
+      "initial",
+      "generic_trained",
+      "task_trained",
+      "task_erased"
+    ]
+  },
+  "replicas": [
+    {
+      "replica": 0,
+      "arms": {
+        "initial": {
+          "attempts": 128,
+          "runtime_ok": 51,
+          "productive": 32,
+          "task_passed": 19,
+          "unique_passed_sources": 14,
+          "task_statuses": {
+            "runtime_failed": 77,
+            "passed": 19,
+            "ineligible": 19,
+            "failed": 13
+          },
+          "frozen_state_sha256": "e209eee8f56684d23ef42ce1b05d1ea86e78d09ea234499563af9b6645ff1636",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 128,
+          "runtime_ok": 57,
+          "productive": 33,
+          "task_passed": 18,
+          "unique_passed_sources": 14,
+          "task_statuses": {
+            "runtime_failed": 71,
+            "passed": 18,
+            "ineligible": 24,
+            "failed": 15
+          },
+          "frozen_state_sha256": "94b1fbb493b5fd57e7dd119bede45155e7de781583733b4fca1e6891727e1e10",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 128,
+          "runtime_ok": 46,
+          "productive": 27,
+          "task_passed": 20,
+          "unique_passed_sources": 15,
+          "task_statuses": {
+            "runtime_failed": 82,
+            "passed": 20,
+            "ineligible": 19,
+            "failed": 7
+          },
+          "frozen_state_sha256": "fbd5d95364b61d1f66d7a907e9fb3088d8300afdfc1b895c076d4876a081fcb7",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 128,
+          "runtime_ok": 55,
+          "productive": 36,
+          "task_passed": 20,
+          "unique_passed_sources": 14,
+          "task_statuses": {
+            "runtime_failed": 73,
+            "passed": 20,
+            "failed": 16,
+            "ineligible": 19
+          },
+          "frozen_state_sha256": "7fd8d6e6d1b34da0319b975876b69b926951e5be068429cafc7bc6b2a2e06b99",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 128,
+          "left_only": 6,
+          "right_only": 5,
+          "ties": 117,
+          "pass_difference": 1
+        },
+        "generic_trained": {
+          "pairs": 128,
+          "left_only": 5,
+          "right_only": 3,
+          "ties": 120,
+          "pass_difference": 2
+        },
+        "task_erased": {
+          "pairs": 128,
+          "left_only": 8,
+          "right_only": 8,
+          "ties": 112,
+          "pass_difference": 0
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    }
+  ],
+  "totals": {
+    "initial": {
+      "attempts": 128,
+      "runtime_ok": 51,
+      "productive": 32,
+      "task_passed": 19
+    },
+    "generic_trained": {
+      "attempts": 128,
+      "runtime_ok": 57,
+      "productive": 33,
+      "task_passed": 18
+    },
+    "task_trained": {
+      "attempts": 128,
+      "runtime_ok": 46,
+      "productive": 27,
+      "task_passed": 20
+    },
+    "task_erased": {
+      "attempts": 128,
+      "runtime_ok": 55,
+      "productive": 36,
+      "task_passed": 20
+    }
+  },
+  "independent_mismatches": 0
+}

@@ -1,0 +1,14 @@
+{
+  "attempts": 64,
+  "accepted": 3,
+  "productive": 4,
+  "unique_accepted": 3,
+  "new_shapes": 3,
+  "statuses": {
+    "accepted": 3,
+    "experience_replay": 1,
+    "runtime_error": 1,
+    "source_replay": 25,
+    "syntax_error": 34
+  }
+}

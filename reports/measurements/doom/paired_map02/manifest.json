@@ -1,0 +1,73 @@
+{
+  "attempts": 16,
+  "bridge_sha256": "d083c995b274363a502cd58794724326844f9bc30a4e20578f9ba9269333a248",
+  "check_only": false,
+  "comparison": "trained minus baseline, same generation seed and every engine seed, all raw attempts",
+  "config": {
+    "actions": {
+      "move_forward": "MOVE_FORWARD",
+      "shoot": "ATTACK",
+      "strafe_left": "MOVE_LEFT",
+      "strafe_right": "MOVE_RIGHT",
+      "turn_left": "TURN_LEFT",
+      "turn_right": "TURN_RIGHT"
+    },
+    "backend": "generic",
+    "decision_quantum": 4,
+    "format": 1,
+    "generic": {
+      "commercial": true,
+      "custom_engine": false,
+      "engine": "/workspace/scratch/aea72c843013/netta_python/doom/bin/doomgeneric",
+      "episode": 1,
+      "iwad": "/workspace/scratch/aea72c843013/doom-venv/lib/python3.12/site-packages/vizdoom/freedoom2.wad",
+      "iwad_sha256": "a8772e088847032510d97ba2312406a6998f21cbab44d4ff10696faa9c0ecd4b",
+      "map": 2,
+      "skill": 3
+    },
+    "max_decisions": 512,
+    "observation": {
+      "ammo_values": [
+        0,
+        10
+      ],
+      "excluded_labels": [
+        "DoomPlayer",
+        "Blood",
+        "BulletPuff"
+      ],
+      "health_thresholds": [
+        25,
+        75
+      ],
+      "health_values": [
+        25,
+        60,
+        100
+      ],
+      "scene_values": [
+        "empty",
+        "left",
+        "center",
+        "right"
+      ]
+    },
+    "reward": {
+      "ammo_weight": 0.005,
+      "damage_weight": 0.01,
+      "kill_weight": 1.0,
+      "scale": 3.0
+    },
+    "scenario": "defend_the_center"
+  },
+  "episode_repeats": 2,
+  "evaluator_sha256": "1088d75ea801258dc51d754794b1f1da53a8392eb8e7cf4e0a7c894e4752359e",
+  "game_seed": 18001,
+  "generation_seed": 91001,
+  "initial_states": {
+    "baseline": "ea36a3ac8797cee5851990eb2597b6e2c8222e87cd9a773c7ddd7755d30e4384",
+    "trained": "46566c2e05d2babb451f8ea63aaae1dc1701c0bd4f814e11fc9af86a4aee15d0"
+  },
+  "learning": false,
+  "organism_sha256": "a30834ae017ec4de268b47d8f31ddf0c01519c710a837ad7e917da5b0fec2110"
+}

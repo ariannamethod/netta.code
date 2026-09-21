@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/workspace/scratch/aea72c843013/netta_python/results/2048_release/train/trained.jsonl",
+    "sha256": "47c1d3a718ed0384cb132fc310bbc5564e574534f33391fb085608117d544c89",
+    "raw_attempts": 800,
+    "transitions": 50409,
+    "episodes": 448,
+    "completed": 448,
+    "summed_host_reward": 288.1620169342283,
+    "passed": true
+  },
+  {
+    "path": "/workspace/scratch/aea72c843013/netta_python/results/2048_release/evaluate/trained.jsonl",
+    "sha256": "15f0c9c0b1dd715edf64aba97a9411583244405d943ea1e3fc3a60834331f471",
+    "raw_attempts": 256,
+    "transitions": 17027,
+    "episodes": 156,
+    "completed": 156,
+    "summed_host_reward": 98.2856897630408,
+    "passed": true
+  },
+  {
+    "path": "/workspace/scratch/aea72c843013/netta_python/results/2048_release/evaluate/without_experience.jsonl",
+    "sha256": "f7620444f70e3d3e91e083a60738bf20a48343f544d47cd95ef9a758878bd591",
+    "raw_attempts": 256,
+    "transitions": 1262,
+    "episodes": 13,
+    "completed": 13,
+    "summed_host_reward": 7.403489149010804,
+    "passed": true
+  },
+  {
+    "path": "/workspace/scratch/aea72c843013/netta_python/results/2048_release/evaluate/random_legal.jsonl",
+    "sha256": "10bd591d88122a415b63f72aba4290c0d029cc12f77fbf240dc8c8286dae2b43",
+    "raw_attempts": 256,
+    "transitions": 27331,
+    "episodes": 256,
+    "completed": 256,
+    "summed_host_reward": 160.51891351863628,
+    "passed": true
+  }
+]

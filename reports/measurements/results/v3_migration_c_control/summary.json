@@ -1,0 +1,420 @@
+{
+  "protocol": {
+    "protocol": "v3-matched-continuation-v1",
+    "phase": "follow-up matched control after v3d-v2 results",
+    "paths": {
+      "baseline": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/nettalee.py",
+      "candidate": "/workspace/scratch/aea72c843013/netta_python/results/v3c_reference/nettalee.py",
+      "initial_state": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/states/records.json",
+      "reader": "/workspace/scratch/aea72c843013/netta_python/tools/compare_v3.py"
+    },
+    "input_hashes": {
+      "baseline": "53411d28fad0f5f86a0949a66eb273dda098528a794fe0cb321a367014e32e07",
+      "candidate": "2d3dcf604b9e3fe354b09c266c94020c8d8d0469e4181615a70729b36049bcaf",
+      "initial_state": "7670edbbfdb2e767cf934d934378280af3e82b42c61b0572eb79eab4b06004e9",
+      "reader": "3a980a35a35c5c80f53242954e30e38de675ae56f7ce3dd365f8d1084a6bf1a0"
+    },
+    "output": "/workspace/scratch/aea72c843013/netta_python/results/v3_migration_c_control",
+    "train_games": 1000,
+    "eval_attempts": 600,
+    "replicas": 3,
+    "train_seed": 4100000,
+    "eval_seed": 4600000,
+    "seed_stride": 1000000,
+    "workers": 2,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "metrics": {
+      "productive": "Meaningful execution and behavior outside the fixed original corpus, independently rerun.",
+      "fixed_memory_new": "Productive behavior absent from the common snapshot before continued learning.",
+      "final_memory_new": "Productive behavior absent from the evaluated arm's final memory.",
+      "completed_execution": "The common runtime completed, including executions classed as trivial."
+    },
+    "seed_intervals": [
+      {
+        "replica": 0,
+        "phase": "training",
+        "first": 4100000,
+        "last": 4100999
+      },
+      {
+        "replica": 0,
+        "phase": "evaluation",
+        "first": 4600000,
+        "last": 4600599
+      },
+      {
+        "replica": 1,
+        "phase": "training",
+        "first": 5100000,
+        "last": 5100999
+      },
+      {
+        "replica": 1,
+        "phase": "evaluation",
+        "first": 5600000,
+        "last": 5600599
+      },
+      {
+        "replica": 2,
+        "phase": "training",
+        "first": 6100000,
+        "last": 6100999
+      },
+      {
+        "replica": 2,
+        "phase": "evaluation",
+        "first": 6600000,
+        "last": 6600599
+      }
+    ],
+    "role": "candidate here is preserved v3c; comparison later treats v3d as treatment",
+    "v3d_protocol_path": "/workspace/scratch/aea72c843013/netta_python/results/v3_migration_confirmatory/records/protocol.json",
+    "v3d_protocol_sha256": "dcadea8d2dc476d31282c1aa54be26a695137bd083b7f449a41526838f608698",
+    "orchestrator_sha256": "c42caf7cf25ca69b2e6ed13d6fab3bda2e2dd3edcba559ea72ed2587513d41b4"
+  },
+  "comparisons": [
+    {
+      "replica": 0,
+      "paired_v3d_minus_v3c": {
+        "completed_execution": {
+          "candidate_only": 60,
+          "baseline_only": 85,
+          "ties": 455,
+          "difference": -25,
+          "two_sided_paired_binomial_p": 0.04587706851008287
+        },
+        "meaningful_execution": {
+          "candidate_only": 59,
+          "baseline_only": 86,
+          "ties": 455,
+          "difference": -27,
+          "two_sided_paired_binomial_p": 0.030481814649487633
+        },
+        "productive": {
+          "candidate_only": 87,
+          "baseline_only": 87,
+          "ties": 426,
+          "difference": 0,
+          "two_sided_paired_binomial_p": 1.0
+        },
+        "fixed_memory_new": {
+          "candidate_only": 18,
+          "baseline_only": 125,
+          "ties": 457,
+          "difference": -107,
+          "two_sided_paired_binomial_p": 6.680120457061192e-21
+        },
+        "final_memory_new": {
+          "candidate_only": 21,
+          "baseline_only": 33,
+          "ties": 546,
+          "difference": -12,
+          "two_sided_paired_binomial_p": 0.13367423536410528
+        },
+        "unique_count_differences": {
+          "unique_productive_programs": -12,
+          "unique_productive_behaviors": -14,
+          "unique_fixed_memory_new_behaviors": -23,
+          "unique_final_memory_new_behaviors": -7
+        }
+      },
+      "v3c": {
+        "attempts": 600,
+        "status_novel": 189,
+        "completed_execution_attempts": 398,
+        "meaningful_execution_attempts": 398,
+        "productive_attempts": 189,
+        "fixed_memory_new_attempts": 150,
+        "final_memory_new_attempts": 36,
+        "status_source_replay": 201,
+        "status_syntax_error": 169,
+        "status_runtime_error": 32,
+        "status_behavior_replay": 8,
+        "status_policy_rejected": 1,
+        "unique_productive_programs": 67,
+        "unique_productive_behaviors": 65,
+        "unique_fixed_memory_new_behaviors": 48,
+        "unique_final_memory_new_behaviors": 26,
+        "unique_productive_stdout": 65
+      },
+      "v3d": {
+        "attempts": 600,
+        "status_novel": 189,
+        "completed_execution_attempts": 373,
+        "meaningful_execution_attempts": 371,
+        "productive_attempts": 189,
+        "fixed_memory_new_attempts": 43,
+        "final_memory_new_attempts": 24,
+        "status_syntax_error": 195,
+        "status_runtime_error": 31,
+        "status_trivial": 2,
+        "status_source_replay": 162,
+        "status_behavior_replay": 20,
+        "status_policy_rejected": 1,
+        "unique_productive_programs": 55,
+        "unique_productive_behaviors": 51,
+        "unique_fixed_memory_new_behaviors": 25,
+        "unique_final_memory_new_behaviors": 19,
+        "unique_productive_stdout": 51
+      }
+    },
+    {
+      "replica": 1,
+      "paired_v3d_minus_v3c": {
+        "completed_execution": {
+          "candidate_only": 55,
+          "baseline_only": 70,
+          "ties": 475,
+          "difference": -15,
+          "two_sided_paired_binomial_p": 0.21032725479608771
+        },
+        "meaningful_execution": {
+          "candidate_only": 57,
+          "baseline_only": 69,
+          "ties": 474,
+          "difference": -12,
+          "two_sided_paired_binomial_p": 0.32712296721677864
+        },
+        "productive": {
+          "candidate_only": 127,
+          "baseline_only": 56,
+          "ties": 417,
+          "difference": 71,
+          "two_sided_paired_binomial_p": 1.6165937834100043e-07
+        },
+        "fixed_memory_new": {
+          "candidate_only": 13,
+          "baseline_only": 110,
+          "ties": 477,
+          "difference": -97,
+          "two_sided_paired_binomial_p": 2.612465119414562e-20
+        },
+        "final_memory_new": {
+          "candidate_only": 5,
+          "baseline_only": 4,
+          "ties": 591,
+          "difference": 1,
+          "two_sided_paired_binomial_p": 1.0
+        },
+        "unique_count_differences": {
+          "unique_productive_programs": 11,
+          "unique_productive_behaviors": 7,
+          "unique_fixed_memory_new_behaviors": 1,
+          "unique_final_memory_new_behaviors": -1
+        }
+      },
+      "v3c": {
+        "attempts": 600,
+        "status_syntax_error": 201,
+        "completed_execution_attempts": 377,
+        "meaningful_execution_attempts": 369,
+        "productive_attempts": 143,
+        "fixed_memory_new_attempts": 121,
+        "final_memory_new_attempts": 4,
+        "status_source_replay": 219,
+        "status_runtime_error": 21,
+        "status_novel": 143,
+        "status_trivial": 8,
+        "status_behavior_replay": 7,
+        "status_policy_rejected": 1,
+        "unique_productive_programs": 23,
+        "unique_productive_behaviors": 21,
+        "unique_fixed_memory_new_behaviors": 8,
+        "unique_final_memory_new_behaviors": 4,
+        "unique_productive_stdout": 19
+      },
+      "v3d": {
+        "attempts": 600,
+        "status_syntax_error": 206,
+        "completed_execution_attempts": 362,
+        "meaningful_execution_attempts": 357,
+        "productive_attempts": 214,
+        "fixed_memory_new_attempts": 24,
+        "final_memory_new_attempts": 5,
+        "status_source_replay": 128,
+        "status_runtime_error": 31,
+        "status_novel": 214,
+        "status_behavior_replay": 15,
+        "status_trivial": 5,
+        "status_policy_rejected": 1,
+        "unique_productive_programs": 34,
+        "unique_productive_behaviors": 28,
+        "unique_fixed_memory_new_behaviors": 9,
+        "unique_final_memory_new_behaviors": 3,
+        "unique_productive_stdout": 27
+      }
+    },
+    {
+      "replica": 2,
+      "paired_v3d_minus_v3c": {
+        "completed_execution": {
+          "candidate_only": 41,
+          "baseline_only": 48,
+          "ties": 511,
+          "difference": -7,
+          "two_sided_paired_binomial_p": 0.5250147872924269
+        },
+        "meaningful_execution": {
+          "candidate_only": 41,
+          "baseline_only": 48,
+          "ties": 511,
+          "difference": -7,
+          "two_sided_paired_binomial_p": 0.5250147872924269
+        },
+        "productive": {
+          "candidate_only": 54,
+          "baseline_only": 83,
+          "ties": 463,
+          "difference": -29,
+          "two_sided_paired_binomial_p": 0.01643226206201417
+        },
+        "fixed_memory_new": {
+          "candidate_only": 21,
+          "baseline_only": 117,
+          "ties": 462,
+          "difference": -96,
+          "two_sided_paired_binomial_p": 2.3754434345635914e-17
+        },
+        "final_memory_new": {
+          "candidate_only": 4,
+          "baseline_only": 11,
+          "ties": 585,
+          "difference": -7,
+          "two_sided_paired_binomial_p": 0.11846923828125
+        },
+        "unique_count_differences": {
+          "unique_productive_programs": 13,
+          "unique_productive_behaviors": 0,
+          "unique_fixed_memory_new_behaviors": -10,
+          "unique_final_memory_new_behaviors": -3
+        }
+      },
+      "v3c": {
+        "attempts": 600,
+        "status_syntax_error": 177,
+        "completed_execution_attempts": 385,
+        "meaningful_execution_attempts": 383,
+        "productive_attempts": 226,
+        "fixed_memory_new_attempts": 175,
+        "final_memory_new_attempts": 11,
+        "status_source_replay": 143,
+        "status_novel": 226,
+        "status_runtime_error": 37,
+        "status_trivial": 2,
+        "status_behavior_replay": 14,
+        "status_policy_rejected": 1,
+        "unique_productive_programs": 63,
+        "unique_productive_behaviors": 49,
+        "unique_fixed_memory_new_behaviors": 30,
+        "unique_final_memory_new_behaviors": 7,
+        "unique_productive_stdout": 48
+      },
+      "v3d": {
+        "attempts": 600,
+        "status_novel": 197,
+        "completed_execution_attempts": 378,
+        "meaningful_execution_attempts": 376,
+        "productive_attempts": 197,
+        "fixed_memory_new_attempts": 79,
+        "final_memory_new_attempts": 4,
+        "status_source_replay": 152,
+        "status_syntax_error": 185,
+        "status_runtime_error": 34,
+        "status_behavior_replay": 27,
+        "status_policy_rejected": 3,
+        "status_trivial": 2,
+        "unique_productive_programs": 76,
+        "unique_productive_behaviors": 49,
+        "unique_fixed_memory_new_behaviors": 20,
+        "unique_final_memory_new_behaviors": 4,
+        "unique_productive_stdout": 48
+      }
+    }
+  ],
+  "sum_of_replica_counts": {
+    "v3c": {
+      "attempts": 1800,
+      "status_novel": 558,
+      "completed_execution_attempts": 1160,
+      "meaningful_execution_attempts": 1150,
+      "productive_attempts": 558,
+      "fixed_memory_new_attempts": 446,
+      "final_memory_new_attempts": 51,
+      "status_source_replay": 563,
+      "status_syntax_error": 547,
+      "status_runtime_error": 90,
+      "status_behavior_replay": 29,
+      "status_policy_rejected": 3,
+      "unique_productive_programs": 153,
+      "unique_productive_behaviors": 135,
+      "unique_fixed_memory_new_behaviors": 86,
+      "unique_final_memory_new_behaviors": 37,
+      "unique_productive_stdout": 132,
+      "status_trivial": 10
+    },
+    "v3d": {
+      "attempts": 1800,
+      "status_novel": 600,
+      "completed_execution_attempts": 1113,
+      "meaningful_execution_attempts": 1104,
+      "productive_attempts": 600,
+      "fixed_memory_new_attempts": 146,
+      "final_memory_new_attempts": 33,
+      "status_syntax_error": 586,
+      "status_runtime_error": 96,
+      "status_trivial": 9,
+      "status_source_replay": 442,
+      "status_behavior_replay": 62,
+      "status_policy_rejected": 5,
+      "unique_productive_programs": 165,
+      "unique_productive_behaviors": 128,
+      "unique_fixed_memory_new_behaviors": 54,
+      "unique_final_memory_new_behaviors": 26,
+      "unique_productive_stdout": 126
+    }
+  },
+  "pooled_v3d_minus_v3c": {
+    "completed_execution": {
+      "candidate_only": 156,
+      "baseline_only": 203,
+      "ties": 1441,
+      "difference": -47,
+      "two_sided_paired_binomial_p": 0.015075488295173927
+    },
+    "meaningful_execution": {
+      "candidate_only": 157,
+      "baseline_only": 203,
+      "ties": 1440,
+      "difference": -46,
+      "two_sided_paired_binomial_p": 0.017584134684727176
+    },
+    "productive": {
+      "candidate_only": 268,
+      "baseline_only": 226,
+      "ties": 1306,
+      "difference": 42,
+      "two_sided_paired_binomial_p": 0.06497557325396583
+    },
+    "fixed_memory_new": {
+      "candidate_only": 52,
+      "baseline_only": 352,
+      "ties": 1396,
+      "difference": -300,
+      "two_sided_paired_binomial_p": 7.7416987918063685e-56
+    },
+    "final_memory_new": {
+      "candidate_only": 30,
+      "baseline_only": 48,
+      "ties": 1722,
+      "difference": -18,
+      "two_sided_paired_binomial_p": 0.053544392168502264
+    },
+    "unique_count_differences": {
+      "unique_productive_programs": 12,
+      "unique_productive_behaviors": -7,
+      "unique_fixed_memory_new_behaviors": -32,
+      "unique_final_memory_new_behaviors": -11
+    }
+  },
+  "scope": "follow-up diagnostic; three matched continuations, same raw budgets and judge"
+}

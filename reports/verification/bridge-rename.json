@@ -1,0 +1,92 @@
+{
+  "date": "2026-09-21",
+  "tests": {
+    "passed": 166,
+    "seconds": 29.064
+  },
+  "state_hashes_unchanged": {
+    "2048.json": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+    "art.json": "158bb4c3361ccaec62518b49acd4598ff05e589f9694328773d5fc607a3c8060",
+    "strings.json": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+    "art-dev.json": "d7fd40646c4ed6a9d59e25ea56dcba79cd609a7e04818c6e3402cf472b79b5f0",
+    "doom-generic.json": "24e0d43283054b46e2a29012609021b7ec7935a17a8569f0829bd7912175e3f9",
+    "2048-dev.json": "ee6d037ff8d4dacffe7cf664e438262ffe1943b3b3ada8f0d4f456a147cb5b8e",
+    "doom.json": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+    "records.json": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+    "code.json": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+    "doom-generic-map02.json": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b"
+  },
+  "checks": [
+    {
+      "entrypoint": "doom.py",
+      "help_exit": 0
+    },
+    {
+      "entrypoint": "doomer.py",
+      "help_exit": 0
+    },
+    {
+      "entrypoint": "2048.py",
+      "help_exit": 0
+    },
+    {
+      "route": "2048",
+      "exit_code": 0,
+      "summary": {
+        "trained": {
+          "raw_attempts": 1,
+          "played": 1,
+          "completed": 1,
+          "score_per_raw_attempt": 1300.0,
+          "mean_played_score": 1300.0,
+          "best_score": 1300,
+          "max_tile": 128,
+          "statuses": {
+            "move_limit": 1
+          }
+        },
+        "without_experience": {
+          "raw_attempts": 1,
+          "played": 0,
+          "completed": 0,
+          "score_per_raw_attempt": 0.0,
+          "mean_played_score": 0.0,
+          "best_score": 0,
+          "max_tile": 0,
+          "statuses": {
+            "syntax_error": 1
+          }
+        },
+        "random_legal": {
+          "raw_attempts": 1,
+          "played": 1,
+          "completed": 1,
+          "score_per_raw_attempt": 1228.0,
+          "mean_played_score": 1228.0,
+          "best_score": 1228,
+          "max_tile": 128,
+          "statuses": {
+            "move_limit": 1
+          }
+        }
+      }
+    },
+    {
+      "route": "doom",
+      "exit_code": 0,
+      "summary": {
+        "attempts": 4,
+        "kills": 6.0,
+        "kills_metric": "Doom killcount (includes monster infighting)",
+        "learning": false,
+        "mean_reward_per_attempt": 0.49751809247491124,
+        "played": 3,
+        "state_after": "46566c2e05d2babb451f8ea63aaae1dc1701c0bd4f814e11fc9af86a4aee15d0",
+        "statuses": {
+          "played": 3,
+          "syntax_error": 1
+        }
+      }
+    }
+  ]
+}

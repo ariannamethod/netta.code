@@ -1,0 +1,18 @@
+{
+  "kind": "development; no promotion precommitted",
+  "training_games": 128,
+  "evaluation_attempts": 192,
+  "replicas": 2,
+  "rule": "exploration .35 until 24 consecutive non-discoveries, then .85 until a discovery",
+  "evaluation_exploration": 0.5,
+  "train_seeds": [
+    18000000,
+    18100000
+  ],
+  "eval_seeds": [
+    19000000,
+    19100000
+  ],
+  "source_sha256": "f4c2d65839a18853079aea0faba06fc00ac2b18cba6b18df069161683c92d53c",
+  "state_sha256": "f01efe79263c9b2b37b514210dac9bb78ab6662886598135ce1cefec4b01cdde"
+}

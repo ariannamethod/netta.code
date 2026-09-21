@@ -44,7 +44,7 @@ An island is a text file containing complete Python programs separated by:
 # === PROGRAM ===
 ```
 
-The framing disappears when the island is read; every byte inside each program remains part of the world. From those bytes Netta grows deterministic byte-pair units, builds local continuation tables and begins sampling programs from structures she has actually lived through, with the continuation order and search behavior differing between the two organisms.
+The framing disappears when the island is read; every byte inside each program remains part of the world. From those bytes Netta grows deterministic byte-pair units, builds local continuation tables and begins sampling programs from structures she has actually lived through, with a default continuation order of six units for Lee and four for Code.
 
 Generation is only the opening move. Every candidate is parsed, compiled and executed inside a bounded CPython worker, and the runtime records what actually happened: executed lines and spans, computational operations, retained values, visible output and a behavior signature. The organism then updates acquired continuation memory, learned outcome machinery and its search behavior from the result.
 
@@ -86,7 +86,7 @@ This is where the Bruce Lee joke stops being decoration and turns into architect
 
 ## Netta Code
 
-`nettacode.py` keeps the same general organism while living in `corpora/mixed.txt`, where different program families share one world. Its default continuation context is shorter and its corridor escape is more frequent, giving heterogeneous structures more room to meet inside a single experience.
+`nettacode.py` keeps the same general organism while living in `corpora/mixed.txt`, where different program families share one world. Its default continuation context is four units, compared with Lee's six, giving heterogeneous structures a shorter local window in which to meet. Both bodies currently share the continuation-memory format, learned heads and search mechanism; each saved state carries its own acquired experience.
 
 The two bodies therefore ask different questions with almost the same anatomy. Netta Lee asks what deep local experience becomes when each domain keeps its own life, while Netta Code asks what happens when executable habits from different domains are allowed to occupy the same memory and collide.
 
@@ -111,7 +111,7 @@ The Code numeric task is the cleanest current example of command-shaped experien
 
 The earlier free-play result still matters underneath this layer: experience had already raised productive execution strongly across art, strings, records and the mixed Code island. The newer mechanism narrows that pressure toward a declared result while leaving ordinary no-task trajectories unchanged.
 
-The shared release suite now passes **166 tests**. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms while Astra keeps the receipts in the logs.
+The shared release suite now passes **166 tests**. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports.
 
 ---
 
@@ -159,7 +159,7 @@ The complete selected set lives in **[gallery.html](gallery.html)**. ASCII art w
 
 ## 2048
 
-`netta2048.py` is a standard-library game host built around **64 code-only policies in eight families**. A generated program receives the real sixteen-cell board together with four legal-move flags and chooses `left`, `right`, `up` or `down`; board transitions, spawning, score and reward belong to the host, so the organism has to live with the move its own code selected.
+`2048.py` is a standard-library game host built around **64 code-only policies in eight families**. A generated program receives the real sixteen-cell board together with four legal-move flags and chooses `left`, `right`, `up` or `down`; board transitions, spawning, score and reward belong to the host, so the organism has to live with the move its own code selected.
 
 After **800 raw learning attempts**, the saved state produced **156 played episodes out of 256 fresh generation attempts**, compared with **13 / 256** after removing learned experience. Score per raw attempt rose from **41.17** to **589.59**. Uniform random legal play scored **949.42**, which gives the next court a wonderfully impolite baseline to chase rather than a victory lap.
 
@@ -171,7 +171,7 @@ The game is useful for the same reason the compiler is useful: it does not care 
 
 ## Doom
 
-The Doom body is now `nettadoomer.py`, with `nettadoom.py` kept as the compatible entry point. The default path uses a pinned, locally buildable **Doom Generic** engine from `doom/` and an external IWAD; the published run used **Freedoom 2, MAP02**.
+The Doom adapter is `doomer.py`, with `doom.py` as its short entry point. These files connect the model to the game; `nettalee.py` and `nettacode.py` remain the two model bodies. The default path uses a pinned, locally buildable **Doom Generic** engine from `doom/` and an external IWAD; the published run used **Freedoom 2, MAP02**.
 
 A generated policy receives a compact observation of health, ammunition and scene position, then chooses among six actions:
 
@@ -208,10 +208,12 @@ A caller and a specialist walk into a bar. The caller points at the right bottle
 
 ## run it
 
+The verified runtime is CPython 3.12 on Linux. The execution worker uses the standard-library `resource` module. The two model files and the 2048 adapter require no third-party Python packages. Doom Generic uses `make`, a C compiler and an external IWAD; ViZDoom remains an optional backend.
+
 Grow a specialist state from a code island and let it accumulate ordinary experience:
 
 ```bash
-python3 nettalee.py init --island corpora/art.txt --state states/my-art.json
+python3 nettalee.py init --island corpora/art.txt --state states/my-art.json --judge art
 python3 nettalee.py play --state states/my-art.json --games 100
 ```
 
@@ -233,7 +235,7 @@ python3 nettalee.py ask "draw a compact picture" \
 Run a frozen 2048 comparison:
 
 ```bash
-python3 netta2048.py evaluate \
+python3 2048.py evaluate \
   --state states/2048.json --out runs/2048 \
   --attempts 256
 ```
@@ -241,7 +243,7 @@ python3 netta2048.py evaluate \
 Run Doom Generic with your own Doom/Freedoom IWAD:
 
 ```bash
-python3 nettadoomer.py evaluate \
+python3 doomer.py evaluate \
   --state states/doom.json \
   --iwad /path/to/freedoom2.wad --map 2 \
   --output runs/doom
@@ -256,9 +258,9 @@ python3 nettadoomer.py evaluate \
 ```
 nettalee.py        Netta Lee: specialist organism, judge, task memory and select_state()
 nettacode.py       Netta Code: mixed-island organism
-netta2048.py       seeded 2048 host for generated policies
-nettadoomer.py     real Doom Generic / optional ViZDoom bridge
-nettadoom.py       compatibility entry point
+2048.py           seeded 2048 host for generated policies
+doomer.py          real Doom Generic / optional ViZDoom bridge
+doom.py            short entry point for doomer.py
 
 tools.json         language routes + declared command contracts
 doom.json          Doom environment configuration
@@ -266,6 +268,12 @@ gallery.html       art, task results, interactive 2048 and Doom evidence
 
 NETTALEELOG.md      Lee technical / experiment log
 NETTACODELOG.md     Code technical / experiment log
+
+reports/
+  INDEX.md         current measurements and historical-report index
+  historical/      retained reports from earlier experiments
+  measurements/    protocols, summaries, audits and recovery receipts
+  verification/    test output and bridge checks
 
 corpora/
   art.txt
@@ -306,3 +314,4 @@ GPL-3.0-or-later.
 ---
 
 *Arianna Method.*
+

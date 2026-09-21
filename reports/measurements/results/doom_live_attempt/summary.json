@@ -1,0 +1,11 @@
+{
+  "attempts": 1,
+  "kills": 0,
+  "learning": true,
+  "mean_reward_per_attempt": null,
+  "played": 0,
+  "state_after": "4c35c79f2086da11eb5b3f0659f4d3d1c709123cf9fc841d604e6af0cb1a0b78",
+  "statuses": {
+    "engine_unavailable": 1
+  }
+}

@@ -1,0 +1,340 @@
+{
+  "protocol": {
+    "module_sha256": "a30834ae017ec4de268b47d8f31ddf0c01519c710a837ad7e917da5b0fec2110",
+    "state_sha256": "09f18f76d7a2956d3885440d102d9df9c863871b14cadc95e01d9d3b5aa4bca1",
+    "config_sha256": "ea0e4a0b02e3c8a4938193a9721d40175da6dfd3f9b40a55d035a83139485d86",
+    "verification_helper_sha256": "55cb226cc41dcba4f22777eddc7e8ae8f1078ff50bd296176255e64b4c9728bf",
+    "module_origin": "/workspace/scratch/aea72c843013/netta_python/nettalee.py",
+    "state_origin": "/workspace/scratch/aea72c843013/netta_python/states/art.json",
+    "request": "art:compact_picture",
+    "condition": {
+      "key": "2492d88be88d7af6b367bac3e2a99fc18d72d8b7e1a57aed44c8594ad561ab3b",
+      "profile": "art:compact_picture",
+      "mode": "art",
+      "output": {
+        "min_lines": 3,
+        "max_lines": 18,
+        "min_width": 3,
+        "max_width": 40
+      }
+    },
+    "train_games": 512,
+    "eval_games": 256,
+    "replicas": 3,
+    "train_seed": 500000000,
+    "eval_seed": 900000000,
+    "replica_seed_stride": 1000000,
+    "independent_checks_per_arm": 4,
+    "prospective_export_replica": 0,
+    "arms": [
+      "initial",
+      "generic_trained",
+      "task_trained",
+      "task_erased"
+    ]
+  },
+  "replicas": [
+    {
+      "replica": 0,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 158,
+          "productive": 107,
+          "task_passed": 105,
+          "unique_passed_sources": 87,
+          "task_statuses": {
+            "passed": 105,
+            "runtime_failed": 98,
+            "ineligible": 51,
+            "failed": 2
+          },
+          "frozen_state_sha256": "5fd03bfdde131d8f00ff51616057b0ba7173215d20e84bcb10e54e0f949c54a3",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 175,
+          "productive": 121,
+          "task_passed": 121,
+          "unique_passed_sources": 83,
+          "task_statuses": {
+            "ineligible": 54,
+            "passed": 121,
+            "runtime_failed": 81
+          },
+          "frozen_state_sha256": "e14b6487bcad845628961576f66d3e4220b096a7c2ff24c72065309874266242",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 171,
+          "productive": 146,
+          "task_passed": 145,
+          "unique_passed_sources": 84,
+          "task_statuses": {
+            "passed": 145,
+            "runtime_failed": 85,
+            "ineligible": 25,
+            "failed": 1
+          },
+          "frozen_state_sha256": "6d7782e3eb69109da54e63fbcd3979014944075805d84406fd476e5cbb7a8979",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 156,
+          "productive": 112,
+          "task_passed": 112,
+          "unique_passed_sources": 77,
+          "task_statuses": {
+            "ineligible": 44,
+            "passed": 112,
+            "runtime_failed": 100
+          },
+          "frozen_state_sha256": "f3b62cd9d2517a6fc72347cfdc6adb866332bbc13d9ebeb222fc62dba13fdf4a",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 58,
+          "right_only": 18,
+          "ties": 180,
+          "pass_difference": 40
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 41,
+          "right_only": 17,
+          "ties": 198,
+          "pass_difference": 24
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 45,
+          "right_only": 12,
+          "ties": 199,
+          "pass_difference": 33
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    },
+    {
+      "replica": 1,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 174,
+          "productive": 118,
+          "task_passed": 117,
+          "unique_passed_sources": 90,
+          "task_statuses": {
+            "runtime_failed": 82,
+            "ineligible": 56,
+            "passed": 117,
+            "failed": 1
+          },
+          "frozen_state_sha256": "5fd03bfdde131d8f00ff51616057b0ba7173215d20e84bcb10e54e0f949c54a3",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 182,
+          "productive": 114,
+          "task_passed": 111,
+          "unique_passed_sources": 84,
+          "task_statuses": {
+            "runtime_failed": 74,
+            "ineligible": 68,
+            "passed": 111,
+            "failed": 3
+          },
+          "frozen_state_sha256": "47bf66a2f34506340b43eff166b189ba14acd4602438c81b1648649d13077ed0",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 164,
+          "productive": 140,
+          "task_passed": 140,
+          "unique_passed_sources": 81,
+          "task_statuses": {
+            "runtime_failed": 92,
+            "passed": 140,
+            "ineligible": 24
+          },
+          "frozen_state_sha256": "c5136cbc18f1c027677fd35f017e58b111a03dda54900d7f020ac0cec3f0d464",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 154,
+          "productive": 100,
+          "task_passed": 94,
+          "unique_passed_sources": 71,
+          "task_statuses": {
+            "runtime_failed": 102,
+            "ineligible": 54,
+            "passed": 94,
+            "failed": 6
+          },
+          "frozen_state_sha256": "90c9ecc398884a32207bf85209b9fcd1ff5f226218646f2ef27a69485145f2ec",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 48,
+          "right_only": 25,
+          "ties": 183,
+          "pass_difference": 23
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 48,
+          "right_only": 19,
+          "ties": 189,
+          "pass_difference": 29
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 53,
+          "right_only": 7,
+          "ties": 196,
+          "pass_difference": 46
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    },
+    {
+      "replica": 2,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 153,
+          "productive": 111,
+          "task_passed": 104,
+          "unique_passed_sources": 85,
+          "task_statuses": {
+            "runtime_failed": 103,
+            "passed": 104,
+            "failed": 7,
+            "ineligible": 42
+          },
+          "frozen_state_sha256": "5fd03bfdde131d8f00ff51616057b0ba7173215d20e84bcb10e54e0f949c54a3",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 158,
+          "productive": 114,
+          "task_passed": 111,
+          "unique_passed_sources": 89,
+          "task_statuses": {
+            "runtime_failed": 98,
+            "passed": 111,
+            "ineligible": 44,
+            "failed": 3
+          },
+          "frozen_state_sha256": "a5b71393177123bcc9be759c609f7afeeb721a792ddd7c9a97096453aa5426ff",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 166,
+          "productive": 142,
+          "task_passed": 142,
+          "unique_passed_sources": 90,
+          "task_statuses": {
+            "runtime_failed": 90,
+            "passed": 142,
+            "ineligible": 24
+          },
+          "frozen_state_sha256": "87be5e860dd8e283c9b44a09c407fdaa8984cad388f1d26e497d482bc6093b41",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 140,
+          "productive": 103,
+          "task_passed": 102,
+          "unique_passed_sources": 72,
+          "task_statuses": {
+            "runtime_failed": 116,
+            "passed": 102,
+            "ineligible": 37,
+            "failed": 1
+          },
+          "frozen_state_sha256": "9801dc0e34aac74e878bd8edf88e9cade84057b116bcff7d9f14e63dbd978cfe",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 62,
+          "right_only": 24,
+          "ties": 170,
+          "pass_difference": 38
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 51,
+          "right_only": 20,
+          "ties": 185,
+          "pass_difference": 31
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 45,
+          "right_only": 5,
+          "ties": 206,
+          "pass_difference": 40
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    }
+  ],
+  "totals": {
+    "initial": {
+      "attempts": 768,
+      "runtime_ok": 485,
+      "productive": 336,
+      "task_passed": 326
+    },
+    "generic_trained": {
+      "attempts": 768,
+      "runtime_ok": 515,
+      "productive": 349,
+      "task_passed": 343
+    },
+    "task_trained": {
+      "attempts": 768,
+      "runtime_ok": 501,
+      "productive": 428,
+      "task_passed": 427
+    },
+    "task_erased": {
+      "attempts": 768,
+      "runtime_ok": 450,
+      "productive": 315,
+      "task_passed": 308
+    }
+  },
+  "independent_mismatches": 0
+}

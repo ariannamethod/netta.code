@@ -1,0 +1,157 @@
+{
+  "protocol": {
+    "module_sha256": "a6a0b58f833f9ddab3e74e64302b3c794252b5438101a0ae28871623f221e9b3",
+    "state_sha256": "09f18f76d7a2956d3885440d102d9df9c863871b14cadc95e01d9d3b5aa4bca1",
+    "config_sha256": "81b742e1a9a5c75faaac11153e0960745e56ba159fd1210762935a4f2376bc30",
+    "verification_helper_sha256": "55cb226cc41dcba4f22777eddc7e8ae8f1078ff50bd296176255e64b4c9728bf",
+    "module_origin": "/workspace/scratch/aea72c843013/netta_python/nettalee.py",
+    "state_origin": "/workspace/scratch/aea72c843013/netta_python/states/art.json",
+    "request": "art:compact_picture",
+    "condition": {
+      "key": "2492d88be88d7af6b367bac3e2a99fc18d72d8b7e1a57aed44c8594ad561ab3b",
+      "profile": "art:compact_picture",
+      "mode": "art",
+      "output": {
+        "min_lines": 3,
+        "max_lines": 18,
+        "min_width": 3,
+        "max_width": 40
+      }
+    },
+    "train_games": 128,
+    "eval_games": 128,
+    "replicas": 1,
+    "train_seed": 400000000,
+    "eval_seed": 800000000,
+    "replica_seed_stride": 1000000,
+    "independent_checks_per_arm": 4,
+    "arms": [
+      "initial",
+      "generic_trained",
+      "task_trained",
+      "task_erased"
+    ]
+  },
+  "replicas": [
+    {
+      "replica": 0,
+      "arms": {
+        "initial": {
+          "attempts": 128,
+          "runtime_ok": 78,
+          "productive": 56,
+          "task_passed": 55,
+          "unique_passed_sources": 49,
+          "task_statuses": {
+            "passed": 55,
+            "runtime_failed": 50,
+            "ineligible": 22,
+            "failed": 1
+          },
+          "frozen_state_sha256": "5fd03bfdde131d8f00ff51616057b0ba7173215d20e84bcb10e54e0f949c54a3",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 128,
+          "runtime_ok": 79,
+          "productive": 58,
+          "task_passed": 56,
+          "unique_passed_sources": 50,
+          "task_statuses": {
+            "passed": 56,
+            "runtime_failed": 49,
+            "ineligible": 21,
+            "failed": 2
+          },
+          "frozen_state_sha256": "7d15b828f6d2eecf73372c06f93c6a8650df9624eeb0aa52a550a0b77de58842",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 128,
+          "runtime_ok": 86,
+          "productive": 79,
+          "task_passed": 77,
+          "unique_passed_sources": 46,
+          "task_statuses": {
+            "passed": 77,
+            "runtime_failed": 42,
+            "ineligible": 7,
+            "failed": 2
+          },
+          "frozen_state_sha256": "ebca054f2ddb40d98757fef90c5d83415c9ecb0ee79e4a42856843ee67f7ed3b",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 128,
+          "runtime_ok": 80,
+          "productive": 56,
+          "task_passed": 55,
+          "unique_passed_sources": 46,
+          "task_statuses": {
+            "passed": 55,
+            "runtime_failed": 48,
+            "ineligible": 24,
+            "failed": 1
+          },
+          "frozen_state_sha256": "0e624c57c0325f4bcb125ff840b9c1e548d796f134741e39d9ad90751b30f4d0",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 128,
+          "left_only": 24,
+          "right_only": 2,
+          "ties": 102,
+          "pass_difference": 22
+        },
+        "generic_trained": {
+          "pairs": 128,
+          "left_only": 25,
+          "right_only": 4,
+          "ties": 99,
+          "pass_difference": 21
+        },
+        "task_erased": {
+          "pairs": 128,
+          "left_only": 23,
+          "right_only": 1,
+          "ties": 104,
+          "pass_difference": 22
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    }
+  ],
+  "totals": {
+    "initial": {
+      "attempts": 128,
+      "runtime_ok": 78,
+      "productive": 56,
+      "task_passed": 55
+    },
+    "generic_trained": {
+      "attempts": 128,
+      "runtime_ok": 79,
+      "productive": 58,
+      "task_passed": 56
+    },
+    "task_trained": {
+      "attempts": 128,
+      "runtime_ok": 86,
+      "productive": 79,
+      "task_passed": 77
+    },
+    "task_erased": {
+      "attempts": 128,
+      "runtime_ok": 80,
+      "productive": 56,
+      "task_passed": 55
+    }
+  },
+  "independent_mismatches": 0
+}

@@ -1,0 +1,77 @@
+{
+  "raw_attempts_each": 256,
+  "max_moves": 128,
+  "paired_completed": {
+    "trained_only": 146,
+    "without_experience_only": 3,
+    "ties": 107,
+    "two_sided_binomial_p": 1.5454920763038407e-39
+  },
+  "paired_raw_score": {
+    "mean_difference": 548.421875,
+    "bootstrap_95_percent_interval": [
+      477.984375,
+      618.421875
+    ],
+    "bootstrap_resamples": 4000,
+    "bootstrap_seed": 6000000,
+    "wins": 152,
+    "losses": 6,
+    "ties": 98
+  },
+  "summary": {
+    "trained": {
+      "raw_attempts": 256,
+      "played": 156,
+      "completed": 156,
+      "score_per_raw_attempt": 589.59375,
+      "mean_played_score": 967.5384615384615,
+      "best_score": 1348,
+      "max_tile": 128,
+      "statuses": {
+        "corpus_source_replay": 17,
+        "syntax_error": 33,
+        "corpus_probe_behavior_replay": 48,
+        "move_limit": 84,
+        "terminal": 72,
+        "runtime_error": 2
+      }
+    },
+    "without_experience": {
+      "raw_attempts": 256,
+      "played": 13,
+      "completed": 13,
+      "score_per_raw_attempt": 41.171875,
+      "mean_played_score": 810.7692307692307,
+      "best_score": 1300,
+      "max_tile": 128,
+      "statuses": {
+        "syntax_error": 181,
+        "corpus_source_replay": 17,
+        "corpus_probe_behavior_replay": 18,
+        "runtime_error": 27,
+        "terminal": 7,
+        "move_limit": 6
+      }
+    },
+    "random_legal": {
+      "raw_attempts": 256,
+      "played": 256,
+      "completed": 256,
+      "score_per_raw_attempt": 949.421875,
+      "mean_played_score": 949.421875,
+      "best_score": 1400,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 166,
+        "move_limit": 90
+      }
+    }
+  },
+  "interpretation": "Learning increases generated executable non-corpus policy episodes and score per raw generation. The trained pipeline does not beat a hand-provided uniform-random legal policy on score per raw attempt. Conditional scores use different admitted subsets and are not a paired strategy superiority estimate. Probe novelty means only disagreement on the declared finite probes.",
+  "checks": {
+    "frozen_attempt_hashes_match": true,
+    "source_seed_pairs_match": true,
+    "environment_seed_pairs_match": true
+  }
+}

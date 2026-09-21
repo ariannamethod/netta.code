@@ -1,0 +1,415 @@
+{
+  "protocol": {
+    "protocol": "v3-matched-continuation-v1",
+    "phase": "confirmatory",
+    "paths": {
+      "baseline": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/nettacode.py",
+      "candidate": "/workspace/scratch/aea72c843013/netta_python/nettacode.py",
+      "initial_state": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/states/code.json",
+      "reader": "/workspace/scratch/aea72c843013/netta_python/tools/compare_v3.py"
+    },
+    "input_hashes": {
+      "baseline": "8640572669a4423901c25be25ba75aeea65b664eecc195c3d297c893e5cd5217",
+      "candidate": "321a543a7b4a6f46b88fab526779b202fff6f00f954887e5640e0f3321a263f7",
+      "initial_state": "204886f825c60877040c227c30a22848bcc8bd84da1f31e98b7ef288a7aea01a",
+      "reader": "3a980a35a35c5c80f53242954e30e38de675ae56f7ce3dd365f8d1084a6bf1a0"
+    },
+    "output": "/workspace/scratch/aea72c843013/netta_python/results/v3_confirmatory/code",
+    "train_games": 1000,
+    "eval_attempts": 600,
+    "replicas": 3,
+    "train_seed": 1140000,
+    "eval_seed": 1640000,
+    "seed_stride": 1000000,
+    "workers": 4,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "metrics": {
+      "productive": "Meaningful execution and behavior outside the fixed original corpus, independently rerun.",
+      "fixed_memory_new": "Productive behavior absent from the common snapshot before continued learning.",
+      "final_memory_new": "Productive behavior absent from the evaluated arm's final memory.",
+      "completed_execution": "The common runtime completed, including executions classed as trivial."
+    },
+    "seed_intervals": [
+      {
+        "replica": 0,
+        "phase": "training",
+        "first": 1140000,
+        "last": 1140999
+      },
+      {
+        "replica": 0,
+        "phase": "evaluation",
+        "first": 1640000,
+        "last": 1640599
+      },
+      {
+        "replica": 1,
+        "phase": "training",
+        "first": 2140000,
+        "last": 2140999
+      },
+      {
+        "replica": 1,
+        "phase": "evaluation",
+        "first": 2640000,
+        "last": 2640599
+      },
+      {
+        "replica": 2,
+        "phase": "training",
+        "first": 3140000,
+        "last": 3140999
+      },
+      {
+        "replica": 2,
+        "phase": "evaluation",
+        "first": 3640000,
+        "last": 3640599
+      }
+    ]
+  },
+  "comparisons": [
+    {
+      "replica": 0,
+      "paired": {
+        "completed_execution": {
+          "candidate_only": 238,
+          "baseline_only": 110,
+          "ties": 252,
+          "difference": 128,
+          "two_sided_paired_binomial_p": 5.752187186830286e-12
+        },
+        "meaningful_execution": {
+          "candidate_only": 237,
+          "baseline_only": 111,
+          "ties": 252,
+          "difference": 126,
+          "two_sided_paired_binomial_p": 1.2470326723171561e-11
+        },
+        "productive": {
+          "candidate_only": 203,
+          "baseline_only": 31,
+          "ties": 366,
+          "difference": 172,
+          "two_sided_paired_binomial_p": 3.6190025576634265e-32
+        },
+        "fixed_memory_new": {
+          "candidate_only": 180,
+          "baseline_only": 13,
+          "ties": 407,
+          "difference": 167,
+          "two_sided_paired_binomial_p": 9.395717679289885e-39
+        },
+        "final_memory_new": {
+          "candidate_only": 27,
+          "baseline_only": 11,
+          "ties": 562,
+          "difference": 16,
+          "two_sided_paired_binomial_p": 0.013852965261321515
+        },
+        "unique_count_differences": {
+          "unique_productive_programs": 23,
+          "unique_productive_behaviors": 23,
+          "unique_fixed_memory_new_behaviors": 29,
+          "unique_final_memory_new_behaviors": 9
+        }
+      },
+      "baseline": {
+        "attempts": 600,
+        "status_syntax_error": 327,
+        "completed_execution_attempts": 198,
+        "meaningful_execution_attempts": 196,
+        "productive_attempts": 42,
+        "fixed_memory_new_attempts": 17,
+        "final_memory_new_attempts": 11,
+        "status_runtime_error": 69,
+        "status_source_replay": 151,
+        "status_novel": 42,
+        "status_policy_rejected": 6,
+        "status_behavior_replay": 3,
+        "status_trivial": 2,
+        "unique_productive_programs": 30,
+        "unique_productive_behaviors": 29,
+        "unique_fixed_memory_new_behaviors": 15,
+        "unique_final_memory_new_behaviors": 11,
+        "unique_productive_stdout": 22
+      },
+      "candidate": {
+        "attempts": 600,
+        "status_syntax_error": 230,
+        "completed_execution_attempts": 326,
+        "meaningful_execution_attempts": 322,
+        "productive_attempts": 214,
+        "fixed_memory_new_attempts": 184,
+        "final_memory_new_attempts": 27,
+        "status_source_replay": 107,
+        "status_novel": 214,
+        "status_runtime_error": 42,
+        "status_trivial": 4,
+        "status_behavior_replay": 1,
+        "status_policy_rejected": 2,
+        "unique_productive_programs": 53,
+        "unique_productive_behaviors": 52,
+        "unique_fixed_memory_new_behaviors": 44,
+        "unique_final_memory_new_behaviors": 20,
+        "unique_productive_stdout": 42
+      }
+    },
+    {
+      "replica": 1,
+      "paired": {
+        "completed_execution": {
+          "candidate_only": 254,
+          "baseline_only": 148,
+          "ties": 198,
+          "difference": 106,
+          "two_sided_paired_binomial_p": 1.3916751840231714e-07
+        },
+        "meaningful_execution": {
+          "candidate_only": 258,
+          "baseline_only": 149,
+          "ties": 193,
+          "difference": 109,
+          "two_sided_paired_binomial_p": 7.265535663803365e-08
+        },
+        "productive": {
+          "candidate_only": 66,
+          "baseline_only": 35,
+          "ties": 499,
+          "difference": 31,
+          "two_sided_paired_binomial_p": 0.0026537860572285053
+        },
+        "fixed_memory_new": {
+          "candidate_only": 60,
+          "baseline_only": 10,
+          "ties": 530,
+          "difference": 50,
+          "two_sided_paired_binomial_p": 8.004823399455647e-10
+        },
+        "final_memory_new": {
+          "candidate_only": 23,
+          "baseline_only": 9,
+          "ties": 568,
+          "difference": 14,
+          "two_sided_paired_binomial_p": 0.020061607006937265
+        },
+        "unique_count_differences": {
+          "unique_productive_programs": 13,
+          "unique_productive_behaviors": 13,
+          "unique_fixed_memory_new_behaviors": 23,
+          "unique_final_memory_new_behaviors": 8
+        }
+      },
+      "baseline": {
+        "attempts": 600,
+        "status_syntax_error": 308,
+        "completed_execution_attempts": 235,
+        "meaningful_execution_attempts": 231,
+        "productive_attempts": 39,
+        "fixed_memory_new_attempts": 10,
+        "final_memory_new_attempts": 9,
+        "status_source_replay": 190,
+        "status_runtime_error": 55,
+        "status_novel": 39,
+        "status_trivial": 4,
+        "status_behavior_replay": 2,
+        "status_policy_rejected": 2,
+        "unique_productive_programs": 26,
+        "unique_productive_behaviors": 26,
+        "unique_fixed_memory_new_behaviors": 10,
+        "unique_final_memory_new_behaviors": 9,
+        "unique_productive_stdout": 22
+      },
+      "candidate": {
+        "attempts": 600,
+        "status_source_replay": 269,
+        "completed_execution_attempts": 341,
+        "meaningful_execution_attempts": 340,
+        "productive_attempts": 70,
+        "fixed_memory_new_attempts": 60,
+        "final_memory_new_attempts": 23,
+        "status_novel": 70,
+        "status_syntax_error": 222,
+        "status_runtime_error": 33,
+        "status_policy_rejected": 4,
+        "status_trivial": 1,
+        "status_behavior_replay": 1,
+        "unique_productive_programs": 39,
+        "unique_productive_behaviors": 39,
+        "unique_fixed_memory_new_behaviors": 33,
+        "unique_final_memory_new_behaviors": 17,
+        "unique_productive_stdout": 34
+      }
+    },
+    {
+      "replica": 2,
+      "paired": {
+        "completed_execution": {
+          "candidate_only": 265,
+          "baseline_only": 128,
+          "ties": 207,
+          "difference": 137,
+          "two_sided_paired_binomial_p": 4.196975654734197e-12
+        },
+        "meaningful_execution": {
+          "candidate_only": 266,
+          "baseline_only": 128,
+          "ties": 206,
+          "difference": 138,
+          "two_sided_paired_binomial_p": 3.0979635181430082e-12
+        },
+        "productive": {
+          "candidate_only": 66,
+          "baseline_only": 48,
+          "ties": 486,
+          "difference": 18,
+          "two_sided_paired_binomial_p": 0.11093931188461267
+        },
+        "fixed_memory_new": {
+          "candidate_only": 37,
+          "baseline_only": 22,
+          "ties": 541,
+          "difference": 15,
+          "two_sided_paired_binomial_p": 0.06744461190078899
+        },
+        "final_memory_new": {
+          "candidate_only": 15,
+          "baseline_only": 18,
+          "ties": 567,
+          "difference": -3,
+          "two_sided_paired_binomial_p": 0.7283324808813632
+        },
+        "unique_count_differences": {
+          "unique_productive_programs": -15,
+          "unique_productive_behaviors": -16,
+          "unique_fixed_memory_new_behaviors": -6,
+          "unique_final_memory_new_behaviors": -8
+        }
+      },
+      "baseline": {
+        "attempts": 600,
+        "status_source_replay": 185,
+        "completed_execution_attempts": 240,
+        "meaningful_execution_attempts": 239,
+        "productive_attempts": 54,
+        "fixed_memory_new_attempts": 24,
+        "final_memory_new_attempts": 19,
+        "status_syntax_error": 268,
+        "status_novel": 54,
+        "status_runtime_error": 82,
+        "status_policy_rejected": 10,
+        "status_trivial": 1,
+        "unique_productive_programs": 38,
+        "unique_productive_behaviors": 38,
+        "unique_fixed_memory_new_behaviors": 22,
+        "unique_final_memory_new_behaviors": 18,
+        "unique_productive_stdout": 30
+      },
+      "candidate": {
+        "attempts": 600,
+        "status_source_replay": 305,
+        "completed_execution_attempts": 377,
+        "meaningful_execution_attempts": 377,
+        "productive_attempts": 72,
+        "fixed_memory_new_attempts": 39,
+        "final_memory_new_attempts": 16,
+        "status_syntax_error": 187,
+        "status_novel": 72,
+        "status_runtime_error": 32,
+        "status_policy_rejected": 4,
+        "unique_productive_programs": 23,
+        "unique_productive_behaviors": 22,
+        "unique_fixed_memory_new_behaviors": 16,
+        "unique_final_memory_new_behaviors": 10,
+        "unique_productive_stdout": 14
+      }
+    }
+  ],
+  "pooled_raw_attempt_comparison": {
+    "completed_execution": {
+      "candidate_only": 757,
+      "baseline_only": 386,
+      "ties": 657,
+      "difference": 371,
+      "two_sided_paired_binomial_p": 2.3802660084117964e-28
+    },
+    "meaningful_execution": {
+      "candidate_only": 761,
+      "baseline_only": 388,
+      "ties": 651,
+      "difference": 373,
+      "two_sided_paired_binomial_p": 1.6904484163255265e-28
+    },
+    "productive": {
+      "candidate_only": 335,
+      "baseline_only": 114,
+      "ties": 1351,
+      "difference": 221,
+      "two_sided_paired_binomial_p": 2.7189009183314283e-26
+    },
+    "fixed_memory_new": {
+      "candidate_only": 277,
+      "baseline_only": 45,
+      "ties": 1478,
+      "difference": 232,
+      "two_sided_paired_binomial_p": 6.60617360735075e-42
+    },
+    "final_memory_new": {
+      "candidate_only": 65,
+      "baseline_only": 38,
+      "ties": 1697,
+      "difference": 27,
+      "two_sided_paired_binomial_p": 0.010063333265586337
+    },
+    "unique_count_differences": {
+      "unique_productive_programs": 21,
+      "unique_productive_behaviors": 20,
+      "unique_fixed_memory_new_behaviors": 46,
+      "unique_final_memory_new_behaviors": 9
+    }
+  },
+  "sum_of_replica_counts": {
+    "baseline": {
+      "attempts": 1800,
+      "status_syntax_error": 903,
+      "completed_execution_attempts": 673,
+      "meaningful_execution_attempts": 666,
+      "productive_attempts": 135,
+      "fixed_memory_new_attempts": 51,
+      "final_memory_new_attempts": 39,
+      "status_runtime_error": 206,
+      "status_source_replay": 526,
+      "status_novel": 135,
+      "status_policy_rejected": 18,
+      "status_behavior_replay": 5,
+      "status_trivial": 7,
+      "unique_productive_programs": 94,
+      "unique_productive_behaviors": 93,
+      "unique_fixed_memory_new_behaviors": 47,
+      "unique_final_memory_new_behaviors": 38,
+      "unique_productive_stdout": 74
+    },
+    "candidate": {
+      "attempts": 1800,
+      "status_syntax_error": 639,
+      "completed_execution_attempts": 1044,
+      "meaningful_execution_attempts": 1039,
+      "productive_attempts": 356,
+      "fixed_memory_new_attempts": 283,
+      "final_memory_new_attempts": 66,
+      "status_source_replay": 681,
+      "status_novel": 356,
+      "status_runtime_error": 107,
+      "status_trivial": 5,
+      "status_behavior_replay": 2,
+      "status_policy_rejected": 10,
+      "unique_productive_programs": 115,
+      "unique_productive_behaviors": 113,
+      "unique_fixed_memory_new_behaviors": 93,
+      "unique_final_memory_new_behaviors": 47,
+      "unique_productive_stdout": 90
+    }
+  },
+  "independent_failures": 0,
+  "pooled_scope": "Raw-attempt comparison conditional on these trained replicas; distinct counts are sums of within-replica counts."
+}

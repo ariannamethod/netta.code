@@ -1,0 +1,342 @@
+{
+  "protocol": {
+    "module_sha256": "f4c2d65839a18853079aea0faba06fc00ac2b18cba6b18df069161683c92d53c",
+    "state_sha256": "f01efe79263c9b2b37b514210dac9bb78ab6662886598135ce1cefec4b01cdde",
+    "config_sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+    "verification_helper_sha256": "55cb226cc41dcba4f22777eddc7e8ae8f1078ff50bd296176255e64b4c9728bf",
+    "module_origin": "/workspace/scratch/aea72c843013/netta_python/nettacode.py",
+    "state_origin": "/workspace/scratch/aea72c843013/netta_python/states/code.json",
+    "request": "code:sorted_values",
+    "condition": {
+      "key": "a4cc5b8e409759adee90e618424324d7652b4cbbdd6d13959417e5f858fb1656",
+      "profile": "code:sorted_values",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "number",
+        "sorted": "ascending"
+      }
+    },
+    "train_games": 512,
+    "eval_games": 256,
+    "replicas": 3,
+    "train_seed": 600000000,
+    "eval_seed": 1000000000,
+    "replica_seed_stride": 1000000,
+    "independent_checks_per_arm": 4,
+    "prospective_export_replica": 0,
+    "arms": [
+      "initial",
+      "generic_trained",
+      "task_trained",
+      "task_erased"
+    ]
+  },
+  "replicas": [
+    {
+      "replica": 0,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 138,
+          "productive": 77,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "runtime_failed": 118,
+            "ineligible": 61,
+            "failed": 77
+          },
+          "frozen_state_sha256": "6e03513b74bdf6438cb1d8146bcdedc39a6148f3f1fa37d9abee9f866b891696",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 142,
+          "productive": 78,
+          "task_passed": 2,
+          "unique_passed_sources": 2,
+          "task_statuses": {
+            "runtime_failed": 114,
+            "ineligible": 64,
+            "failed": 76,
+            "passed": 2
+          },
+          "frozen_state_sha256": "bcd3fb74d97a6411c54b0392e7f67da692e894109a6afd6850bd4d4f96456342",
+          "independent_executions": 2,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 180,
+          "productive": 168,
+          "task_passed": 148,
+          "unique_passed_sources": 9,
+          "task_statuses": {
+            "runtime_failed": 76,
+            "failed": 20,
+            "ineligible": 12,
+            "passed": 148
+          },
+          "frozen_state_sha256": "b2c5d242db0017ce27f7ffa4c4a0568702669ac21c96c34a7f24acc49a71490e",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 130,
+          "productive": 73,
+          "task_passed": 3,
+          "unique_passed_sources": 3,
+          "task_statuses": {
+            "runtime_failed": 126,
+            "failed": 70,
+            "ineligible": 57,
+            "passed": 3
+          },
+          "frozen_state_sha256": "29cdf61a88f4e79ca68fae912b5df4162d0f303ae986b762fc59cc1eb1bf9f34",
+          "independent_executions": 3,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 148,
+          "right_only": 0,
+          "ties": 108,
+          "pass_difference": 148
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 148,
+          "right_only": 2,
+          "ties": 106,
+          "pass_difference": 146
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 146,
+          "right_only": 1,
+          "ties": 109,
+          "pass_difference": 145
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    },
+    {
+      "replica": 1,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 147,
+          "productive": 106,
+          "task_passed": 2,
+          "unique_passed_sources": 2,
+          "task_statuses": {
+            "runtime_failed": 109,
+            "failed": 104,
+            "ineligible": 41,
+            "passed": 2
+          },
+          "frozen_state_sha256": "6e03513b74bdf6438cb1d8146bcdedc39a6148f3f1fa37d9abee9f866b891696",
+          "independent_executions": 2,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 145,
+          "productive": 89,
+          "task_passed": 3,
+          "unique_passed_sources": 3,
+          "task_statuses": {
+            "runtime_failed": 111,
+            "failed": 86,
+            "ineligible": 56,
+            "passed": 3
+          },
+          "frozen_state_sha256": "cf627299bb9e5a06c876b0cd311d3748211d3f6a3064e219618a854dfd0a2406",
+          "independent_executions": 3,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 170,
+          "productive": 157,
+          "task_passed": 119,
+          "unique_passed_sources": 6,
+          "task_statuses": {
+            "runtime_failed": 86,
+            "passed": 119,
+            "ineligible": 13,
+            "failed": 38
+          },
+          "frozen_state_sha256": "61756e6d374789ac94483f13254e31ca1f39cfab5313881c9c66052398847da7",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 134,
+          "productive": 91,
+          "task_passed": 4,
+          "unique_passed_sources": 4,
+          "task_statuses": {
+            "runtime_failed": 122,
+            "failed": 87,
+            "ineligible": 43,
+            "passed": 4
+          },
+          "frozen_state_sha256": "369b34cf43841265d3639c18fc86a1c3d1276a5224fcbdc98c81c4ba4d960d95",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 119,
+          "right_only": 2,
+          "ties": 135,
+          "pass_difference": 117
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 119,
+          "right_only": 3,
+          "ties": 134,
+          "pass_difference": 116
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 117,
+          "right_only": 2,
+          "ties": 137,
+          "pass_difference": 115
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    },
+    {
+      "replica": 2,
+      "arms": {
+        "initial": {
+          "attempts": 256,
+          "runtime_ok": 136,
+          "productive": 85,
+          "task_passed": 2,
+          "unique_passed_sources": 2,
+          "task_statuses": {
+            "runtime_failed": 120,
+            "failed": 83,
+            "ineligible": 51,
+            "passed": 2
+          },
+          "frozen_state_sha256": "6e03513b74bdf6438cb1d8146bcdedc39a6148f3f1fa37d9abee9f866b891696",
+          "independent_executions": 2,
+          "independent_mismatch_seeds": []
+        },
+        "generic_trained": {
+          "attempts": 256,
+          "runtime_ok": 142,
+          "productive": 88,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "task_statuses": {
+            "runtime_failed": 114,
+            "failed": 88,
+            "ineligible": 54
+          },
+          "frozen_state_sha256": "0cd25fe93b0ca66c114db82cfa700fd3a41a1fe78a3ac4bbbe3db017e1e2c6fb",
+          "independent_executions": 0,
+          "independent_mismatch_seeds": []
+        },
+        "task_trained": {
+          "attempts": 256,
+          "runtime_ok": 163,
+          "productive": 153,
+          "task_passed": 140,
+          "unique_passed_sources": 4,
+          "task_statuses": {
+            "runtime_failed": 93,
+            "failed": 13,
+            "passed": 140,
+            "ineligible": 10
+          },
+          "frozen_state_sha256": "f078fce82dda9b23352df6cfeebce7cf401ec16555726f27f6a223d28387abda",
+          "independent_executions": 4,
+          "independent_mismatch_seeds": []
+        },
+        "task_erased": {
+          "attempts": 256,
+          "runtime_ok": 139,
+          "productive": 90,
+          "task_passed": 1,
+          "unique_passed_sources": 1,
+          "task_statuses": {
+            "runtime_failed": 117,
+            "failed": 89,
+            "ineligible": 49,
+            "passed": 1
+          },
+          "frozen_state_sha256": "6cd033ab08b116d39fbf5492fab8ef08691818a3e1f3152543f27be16af135a3",
+          "independent_executions": 1,
+          "independent_mismatch_seeds": []
+        }
+      },
+      "task_trained_vs": {
+        "initial": {
+          "pairs": 256,
+          "left_only": 138,
+          "right_only": 0,
+          "ties": 118,
+          "pass_difference": 138
+        },
+        "generic_trained": {
+          "pairs": 256,
+          "left_only": 140,
+          "right_only": 0,
+          "ties": 116,
+          "pass_difference": 140
+        },
+        "task_erased": {
+          "pairs": 256,
+          "left_only": 139,
+          "right_only": 0,
+          "ties": 117,
+          "pass_difference": 139
+        }
+      },
+      "task_erasure_preserved_other_state": true
+    }
+  ],
+  "totals": {
+    "initial": {
+      "attempts": 768,
+      "runtime_ok": 421,
+      "productive": 268,
+      "task_passed": 4
+    },
+    "generic_trained": {
+      "attempts": 768,
+      "runtime_ok": 429,
+      "productive": 255,
+      "task_passed": 5
+    },
+    "task_trained": {
+      "attempts": 768,
+      "runtime_ok": 513,
+      "productive": 478,
+      "task_passed": 407
+    },
+    "task_erased": {
+      "attempts": 768,
+      "runtime_ok": 403,
+      "productive": 254,
+      "task_passed": 8
+    }
+  },
+  "independent_mismatches": 0
+}

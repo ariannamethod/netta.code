@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "train/trained": "counts and histories consistent",
+    "evaluate/trained": "counts and histories consistent",
+    "evaluate/without_experience": "counts and histories consistent",
+    "evaluate/random_legal": "counts and histories consistent"
+  },
+  "saved_state_sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+  "training_games": 800,
+  "training_environment_reward": 288.1620169342283,
+  "frozen_source_hashes_verified": true
+}

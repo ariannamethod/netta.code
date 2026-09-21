@@ -2,6 +2,28 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Game adapters renamed; reports published
+
+The game adapters are now `doomer.py`, `doom.py` (its short entry point), and
+`2048.py`. Both standalone models dispatch game routes to the new paths.
+The rename passed the 166-test suite and actual JSON-routed game execution:
+2048 completed its generated-policy episode; three of four Doom attempts
+reached the game. Saved state bytes were unchanged. The verification receipt
+is in `reports/verification/bridge-rename.json`.
+
+`reports/INDEX.md` links nine unique historical reports and the retained
+protocols, measured summaries, independent audits and recovery receipts.
+The duplicate audit is represented once; superseded development READMEs and
+full raw experiment ZIP payloads remain in the separate archives. Their
+inventory is recorded under reports. New reports belong in this directory.
+The README uses current adapter names and commands; gallery links the reports.
+
+The two model files retain the same learned-memory implementation. Current
+intentional differences are the module description, `SPECIES`, and
+`DEFAULT_ORDER` (Lee 6, Code 4). Shared implementation changes are assembled
+into both standalone files. Further mechanism differences will be recorded
+with their experiments. This change preserves learning behavior and states.
+
 ## 2026-09-21 — Commands acquire memory; two games become executable islands
 
 Both standalone organisms now learn a declared output contract through `ask --learn-task --save SNAPSHOT`. A contract indexes its own 545-parameter outcome head and continuation credit. Actual execution supplies the feedback; the TXT islands remain code only. Ordinary `ask` keeps memory frozen. Removing only task memory provides a paired control. Capacity errors are checked before state mutation.

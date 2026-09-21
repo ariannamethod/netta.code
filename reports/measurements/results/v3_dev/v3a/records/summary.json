@@ -1,0 +1,27 @@
+{
+  "name": "records",
+  "version": "v3a",
+  "train": {
+    "source_replay": 129,
+    "experience_replay": 154,
+    "syntax_error": 82,
+    "runtime_error": 11,
+    "behavior_replay": 17,
+    "policy_rejected": 2,
+    "accepted": 5
+  },
+  "eval": {
+    "experience_replay": 129,
+    "source_replay": 79,
+    "syntax_error": 66,
+    "behavior_replay": 8,
+    "trivial": 3,
+    "accepted": 7,
+    "runtime_error": 7,
+    "policy_rejected": 1
+  },
+  "unique": 17,
+  "fixed_new": 8,
+  "new": 3,
+  "seconds": 35.32209658622742
+}

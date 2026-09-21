@@ -1,0 +1,28 @@
+{
+  "name": "art",
+  "version": "v3c",
+  "train": {
+    "source_replay": 246,
+    "syntax_error": 184,
+    "accepted": 17,
+    "experience_replay": 132,
+    "policy_rejected": 4,
+    "runtime_error": 14,
+    "truncated": 1,
+    "behavior_replay": 1,
+    "trivial": 1
+  },
+  "eval": {
+    "source_replay": 163,
+    "runtime_error": 14,
+    "syntax_error": 116,
+    "accepted": 23,
+    "trivial": 8,
+    "experience_replay": 75,
+    "policy_rejected": 1
+  },
+  "unique": 33,
+  "fixed_new": 28,
+  "new": 15,
+  "seconds": 45.03046774864197
+}

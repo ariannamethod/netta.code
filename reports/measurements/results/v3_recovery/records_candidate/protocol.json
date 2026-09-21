@@ -1,0 +1,19 @@
+{
+  "name": "records_candidate",
+  "original": "/workspace/scratch/aea72c843013/netta_python/results/v3_confirmatory/records/replica_01/candidate",
+  "recovery": "/workspace/scratch/aea72c843013/netta_python/results/v3_recovery/records_candidate",
+  "train_seed": 2120000,
+  "train_games": 1000,
+  "paths": {
+    "source": "/workspace/scratch/aea72c843013/netta_python/results/v3c_reference/nettalee.py",
+    "initial": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/states/records.json",
+    "reader": "/workspace/scratch/aea72c843013/netta_python/tools/compare_v3.py",
+    "recovery": "/workspace/scratch/aea72c843013/netta_python/results/v3_recovery/recover.py"
+  },
+  "hashes": {
+    "source": "2d3dcf604b9e3fe354b09c266c94020c8d8d0469e4181615a70729b36049bcaf",
+    "initial": "7670edbbfdb2e767cf934d934378280af3e82b42c61b0572eb79eab4b06004e9",
+    "reader": "3a980a35a35c5c80f53242954e30e38de675ae56f7ce3dd365f8d1084a6bf1a0",
+    "recovery": "76f990a44bb1813c7c5d12415b5862822ddd91f03fe1828a391e5f2cac245809"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "protocol": "v3-matched-continuation-v1",
+  "phase": "follow-up matched control after v3d-v2 results",
+  "paths": {
+    "baseline": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/nettalee.py",
+    "candidate": "/workspace/scratch/aea72c843013/netta_python/results/v3c_reference/nettalee.py",
+    "initial_state": "/workspace/scratch/aea72c843013/netta_python/results/v2_reference/states/records.json",
+    "reader": "/workspace/scratch/aea72c843013/netta_python/tools/compare_v3.py"
+  },
+  "input_hashes": {
+    "baseline": "53411d28fad0f5f86a0949a66eb273dda098528a794fe0cb321a367014e32e07",
+    "candidate": "2d3dcf604b9e3fe354b09c266c94020c8d8d0469e4181615a70729b36049bcaf",
+    "initial_state": "7670edbbfdb2e767cf934d934378280af3e82b42c61b0572eb79eab4b06004e9",
+    "reader": "3a980a35a35c5c80f53242954e30e38de675ae56f7ce3dd365f8d1084a6bf1a0"
+  },
+  "output": "/workspace/scratch/aea72c843013/netta_python/results/v3_migration_c_control",
+  "train_games": 1000,
+  "eval_attempts": 600,
+  "replicas": 3,
+  "train_seed": 4100000,
+  "eval_seed": 4600000,
+  "seed_stride": 1000000,
+  "workers": 2,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "metrics": {
+    "productive": "Meaningful execution and behavior outside the fixed original corpus, independently rerun.",
+    "fixed_memory_new": "Productive behavior absent from the common snapshot before continued learning.",
+    "final_memory_new": "Productive behavior absent from the evaluated arm's final memory.",
+    "completed_execution": "The common runtime completed, including executions classed as trivial."
+  },
+  "seed_intervals": [
+    {
+      "replica": 0,
+      "phase": "training",
+      "first": 4100000,
+      "last": 4100999
+    },
+    {
+      "replica": 0,
+      "phase": "evaluation",
+      "first": 4600000,
+      "last": 4600599
+    },
+    {
+      "replica": 1,
+      "phase": "training",
+      "first": 5100000,
+      "last": 5100999
+    },
+    {
+      "replica": 1,
+      "phase": "evaluation",
+      "first": 5600000,
+      "last": 5600599
+    },
+    {
+      "replica": 2,
+      "phase": "training",
+      "first": 6100000,
+      "last": 6100999
+    },
+    {
+      "replica": 2,
+      "phase": "evaluation",
+      "first": 6600000,
+      "last": 6600599
+    }
+  ],
+  "role": "candidate here is preserved v3c; comparison later treats v3d as treatment",
+  "v3d_protocol_path": "/workspace/scratch/aea72c843013/netta_python/results/v3_migration_confirmatory/records/protocol.json",
+  "v3d_protocol_sha256": "dcadea8d2dc476d31282c1aa54be26a695137bd083b7f449a41526838f608698",
+  "orchestrator_sha256": "c42caf7cf25ca69b2e6ed13d6fab3bda2e2dd3edcba559ea72ed2587513d41b4"
+}

@@ -1,0 +1,16 @@
+{
+  "attempts": 500,
+  "accepted": 12,
+  "unique_accepted": 12,
+  "new_shapes": 11,
+  "statuses": {
+    "accepted": 12,
+    "experience_replay": 8,
+    "policy_rejected": 4,
+    "runtime_error": 15,
+    "source_replay": 26,
+    "syntax_error": 412,
+    "trivial": 15,
+    "truncated": 8
+  }
+}
