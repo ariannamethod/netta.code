@@ -7,7 +7,7 @@
 ╚═╝  ╚═══╝ ╚══════╝    ╚═╝       ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═════╝  ╚═════╝  ╚═════╝  ╚══════╝
 ```
 
-# netta.code
+# NETTA's Empirical Topological Training Agent
 
 *it plays. it acts. it codes.*
 
