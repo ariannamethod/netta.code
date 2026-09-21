@@ -3,13 +3,13 @@
   "files": [
     {
       "path": "INDEX.md",
-      "bytes": 4977,
-      "sha256": "7dfd1a528bd1f4766ab4ec8cf6c23cc6bfc5efee18a72adf68a3a9ac011be3e2"
+      "bytes": 5403,
+      "sha256": "a1f5378c31f82b42ab0b4946065e7f1542572921283d125328baa182f28d04e8"
     },
     {
       "path": "archive-inventory.json",
-      "bytes": 8407,
-      "sha256": "ebce08f3e3251e9756b7b97a45934fd2c126851b113e767783f1e0ac4447f045"
+      "bytes": 10239,
+      "sha256": "8d1b566ecac5947505b9edc5d8b02a0818c26f79a47a49fa120a8fbd012b9650"
     },
     {
       "path": "historical/AUDIT_V2.md",
@@ -395,6 +395,86 @@
       "path": "iteration6/tests.log",
       "bytes": 40106,
       "sha256": "12c048a422c088cd7847e82a058d1c03e0dd1bf577418186924c6f7c8e0cd8c1"
+    },
+    {
+      "path": "iteration7/2048-comparison.json",
+      "bytes": 13332,
+      "sha256": "e09095e9b6de4e994c36689baa7b039110a50977f9dbb148739238d48e5a41f6"
+    },
+    {
+      "path": "iteration7/2048-decision.json",
+      "bytes": 12545,
+      "sha256": "8b74508cd0a04d044540e43dc99ac4fe2f154a0e21bff4bc537266b0e15c1d31"
+    },
+    {
+      "path": "iteration7/REPORT.md",
+      "bytes": 12304,
+      "sha256": "7ad1bb46fda1eb6f448b213686775930c5243578630db68131ba5ec2af7a420f"
+    },
+    {
+      "path": "iteration7/archive-bridge-tests.log",
+      "bytes": 1800,
+      "sha256": "5359acbd45b7bee112b30c5d9b3a36cd1f03587e33b3220d059a1cdb6ad22079"
+    },
+    {
+      "path": "iteration7/audit-summary.json",
+      "bytes": 12893,
+      "sha256": "907bed4db559d48420d02641970dfb6ee8191735458564c8a6b29b9acf969dbd"
+    },
+    {
+      "path": "iteration7/compatibility.json",
+      "bytes": 792,
+      "sha256": "d899d43889d938e5e876a367b94977964bddd998186a320eb721689405f319a5"
+    },
+    {
+      "path": "iteration7/core-contract.json",
+      "bytes": 954,
+      "sha256": "446d35156e35312a6321c72be3683dacc69583bf77da6646608988f4395ee8f8"
+    },
+    {
+      "path": "iteration7/gallery-sample.json",
+      "bytes": 8915,
+      "sha256": "745e05f50b7abbb3f3411e42a6de09115b29f2c457906b805b9e7de88dfed030"
+    },
+    {
+      "path": "iteration7/performance.json",
+      "bytes": 7053,
+      "sha256": "3100e672b1d203f2050d5e4fd985df59537fbaa4f54d8fb04daab2f7b28a8421"
+    },
+    {
+      "path": "iteration7/preservation.json",
+      "bytes": 8013,
+      "sha256": "f996eff8b0c49f4888f46bda04956b04500e5993fd599c6602a238ef7f6651c9"
+    },
+    {
+      "path": "iteration7/private-archive-inventory.json",
+      "bytes": 485,
+      "sha256": "372b4b6829e6426e7181a83a6d3f441cb4f1c364d158b9f83876e31426bedbdb"
+    },
+    {
+      "path": "iteration7/protocol-2048.json",
+      "bytes": 4131,
+      "sha256": "a6dca8651f192838237ca1605c90993274e2051acbf2e7042ab5502a38518df2"
+    },
+    {
+      "path": "iteration7/research.json",
+      "bytes": 702,
+      "sha256": "e57b69d1e1af748229cef2ea99856daa43fc36b01dd32429b2292a4f0697da36"
+    },
+    {
+      "path": "iteration7/restart.json",
+      "bytes": 2528,
+      "sha256": "b87fd29e0ec34fee325564d7d2e34e5e9e85401bcd3f2853e64aa17e97e357e3"
+    },
+    {
+      "path": "iteration7/tests.json",
+      "bytes": 1475,
+      "sha256": "98ffbed95cd467b595a94433391ab4a812be03e5f81b7689eb0e46efe7dd6b1b"
+    },
+    {
+      "path": "iteration7/tests.log",
+      "bytes": 47056,
+      "sha256": "1e22e68ed848346ff6b4176b2ed03bcdea69c5af400b3d43556baeb4ce167447"
     },
     {
       "path": "measurements/doom/ask-frozen-verification.json",

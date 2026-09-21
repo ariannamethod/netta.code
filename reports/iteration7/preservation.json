@@ -1,0 +1,241 @@
+{
+  "status": "passed",
+  "baseline_commit": "7ade976a7d5b526c0cb6ce482fdbd047584bf694",
+  "files_compared": 26,
+  "directories": {
+    "states": {
+      "baseline_files": 10,
+      "all_baseline_files_present_unchanged": true,
+      "current_paths_outside_snapshot_coverage": [
+        "states/v3_expanded/art.json",
+        "states/v3_expanded/code.json",
+        "states/v3_expanded/records.json",
+        "states/v3_expanded/strings.json"
+      ]
+    },
+    "corpora": {
+      "baseline_files": 7,
+      "all_baseline_files_present_unchanged": true,
+      "current_paths_outside_snapshot_coverage": [
+        "corpora/families_v3.json",
+        "corpora/heldout/art.txt",
+        "corpora/heldout/mixed.txt",
+        "corpora/heldout/records.txt",
+        "corpora/heldout/strings.txt",
+        "corpora/v1/art.txt",
+        "corpora/v1/doom.txt",
+        "corpora/v1/mixed.txt",
+        "corpora/v1/records.txt",
+        "corpora/v1/strings.txt"
+      ]
+    }
+  },
+  "files": {
+    "caller_part.py": {
+      "sha256": "54f7442bf54d4774f63a22cce03fff8510ff3cc373bcc59a998b6240485c21cc",
+      "bytes": 17950
+    },
+    "code_memory_build.py": {
+      "sha256": "00c308905f88706684f6204d9295d197f16bff3e2e2489b97a7bcd39b0f4d799",
+      "bytes": 8037
+    },
+    "corpora/2048.txt": {
+      "sha256": "a9aeeb7efe2c33d5fefbbd3a9cf4869baf8e7cbe1bf92e74df211d1fddfb6c52",
+      "bytes": 32127
+    },
+    "corpora/art.txt": {
+      "sha256": "5ccfe3b151f793ba28b9f06fef7ec288b344f91e426b05af2549c308bfa6ee65",
+      "bytes": 61944
+    },
+    "corpora/doom.txt": {
+      "sha256": "088499ffe15e50f262e64671050411176b5f82c9fc33bdf5df82a9cd4d0ce931",
+      "bytes": 19591
+    },
+    "corpora/doom_temporal.txt": {
+      "sha256": "e858937143d70bf1cef706f19c290d7eaf5f7b92c2249b76d4ba532b2d860630",
+      "bytes": 27096
+    },
+    "corpora/mixed.txt": {
+      "sha256": "54c2d1415659be5ebf6f0022ccc44848b75906dcbafd9901ef5e953319dfc2c1",
+      "bytes": 53294
+    },
+    "corpora/records.txt": {
+      "sha256": "63d899aac1a8ed19dcd63d73bc3b17dfbbe36bcfcbfc238d4849ec747ad52a2e",
+      "bytes": 60384
+    },
+    "corpora/strings.txt": {
+      "sha256": "1698bfa48a3fa17da6517441c2287bcf2cf614059b7fa4524eacf2181dce8024",
+      "bytes": 54691
+    },
+    "doom.json": {
+      "sha256": "aa2967900d2e4d3f9908187183764f933e1da0909f0494fe7e206321fcf5bc09",
+      "bytes": 868
+    },
+    "doom.py": {
+      "sha256": "a28295346f238be3348ab5c728e484b8829bdb2dfae7644d4c5ff9c13aa074fe",
+      "bytes": 241
+    },
+    "doomer.py": {
+      "sha256": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd",
+      "bytes": 48645
+    },
+    "novelty_part.py": {
+      "sha256": "27092cd6cfce26cbdad00df179eed8e00951385651748540c7c6f65e751731e9",
+      "bytes": 11512
+    },
+    "requirements-doom.txt": {
+      "sha256": "05368e2111dfba5f33795a947d74a99c6fbf1399c756329d272c47a9c85327cd",
+      "bytes": 207
+    },
+    "requirements.txt": {
+      "sha256": "fa4ba2099e8215c6de9cc42a094b93ccee9f33416670a5b732661bff7ef7f4f0",
+      "bytes": 264
+    },
+    "states/2048-dev.json": {
+      "sha256": "ee6d037ff8d4dacffe7cf664e438262ffe1943b3b3ada8f0d4f456a147cb5b8e",
+      "bytes": 167737
+    },
+    "states/2048.json": {
+      "sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+      "bytes": 182435
+    },
+    "states/art-dev.json": {
+      "sha256": "d7fd40646c4ed6a9d59e25ea56dcba79cd609a7e04818c6e3402cf472b79b5f0",
+      "bytes": 102807
+    },
+    "states/art.json": {
+      "sha256": "158bb4c3361ccaec62518b49acd4598ff05e589f9694328773d5fc607a3c8060",
+      "bytes": 477910
+    },
+    "states/code.json": {
+      "sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+      "bytes": 362734
+    },
+    "states/doom-generic-map02.json": {
+      "sha256": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+      "bytes": 266922
+    },
+    "states/doom-generic.json": {
+      "sha256": "24e0d43283054b46e2a29012609021b7ec7935a17a8569f0829bd7912175e3f9",
+      "bytes": 238273
+    },
+    "states/doom.json": {
+      "sha256": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+      "bytes": 266922
+    },
+    "states/records.json": {
+      "sha256": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+      "bytes": 378437
+    },
+    "states/strings.json": {
+      "sha256": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+      "bytes": 387065
+    },
+    "tools.json": {
+      "sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+      "bytes": 6512
+    }
+  },
+  "comparison": "each current file and frozen baseline file matches the frozen manifest SHA-256",
+  "doom_scope": "doomer.py, doom.py, doom.json and both requirements files; native engine tree is outside this frozen manifest",
+  "remote_git_baseline": {
+    "commit": "7ade976a7d5b526c0cb6ce482fdbd047584bf694",
+    "files_compared": 23,
+    "all_match": true,
+    "files": {
+      "corpora/2048.txt": {
+        "git_blob_sha1": "4e564f7f95b8266acdb8691486c79767cad1f092",
+        "bytes": 32127
+      },
+      "corpora/art.txt": {
+        "git_blob_sha1": "6d0d2eba40cc8e3df316a8db9db086c60dc3a68a",
+        "bytes": 61944
+      },
+      "corpora/doom.txt": {
+        "git_blob_sha1": "b6fd1490702e7fb11d0ee439ab9c7b1e6caf0b19",
+        "bytes": 19591
+      },
+      "corpora/doom_temporal.txt": {
+        "git_blob_sha1": "9b3c7d8aafc2b5202d50f9e9dcf1a7041c1f8fde",
+        "bytes": 27096
+      },
+      "corpora/heldout/art.txt": {
+        "git_blob_sha1": "a5f858dc5d9a5b892c1754725a5c145af913c52a",
+        "bytes": 5456
+      },
+      "corpora/heldout/mixed.txt": {
+        "git_blob_sha1": "a98af7635e20e72021db21742efe2dc57d214264",
+        "bytes": 3618
+      },
+      "corpora/heldout/records.txt": {
+        "git_blob_sha1": "b02cb9ffc94370eb7b97ddf20557a11b9dc801b1",
+        "bytes": 5072
+      },
+      "corpora/heldout/strings.txt": {
+        "git_blob_sha1": "a6782726ef2dda37e3d26dfb16dbc521cc112da8",
+        "bytes": 5073
+      },
+      "corpora/mixed.txt": {
+        "git_blob_sha1": "89422e907f220771dd3a55617b76c48fba1e8d2c",
+        "bytes": 53294
+      },
+      "corpora/records.txt": {
+        "git_blob_sha1": "b9887b114d1451626a7c39d47a39669f903718a3",
+        "bytes": 60384
+      },
+      "corpora/strings.txt": {
+        "git_blob_sha1": "42519eed18b49fd20506b6cb0a4e388bc6e21de3",
+        "bytes": 54691
+      },
+      "doom.json": {
+        "git_blob_sha1": "f9694aa575bfe7310b31f7840329b03aaf109374",
+        "bytes": 868
+      },
+      "doom.py": {
+        "git_blob_sha1": "1f66d00de060dd629fccd456a5586ed7abc97586",
+        "bytes": 241
+      },
+      "doomer.py": {
+        "git_blob_sha1": "db94f585da97838dd77061271b8b751088729817",
+        "bytes": 48645
+      },
+      "requirements-doom.txt": {
+        "git_blob_sha1": "bf0fa987a9772e9083f48522ea92ce188d70e817",
+        "bytes": 207
+      },
+      "requirements.txt": {
+        "git_blob_sha1": "e98534b413334cd935bbcaff14a8fa54c03e4893",
+        "bytes": 264
+      },
+      "states/2048.json": {
+        "git_blob_sha1": "d87e1a29735144fb786fa3ac0923a97824b07812",
+        "bytes": 182435
+      },
+      "states/art.json": {
+        "git_blob_sha1": "b5ef45f35b5ddb396f8d7923dcf099f8f6d21e77",
+        "bytes": 477910
+      },
+      "states/code.json": {
+        "git_blob_sha1": "38b5699d3838eb19448c61f7eaa5ea3669ca0119",
+        "bytes": 362734
+      },
+      "states/doom.json": {
+        "git_blob_sha1": "533df99d02413bc9a95ec7773a0fcc2a64861c89",
+        "bytes": 266922
+      },
+      "states/records.json": {
+        "git_blob_sha1": "98d0deee133165d8b876153fe35ac64b9fa098aa",
+        "bytes": 378437
+      },
+      "states/strings.json": {
+        "git_blob_sha1": "aa60ace03772c329fb8de2ad0a1626bb814230fb",
+        "bytes": 387065
+      },
+      "tools.json": {
+        "git_blob_sha1": "5ca67257627ae4e37a7cc14b3fac730fd998be5a",
+        "bytes": 6512
+      }
+    }
+  },
+  "unique_paths_compared": 30
+}

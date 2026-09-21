@@ -17,6 +17,7 @@ import random
 import selectors
 import subprocess
 import sys
+import tempfile
 import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -25,7 +26,10 @@ import nettalee as core
 ROOT = Path(__file__).resolve().parent
 ACTIONS = ('left', 'right', 'up', 'down')
 DECISION_CONTRACTS = {'uniform': '2048-uniform-v1', 'advantage': '2048-action-advantage-v1',
-                      'temporal': '2048-temporal-return-v1'}
+                      'temporal': '2048-temporal-return-v1',
+                      'provenance': '2048-action-provenance-v1'}
+PROVENANCE_COVERAGE_CONTRACT = '2048-provenance-coverage-v1'
+PROVENANCE_CONTRACTS = {DECISION_CONTRACTS['provenance'], PROVENANCE_COVERAGE_CONTRACT}
 
 
 def canonical(value):
@@ -40,6 +44,63 @@ def save_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+
+def archive_record(out, arm, index, record):
+    """Preserve each completed attempt independently; never overwrite a receipt."""
+    path = Path(out) / 'records' / arm / ('%05d.json' % index)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open('x', encoding='utf-8') as stream:
+        stream.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + '\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+
+
+def _archive_text_atomic(path, text):
+    path = Path(path)
+    descriptor, temporary = tempfile.mkstemp(prefix=path.name + '.', suffix='.tmp', dir=path.parent)
+    try:
+        with os.fdopen(descriptor, 'w', encoding='utf-8') as stream:
+            stream.write(text)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
+
+
+def finalize_archive(out, arm, records):
+    """Verify receipts, atomically close the journal, and publish its hash manifest."""
+    out = Path(out)
+    folder = out / 'records' / arm
+    expected = ['%05d.json' % index for index in range(len(records))]
+    if sorted(path.name for path in folder.glob('*.json')) != expected:
+        raise RuntimeError('archive receipt inventory differs from completed attempts: ' + arm)
+    hashes = {}
+    for name, record in zip(expected, records):
+        path = folder / name
+        data = path.read_bytes()
+        try:
+            retained = json.loads(data)
+        except (ValueError, UnicodeError) as error:
+            raise RuntimeError('invalid archive receipt: ' + str(path)) from error
+        if retained != record:
+            raise RuntimeError('archive receipt differs from completed attempt: ' + str(path))
+        hashes[str(path.relative_to(out))] = hashlib.sha256(data).hexdigest()
+    journal = out / (arm + '.jsonl')
+    _archive_text_atomic(journal, ''.join(json.dumps(record, ensure_ascii=False, allow_nan=False) + '\n'
+                                         for record in records))
+    data = journal.read_bytes()
+    if [json.loads(line) for line in data.splitlines()] != records:
+        raise RuntimeError('completed archive journal failed readback: ' + arm)
+    manifest = {'count': len(records), 'jsonl_sha256': hashlib.sha256(data).hexdigest(),
+                'receipts': hashes}
+    path = out / (arm + '-receipts.json')
+    _archive_text_atomic(path, json.dumps(manifest, indent=2, allow_nan=False) + '\n')
+    if json.loads(path.read_bytes()) != manifest:
+        raise RuntimeError('archive receipt manifest failed readback: ' + arm)
+    return manifest
 
 
 def validate_board(board):
@@ -142,7 +203,7 @@ def temporal_targets(trajectory, reward):
 
 def decision_feedback(source, episode, contract):
     """Bind host decision targets to the exact executed source and real steps."""
-    if contract not in DECISION_CONTRACTS.values():
+    if contract not in set(DECISION_CONTRACTS.values()) | {PROVENANCE_COVERAGE_CONTRACT}:
         raise ValueError('unsupported 2048 decision-credit contract')
     if not episode['completed']:
         raise ValueError('incomplete episodes do not provide positive decision credit')
@@ -158,8 +219,26 @@ def decision_feedback(source, episode, contract):
                 comparison['chosen_gain'] != transition['gain']):
             raise ValueError('decision gain does not match host transition')
         target = episode['reward'] if contract == DECISION_CONTRACTS['uniform'] else comparison['target']
-        decisions.append({'executed_lines': executed['executed_lines'], 'target': target})
-    if contract == DECISION_CONTRACTS['temporal']:
+        if contract in PROVENANCE_CONTRACTS:
+            provenance = executed.get('action_provenance')
+            if (not isinstance(provenance, dict) or
+                    provenance.get('contract') != 'cpython-action-slice-v1' or
+                    provenance.get('source_hash') != source_hash or
+                    provenance.get('input_hash') != fingerprint({'obs': transition['observation']}) or
+                    provenance.get('action') != transition['action']):
+                raise ValueError('action provenance does not match actual source, input and action')
+            status = provenance.get('status')
+            spans, selected = provenance.get('executed_spans'), provenance.get('credit_spans')
+            if status not in ('ok', 'unsupported', 'incomplete') or not isinstance(spans, list) or not isinstance(selected, list):
+                raise ValueError('invalid action provenance receipt')
+            if status != 'ok' and selected:
+                raise ValueError('unsupported provenance cannot provide selected credit')
+            credit = spans if contract == PROVENANCE_COVERAGE_CONTRACT and status == 'ok' else selected
+            decisions.append({'executed_spans': spans, 'credit_spans': credit,
+                              'provenance_status': status, 'target': target})
+        else:
+            decisions.append({'executed_lines': executed['executed_lines'], 'target': target})
+    if contract == DECISION_CONTRACTS['temporal'] or contract in PROVENANCE_CONTRACTS:
         for decision, target in zip(decisions, temporal_targets(episode['trajectory'], episode['reward'])):
             decision['target'] = target
     return {'source_hash': source_hash, 'contract': contract, 'decisions': decisions}
@@ -238,17 +317,27 @@ def policy_worker():
     resource.setrlimit(resource.RLIMIT_NOFILE, (16, 16))
     request = json.loads(sys.stdin.readline(core.RUNTIME_SOURCE_LIMIT * 8))
     source = request['source']
+    provenance = request.get('provenance', False)
+    if type(provenance) is not bool:
+        raise ValueError('provenance flag requires a boolean')
     if type(source) is not str or len(source.encode()) > core.RUNTIME_SOURCE_LIMIT:
         raise ValueError('source limit')
     for line in sys.stdin:
         try:
             obs = json.loads(line)
-            result = core._runtime_execute(source, 'control', {'obs': obs}, list(ACTIONS))
+            options = {'provenance': True} if provenance else {}
+            result = core._runtime_execute(source, 'control', {'obs': obs}, list(ACTIONS), **options)
             # Compact receipts avoid pipe backpressure while retaining the actual
             # action, diagnostics and exact source identity for every decision.
             receipt = {key: result.get(key) for key in ('status', 'accepted', 'action', 'reason',
                        'source_hash', 'error_line', 'error_column', 'exception_type')}
             receipt['executed_lines'] = result.get('metrics', {}).get('executed_lines', [])
+            if provenance:
+                observed = result.get('metrics', {}).get('action_provenance')
+                receipt['action_provenance'] = ({key: observed.get(key) for key in (
+                    'contract', 'status', 'reason', 'source_hash', 'input_hash', 'action',
+                    'writer', 'credit_spans', 'executed_spans', 'event_count',
+                    'slice_event_count', 'trace_hash')} if isinstance(observed, dict) else None)
         except Exception as error:
             receipt = {'status': 'worker_error', 'accepted': False,
                        'reason': type(error).__name__ + ': ' + str(error)[:200]}
@@ -256,13 +345,13 @@ def policy_worker():
 
 
 class PolicyProcess:
-    def __init__(self, source, timeout=1.5):
+    def __init__(self, source, timeout=1.5, provenance=False):
         self.timeout = timeout
         self.process = subprocess.Popen([sys.executable, '-P', '-s', str(Path(__file__).resolve()), '--policy-worker'],
                                         stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                         stderr=subprocess.DEVNULL, text=True, bufsize=1,
                                         cwd='/tmp', env={'PATH': os.defpath, 'PYTHONHASHSEED': '0'})
-        self.process.stdin.write(canonical({'source': source}) + '\n')
+        self.process.stdin.write(canonical({'source': source, 'provenance': provenance}) + '\n')
         self.process.stdin.flush()
         self.selector = selectors.DefaultSelector()
         self.selector.register(self.process.stdout, selectors.EVENT_READ)
@@ -299,12 +388,12 @@ class PolicyProcess:
         self.close()
 
 
-def validate_policy(source, probes=None):
+def validate_policy(source, probes=None, provenance=False):
     if not isinstance(source, str) or len(source.encode()) > core.RUNTIME_SOURCE_LIMIT:
         return {'accepted': False, 'status': 'encoding', 'reason': 'missing or oversized source'}
     probes = probe_observations() if probes is None else probes
     actions = []
-    with PolicyProcess(source) as worker:
+    with PolicyProcess(source, provenance=provenance) as worker:
         for obs in probes:
             result = worker.decide(obs)
             if not result.get('accepted'):
@@ -334,15 +423,16 @@ def make_reference(programs):
             'source_keys': sorted({record['source_key'] for record in records})}
 
 
-def run_episode(source, seed, max_moves=128):
+def run_episode(source, seed, max_moves=128, provenance=False):
     if type(max_moves) is not int or not 1 <= max_moves <= 2048:
         raise ValueError('max_moves must be 1..2048')
     game = Game2048(seed)
     initial = list(game.board)
     trajectory, status, diagnostic = [], 'move_limit', None
     executed_lines = set()
+    executed_spans = set()
     started = time.monotonic()
-    with PolicyProcess(source) as worker:
+    with PolicyProcess(source, provenance=provenance) as worker:
         for index in range(max_moves):
             if not game.legal_actions():
                 status = 'terminal'
@@ -353,6 +443,9 @@ def run_episode(source, seed, max_moves=128):
             obs = game.observation()
             decision = worker.decide(obs)
             executed_lines.update(decision.get('executed_lines', []))
+            if provenance:
+                observed = decision.get('action_provenance') or {}
+                executed_spans.update(tuple(span) for span in observed.get('executed_spans', []))
             if not decision.get('accepted'):
                 status, diagnostic = decision.get('status', 'worker_error'), decision
                 break
@@ -372,16 +465,35 @@ def run_episode(source, seed, max_moves=128):
     completed = status in ('terminal', 'move_limit')
     # Real merge score only. An invalid/failed policy receives no learning reward.
     reward = game.score / (game.score + 512.0) if completed else 0.0
-    return {'seed': seed, 'status': status, 'completed': completed, 'score': game.score,
+    episode = {'seed': seed, 'status': status, 'completed': completed, 'score': game.score,
             'max_tile': max(game.board), 'moves': game.moves, 'reward': reward,
             'initial_board': initial, 'final_board': game.board, 'trajectory': trajectory,
             'diagnostic': diagnostic, 'max_moves': max_moves,
             'executed_lines': sorted(executed_lines)}
+    if provenance:
+        episode['executed_spans'] = [list(span) for span in sorted(executed_spans)]
+        receipts = [(transition['decision'].get('action_provenance') or {}) for transition in trajectory]
+        episode['provenance_coverage'] = {
+            'decisions': len(receipts),
+            'statuses': dict(Counter(receipt.get('status', 'missing') for receipt in receipts)),
+            'unsupported_reasons': dict(Counter(receipt.get('reason') or 'unspecified'
+                                               for receipt in receipts if receipt.get('status') != 'ok')),
+            'empty_selected_slices': sum(not receipt.get('credit_spans') for receipt in receipts),
+            'selected_span_occurrences': sum(len(receipt.get('credit_spans') or []) for receipt in receipts),
+            'executed_span_occurrences': sum(len(receipt.get('executed_spans') or []) for receipt in receipts),
+        }
+    return episode
 
 
-def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128):
+def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128, provenance=None):
     before = fingerprint(model.state_dict())
     generated = model.generate(seed=sample_seed)
+    config = getattr(model, 'decision_credit_config', {'enabled': False})
+    needs_provenance = config.get('enabled') and config.get('contract') in PROVENANCE_CONTRACTS
+    if provenance is None:
+        provenance = bool(needs_provenance)
+    elif type(provenance) is not bool or needs_provenance and not provenance:
+        raise ValueError('active provenance credit requires runtime observation')
     source = generated.get('source')
     reference = model.reference
     if reference.get('kind') != '2048' or reference.get('programs_hash') != fingerprint(model.programs):
@@ -398,7 +510,7 @@ def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128):
         record['status'] = 'corpus_source_replay'
         runtime_ok = True
     else:
-        policy = validate_policy(source, reference['probes'])
+        policy = validate_policy(source, reference['probes'], provenance=provenance)
         runtime_ok = policy['accepted']
         diagnostic = policy
         record['policy'] = policy
@@ -407,7 +519,7 @@ def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128):
         elif policy['behavior_hash'] in reference['behavior_hashes']:
             record['status'] = 'corpus_probe_behavior_replay'
         else:
-            episode = run_episode(source, episode_seed, max_moves)
+            episode = run_episode(source, episode_seed, max_moves, provenance=provenance)
             record.update(played=True, episode=episode, status=episode['status'], reward=episode['reward'])
             diagnostic = episode.get('diagnostic') or {'status': 'ok' if episode['completed'] else episode['status']}
             runtime_ok = episode['completed']
@@ -415,16 +527,16 @@ def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128):
     record['executed_lines'] = record.get('episode', {}).get('executed_lines', [])
     if learn:
         feedback = None
-        config = getattr(model, 'decision_credit_config', {'enabled': False})
         if config['enabled'] and record['played'] and runtime_ok:
             feedback = decision_feedback(source, record['episode'], config['contract'])
+        options = {'executed_spans': record.get('episode', {}).get('executed_spans', [])} if needs_provenance else {}
         model.observe(generated, record['reward'], runtime_ok,
                       error_line=(diagnostic or {}).get('error_line'),
                       behavior=policy.get('behavior_hash') if policy and policy['accepted'] else None,
                       diagnostic=diagnostic or {'status': record['status']},
                       executed_lines=record['executed_lines'],
                       environment_observed=record['played'],
-                      decision_feedback=feedback)
+                      decision_feedback=feedback, **options)
         record['training_applied'] = True
     elif fingerprint(model.state_dict()) != before:
         raise AssertionError('frozen episode changed organism')
@@ -513,7 +625,7 @@ def run_cli():
         if command == 'play':
             item.add_argument('--control-learning', choices=('legacy', 'quality', 'trace', 'both'),
                               help='optional learning experiment, stored in the saved state; omitted preserves its current choice')
-            item.add_argument('--decision-credit', choices=('off', 'uniform', 'advantage', 'temporal'),
+            item.add_argument('--decision-credit', choices=('off', 'uniform', 'advantage', 'temporal', 'provenance'),
                               help='optional decision-local credit; omitted preserves the saved choice')
     args = parser.parse_args()
     if args.command == 'init':
@@ -532,7 +644,9 @@ def run_cli():
                                          executed_credit=args.control_learning in ('trace', 'both'))
     if args.command == 'play' and args.decision_credit is not None:
         model.configure_decision_credit(enabled=args.decision_credit != 'off',
-                                        contract=DECISION_CONTRACTS.get(args.decision_credit))
+                                        contract=DECISION_CONTRACTS.get(args.decision_credit),
+                                        attribution=(None if args.decision_credit == 'off' else
+                                                     'source_spans' if args.decision_credit == 'provenance' else 'executed_lines'))
     args.out.mkdir(parents=True, exist_ok=False)
     protocol = {'command': args.command, 'attempts': args.attempts, 'sample_seed': args.seed,
                 'episode_seed': args.episode_seed, 'max_moves': args.max_moves,
@@ -559,10 +673,12 @@ def run_cli():
                 record = attempt(organism, args.seed + index, args.episode_seed + index,
                                  args.command == 'play', args.max_moves)
                 records.append(record)
+                archive_record(args.out, arm, index, record)
                 stream.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + '\n')
                 stream.flush()
                 if args.command == 'play' and (index + 1) % 25 == 0:
                     organism.save(args.state)
+        finalize_archive(args.out, arm, records)
         if args.command == 'play':
             organism.save(args.state)
         reports[arm] = summarize(records)
@@ -574,7 +690,9 @@ def run_cli():
                     episode = baseline(args.episode_seed + index, args.max_moves)
                     record = {'played': True, 'episode': episode, 'status': episode['status']}
                     records.append(record)
+                    archive_record(args.out, name, index, record)
                     stream.write(json.dumps(record, allow_nan=False) + '\n')
+            finalize_archive(args.out, name, records)
             reports[name] = summarize(records)
         if hashlib.sha256(args.state.read_bytes()).hexdigest() != protocol['state_sha256']:
             raise AssertionError('evaluation mutated saved state')

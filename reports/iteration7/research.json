@@ -1,0 +1,17 @@
+{
+  "purpose": "Primary implementation references consulted before the optional dependency trace was implemented. The source is executed unchanged by CPython; trace support is checked separately.",
+  "sources": [
+    {
+      "title": "CPython 3.12 dis: instruction positions, canonical instruction offsets and jump-specific stack effects",
+      "url": "https://docs.python.org/3.12/library/dis.html"
+    },
+    {
+      "title": "CPython 3.12 sys.settrace: opcode events",
+      "url": "https://docs.python.org/3.12/library/sys.html#sys.settrace"
+    },
+    {
+      "title": "PEP 709: inlined comprehensions and local-variable restoration",
+      "url": "https://peps.python.org/pep-0709/"
+    }
+  ]
+}

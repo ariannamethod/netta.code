@@ -1,0 +1,15 @@
+test_nonempty_comprehension_retains_observation_value_origin (test_2048_iteration7.ActionProvenanceBridge.test_nonempty_comprehension_retains_observation_value_origin) ... ok
+test_observation_keeps_actual_game_and_exact_source (test_2048_iteration7.ActionProvenanceBridge.test_observation_keeps_actual_game_and_exact_source) ... ok
+test_only_eligibility_changes_between_temporal_coverage_and_provenance (test_2048_iteration7.ActionProvenanceBridge.test_only_eligibility_changes_between_temporal_coverage_and_provenance) ... ok
+test_policy_cannot_supply_its_own_provenance (test_2048_iteration7.ActionProvenanceBridge.test_policy_cannot_supply_its_own_provenance) ... ok
+test_saved_mode_disables_and_resumes_without_erasing_credit (test_2048_iteration7.ActionProvenanceBridge.test_saved_mode_disables_and_resumes_without_erasing_credit) ... ok
+test_source_action_input_and_status_tampering_rejected (test_2048_iteration7.ActionProvenanceBridge.test_source_action_input_and_status_tampering_rejected) ... ok
+test_unsupported_receipt_keeps_outcome_with_empty_extra_credit (test_2048_iteration7.ActionProvenanceBridge.test_unsupported_receipt_keeps_outcome_with_empty_extra_credit) ... ok
+test_existing_receipt_cannot_be_overwritten (test_2048_iteration7.CompletedArchiveIntegrity.test_existing_receipt_cannot_be_overwritten) ... ok
+test_missing_or_corrupt_receipt_blocks_completed_archive (test_2048_iteration7.CompletedArchiveIntegrity.test_missing_or_corrupt_receipt_blocks_completed_archive) ... ok
+test_missing_or_truncated_live_journal_is_rebuilt_from_complete_receipts (test_2048_iteration7.CompletedArchiveIntegrity.test_missing_or_truncated_live_journal_is_rebuilt_from_complete_receipts) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.754s
+
+OK

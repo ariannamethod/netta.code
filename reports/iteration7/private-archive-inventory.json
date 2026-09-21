@@ -1,0 +1,9 @@
+{
+  "archive": "netta-iteration7-research.zip",
+  "bytes": 47919142,
+  "sha256": "e404867adba76084b7c6abfe814aa40d57a01d4756e4faac1f119a442b24d769",
+  "files": 2932,
+  "uncompressed_input_bytes": 670456480,
+  "manifest_sha256": "c5f49817d07f41110fd4513c2e1abe6d3c732daabf4eca4fcf01349a00b25da6",
+  "scope": "Complete seventh-pass frozen source, measured and interrupted attempts, checkpoints, independent audits and reproduction tools; stored separately from the public repository."
+}

@@ -1,0 +1,26 @@
+{
+  "files": {
+    "core_part.py": "e4f680b390f6a6185fe68d648bdcbc2054ed9cbb02d9eced33b9a80b41558fb5",
+    "tests/test_choice_provenance.py": "50e904c9769d1f33132febdfc7f539b3baac6f88f6e1aa041db020e836bb0b57"
+  },
+  "tests": 13,
+  "source_spans_api": {
+    "configure": "configure_decision_credit(enabled=True, contract=<host-name>, attribution=\"source_spans\")",
+    "observe": "observe(..., decision_feedback=<receipt>, executed_spans=<episode byte union>)",
+    "per_decision": [
+      "target",
+      "provenance_status",
+      "executed_spans",
+      "credit_spans"
+    ],
+    "status": [
+      "ok",
+      "unsupported",
+      "incomplete"
+    ],
+    "span_format": "absolute half-open UTF-8 byte intervals",
+    "default_attribution": "executed_lines, omitted from serialized config",
+    "empty_credit": "valid; no fallback, actual decision counter increments"
+  },
+  "generation": "unchanged; direct overlap only, no predecessor attribution"
+}

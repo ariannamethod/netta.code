@@ -1,0 +1,308 @@
+{
+  "passed": true,
+  "scope": "Seventh pass independent runtime/core and complete fixed-study audit; original source executed unchanged.",
+  "final_sources": {
+    "nettalee.py": "6ce333fbd78e1d8a7692b6cb310d69828b209af8dfafd3dec9605be9a0e35934",
+    "nettacode.py": "d9eb1a8de6dc2678533ac4dbb6d1a534e639440a116533859ffe7e95bd4d2af3",
+    "runtime_part.py": "2f0c111880ea74b2567d271acd7218253728d69c49018fcf6c909a201f936946",
+    "core_part.py": "e4f680b390f6a6185fe68d648bdcbc2054ed9cbb02d9eced33b9a80b41558fb5",
+    "2048.py": "38a31075eb0ad454093ef335f41fc813bde1562a54097ebefec975cb8fb15302"
+  },
+  "tests": {
+    "full_suite": 315,
+    "full_suite_seconds": 135.302,
+    "full_log_sha256": "1e22e68ed848346ff6b4176b2ed03bcdea69c5af400b3d43556baeb4ce167447",
+    "after_archive_fix_focused_suite": 10,
+    "new_archive_cases_within_focused_suite": 3,
+    "supplemental_log_sha256": "5359acbd45b7bee112b30c5d9b3a36cd1f03587e33b3220d059a1cdb6ad22079",
+    "failures": 0
+  },
+  "preflight": {
+    "runtime_behavior_cases": 15,
+    "span_projection_cases": 25,
+    "atomic_invalid_feedback_cases": 7,
+    "core_checks": {
+      "runtime_to_core_targets": true,
+      "actual_decision_counters": true,
+      "multibyte_unit_halves_credited": true,
+      "late_invalid_receipts_atomic": true
+    },
+    "actual_gallery_comprehension_value_ancestry_verified": true,
+    "static_cache_full_result_and_event_graph_identity_cases": 16
+  },
+  "preserved_stopped_runs": {
+    "synthetic_dictionary_key_projection": {
+      "completed_receipts": 67,
+      "inflight_maximum": 2
+    },
+    "nonempty_comprehension_value_flow": {
+      "completed_receipts": 817,
+      "inflight_maximum": 2
+    }
+  },
+  "correction_order": "Two earlier measured runs were stopped for concrete observer defects; all884 completed receipts and at most4 interrupted in-flight attempts remain separate and excluded. All identified projection/value-flow corrections precede the final corrected measurement. Same registered seeds, targets, arms, budgets and gate retained; no outcome-based protocol selection.",
+  "final_development": {
+    "counts": {
+      "raw_attempts": 1408,
+      "board_transitions": 112823,
+      "exact_source_regenerations": 1152,
+      "novelty_and_attempt_statuses_reconciled": 1152,
+      "independent_immediate_gain_tables": 82485,
+      "bound_provenance_receipts": 82485,
+      "independent_cpython_and_provenance_replays": 72,
+      "rational_oracle_temporal_targets": 82360,
+      "independent_association_update_checks": 2132,
+      "full_state_updates_replayed": 768,
+      "train_attempts": 768,
+      "evaluate_attempts": 384,
+      "independent_control_action_checks": 30338,
+      "control_attempts": 256
+    },
+    "paired_score_deltas": {
+      "coverage_minus_temporal": -14.53125,
+      "provenance_minus_temporal": -19.4375,
+      "provenance_minus_coverage": -4.90625
+    },
+    "replica_provenance_minus_coverage": [
+      -9.8125,
+      0.0
+    ],
+    "advancement_gate": {
+      "positive_both_replicas": false,
+      "pooled_at_least_25": false,
+      "played_mean_at_least_coverage": true,
+      "raw_at_least_temporal": false
+    },
+    "qualifies": false,
+    "matched_controls_on_played_seeds": {
+      "temporal": {
+        "played": 83,
+        "actual_mean": 1030.987951807229,
+        "random_legal_same_seed_mean": 1009.1084337349398,
+        "fixed_greedy_same_seed_mean": 1266.9397590361446
+      },
+      "coverage": {
+        "played": 81,
+        "actual_mean": 1018.0246913580247,
+        "random_legal_same_seed_mean": 1005.5308641975308,
+        "fixed_greedy_same_seed_mean": 1268.3950617283951
+      },
+      "provenance": {
+        "played": 80,
+        "actual_mean": 1022.9,
+        "random_legal_same_seed_mean": 1007.85,
+        "fixed_greedy_same_seed_mean": 1273.05
+      }
+    },
+    "provenance_status_counts": {
+      "temporal/train": {
+        "ok": 9027,
+        "unsupported": 9187
+      },
+      "temporal/evaluate": {
+        "ok": 4780,
+        "unsupported": 4703
+      },
+      "coverage/train": {
+        "ok": 9335,
+        "unsupported": 8916
+      },
+      "coverage/evaluate": {
+        "ok": 5069,
+        "unsupported": 4127
+      },
+      "provenance/train": {
+        "ok": 9335,
+        "unsupported": 8916
+      },
+      "provenance/evaluate": {
+        "ok": 4963,
+        "unsupported": 4127
+      }
+    },
+    "association_counts": {
+      "temporal/train": {
+        "actual_eligible_keys": 1123,
+        "covered_keys": 507,
+        "selected_keys": 479,
+        "dropped_keys": 28,
+        "shared_keys_with_changed_target": 132
+      },
+      "temporal/evaluate": {
+        "actual_eligible_keys": 561,
+        "covered_keys": 253,
+        "selected_keys": 241,
+        "dropped_keys": 12,
+        "shared_keys_with_changed_target": 70
+      },
+      "coverage/train": {
+        "actual_eligible_keys": 518,
+        "covered_keys": 518,
+        "selected_keys": 491,
+        "dropped_keys": 27,
+        "shared_keys_with_changed_target": 135
+      },
+      "coverage/evaluate": {
+        "actual_eligible_keys": 274,
+        "covered_keys": 274,
+        "selected_keys": 260,
+        "dropped_keys": 14,
+        "shared_keys_with_changed_target": 76
+      },
+      "provenance/train": {
+        "actual_eligible_keys": 491,
+        "covered_keys": 518,
+        "selected_keys": 491,
+        "dropped_keys": 27,
+        "shared_keys_with_changed_target": 135
+      },
+      "provenance/evaluate": {
+        "actual_eligible_keys": 254,
+        "covered_keys": 268,
+        "selected_keys": 254,
+        "dropped_keys": 14,
+        "shared_keys_with_changed_target": 74
+      }
+    },
+    "aggregate_journal_mismatches_preserved": [],
+    "protocol_sha256": "a6dca8651f192838237ca1605c90993274e2051acbf2e7042ab5502a38518df2"
+  },
+  "primary_completed_score_per_raw_attempt": {
+    "temporal": 658.75,
+    "coverage": 644.21875,
+    "provenance": 639.3125
+  },
+  "runtime_overhead_diagnosis": {
+    "scope": "Independent byte/hash and persisted trajectory/accounting checks; no new game executions. Resource figures are owner-captured wait4 receipts.",
+    "paired_transitions_equal": 128,
+    "fixed_policy_score": 1272,
+    "cache_full_result_hash_pairs_equal": 128,
+    "ordinary_worker_cpu_seconds": 1.589576,
+    "provenance_worker_cpu_seconds": 7.234012,
+    "unchanged_cpu_limit_seconds": 10
+  },
+  "actual_provenance_cli_continuation": {
+    "unsupported_policies": {
+      "passed": true,
+      "logical_attempts": 8,
+      "actual_raw_attempts": 16,
+      "played": 6,
+      "new_decision_episodes": 6,
+      "new_decision_steps": 192,
+      "all_receipts_identical_between_split_and_whole": true,
+      "saved_snapshot_bytes_identical": true,
+      "omitted_second_segment_mode_retains_saved_provenance": true,
+      "all_release_states_unchanged": true,
+      "input_checkpoint_unchanged": true,
+      "completed_checkpoint_sha256": "f7316d36768feaba6aafc4f56a751a8b2e90ef16ba767dc2fdeeb753dce6a4de",
+      "supported_decisions": 0,
+      "new_association_trials": 0.0
+    },
+    "supported_path": {
+      "passed": true,
+      "logical_attempts": 8,
+      "actual_raw_attempts": 16,
+      "played": 6,
+      "new_decision_episodes": 6,
+      "new_decision_steps": 192,
+      "all_receipts_identical_between_split_and_whole": true,
+      "saved_snapshot_bytes_identical": true,
+      "omitted_second_segment_mode_retains_saved_provenance": true,
+      "all_release_states_unchanged": true,
+      "input_checkpoint_unchanged": true,
+      "completed_checkpoint_sha256": "095da0fcc2b5fdd5472903142326d5ee08f7eeb37365245d520d53336f17ad54",
+      "supported_decisions": 128,
+      "new_association_trials": 25.0,
+      "prior_incomplete_cli_fixture": {
+        "completed_attempts": 4,
+        "original_retained_rows": 2,
+        "missing_suffix_reconstructed_separately": 2,
+        "saved_post4_snapshot_bytes_reproduced": true
+      }
+    }
+  },
+  "production_cli_archive_fix_after_measurement": {
+    "passed": true,
+    "scope": "Production CLI archive-only change after frozen measurement; no experiment replay needed.",
+    "measured_bridge_sha256": "43428b406d24d5d4a7c3a3c24acb0e2555a8f1f3dbce7b9a142d4237702a72e8",
+    "release_bridge_sha256": "38a31075eb0ad454093ef335f41fc813bde1562a54097ebefec975cb8fb15302",
+    "changed_existing_functions": [
+      "run_cli"
+    ],
+    "added_archive_helpers": [
+      "_archive_text_atomic",
+      "archive_record",
+      "finalize_archive"
+    ],
+    "added_stdlib_import": "tempfile",
+    "other_top_level_ast_identical_except_added_tempfile_import": true,
+    "gameplay_targets_receipts_core_calls_outside_cli_ast_identical": true,
+    "unchanged_existing_functions_and_classes": 20,
+    "old_incomplete_fixture_preserved": "results/iteration7/audit/provenance_resume_supported/INCOMPLETE.json",
+    "storage_failure_cause": "Unproven; observed closed journal retained two of four reported completed rows."
+  },
+  "retained_worker_failures": [
+    {
+      "path": "replica_00/temporal/records/evaluate/00023.json",
+      "source_sha256": "5edd25ebb757bd27fa5299eb5c84d6a6f7ae04200ddd66f08127c4c3f11629a1",
+      "retained_steps": 125,
+      "partial_score": 1252,
+      "primary_score": 0,
+      "matched_arms_complete": [
+        true,
+        true
+      ],
+      "all_common_trajectory_rows_identical": true,
+      "failure_reason": "policy process exited",
+      "cause": "Process exit cause is not recorded in the fixed-study receipt."
+    }
+  ],
+  "registered_gallery": {
+    "passed": true,
+    "source_sha256": "309e90a84d8874d4491c326b19b563c7ec138a09b0cca7c131d1a05a9177189a",
+    "selected_choices": 5,
+    "generated_choices": 6,
+    "selected_events": 202,
+    "observed_value_reads": 16,
+    "no_score_selection": true
+  },
+  "compatibility": {
+    "owner_receipt": "results/iteration7/compatibility/summary.json",
+    "receipt_sha256": "d899d43889d938e5e876a367b94977964bddd998186a320eb721689405f319a5",
+    "generation_comparisons": 532,
+    "actual_learning_comparisons": 25,
+    "caller_routes": 6,
+    "note": "Independent compatibility owner verifies both species/default paths and all six actual caller routes; details in linked owner receipt."
+  },
+  "release_states_unchanged": {
+    "states/art.json": "158bb4c3361ccaec62518b49acd4598ff05e589f9694328773d5fc607a3c8060",
+    "states/strings.json": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+    "states/records.json": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+    "states/doom.json": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+    "states/code.json": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+    "states/2048.json": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b"
+  },
+  "boundaries": [
+    "Last stored action derivation, not counterfactual causation; later false guards are excluded by declared contract.",
+    "Read-only container provenance is aggregate, not element-level.",
+    "Core alignment validates supplied recorded choices but does not replay the stochastic generation law.",
+    "No automatic parent is invented for deterministic gaps.",
+    "Generated units use positive byte overlap; one unit can span both selected and unselected bytes.",
+    "Per-invocation semantic equality does not remove observer overhead under process resource limits.",
+    "Every final training update is reproduced from regenerated source and recorded actual outcome; failed outcomes are retained, never replaced.",
+    "Played-seed control means are conditional comparisons. Primary score uses every raw attempt, with zero for incomplete games/rejections.",
+    "The fixed-policy timing diagnosis measures one source; it does not establish a universal runtime overhead ratio."
+  ],
+  "evidence_sha256": {
+    "preflight_compact.json": "81909b7baa81d59490965558f6d0a2931367b204d1dfa1d8664afef22c6a2129",
+    "2048_development.json": "392b66b6664df51e1e76e1d934e5aecb7d231fb841699d1f36a46573f5245394",
+    "provenance_resume/summary.json": "966d8b1545b9ad096d6407808e3ee4598ea3906bf147d33ae3232c2e3d9bccb8",
+    "performance_receipts.json": "998d37548ede5dd1cb87f86fe596e0ecd6a39b5ae698e1fe3a845dcb0164bc30",
+    "preflight_preservation.json": "c2b4804eeb2695f28d8135e7b27998e236b7022bf818ad9c90825f6bd740e36d",
+    "comprehension_stop_preservation.json": "3c20368929f70b3ae7513153d100d328b88aedbd97a289fade004cda471efeda",
+    "gallery.json": "51714240f38a7b62b6db28faed42bebd2575672f55e18d47ee96cdd7f801156c",
+    "provenance_resume_supported_corrected/summary.json": "5f88b0be32c02dd8ef998e35a793db336e321310127418dd31720527c83ff312",
+    "provenance_resume_supported_corrected/old-cli-recovery.json": "eb144dedda04d8aea6265b5d37ee38615c5296e41a94fae061d2eb882969a5c0",
+    "cli_archive_fix.json": "f2ce83d604be5d1183ceccd5cb4f7ce0f61ccbb93d5eadd02d5a9573f3fd77e1"
+  }
+}

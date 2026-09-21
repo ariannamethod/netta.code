@@ -260,5 +260,40 @@
     "duplicate uncompressed PPM captures",
     "external IWAD assets"
   ],
-  "availability": "Separate retained experiment archives; ZIP payloads are not included in this reports directory."
+  "availability": "Separate retained experiment archives; ZIP payloads are not included in this reports directory.",
+  "separate_pass_archives": [
+    {
+      "filename": "netta-iteration4-research.zip",
+      "files": 4491,
+      "raw_bytes": 380796772,
+      "bytes": 75524739,
+      "sha256": "feb17ce82a2adf69323cbaafa7e9354fc736f0f215cc6482efad9900fab02472",
+      "contents": "Frozen baselines, raw attempts, checkpoints, trajectories, frames, recovery receipts, tests and experiment tools. Separate from Git publication."
+    },
+    {
+      "archive": "netta-iteration5-research.zip",
+      "bytes": 111073818,
+      "sha256": "a598afcefbd4b1da83f42c74df5fd8e70482b49f3f5db58b2d97799d14f169a5",
+      "files": 10686,
+      "uncompressed_input_bytes": 515575278,
+      "scope": "Full fifth-pass evidence, original partial journals, deterministic recovery receipts, frozen experimental states, source and reproduction tools. Stored separately from the public repository."
+    },
+    {
+      "archive": "netta-iteration6-research.zip",
+      "bytes": 21775680,
+      "sha256": "6514c658cc60ba471f985503794b4f5bd1e1bfe3423eeb80ec26e04d839b7fd6",
+      "files": 4684,
+      "uncompressed_input_bytes": 194895891,
+      "scope": "Complete sixth-pass immutable attempts, frozen candidate/source, checkpoints, audits, reproduction tools and verified execution examples; stored separately from the public repository."
+    },
+    {
+      "archive": "netta-iteration7-research.zip",
+      "bytes": 47919142,
+      "sha256": "e404867adba76084b7c6abfe814aa40d57a01d4756e4faac1f119a442b24d769",
+      "files": 2932,
+      "uncompressed_input_bytes": 670456480,
+      "manifest_sha256": "c5f49817d07f41110fd4513c2e1abe6d3c732daabf4eca4fcf01349a00b25da6",
+      "scope": "Complete seventh-pass frozen source, measured and interrupted attempts, checkpoints, independent audits and reproduction tools; stored separately from the public repository."
+    }
+  ]
 }

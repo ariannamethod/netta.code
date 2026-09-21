@@ -2,6 +2,25 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Execution provenance reaches the shared byte-credit interface
+
+The standalone Code body now includes the optional CPython 3.12 action
+observer and the shared `source_spans` decision-attribution interface. Hosts
+can bind credit to exact UTF-8 intervals in a generated source, with receipt
+containment and token/choice alignment checked before learning. A choice
+qualifies by direct overlap; deterministic gaps receive no invented parent.
+
+Code's first-unit distant memory and task learner keep their current behavior.
+The new action contract is integrated with the 2048 Lee life. A future Code
+output contract can use this interface for actual printed or retained values,
+after measuring support for those programs; it is not silently enabled here.
+
+Across both bodies, independent comparison covers 532 exact generation
+records, 25 actual CPython learning steps and all six real caller routes.
+The final suite passes 315 tests. Public states and corpora retain their bytes.
+The [seventh-pass report](reports/iteration7/REPORT.md) documents the exact
+observer scope, runtime cost, fixed comparison and separate full archive.
+
 ## 2026-09-21 — Branching distant context and exact execution examples
 
 Tested a single private extension of first-anchor memory. Later context could

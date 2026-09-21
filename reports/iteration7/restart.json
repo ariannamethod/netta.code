@@ -1,0 +1,50 @@
+{
+  "runs": [
+    {
+      "status": "aborted before corrected freeze",
+      "reason": "Independent auditor withdrew clearance after synthetic constant dictionary-key tuple LOAD_CONST broad source span credited skipped value bytes. Runtime owner correcting atom projection.",
+      "stop": "Exec session47947 interrupted; exit130",
+      "complete_raw_receipts_preserved": 67,
+      "phase_counts": {
+        "replica_00/coverage:train": 34,
+        "replica_00/temporal:train": 33
+      },
+      "measurements_excluded_from_final_comparison": true,
+      "restart": "Same initialstate, arms, hyperparameters, budgets and seeds per root directive; corrected source freeze required before restart.",
+      "outcomes_used_for_candidate_or_protocol_changes": false,
+      "interrupted_inflight": "At most two worker attempts may have been in flight at process interruption; they have no completed immutable outcome and were not reconstructed or included in the final study."
+    },
+    {
+      "status": "aborted comprehension provenance freeze",
+      "reason": "Independent review of the actual gallery DAG found STORE of the nonempty list-comprehension result attached to exhausted FOR_ITER rather than LIST_APPEND/body dependencies, omitting actual observation-value ancestry. Exact runtime stack correction required.",
+      "stop": "Exec session41749 interrupted; exit130",
+      "complete_raw_receipts_preserved": 817,
+      "phase_counts": {
+        "replica_00/coverage:evaluate": 64,
+        "replica_00/coverage:train": 128,
+        "replica_00/provenance:evaluate": 64,
+        "replica_00/provenance:train": 128,
+        "replica_00/temporal:evaluate": 64,
+        "replica_00/temporal:train": 128,
+        "replica_01/coverage:train": 34,
+        "replica_01/provenance:train": 15,
+        "replica_01/temporal:evaluate": 64,
+        "replica_01/temporal:train": 128
+      },
+      "interrupted_inflight_maximum": 2,
+      "measurements_excluded_from_final_comparison": true,
+      "outcomes_used_for_candidate_or_protocol_changes": false,
+      "restart": "Same initialstate,seeds,arms,targets,strength,budgets andgate perroot; new independentruntimegate before fullrestart.",
+      "superseded_gallery": "superseded-gallery-sample.json"
+    }
+  ],
+  "completed_comparison": {
+    "status": "completed; independently verified",
+    "generated_attempts": 1152,
+    "control_episodes": 256,
+    "training_updates": 768,
+    "immutable_receipts": 1408,
+    "advancement": false,
+    "public_state_changed": false
+  }
+}

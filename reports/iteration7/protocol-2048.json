@@ -1,0 +1,67 @@
+{
+  "stage": "development",
+  "replicas": 2,
+  "training_attempts_per_arm_replica": 128,
+  "evaluation_attempts_per_arm_replica": 64,
+  "arms": {
+    "temporal": {
+      "decision_credit": true,
+      "contract": "2048-temporal-return-v1",
+      "attribution": "executed_lines"
+    },
+    "coverage": {
+      "decision_credit": true,
+      "contract": "2048-provenance-coverage-v1",
+      "attribution": "source_spans"
+    },
+    "provenance": {
+      "decision_credit": true,
+      "contract": "2048-action-provenance-v1",
+      "attribution": "source_spans"
+    }
+  },
+  "decision_strength": 2.5,
+  "quality": false,
+  "executed_credit": false,
+  "provenance_observation_all_arms": true,
+  "unsupported_credit": "empty source-span credit, actual outcome and ordinary feedback retained",
+  "max_moves": 128,
+  "workers": 2,
+  "seeds": {
+    "training_sample_base": 111000000,
+    "training_episode_base": 112000000,
+    "evaluation_sample_base": 113000000,
+    "evaluation_episode_base": 114000000,
+    "replica_stride": 10000
+  },
+  "comparators": [
+    "uniform_random_legal",
+    "greedy_merge_then_empty_LDRU"
+  ],
+  "prospective_export_replica": 0,
+  "checkpoint_rule": "final fixed-budget checkpoint; root decides arm adoption from complete evidence",
+  "confirmation_selection_rule": "The single provenance candidate advances only with positive completed-score/raw delta against coverage in BOTH development replicas, pooled gain >=25 points/raw against coverage, pooled mean played score >=coverage, and pooled completed-score/raw >=temporal. Confirmation uses all three arms, 3 fresh replicas, 256 train and 128 eval each. No hyperparameter sweep. If development does not qualify, keep release state and legacy defaults.",
+  "decision_target": "Discounted mean actual gains over current and up to7 subsequent observed moves, gamma.9, available-window normalization. Target = terminal reward + min(reward,1-reward)*(return-meanreturn)/maxabsdeviation; constant gains/returns keep uniform reward; endpoint rounding bounded[0,1]. Episode target mean preserved within floating-point tolerance. No oracle future actions, RNG calls or action substitution.",
+  "exposure_control": "Coverage uses the same source-span API, targets and unsupported mask as provenance, but credits all actual executed spans rather than the selected final-action derivation. Temporal retains prior executed-line attribution. All arms enable runtime provenance observation equally; unsupported gameplay and ordinary feedback remain intact.",
+  "exposure_fairness": "Arms share starting state, raw attempt budgets and environment/sample seeds. Each arm generates its own programs as learning proceeds; resulting episode lengths and traces may differ. No credit multiplier for repeated line events or total episode length.",
+  "generation_inputs": "Code generation sees its learned state and corpus, not the board. Board/action information changes host learning targets after actual execution.",
+  "evidence_layout": "Every measured attempt has an immutable per-index JSON receipt; completed phase JSONL is an atomic aggregation. Phase manifests bind every shard hash and exact count.",
+  "primary": "completed episode score per raw generation attempt; incomplete episodes, failures and replay rejections count zero",
+  "secondary": [
+    "completed/raw",
+    "score per played episode",
+    "reward/raw",
+    "syntax/runtime failures",
+    "corpus replays",
+    "unique played sources"
+  ],
+  "interpretation": "A generated-policy run includes novelty and syntax failures; fixed controls choose legal actions on every seed.",
+  "bundle_sha256": {
+    "2048.py": "43428b406d24d5d4a7c3a3c24acb0e2555a8f1f3dbce7b9a142d4237702a72e8",
+    "input.json": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+    "nettalee.py": "6ce333fbd78e1d8a7692b6cb310d69828b209af8dfafd3dec9605be9a0e35934",
+    "predeclared_protocol.json": "e378e37a9ce20f7c3f0df089161ef8b1d205aed90576abca572797af95e8cc04",
+    "run_2048_iteration7.py": "913eaff275025b8ff78c5c547e4f3a4b6fd2ab9c0c10690473e53fd02f3276b1"
+  },
+  "created_before_first_measurement": true
+}

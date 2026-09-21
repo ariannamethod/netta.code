@@ -2,6 +2,55 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — The final action acquires exact source eligibility
+
+Added `2048.py play --decision-credit provenance` and the saved contract
+`2048-action-provenance-v1`. It retains the eight-move temporal target and
+changes its eligibility: the CPython observer follows the final stored action
+through actual value assignments, guarding predicates and loop occurrences.
+Exact UTF-8 spans connect this derivation to recorded stochastic source choices.
+The core validates source, token/key alignment and nested trace containment
+before mutation; repeated associations still receive one mean trial per episode.
+
+The source is executed unchanged. Unsupported provenance keeps real gameplay
+and ordinary episode learning, with no invented local-credit fallback. The
+explicit scope is last stored action, aggregate container origins and later
+negative guards excluded. CPython 3.12 is the supported observation runtime;
+ordinary behavior remains the default.
+
+Actual iterator exhaustion exposed a missing comprehension dependency in the
+first implementation. The observer now resolves the branch from the next
+observed opcode, retaining the populated list's real body values. Semantic atom
+projection also handles broad synthetic dictionary-key positions, skipped
+alternatives, Unicode boundaries and folded comments. Static projection is
+cached by instruction offset. Full detailed receipts match in 128/128 cached
+versus uncached checks; CPU falls from 12.049 to 7.227 seconds on that fixed set.
+A real 128-move policy now completes under the unchanged ten-second worker cap.
+
+The fixed comparison uses three arms and two replicas, each with 128 learning
+and 64 fresh evaluation attempts. Completed score per raw attempt is 658.75
+for temporal line credit, 644.21875 for matched span coverage and 639.3125 for
+action provenance. Provenance plays and completes 80/128 evaluations; matched
+coverage completes 81/128. Replica gains against coverage are −9.8125 and 0,
+so the registered advancement gate fails. The public states and defaults remain.
+All 1,152 generated attempts and 256 distinct control episodes are retained.
+
+The final CLI continuation check exposed an incomplete streamed journal despite
+four completed attempts and a four-step advanced snapshot. The underlying loss
+cause is unproven. CLI archives now retain each attempt separately, atomically
+close the aggregate journal and verify its count and hashes before final state
+and summary publication. Ten focused bridge tests pass, including three new
+persistence regressions. The measured comparison retains its original frozen
+bridge; this subsequent change only affects CLI evidence persistence.
+
+Two interrupted instrument-validation runs retain 67 and 817 complete receipts
+outside the corrected comparison. Their defects, exact hashes and restart
+rules are recorded in the [seventh-pass report](reports/iteration7/REPORT.md).
+The gallery adds a fixed-rule measured example with selectable execution,
+action-dependency and sampled-choice highlighting. The full suite passes 315
+tests; compatibility covers 532 exact generation records, 25 actual learning
+steps and all six real caller routes.
+
 ## 2026-09-21 — Temporal consequences and visible Doom play
 
 Added the explicit `2048-temporal-return-v1` decision contract through

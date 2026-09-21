@@ -240,7 +240,8 @@ class Organism:
             self.quality_head = OutcomeHead(self.seed ^ 0x5155414C)
         return self
 
-    def configure_decision_credit(self, enabled=False, strength=2.5, contract=None):
+    def configure_decision_credit(self, enabled=False, strength=2.5, contract=None,
+                                  attribution=None):
         """Select a host-defined, source-bound per-decision learning contract.
 
         Acquired local action credit is separate from whole-episode credit.
@@ -253,17 +254,25 @@ class Organism:
             raise ValueError("decision credit strength must be finite and in [0, 8]")
         if contract is None:
             contract = self.decision_credit_config["contract"]
+        old_attribution = self.decision_credit_config.get("attribution", "executed_lines")
+        if attribution is None:
+            attribution = old_attribution
+        if attribution not in ("executed_lines", "source_spans"):
+            raise ValueError("decision attribution must be executed_lines or source_spans")
         if contract is not None and (not isinstance(contract, str)
                                      or not contract.strip() or len(contract) > 128):
             raise ValueError("decision credit requires a named host contract")
         if enabled and (self.mode != "control" or contract is None):
             raise ValueError("active decision credit requires a control island and host contract")
-        if (self.decision_credit or self.decision_credit_episodes) and contract != self.decision_credit_config["contract"]:
+        if ((self.decision_credit or self.decision_credit_episodes) and
+                (contract != self.decision_credit_config["contract"] or attribution != old_attribution)):
             raise ValueError("new decision contract needs separate acquired memory")
         self.decision_credit_config = {"enabled": enabled, "strength": strength, "contract": contract}
+        if attribution != "executed_lines":
+            self.decision_credit_config["attribution"] = attribution
         return self
 
-    def _decision_targets(self, generated, feedback, episode_lines):
+    def _decision_targets(self, generated, feedback, episode_lines, episode_spans=None):
         """Validate a complete host receipt before returning per-choice means.
 
         The host defines targets from actual environment transitions. This
@@ -281,6 +290,8 @@ class Organism:
         decisions = feedback.get("decisions")
         if not isinstance(decisions, list) or not 1 <= len(decisions) <= 10000:
             raise ValueError("decision feedback needs 1..10000 observed decisions")
+        if self.decision_credit_config.get("attribution") == "source_spans":
+            return self._span_decision_targets(generated, decisions, episode_spans)
         if episode_lines is None:
             raise ValueError("decision feedback requires the actual episode source-line trace")
         normalized = []
@@ -301,6 +312,107 @@ class Organism:
         for target, lines in normalized:
             associations = set().union(*(by_line[line] for line in lines))
             for key in associations:
+                targets[key].append(target)
+        return {key: math.fsum(values) / len(values) for key, values in targets.items()}, len(decisions)
+
+    @staticmethod
+    def _source_spans(source, spans):
+        """Validate host UTF-8 intervals and return their sorted byte union."""
+        raw = source.encode("utf-8")
+        if not isinstance(spans, (list, tuple)) or len(spans) > 100000:
+            raise ValueError("source spans must be a bounded list of byte intervals")
+        checked = []
+        for span in spans:
+            if (not isinstance(span, (list, tuple)) or len(span) != 2 or
+                    any(type(offset) is not int for offset in span)):
+                raise ValueError("source span needs two integer byte offsets")
+            start, end = span
+            if not 0 <= start < end <= len(raw):
+                raise ValueError("source span lies outside the generated source")
+            if any(offset < len(raw) and raw[offset] & 0xC0 == 0x80 for offset in (start, end)):
+                raise ValueError("host source span splits a UTF-8 character")
+            checked.append((start, end))
+        union = []
+        for start, end in sorted(checked):
+            if union and start <= union[-1][1]:
+                union[-1] = (union[-1][0], max(end, union[-1][1]))
+            else:
+                union.append((start, end))
+        return union
+
+    @staticmethod
+    def _spans_covered(inner, outer):
+        """Both inputs are normalized unions; containment is byte-exact."""
+        index = 0
+        for start, end in inner:
+            while index < len(outer) and outer[index][1] <= start:
+                index += 1
+            if index == len(outer) or not outer[index][0] <= start < end <= outer[index][1]:
+                return False
+        return True
+
+    def _validate_generated_choices(self, generated):
+        """Bind choice identities to original generated units, without parsing.
+
+        Unit spans can split a UTF-8 character. Only the complete decoded source
+        and the host's source positions must lie on character boundaries.
+        """
+        tokens, choices, source = generated.get("tokens"), generated.get("choices"), generated.get("source")
+        if (not isinstance(tokens, list) or not isinstance(choices, list) or
+                not isinstance(source, str) or
+                any(type(t) is not int or not 0 <= t < len(self.units.expansions) for t in tokens) or
+                self.units.decode(tokens) != source.encode("utf-8")):
+            raise ValueError("generated source differs from its original token bytes")
+        history, offset, expected = [BOS], 0, {}
+        for token in tokens:
+            end = offset + len(self.units.expansions[token])
+            expected[(offset, end)] = (token, tuple(history[-3:]) + (token,))
+            history.append(token)
+            offset = end
+        expected[(offset, offset)] = (EOS, tuple(history[-3:]) + (EOS,))
+        seen = set()
+        for choice in choices:
+            if not isinstance(choice, dict):
+                raise ValueError("invalid generated choice")
+            bounds = (choice.get("byte_start"), choice.get("byte_end"))
+            key, token, features = choice.get("key"), choice.get("token"), choice.get("x")
+            if (any(type(x) is not int for x in bounds) or bounds in seen or
+                    not isinstance(key, tuple) or any(type(x) is not int for x in key) or
+                    type(token) is not int or expected.get(bounds) != (token, tuple(key)) or
+                    not isinstance(features, (list, tuple)) or len(features) != OutcomeHead.DIM or
+                    any(type(x) not in (int, float) or not math.isfinite(x) for x in features)):
+                raise ValueError("generated choice does not match its source token position")
+            seen.add(bounds)
+
+    @staticmethod
+    def _spanned_choices(generated, spans):
+        """Direct overlap only: deterministic gaps have no invented parent."""
+        return [choice for choice in generated["choices"]
+                if choice["byte_end"] > choice["byte_start"] and
+                any(choice["byte_start"] < end and choice["byte_end"] > start
+                    for start, end in spans)]
+
+    def _span_decision_targets(self, generated, decisions, episode_spans):
+        # Validate every receipt before observe mutates any acquired memory.
+        self._validate_generated_choices(generated)
+        episode = self._source_spans(generated["source"], episode_spans)
+        targets = defaultdict(list)
+        for item in decisions:
+            if not isinstance(item, dict):
+                raise ValueError("invalid decision feedback entry")
+            target = item.get("target")
+            if type(target) not in (int, float) or not math.isfinite(target) or not 0 <= target <= 1:
+                raise ValueError("decision target must be finite and in [0, 1]")
+            status = item.get("provenance_status")
+            if status not in ("ok", "unsupported", "incomplete"):
+                raise ValueError("decision needs an explicit provenance status")
+            trace = self._source_spans(generated["source"], item.get("executed_spans"))
+            credit = self._source_spans(generated["source"], item.get("credit_spans"))
+            if status != "ok" and credit:
+                raise ValueError("unsupported provenance cannot carry source credit")
+            if not self._spans_covered(trace, episode) or not self._spans_covered(credit, trace):
+                raise ValueError("decision source spans must belong to its actual invocation trace")
+            for key in {tuple(c["key"]) for c in self._spanned_choices(generated, credit)}:
                 targets[key].append(target)
         return {key: math.fsum(values) / len(values) for key, values in targets.items()}, len(decisions)
 
@@ -627,7 +739,8 @@ class Organism:
                 self.syntax_head.update(grammar_values[i * len(grammar_values) // min(12, len(grammar_values))], float(syntax_ok))
 
     def observe(self, generated, reward, runtime_ok, error_line=None, behavior=None, diagnostic=None,
-                executed_lines=None, environment_observed=False, decision_feedback=None):
+                executed_lines=None, environment_observed=False, decision_feedback=None,
+                executed_spans=None):
         """Acquire a bounded outcome supplied by an external environment.
 
         Used by the Doom bridge after real actions and consequences. A raw
@@ -655,7 +768,8 @@ class Organism:
         if decision_feedback is not None:
             if not self.decision_credit_config["enabled"] or not environment_observed:
                 raise ValueError("decision feedback requires active learning and an observed episode")
-            decision_targets, decision_steps = self._decision_targets(generated, decision_feedback, executed_lines)
+            decision_targets, decision_steps = self._decision_targets(
+                generated, decision_feedback, executed_lines, executed_spans)
         elif self.decision_credit_config["enabled"] and runtime_ok and environment_observed:
             raise ValueError("active decision credit requires an observed-decision receipt")
         reward_choices = None
@@ -791,7 +905,7 @@ class Organism:
             if not isinstance(decision, dict):
                 raise ValueError("invalid decision credit memory")
             organism.configure_decision_credit(decision.get("enabled"), decision.get("strength"),
-                                               decision.get("contract"))
+                                               decision.get("contract"), decision.get("attribution"))
             episodes, steps = decision.get("episodes"), decision.get("decisions")
             if (type(episodes) is not int or type(steps) is not int
                     or not 0 <= episodes <= steps or bool(episodes) != bool(steps)):
@@ -1024,9 +1138,11 @@ import json
 import keyword
 import math
 import os
+import re
 import subprocess
 import sys
 import tempfile
+import tokenize
 import warnings
 
 RUNTIME_SOURCE_LIMIT = 32768
@@ -1201,7 +1317,350 @@ def _runtime_control_request(mode, inputs, actions):
     return json.loads(json.dumps(inputs, allow_nan=False)), list(actions)
 
 
-def _runtime_execute(source, mode, inputs=None, actions=None):
+class _ActionProvenance:
+    """Dependency bookkeeping beside CPython, never a second evaluator.
+
+    The receipt describes the executed derivation of the last action store.
+    Later false guards are not counterfactual dependencies of that store.
+    Read-only containers carry aggregate origins, not element-level origins.
+    Unsupported operations disable this receipt without interrupting execution.
+    """
+    contract = 'cpython-action-slice-v1'
+
+    def __init__(self, source, tree, code, inputs):
+        self.source, self.code = source, code
+        self.source_hash = hashlib.sha256(source.encode()).hexdigest()
+        encoded = json.dumps(inputs, sort_keys=True, separators=(',', ':'), ensure_ascii=True, allow_nan=False)
+        self.input_hash = hashlib.sha256(encoded.encode()).hexdigest()
+        # Python physical lines are CR/LF only; Unicode separators may be data.
+        self.lines = re.findall(r'[^\r\n]*(?:\r\n|\r|\n|$)', source)
+        if self.lines and not self.lines[-1]:
+            self.lines.pop()
+        self.starts, offset = [], 0
+        for line in self.lines:
+            self.starts.append(offset)
+            offset += len(line.encode())
+        self.stack, self.names, self.fast, self.events = [], {}, {}, {}
+        self.executed, self.controls, self.iterations = set(), {}, {}
+        self.pending_iteration, self.skip_end_for, self.atom_cache = None, None, {}
+        self.reason, self.writer = '', None
+        self.trace_hash = hashlib.sha256()
+        self.nodes = list(ast.walk(tree))
+        self.by_span = collections.defaultdict(list)
+        for node in self.nodes:
+            if hasattr(node, 'end_lineno'):
+                self.by_span[self.node_span(node)].append(node)
+        self.tokens, self.source_atoms = [], []
+        token_source = source.replace('\r\n', '\n').replace('\r', '\n')
+        for token in tokenize.generate_tokens(io.StringIO(token_source).readline):
+            if token.type in (tokenize.OP, tokenize.NAME, tokenize.NUMBER, tokenize.STRING,
+                              getattr(tokenize, 'FSTRING_MIDDLE', -1)):
+                a = self.starts[token.start[0] - 1] + len(self.lines[token.start[0] - 1][:token.start[1]].encode())
+                b = self.starts[token.end[0] - 1] + len(self.lines[token.end[0] - 1][:token.end[1]].encode())
+                self.source_atoms.append((a, b))
+                if token.type == tokenize.OP or token.string in ('in', 'is', 'not', 'and', 'or'):
+                    self.tokens.append((a, b, token.string))
+        self.regions, self.tests, self.loops = {}, {}, {}
+        for node in self.nodes:
+            identity = id(node)
+            if isinstance(node, ast.If):
+                self.regions[identity] = [self.node_span(n) for n in node.body + node.orelse]
+                self.tests[identity] = self.node_span(node.test)
+            elif isinstance(node, ast.IfExp):
+                self.regions[identity] = [self.node_span(node.body), self.node_span(node.orelse)]
+                self.tests[identity] = self.node_span(node.test)
+            elif isinstance(node, ast.BoolOp):
+                self.regions[identity] = [self.node_span(n) for n in node.values[1:]]
+                self.tests[identity] = self.node_span(node)
+            elif isinstance(node, ast.For):
+                self.regions[identity] = [self.node_span(n) for n in node.body]
+                self.loops[identity] = self.node_span(node.iter)
+            elif isinstance(node, ast.ListComp):
+                for index, generator in enumerate(node.generators):
+                    identity = id(generator)
+                    following = node.generators[index + 1:]
+                    self.regions[identity] = [self.node_span(node.elt), self.node_span(generator.target)]
+                    self.regions[identity].extend(self.node_span(n) for later in following for n in (later.iter, later.target))
+                    self.loops[identity] = self.node_span(generator.iter)
+        self.mapping = {i.offset: i for i in dis.get_instructions(code)}
+        offsets = list(self.mapping)
+        self.following = dict(zip(offsets, offsets[1:]))
+        self.resets = collections.defaultdict(list)
+        for identity, region in self.tests.items():
+            offsets = [i.offset for i in self.mapping.values()
+                       if self.ins_span(i) is not None and self.ins_span(i)[0] == region[0]]
+            if offsets:
+                self.resets[min(offsets)].append(identity)
+        self.contexts, self.branch_owners, self.loop_owners = {}, {}, {}
+        for i in self.mapping.values():
+            region = self.ins_span(i)
+            self.contexts[i.offset] = [identity for identity, regions in self.regions.items()
+                                       if region and any(self.contains(part, region) for part in regions)]
+            if 'JUMP' in i.opname and 'IF' in i.opname:
+                self.branch_owners[i.offset] = [identity for identity, test in self.tests.items()
+                                                if region and self.contains(test, region)]
+            if i.opname == 'FOR_ITER':
+                self.loop_owners[i.offset] = [identity for identity, iterator in self.loops.items()
+                                              if region and self.contains(iterator, region)]
+        if sys.version_info[:2] != (3, 12):
+            self.reason = 'provenance supports CPython 3.12 bytecode'
+        elif any(isinstance(n, (ast.While, ast.SetComp, ast.DictComp)) or
+                 isinstance(n, ast.For) and n.orelse or
+                 isinstance(n, ast.Compare) and len(n.ops) != 1 or
+                 isinstance(n, ast.comprehension) and n.ifs for n in self.nodes):
+            self.reason = 'unsupported provenance control construct'
+
+    @staticmethod
+    def contains(outer, inner):
+        return outer[0] <= inner[0] and inner[1] <= outer[1]
+
+    def node_span(self, node):
+        return (self.starts[node.lineno - 1] + node.col_offset,
+                self.starts[node.end_lineno - 1] + node.end_col_offset)
+
+    def ins_span(self, instruction):
+        p = instruction.positions
+        if not p.lineno or p.col_offset is None or not p.end_lineno or p.end_col_offset is None:
+            return None
+        return (self.starts[p.lineno - 1] + p.col_offset,
+                self.starts[p.end_lineno - 1] + p.end_col_offset)
+
+    def atoms(self, instruction):
+        """Source projection is static for one compiled source instruction."""
+        if instruction.offset not in self.atom_cache:
+            self.atom_cache[instruction.offset] = self._project_atoms(instruction)
+        return self.atom_cache[instruction.offset]
+
+    def _project_atoms(self, instruction):
+        """Credit source atoms, never an envelope containing a skipped branch."""
+        op, region = instruction.opname, self.ins_span(instruction)
+        if region is None or region[0] == region[1]:
+            return []
+        nodes = self.by_span.get(region, [])
+        if op == 'LOAD_CONST':
+            dictionary = next((node for node in nodes if isinstance(node, ast.Dict)), None)
+            if dictionary is not None:
+                # BUILD_CONST_KEY_MAP's synthetic key tuple carries the entire
+                # dictionary position, including possibly skipped value arms.
+                keys = [self.node_span(key) for key in dictionary.keys if key is not None]
+                return [(a, b) for a, b in self.source_atoms if any(self.contains(key, (a, b)) for key in keys)]
+            # CPython may fold a whole constant expression into one load.
+            return [(a, b) for a, b in self.source_atoms if self.contains(region, (a, b))]
+        if op in ('LOAD_NAME', 'LOAD_FAST', 'LOAD_GLOBAL', 'STORE_NAME', 'STORE_FAST'):
+            return [region] if any(isinstance(node, ast.Name) for node in nodes) else []
+        for node in nodes:
+            if isinstance(node, (ast.BinOp, ast.AugAssign)) and op == 'BINARY_OP':
+                left = node.left if isinstance(node, ast.BinOp) else node.target
+                right = node.right if isinstance(node, ast.BinOp) else node.value
+                gap = (self.node_span(left)[1], self.node_span(right)[0])
+                return [(a, b) for a, b, _ in self.tokens if self.contains(gap, (a, b))]
+            if isinstance(node, ast.Compare) and op in ('COMPARE_OP', 'CONTAINS_OP', 'IS_OP'):
+                gap = (self.node_span(node.left)[1], self.node_span(node.comparators[0])[0])
+                return [(a, b) for a, b, _ in self.tokens if self.contains(gap, (a, b))]
+            if isinstance(node, ast.UnaryOp) and op.startswith('UNARY_'):
+                gap = (region[0], self.node_span(node.operand)[0])
+                return [(a, b) for a, b, _ in self.tokens if self.contains(gap, (a, b))]
+            if isinstance(node, ast.Subscript) and op == 'BINARY_SUBSCR':
+                begin = self.node_span(node.value)[1]
+                end = self.node_span(node.slice)[1]
+                return [(a, b) for a, b, token in self.tokens
+                        if token in ('[', ']') and self.contains(region, (a, b)) and (b <= self.node_span(node.slice)[0] and a >= begin or a >= end)]
+            if isinstance(node, ast.Call) and op == 'CALL':
+                function = self.node_span(node.func)
+                parts = [(self.node_span(node.func.value)[1], function[1])] if isinstance(node.func, ast.Attribute) else [function]
+                for k in node.keywords:
+                    begin, end = self.node_span(k)[0], self.node_span(k.value)[0]
+                    parts.append((begin, begin + len(k.arg.encode())))
+                    parts.extend((a, b) for a, b, token in self.tokens if token == '=' and begin <= a < b <= end)
+                return parts
+            if isinstance(node, ast.Attribute) and op == 'LOAD_ATTR':
+                return [(self.node_span(node.value)[1], region[1])]
+        return []
+
+    def branch_atoms(self, condition):
+        region = self.events[condition]['span'] if condition else None
+        result = []
+        if region is None:
+            return result
+        for node in self.nodes:
+            if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not) and self.contains(self.node_span(node.operand), region):
+                gap = (self.node_span(node)[0], self.node_span(node.operand)[0])
+                result.extend((a, b) for a, b, token in self.tokens if token == 'not' and self.contains(gap, (a, b)))
+            elif isinstance(node, ast.BoolOp):
+                for left, right in zip(node.values, node.values[1:]):
+                    if self.contains(self.node_span(left), region):
+                        gap = (self.node_span(left)[1], self.node_span(right)[0])
+                        result.extend((a, b) for a, b, token in self.tokens if token in ('and', 'or') and self.contains(gap, (a, b)))
+        return result
+
+    def add(self, instruction, parents=(), controls=True, iteration=None, extra_atoms=()):
+        identity = len(self.events) + 1
+        dependencies = set(p for p in parents if p)
+        if controls:
+            dependencies.update(self.controls.get(owner, 0) for owner in self.contexts.get(instruction.offset, []))
+            dependencies.discard(0)
+        atoms = sorted(set(self.atoms(instruction)) | set(extra_atoms))
+        self.executed.update(atoms)
+        event = {'id': identity, 'op': instruction.opname, 'span': self.ins_span(instruction),
+                 'credit_spans': atoms, 'parents': sorted(dependencies)}
+        if iteration is not None:
+            event['iteration'] = iteration
+        self.events[identity] = event
+        self.trace_hash.update(json.dumps(event, sort_keys=True, separators=(',', ':')).encode())
+        return identity
+
+    def pop(self, count=1):
+        if count < 0 or count > len(self.stack):
+            raise ValueError('unsupported provenance stack shape')
+        if not count:
+            return []
+        values = self.stack[-count:]
+        del self.stack[-count:]
+        return values
+
+    def opcode(self, frame, instruction):
+        if self.reason:
+            return
+        try:
+            if frame.f_code is not self.code:
+                raise ValueError('nested function or generator provenance unsupported')
+            if self.pending_iteration is not None:
+                previous = self.pending_iteration
+                self.pending_iteration = None
+                if instruction.offset == self.following.get(previous.offset):
+                    count = self.iterations.get(previous.offset, 0) + 1
+                    self.iterations[previous.offset] = count
+                    event = self.add(previous, [self.stack[-1]], iteration=count)
+                    self.stack.append(event)
+                    for owner in self.loop_owners.get(previous.offset, []):
+                        self.controls[owner] = event
+                else:
+                    target = previous.argval
+                    endpoint = self.mapping.get(target)
+                    if endpoint is None or endpoint.opname != 'END_FOR' or instruction.offset not in (target, self.following.get(target)):
+                        raise ValueError('unsupported provenance iterator exit')
+                    # CPython 3.12 consumes the iterator and normally skips the
+                    # END_FOR opcode trace on exhaustion. No item was produced.
+                    self.pop()
+                    self.skip_end_for = target if instruction.offset == target else None
+                    for owner in self.loop_owners.get(previous.offset, []):
+                        self.controls.pop(owner, None)
+            op, arg, name = instruction.opname, instruction.arg, instruction.argval
+            for owner in self.resets.get(instruction.offset, []):
+                self.controls.pop(owner, None)
+            if op in ('RESUME', 'NOP', 'EXTENDED_ARG', 'KW_NAMES', 'RETURN_CONST') or op.startswith('JUMP_'):
+                return
+            if op == 'PUSH_NULL':
+                self.stack.append(0)
+            elif op in ('LOAD_NAME', 'LOAD_FAST', 'LOAD_GLOBAL', 'LOAD_CONST'):
+                if op == 'LOAD_GLOBAL' and arg & 1:
+                    self.stack.append(0)
+                memory = self.fast if op == 'LOAD_FAST' else self.names
+                self.stack.append(self.add(instruction, [memory.get(name, 0)] if op != 'LOAD_CONST' else []))
+            elif op == 'LOAD_FAST_AND_CLEAR':
+                self.stack.append(self.fast.pop(name, 0))
+            elif op in ('STORE_NAME', 'STORE_FAST'):
+                event = self.add(instruction, self.pop())
+                (self.fast if op == 'STORE_FAST' else self.names)[name] = event
+                if name == 'action' and op == 'STORE_NAME':
+                    self.writer = event
+            elif op == 'POP_TOP':
+                self.pop()
+            elif op == 'COPY':
+                self.stack.append(self.stack[-arg])
+            elif op == 'SWAP':
+                self.stack[-1], self.stack[-arg] = self.stack[-arg], self.stack[-1]
+            elif op == 'FOR_ITER':
+                # Resolve the branch from the next *observed* opcode. Static
+                # dis.stack_effect cannot identify exhaustion in this trace.
+                self.pending_iteration = instruction
+            elif op == 'END_FOR':
+                if self.skip_end_for != instruction.offset:
+                    raise ValueError('unsupported standalone iterator cleanup')
+                self.skip_end_for = None
+            elif op.startswith('POP_JUMP'):
+                value = self.pop()
+                parents = value + [self.controls[owner] for owner in self.branch_owners.get(instruction.offset, [])
+                                       if owner in self.controls]
+                event = self.add(instruction, parents, extra_atoms=self.branch_atoms(value[0]))
+                for owner in self.branch_owners.get(instruction.offset, []):
+                    self.controls[owner] = event
+            elif op in ('BINARY_OP', 'BINARY_SUBSCR', 'COMPARE_OP', 'CONTAINS_OP', 'IS_OP'):
+                if op == 'BINARY_OP' and instruction.argrepr.endswith('='):
+                    node = next((n for n in self.by_span.get(self.ins_span(instruction), []) if isinstance(n, ast.AugAssign)), None)
+                    if node is None or not isinstance(node.target, ast.Name):
+                        raise ValueError('mutable augmented assignment provenance unsupported')
+                    value = frame.f_locals.get(node.target.id, frame.f_globals.get(node.target.id))
+                    if type(value) in (list, dict, set):
+                        raise ValueError('mutable augmented assignment provenance unsupported')
+                self.stack.append(self.add(instruction, self.pop(2)))
+            elif op.startswith('UNARY_') or op == 'GET_ITER':
+                self.stack.append(self.add(instruction, self.pop()))
+            elif op in ('BUILD_LIST', 'BUILD_TUPLE', 'BUILD_SET', 'BUILD_STRING', 'BUILD_SLICE'):
+                self.stack.append(self.add(instruction, self.pop(arg)))
+            elif op == 'BUILD_MAP':
+                self.stack.append(self.add(instruction, self.pop(2 * arg)))
+            elif op == 'BUILD_CONST_KEY_MAP':
+                self.stack.append(self.add(instruction, self.pop(arg + 1)))
+            elif op in ('LIST_APPEND', 'SET_ADD', 'LIST_EXTEND', 'SET_UPDATE', 'DICT_UPDATE', 'DICT_MERGE'):
+                value = self.pop()
+                self.stack[-arg] = self.add(instruction, [self.stack[-arg]] + value)
+            elif op == 'MAP_ADD':
+                value = self.pop(2)
+                self.stack[-arg] = self.add(instruction, [self.stack[-arg]] + value)
+            elif op == 'UNPACK_SEQUENCE':
+                event = self.add(instruction, self.pop())
+                self.stack.extend([event] * arg)
+            elif op == 'LOAD_ATTR':
+                event = self.add(instruction, self.pop())
+                if arg & 1:
+                    self.stack.append(0)
+                self.stack.append(event)
+            elif op == 'CALL':
+                region = self.ins_span(instruction)
+                call = next((node for node in self.by_span.get(region, []) if isinstance(node, ast.Call)), None)
+                if call is None:
+                    raise ValueError('unmapped call provenance unsupported')
+                if isinstance(call.func, ast.Attribute) and call.func.attr in {
+                        'append', 'extend', 'insert', 'pop', 'remove', 'reverse', 'sort', 'clear',
+                        'setdefault', 'update', 'add', 'discard'}:
+                    raise ValueError('mutable method provenance unsupported')
+                self.stack.append(self.add(instruction, self.pop(arg + 2)))
+            elif op == 'FORMAT_VALUE':
+                self.stack.append(self.add(instruction, self.pop(2 if arg & 4 else 1)))
+            elif op == 'RETURN_VALUE':
+                self.pop()
+            else:
+                raise ValueError('unsupported provenance opcode: ' + op)
+        except (ValueError, IndexError, KeyError) as exc:
+            self.reason = str(exc)
+
+    def receipt(self, action, successful, detailed=False):
+        status = 'unsupported' if self.reason else 'ok' if successful and self.writer else 'incomplete'
+        selected, pending = set(), [self.writer] if status == 'ok' else []
+        while pending:
+            event = pending.pop()
+            if event not in selected:
+                selected.add(event)
+                pending.extend(self.events[event]['parents'])
+        atoms = sorted({tuple(span) for event in selected for span in self.events[event]['credit_spans']})
+        result = {'status': status, 'contract': self.contract, 'reason': self.reason,
+                  'source_hash': self.source_hash, 'input_hash': self.input_hash,
+                  'action': action, 'writer': {'event': self.writer, 'span': self.events[self.writer]['span']} if self.writer else None,
+                  'credit_spans': atoms, 'executed_spans': sorted(self.executed),
+                  'event_count': len(self.events), 'slice_event_count': len(selected),
+                  'trace_hash': self.trace_hash.hexdigest(),
+                  'semantics': 'last-stored-action; aggregate-container-origins; later-negative-guards-excluded'}
+        if detailed:
+            result['events'] = [self.events[event] for event in sorted(selected)]
+        return result
+
+
+def _runtime_execute(source, mode, inputs=None, actions=None, provenance=False, provenance_events=False):
+    if type(provenance) is not bool or type(provenance_events) is not bool or provenance_events and not provenance:
+        raise ValueError('provenance flags must be booleans; events require provenance')
+    if provenance and mode != 'control':
+        raise ValueError('action provenance requires control mode')
     input_values, allowed_actions = _runtime_control_request(mode, inputs, actions)
     try:
         tree = _runtime_tree(source)
@@ -1218,6 +1677,7 @@ def _runtime_execute(source, mode, inputs=None, actions=None):
         result = _runtime_result('policy_rejected', source, str(exc))
         result.update(_runtime_diagnostic(exc, source))
         return result
+    action_provenance = _ActionProvenance(source, tree, code, input_values) if provenance else None
     output = io.StringIO()
     output_count = 0
     def data_text(value):
@@ -1353,6 +1813,8 @@ def _runtime_execute(source, mode, inputs=None, actions=None):
             instruction = mapping.get(frame.f_lasti)
             if instruction is None or not instruction.positions.lineno:
                 return trace
+            if action_provenance is not None:
+                action_provenance.opcode(frame, instruction)
             op = instruction.opname
             pos = instruction.positions
             executed_spans.add((pos.lineno, pos.end_lineno, pos.col_offset, pos.end_col_offset))
@@ -1449,6 +1911,8 @@ def _runtime_execute(source, mode, inputs=None, actions=None):
     result = _runtime_result(status, source, reason, emitted, metrics, accepted)
     if mode == 'control':
         result['action'] = selected_action if type(selected_action) is str else None
+        if action_provenance is not None:
+            metrics['action_provenance'] = action_provenance.receipt(result['action'], accepted, provenance_events)
     result.update(error_diagnostic)
     return result
 
@@ -1467,16 +1931,18 @@ def worker_entry():
             observations = request['observations']
             if type(observations) is not list or not 1 <= len(observations) <= 48:
                 raise ValueError('batch requires 1..48 observations')
-            result = [_runtime_execute(request['source'], 'control', item, request['actions']) for item in observations]
+            result = [_runtime_execute(request['source'], 'control', item, request['actions'],
+                                       request.get('provenance', False), request.get('provenance_events', False)) for item in observations]
         else:
-            result = _runtime_execute(request['source'], request['mode'], request.get('inputs'), request.get('actions'))
+            result = _runtime_execute(request['source'], request['mode'], request.get('inputs'), request.get('actions'),
+                                      request.get('provenance', False), request.get('provenance_events', False))
     except BaseException as exc:
         result = {'status': 'worker_error', 'accepted': False, 'output': '',
                   'metrics': {}, 'reason': type(exc).__name__ + ': ' + str(exc)[:200]}
     sys.stdout.write(json.dumps(result, ensure_ascii=True, allow_nan=False))
 
 
-def judge(source, timeout=1.5, mode='general', inputs=None, actions=None):
+def judge(source, timeout=1.5, mode='general', inputs=None, actions=None, provenance=False, provenance_events=False):
     """Execute exact source in a restricted, bounded CPython subprocess.
 
     Reports executed computational operations connected to retained values or output.
@@ -1487,6 +1953,10 @@ def judge(source, timeout=1.5, mode='general', inputs=None, actions=None):
     if mode not in ('general', 'art', 'control'):
         raise ValueError('unknown judge mode')
     _runtime_control_request(mode, inputs, actions)
+    if type(provenance) is not bool or type(provenance_events) is not bool or provenance_events and not provenance:
+        raise ValueError('provenance flags must be booleans; events require provenance')
+    if provenance and mode != 'control':
+        raise ValueError('action provenance requires control mode')
     if not 0 < timeout <= 30:
         raise ValueError('timeout must be in (0, 30]')
     try:
@@ -1502,7 +1972,8 @@ def judge(source, timeout=1.5, mode='general', inputs=None, actions=None):
     with tempfile.TemporaryDirectory(prefix='netta-run-') as workdir:
         try:
             proc = subprocess.run([sys.executable, '-P', '-s', os.path.abspath(__file__), '--judge-worker'],
-                                  input=json.dumps({'source': source, 'mode': mode, 'inputs': inputs, 'actions': actions}), text=True,
+                                  input=json.dumps({'source': source, 'mode': mode, 'inputs': inputs, 'actions': actions,
+                                                    'provenance': provenance, 'provenance_events': provenance_events}), text=True,
                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=workdir,
                                   env={'PATH': os.defpath, 'PYTHONHASHSEED': '0'}, timeout=timeout)
         except subprocess.TimeoutExpired:
@@ -1518,7 +1989,7 @@ def judge(source, timeout=1.5, mode='general', inputs=None, actions=None):
         return _runtime_result('worker_error', source, 'invalid worker response')
 
 
-def judge_batch(source, observations, actions, timeout=3):
+def judge_batch(source, observations, actions, timeout=3, provenance=False, provenance_events=False):
     """Evaluate one unchanged controller over explicit inputs in a private child.
 
     Each observation has a fresh candidate namespace and instruction budget.
@@ -1526,6 +1997,8 @@ def judge_batch(source, observations, actions, timeout=3):
     """
     if not isinstance(source, str):
         raise TypeError('source must be str')
+    if type(provenance) is not bool or type(provenance_events) is not bool or provenance_events and not provenance:
+        raise ValueError('provenance flags must be booleans; events require provenance')
     if type(observations) is not list or not 1 <= len(observations) <= 48:
         raise ValueError('batch requires 1..48 observation input mappings')
     for inputs in observations:
@@ -1547,7 +2020,8 @@ def judge_batch(source, observations, actions, timeout=3):
     with tempfile.TemporaryDirectory(prefix='netta-control-') as workdir:
         try:
             proc = subprocess.run([sys.executable, '-P', '-s', os.path.abspath(__file__), '--judge-worker'],
-                                  input=json.dumps({'source': source, 'observations': observations, 'actions': actions}),
+                                  input=json.dumps({'source': source, 'observations': observations, 'actions': actions,
+                                                    'provenance': provenance, 'provenance_events': provenance_events}),
                                   text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=workdir,
                                   env={'PATH': os.defpath, 'PYTHONHASHSEED': '0'}, timeout=timeout)
         except subprocess.TimeoutExpired:

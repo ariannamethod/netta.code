@@ -1,0 +1,444 @@
+{
+  "aggregate_evaluation": {
+    "temporal": {
+      "raw_attempts": 128,
+      "played": 83,
+      "runtime_ok": 113,
+      "syntax_error": 13,
+      "corpus_replay": 31,
+      "distinct_played_sources": 46,
+      "completed": 82,
+      "completed_score_per_raw_attempt": 658.75,
+      "reward_per_raw_attempt": 0.41739529191522184,
+      "score_per_raw_attempt": 668.53125,
+      "mean_played_score": 1030.987951807229,
+      "best_score": 1392,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 34,
+        "move_limit": 48,
+        "syntax_error": 13,
+        "corpus_probe_behavior_replay": 22,
+        "runtime_error": 1,
+        "worker_error": 1,
+        "corpus_source_replay": 9
+      }
+    },
+    "coverage": {
+      "raw_attempts": 128,
+      "played": 81,
+      "runtime_ok": 113,
+      "syntax_error": 14,
+      "corpus_replay": 32,
+      "distinct_played_sources": 45,
+      "completed": 81,
+      "completed_score_per_raw_attempt": 644.21875,
+      "reward_per_raw_attempt": 0.41053707110537063,
+      "score_per_raw_attempt": 644.21875,
+      "mean_played_score": 1018.0246913580247,
+      "best_score": 1392,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 35,
+        "move_limit": 46,
+        "corpus_probe_behavior_replay": 22,
+        "syntax_error": 14,
+        "corpus_source_replay": 10,
+        "runtime_error": 1
+      }
+    },
+    "provenance": {
+      "raw_attempts": 128,
+      "played": 80,
+      "runtime_ok": 113,
+      "syntax_error": 14,
+      "corpus_replay": 33,
+      "distinct_played_sources": 44,
+      "completed": 80,
+      "completed_score_per_raw_attempt": 639.3125,
+      "reward_per_raw_attempt": 0.4059756533564529,
+      "score_per_raw_attempt": 639.3125,
+      "mean_played_score": 1022.9,
+      "best_score": 1392,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 33,
+        "move_limit": 47,
+        "corpus_probe_behavior_replay": 23,
+        "syntax_error": 14,
+        "corpus_source_replay": 10,
+        "runtime_error": 1
+      }
+    },
+    "random_legal": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 985.625,
+      "reward_per_raw_attempt": 0.6450297217335275,
+      "score_per_raw_attempt": 985.625,
+      "mean_played_score": 985.625,
+      "best_score": 1388,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 84,
+        "move_limit": 44
+      }
+    },
+    "fixed_greedy": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 1276.96875,
+      "reward_per_raw_attempt": 0.7116679877801759,
+      "score_per_raw_attempt": 1276.96875,
+      "mean_played_score": 1276.96875,
+      "best_score": 1804,
+      "max_tile": 256,
+      "statuses": {
+        "move_limit": 122,
+        "terminal": 6
+      }
+    }
+  },
+  "per_replica_arm": {
+    "00/temporal": {
+      "train": {
+        "raw_attempts": 128,
+        "played": 85,
+        "runtime_ok": 103,
+        "syntax_error": 22,
+        "corpus_replay": 18,
+        "distinct_played_sources": 45,
+        "completed": 85,
+        "completed_score_per_raw_attempt": 685.78125,
+        "reward_per_raw_attempt": 0.4281641642687406,
+        "score_per_raw_attempt": 685.78125,
+        "mean_played_score": 1032.7058823529412,
+        "best_score": 1408,
+        "max_tile": 128,
+        "statuses": {
+          "move_limit": 54,
+          "corpus_source_replay": 3,
+          "corpus_probe_behavior_replay": 15,
+          "terminal": 31,
+          "syntax_error": 22,
+          "runtime_error": 3
+        },
+        "elapsed_seconds": 183.84828591899714
+      },
+      "evaluate": {
+        "raw_attempts": 64,
+        "played": 46,
+        "runtime_ok": 56,
+        "syntax_error": 6,
+        "corpus_replay": 11,
+        "distinct_played_sources": 31,
+        "completed": 45,
+        "completed_score_per_raw_attempt": 723.3125,
+        "reward_per_raw_attempt": 0.46098126312872273,
+        "score_per_raw_attempt": 742.875,
+        "mean_played_score": 1033.5652173913043,
+        "best_score": 1344,
+        "max_tile": 128,
+        "statuses": {
+          "terminal": 20,
+          "move_limit": 25,
+          "syntax_error": 6,
+          "corpus_probe_behavior_replay": 7,
+          "runtime_error": 1,
+          "worker_error": 1,
+          "corpus_source_replay": 4
+        },
+        "elapsed_seconds": 129.77389163798944
+      },
+      "checkpoint_sha256": "d9d746ebcdd290bdf128bf092287cba6a6de0d3a3b2b66b658ea3aec28964087"
+    },
+    "00/coverage": {
+      "train": {
+        "raw_attempts": 128,
+        "played": 83,
+        "runtime_ok": 103,
+        "syntax_error": 22,
+        "corpus_replay": 20,
+        "distinct_played_sources": 44,
+        "completed": 83,
+        "completed_score_per_raw_attempt": 665.96875,
+        "reward_per_raw_attempt": 0.4184572773949578,
+        "score_per_raw_attempt": 665.96875,
+        "mean_played_score": 1027.0361445783133,
+        "best_score": 1408,
+        "max_tile": 128,
+        "statuses": {
+          "move_limit": 51,
+          "corpus_source_replay": 4,
+          "corpus_probe_behavior_replay": 16,
+          "terminal": 32,
+          "syntax_error": 22,
+          "runtime_error": 3
+        },
+        "elapsed_seconds": 175.78526639500342
+      },
+      "evaluate": {
+        "raw_attempts": 64,
+        "played": 44,
+        "runtime_ok": 57,
+        "syntax_error": 6,
+        "corpus_replay": 13,
+        "distinct_played_sources": 28,
+        "completed": 44,
+        "completed_score_per_raw_attempt": 700.5625,
+        "reward_per_raw_attempt": 0.4488025176689772,
+        "score_per_raw_attempt": 700.5625,
+        "mean_played_score": 1019.0,
+        "best_score": 1328,
+        "max_tile": 128,
+        "statuses": {
+          "terminal": 20,
+          "move_limit": 24,
+          "corpus_probe_behavior_replay": 7,
+          "syntax_error": 6,
+          "corpus_source_replay": 6,
+          "runtime_error": 1
+        },
+        "elapsed_seconds": 141.6597272880026
+      },
+      "checkpoint_sha256": "c29cda1bcaf83c638968c1847d2ddcbcea78f6f87fa6ea861e6fe8696398a001"
+    },
+    "01/temporal": {
+      "train": {
+        "raw_attempts": 128,
+        "played": 81,
+        "runtime_ok": 116,
+        "syntax_error": 12,
+        "corpus_replay": 35,
+        "distinct_played_sources": 41,
+        "completed": 81,
+        "completed_score_per_raw_attempt": 584.0625,
+        "reward_per_raw_attempt": 0.3887968536764547,
+        "score_per_raw_attempt": 584.0625,
+        "mean_played_score": 922.9629629629629,
+        "best_score": 1336,
+        "max_tile": 128,
+        "statuses": {
+          "terminal": 44,
+          "move_limit": 37,
+          "syntax_error": 12,
+          "corpus_probe_behavior_replay": 25,
+          "corpus_source_replay": 10
+        },
+        "elapsed_seconds": 147.46716874399863
+      },
+      "evaluate": {
+        "raw_attempts": 64,
+        "played": 37,
+        "runtime_ok": 57,
+        "syntax_error": 7,
+        "corpus_replay": 20,
+        "distinct_played_sources": 26,
+        "completed": 37,
+        "completed_score_per_raw_attempt": 594.1875,
+        "reward_per_raw_attempt": 0.37380932070172096,
+        "score_per_raw_attempt": 594.1875,
+        "mean_played_score": 1027.7837837837837,
+        "best_score": 1392,
+        "max_tile": 128,
+        "statuses": {
+          "syntax_error": 7,
+          "corpus_source_replay": 5,
+          "corpus_probe_behavior_replay": 15,
+          "terminal": 14,
+          "move_limit": 23
+        },
+        "elapsed_seconds": 85.5114986700064
+      },
+      "checkpoint_sha256": "a76b9e4335b002ab68a0d4d4e53542e03615bd47c8a18bcc03cc2455cb4d7fe4"
+    },
+    "00/provenance": {
+      "train": {
+        "raw_attempts": 128,
+        "played": 83,
+        "runtime_ok": 103,
+        "syntax_error": 22,
+        "corpus_replay": 20,
+        "distinct_played_sources": 44,
+        "completed": 83,
+        "completed_score_per_raw_attempt": 665.96875,
+        "reward_per_raw_attempt": 0.4184572773949578,
+        "score_per_raw_attempt": 665.96875,
+        "mean_played_score": 1027.0361445783133,
+        "best_score": 1408,
+        "max_tile": 128,
+        "statuses": {
+          "move_limit": 51,
+          "corpus_source_replay": 4,
+          "corpus_probe_behavior_replay": 16,
+          "terminal": 32,
+          "syntax_error": 22,
+          "runtime_error": 3
+        },
+        "elapsed_seconds": 180.400930349002
+      },
+      "evaluate": {
+        "raw_attempts": 64,
+        "played": 43,
+        "runtime_ok": 57,
+        "syntax_error": 6,
+        "corpus_replay": 14,
+        "distinct_played_sources": 27,
+        "completed": 43,
+        "completed_score_per_raw_attempt": 690.75,
+        "reward_per_raw_attempt": 0.43967968217114173,
+        "score_per_raw_attempt": 690.75,
+        "mean_played_score": 1028.093023255814,
+        "best_score": 1328,
+        "max_tile": 128,
+        "statuses": {
+          "terminal": 18,
+          "move_limit": 25,
+          "corpus_probe_behavior_replay": 8,
+          "syntax_error": 6,
+          "corpus_source_replay": 6,
+          "runtime_error": 1
+        },
+        "elapsed_seconds": 135.8937190019933
+      },
+      "checkpoint_sha256": "3378f15b4b620ddfc01adf9e3d77f82bddd1a6f2e17b3a4edecddd33a72e0176"
+    },
+    "01/coverage": {
+      "train": {
+        "raw_attempts": 128,
+        "played": 84,
+        "runtime_ok": 116,
+        "syntax_error": 12,
+        "corpus_replay": 32,
+        "distinct_played_sources": 45,
+        "completed": 84,
+        "completed_score_per_raw_attempt": 597.75,
+        "reward_per_raw_attempt": 0.4013792421832112,
+        "score_per_raw_attempt": 597.75,
+        "mean_played_score": 910.8571428571429,
+        "best_score": 1336,
+        "max_tile": 128,
+        "statuses": {
+          "terminal": 48,
+          "move_limit": 36,
+          "syntax_error": 12,
+          "corpus_probe_behavior_replay": 22,
+          "corpus_source_replay": 10
+        },
+        "elapsed_seconds": 163.78711333799583
+      },
+      "evaluate": {
+        "raw_attempts": 64,
+        "played": 37,
+        "runtime_ok": 56,
+        "syntax_error": 8,
+        "corpus_replay": 19,
+        "distinct_played_sources": 26,
+        "completed": 37,
+        "completed_score_per_raw_attempt": 587.875,
+        "reward_per_raw_attempt": 0.37227162454176405,
+        "score_per_raw_attempt": 587.875,
+        "mean_played_score": 1016.8648648648649,
+        "best_score": 1392,
+        "max_tile": 128,
+        "statuses": {
+          "syntax_error": 8,
+          "corpus_source_replay": 4,
+          "corpus_probe_behavior_replay": 15,
+          "terminal": 15,
+          "move_limit": 22
+        },
+        "elapsed_seconds": 82.50438440500875
+      },
+      "checkpoint_sha256": "e497a399f53d7e158b063cf3c4501ead69b6a7389a1b91977a154a63c439575d"
+    },
+    "01/provenance": {
+      "train": {
+        "raw_attempts": 128,
+        "played": 84,
+        "runtime_ok": 116,
+        "syntax_error": 12,
+        "corpus_replay": 32,
+        "distinct_played_sources": 45,
+        "completed": 84,
+        "completed_score_per_raw_attempt": 597.75,
+        "reward_per_raw_attempt": 0.4013792421832112,
+        "score_per_raw_attempt": 597.75,
+        "mean_played_score": 910.8571428571429,
+        "best_score": 1336,
+        "max_tile": 128,
+        "statuses": {
+          "terminal": 48,
+          "move_limit": 36,
+          "syntax_error": 12,
+          "corpus_probe_behavior_replay": 22,
+          "corpus_source_replay": 10
+        },
+        "elapsed_seconds": 168.51932471200416
+      },
+      "evaluate": {
+        "raw_attempts": 64,
+        "played": 37,
+        "runtime_ok": 56,
+        "syntax_error": 8,
+        "corpus_replay": 19,
+        "distinct_played_sources": 26,
+        "completed": 37,
+        "completed_score_per_raw_attempt": 587.875,
+        "reward_per_raw_attempt": 0.37227162454176405,
+        "score_per_raw_attempt": 587.875,
+        "mean_played_score": 1016.8648648648649,
+        "best_score": 1392,
+        "max_tile": 128,
+        "statuses": {
+          "syntax_error": 8,
+          "corpus_source_replay": 4,
+          "corpus_probe_behavior_replay": 15,
+          "terminal": 15,
+          "move_limit": 22
+        },
+        "elapsed_seconds": 77.23791008500848
+      },
+      "checkpoint_sha256": "2fe9339fe68559c621b3d4253bdf20f028875dc1e84d100904e5754d94ca61e2"
+    }
+  },
+  "paired": {
+    "coverage_minus_temporal_raw_score": {
+      "mean": -14.53125,
+      "bootstrap_95": [
+        -66.375,
+        40.75
+      ],
+      "paired_observations": 128
+    },
+    "provenance_minus_temporal_raw_score": {
+      "mean": -19.4375,
+      "bootstrap_95": [
+        -76.9375,
+        36.53125
+      ],
+      "paired_observations": 128
+    },
+    "provenance_minus_coverage_raw_score": {
+      "mean": -4.90625,
+      "bootstrap_95": [
+        -20.8125,
+        6.09375
+      ],
+      "paired_observations": 128
+    }
+  },
+  "elapsed_seconds": 897.2676336009899,
+  "sources_unchanged": true,
+  "release_state_untouched": true
+}

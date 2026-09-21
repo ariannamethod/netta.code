@@ -1,0 +1,637 @@
+{
+  "selection_rule": "First provenance evaluation attempt in replica0 with a supported strict selected-span subset; first such decision; replica1 only if replica0 has none. No score selection.",
+  "origin": "development/replica_00/provenance/records/evaluate/00000.json",
+  "origin_sha256": "016f97d9bcb13618e26bc28a76d64a0302ebdb91a640eafa0a03bb5d73163d67",
+  "replica": 0,
+  "attempt_index": 0,
+  "decision_index": 1,
+  "sample_seed": 113000000,
+  "episode_seed": 114000000,
+  "source": "board = [obs['c' + str(index)] for index in range(16)]\nactions = ['right', 'up', 'down', 'left']\nmaximum = max(board)\nposition = board.index(maximum)\npreferred = 'left' if position % 4 < 3 else 'right'\nif position // 4 >= 1:\n    preferred = 'down'\nfor direction in [preferred] + actions:\n    if obs['valid_' + direction]:\n        action = direction\n        break\n",
+  "source_hash": "309e90a84d8874d4491c326b19b563c7ec138a09b0cca7c131d1a05a9177189a",
+  "state_hash": "d5429e9d22e2f00e07de2285f12d99a590651fa32ec4f676dfa8dfa43c4a9d6f",
+  "episode": {
+    "score": 884,
+    "reward": 0.6332378223495702,
+    "moves": 114,
+    "status": "terminal",
+    "completed": true
+  },
+  "board_before": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "board_after": [
+    2,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+  ],
+  "action": "left",
+  "gain": 0,
+  "spawn": {
+    "cell": 11,
+    "value": 2
+  },
+  "temporal_target": 0.3896045039224749,
+  "receipt": {
+    "contract": "cpython-action-slice-v1",
+    "status": "ok",
+    "reason": "",
+    "source_hash": "309e90a84d8874d4491c326b19b563c7ec138a09b0cca7c131d1a05a9177189a",
+    "input_hash": "34cbadbbfb29f248bfeff0fc6a0db78fadfcc837f238bac84862ae51d2af7fd4",
+    "action": "left",
+    "writer": {
+      "event": 209,
+      "span": [
+        330,
+        336
+      ]
+    },
+    "credit_spans": [
+      [
+        0,
+        5
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        19,
+        22
+      ],
+      [
+        23,
+        28
+      ],
+      [
+        29,
+        30
+      ],
+      [
+        35,
+        40
+      ],
+      [
+        44,
+        49
+      ],
+      [
+        50,
+        52
+      ],
+      [
+        55,
+        62
+      ],
+      [
+        65,
+        66
+      ],
+      [
+        66,
+        73
+      ],
+      [
+        73,
+        74
+      ],
+      [
+        75,
+        79
+      ],
+      [
+        79,
+        80
+      ],
+      [
+        81,
+        87
+      ],
+      [
+        87,
+        88
+      ],
+      [
+        89,
+        95
+      ],
+      [
+        95,
+        96
+      ],
+      [
+        97,
+        104
+      ],
+      [
+        107,
+        110
+      ],
+      [
+        111,
+        116
+      ],
+      [
+        118,
+        126
+      ],
+      [
+        129,
+        134
+      ],
+      [
+        134,
+        140
+      ],
+      [
+        141,
+        148
+      ],
+      [
+        150,
+        159
+      ],
+      [
+        162,
+        168
+      ],
+      [
+        172,
+        180
+      ],
+      [
+        181,
+        182
+      ],
+      [
+        183,
+        184
+      ],
+      [
+        185,
+        186
+      ],
+      [
+        187,
+        188
+      ],
+      [
+        252,
+        261
+      ],
+      [
+        266,
+        275
+      ],
+      [
+        277,
+        278
+      ],
+      [
+        279,
+        286
+      ],
+      [
+        295,
+        298
+      ],
+      [
+        298,
+        299
+      ],
+      [
+        299,
+        307
+      ],
+      [
+        308,
+        309
+      ],
+      [
+        310,
+        319
+      ],
+      [
+        319,
+        320
+      ],
+      [
+        330,
+        336
+      ],
+      [
+        339,
+        348
+      ]
+    ],
+    "executed_spans": [
+      [
+        0,
+        5
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        19,
+        22
+      ],
+      [
+        23,
+        28
+      ],
+      [
+        29,
+        30
+      ],
+      [
+        35,
+        40
+      ],
+      [
+        44,
+        49
+      ],
+      [
+        50,
+        52
+      ],
+      [
+        55,
+        62
+      ],
+      [
+        65,
+        66
+      ],
+      [
+        66,
+        73
+      ],
+      [
+        73,
+        74
+      ],
+      [
+        75,
+        79
+      ],
+      [
+        79,
+        80
+      ],
+      [
+        81,
+        87
+      ],
+      [
+        87,
+        88
+      ],
+      [
+        89,
+        95
+      ],
+      [
+        95,
+        96
+      ],
+      [
+        97,
+        104
+      ],
+      [
+        107,
+        110
+      ],
+      [
+        111,
+        116
+      ],
+      [
+        118,
+        126
+      ],
+      [
+        129,
+        134
+      ],
+      [
+        134,
+        140
+      ],
+      [
+        141,
+        148
+      ],
+      [
+        150,
+        159
+      ],
+      [
+        162,
+        168
+      ],
+      [
+        172,
+        180
+      ],
+      [
+        181,
+        182
+      ],
+      [
+        183,
+        184
+      ],
+      [
+        185,
+        186
+      ],
+      [
+        187,
+        188
+      ],
+      [
+        205,
+        213
+      ],
+      [
+        214,
+        216
+      ],
+      [
+        217,
+        218
+      ],
+      [
+        219,
+        221
+      ],
+      [
+        222,
+        223
+      ],
+      [
+        252,
+        261
+      ],
+      [
+        266,
+        275
+      ],
+      [
+        277,
+        278
+      ],
+      [
+        279,
+        286
+      ],
+      [
+        295,
+        298
+      ],
+      [
+        298,
+        299
+      ],
+      [
+        299,
+        307
+      ],
+      [
+        308,
+        309
+      ],
+      [
+        310,
+        319
+      ],
+      [
+        319,
+        320
+      ],
+      [
+        330,
+        336
+      ],
+      [
+        339,
+        348
+      ]
+    ],
+    "event_count": 209,
+    "slice_event_count": 202,
+    "trace_hash": "b19a6727ed6815e165f0c8012ed7b2c49f01decfcf7e9a6d92697b1faf6b4cf9"
+  },
+  "generation_choices": [
+    {
+      "key": [
+        -1,
+        389
+      ],
+      "token": 389,
+      "byte_start": 0,
+      "byte_end": 19,
+      "token_hex": "626f617264203d205b6f62735b276327202b20",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        377,
+        387,
+        388,
+        367
+      ],
+      "token": 367,
+      "byte_start": 67,
+      "byte_end": 76,
+      "token_hex": "7269676874272c2027",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        387,
+        388,
+        367,
+        384
+      ],
+      "token": 384,
+      "byte_start": 76,
+      "byte_end": 82,
+      "token_hex": "7570272c2027",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        384,
+        414,
+        473,
+        455
+      ],
+      "token": 455,
+      "byte_start": 97,
+      "byte_end": 100,
+      "token_hex": "6d6178",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        37,
+        487,
+        477,
+        51
+      ],
+      "token": 51,
+      "byte_start": 187,
+      "byte_end": 188,
+      "token_hex": "33",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        487,
+        390,
+        261,
+        49
+      ],
+      "token": 49,
+      "byte_start": 222,
+      "byte_end": 223,
+      "token_hex": "31",
+      "selected": false,
+      "executed": true
+    }
+  ],
+  "eligible_choices": [
+    {
+      "key": [
+        -1,
+        389
+      ],
+      "token": 389,
+      "byte_start": 0,
+      "byte_end": 19,
+      "token_hex": "626f617264203d205b6f62735b276327202b20",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        377,
+        387,
+        388,
+        367
+      ],
+      "token": 367,
+      "byte_start": 67,
+      "byte_end": 76,
+      "token_hex": "7269676874272c2027",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        387,
+        388,
+        367,
+        384
+      ],
+      "token": 384,
+      "byte_start": 76,
+      "byte_end": 82,
+      "token_hex": "7570272c2027",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        384,
+        414,
+        473,
+        455
+      ],
+      "token": 455,
+      "byte_start": 97,
+      "byte_end": 100,
+      "token_hex": "6d6178",
+      "selected": true,
+      "executed": true
+    },
+    {
+      "key": [
+        37,
+        487,
+        477,
+        51
+      ],
+      "token": 51,
+      "byte_start": 187,
+      "byte_end": 188,
+      "token_hex": "33",
+      "selected": true,
+      "executed": true
+    }
+  ],
+  "replay_verified": true,
+  "selected_events_in_private_archive": true
+}

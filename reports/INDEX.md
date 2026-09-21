@@ -2,6 +2,10 @@
 
 Current behavior is described in the [project README](../README.md). Technical changes belong in [NETTALEELOG](../NETTALEELOG.md) and [NETTACODELOG](../NETTACODELOG.md); visible outputs belong in [gallery.html](../gallery.html).
 
+## Seventh engineering pass
+
+[Credit follows the stored action](iteration7/REPORT.md). Exact source-span attribution, corrected iterator provenance, static projection caching and the fixed three-arm 2048 comparison. [315 tests](iteration7/tests.json), [independent audit](iteration7/audit-summary.json), [exact gallery decision](iteration7/gallery-sample.json), [separate archive](iteration7/private-archive-inventory.json).
+
 ## Sixth engineering pass
 
 [Temporal credit, branching context and exact execution examples](iteration6/REPORT.md). Fixed 2048 and Code comparisons, source-level credit diagnosis, three original Doom frames and clarified dependency paths. [274 tests](iteration6/tests.json), [independent audit of 3,968 attempts](iteration6/audit-summary.json), [separate archive](iteration6/private-archive-inventory.json).

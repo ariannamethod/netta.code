@@ -1,0 +1,442 @@
+{
+  "study": "Seventh2048 final-action provenance eligibility",
+  "protocol": "protocol-2048.json",
+  "aggregate_evaluation": {
+    "temporal": {
+      "raw_attempts": 128,
+      "played": 83,
+      "runtime_ok": 113,
+      "syntax_error": 13,
+      "corpus_replay": 31,
+      "distinct_played_sources": 46,
+      "completed": 82,
+      "completed_score_per_raw_attempt": 658.75,
+      "reward_per_raw_attempt": 0.41739529191522184,
+      "score_per_raw_attempt": 668.53125,
+      "mean_played_score": 1030.987951807229,
+      "best_score": 1392,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 34,
+        "move_limit": 48,
+        "syntax_error": 13,
+        "corpus_probe_behavior_replay": 22,
+        "runtime_error": 1,
+        "worker_error": 1,
+        "corpus_source_replay": 9
+      }
+    },
+    "coverage": {
+      "raw_attempts": 128,
+      "played": 81,
+      "runtime_ok": 113,
+      "syntax_error": 14,
+      "corpus_replay": 32,
+      "distinct_played_sources": 45,
+      "completed": 81,
+      "completed_score_per_raw_attempt": 644.21875,
+      "reward_per_raw_attempt": 0.41053707110537063,
+      "score_per_raw_attempt": 644.21875,
+      "mean_played_score": 1018.0246913580247,
+      "best_score": 1392,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 35,
+        "move_limit": 46,
+        "corpus_probe_behavior_replay": 22,
+        "syntax_error": 14,
+        "corpus_source_replay": 10,
+        "runtime_error": 1
+      }
+    },
+    "provenance": {
+      "raw_attempts": 128,
+      "played": 80,
+      "runtime_ok": 113,
+      "syntax_error": 14,
+      "corpus_replay": 33,
+      "distinct_played_sources": 44,
+      "completed": 80,
+      "completed_score_per_raw_attempt": 639.3125,
+      "reward_per_raw_attempt": 0.4059756533564529,
+      "score_per_raw_attempt": 639.3125,
+      "mean_played_score": 1022.9,
+      "best_score": 1392,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 33,
+        "move_limit": 47,
+        "corpus_probe_behavior_replay": 23,
+        "syntax_error": 14,
+        "corpus_source_replay": 10,
+        "runtime_error": 1
+      }
+    },
+    "random_legal": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 985.625,
+      "reward_per_raw_attempt": 0.6450297217335275,
+      "score_per_raw_attempt": 985.625,
+      "mean_played_score": 985.625,
+      "best_score": 1388,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 84,
+        "move_limit": 44
+      }
+    },
+    "fixed_greedy": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 1276.96875,
+      "reward_per_raw_attempt": 0.7116679877801759,
+      "score_per_raw_attempt": 1276.96875,
+      "mean_played_score": 1276.96875,
+      "best_score": 1804,
+      "max_tile": 256,
+      "statuses": {
+        "move_limit": 122,
+        "terminal": 6
+      }
+    }
+  },
+  "per_replica_provenance_minus_coverage": [
+    -9.8125,
+    0.0
+  ],
+  "paired": {
+    "coverage_minus_temporal_raw_score": {
+      "mean": -14.53125,
+      "bootstrap_95": [
+        -66.375,
+        40.75
+      ],
+      "paired_observations": 128
+    },
+    "provenance_minus_temporal_raw_score": {
+      "mean": -19.4375,
+      "bootstrap_95": [
+        -76.9375,
+        36.53125
+      ],
+      "paired_observations": 128
+    },
+    "provenance_minus_coverage_raw_score": {
+      "mean": -4.90625,
+      "bootstrap_95": [
+        -20.8125,
+        6.09375
+      ],
+      "paired_observations": 128
+    }
+  },
+  "advancement_checks": {
+    "positive_against_coverage_both_replicas": false,
+    "pooled_gain_against_coverage_at_least25": false,
+    "played_mean_not_worse_than_coverage": true,
+    "primary_not_worse_than_temporal": false
+  },
+  "qualifies": false,
+  "decision": "No confirmation; preserve default and release snapshot.",
+  "raw_training_attempts": 768,
+  "raw_evaluation_attempts": 384,
+  "control_episodes": 256,
+  "immutable_receipts": 1408,
+  "elapsed_seconds": 897.2676336009899,
+  "source_and_episode_comparison": {
+    "0/train": {
+      "raw_attempts": 128,
+      "same_source": 128,
+      "same_status": 128,
+      "same_complete_episode_record": 128
+    },
+    "0/evaluate": {
+      "raw_attempts": 64,
+      "same_source": 62,
+      "same_status": 62,
+      "same_complete_episode_record": 62
+    },
+    "1/train": {
+      "raw_attempts": 128,
+      "same_source": 128,
+      "same_status": 128,
+      "same_complete_episode_record": 128
+    },
+    "1/evaluate": {
+      "raw_attempts": 64,
+      "same_source": 64,
+      "same_status": 64,
+      "same_complete_episode_record": 64
+    }
+  },
+  "provenance_coverage": {
+    "temporal/train": {
+      "decisions": 18214,
+      "statuses": {
+        "ok": 9027,
+        "unsupported": 9187
+      },
+      "unsupported_reasons": {
+        "unsupported provenance control construct": 8394,
+        "unsupported provenance opcode: MAKE_FUNCTION": 793
+      },
+      "empty_selected_slices": 9187,
+      "distinct_supported_sources": 29,
+      "distinct_unsupported_sources": 31,
+      "families": {
+        "inline": {
+          "played_attempts": 82,
+          "statuses": {
+            "ok": 9027,
+            "unsupported": 71
+          }
+        },
+        "generator": {
+          "played_attempts": 84,
+          "statuses": {
+            "unsupported": 9116
+          }
+        }
+      }
+    },
+    "temporal/evaluate": {
+      "decisions": 9483,
+      "statuses": {
+        "ok": 4780,
+        "unsupported": 4703
+      },
+      "unsupported_reasons": {
+        "unsupported provenance control construct": 4143,
+        "unsupported provenance opcode: MAKE_FUNCTION": 560
+      },
+      "empty_selected_slices": 4703,
+      "distinct_supported_sources": 21,
+      "distinct_unsupported_sources": 25,
+      "families": {
+        "inline": {
+          "played_attempts": 41,
+          "statuses": {
+            "ok": 4780
+          }
+        },
+        "generator": {
+          "played_attempts": 42,
+          "statuses": {
+            "unsupported": 4703
+          }
+        }
+      }
+    },
+    "coverage/train": {
+      "decisions": 18251,
+      "statuses": {
+        "ok": 9335,
+        "unsupported": 8916
+      },
+      "unsupported_reasons": {
+        "unsupported provenance control construct": 8123,
+        "unsupported provenance opcode: MAKE_FUNCTION": 793
+      },
+      "empty_selected_slices": 8916,
+      "distinct_supported_sources": 29,
+      "distinct_unsupported_sources": 32,
+      "families": {
+        "inline": {
+          "played_attempts": 84,
+          "statuses": {
+            "ok": 9335,
+            "unsupported": 71
+          }
+        },
+        "generator": {
+          "played_attempts": 83,
+          "statuses": {
+            "unsupported": 8845
+          }
+        }
+      }
+    },
+    "coverage/evaluate": {
+      "decisions": 9196,
+      "statuses": {
+        "ok": 5069,
+        "unsupported": 4127
+      },
+      "unsupported_reasons": {
+        "unsupported provenance control construct": 3567,
+        "unsupported provenance opcode: MAKE_FUNCTION": 560
+      },
+      "empty_selected_slices": 4127,
+      "distinct_supported_sources": 21,
+      "distinct_unsupported_sources": 24,
+      "families": {
+        "inline": {
+          "played_attempts": 43,
+          "statuses": {
+            "ok": 5069
+          }
+        },
+        "generator": {
+          "played_attempts": 38,
+          "statuses": {
+            "unsupported": 4127
+          }
+        }
+      }
+    },
+    "provenance/train": {
+      "decisions": 18251,
+      "statuses": {
+        "ok": 9335,
+        "unsupported": 8916
+      },
+      "unsupported_reasons": {
+        "unsupported provenance control construct": 8123,
+        "unsupported provenance opcode: MAKE_FUNCTION": 793
+      },
+      "empty_selected_slices": 8916,
+      "distinct_supported_sources": 29,
+      "distinct_unsupported_sources": 32,
+      "families": {
+        "inline": {
+          "played_attempts": 84,
+          "statuses": {
+            "ok": 9335,
+            "unsupported": 71
+          }
+        },
+        "generator": {
+          "played_attempts": 83,
+          "statuses": {
+            "unsupported": 8845
+          }
+        }
+      }
+    },
+    "provenance/evaluate": {
+      "decisions": 9090,
+      "statuses": {
+        "ok": 4963,
+        "unsupported": 4127
+      },
+      "unsupported_reasons": {
+        "unsupported provenance control construct": 3567,
+        "unsupported provenance opcode: MAKE_FUNCTION": 560
+      },
+      "empty_selected_slices": 4127,
+      "distinct_supported_sources": 20,
+      "distinct_unsupported_sources": 24,
+      "families": {
+        "inline": {
+          "played_attempts": 42,
+          "statuses": {
+            "ok": 4963
+          }
+        },
+        "generator": {
+          "played_attempts": 38,
+          "statuses": {
+            "unsupported": 4127
+          }
+        }
+      }
+    }
+  },
+  "generation_key_coverage": {
+    "temporal/train": {
+      "completed_episodes": 166,
+      "actual_eligible_episode_keys": 1123,
+      "covered_episode_keys": 507,
+      "selected_episode_keys": 479,
+      "dropped_episode_keys": 28,
+      "episodes_with_dropped_keys": 28,
+      "shared_keys_with_changed_target": 132,
+      "max_shared_target_deviation": 0.2508100515789089,
+      "mean_episode_shared_target_deviation": 0.004162194216922163
+    },
+    "temporal/evaluate": {
+      "completed_episodes": 82,
+      "actual_eligible_episode_keys": 561,
+      "covered_episode_keys": 253,
+      "selected_episode_keys": 241,
+      "dropped_episode_keys": 12,
+      "episodes_with_dropped_keys": 12,
+      "shared_keys_with_changed_target": 70,
+      "max_shared_target_deviation": 0.2615232788971721,
+      "mean_episode_shared_target_deviation": 0.004541327846969271
+    },
+    "coverage/train": {
+      "completed_episodes": 167,
+      "actual_eligible_episode_keys": 518,
+      "covered_episode_keys": 518,
+      "selected_episode_keys": 491,
+      "dropped_episode_keys": 27,
+      "episodes_with_dropped_keys": 27,
+      "shared_keys_with_changed_target": 135,
+      "max_shared_target_deviation": 0.2508100515789089,
+      "mean_episode_shared_target_deviation": 0.004314563403644072
+    },
+    "coverage/evaluate": {
+      "completed_episodes": 81,
+      "actual_eligible_episode_keys": 274,
+      "covered_episode_keys": 274,
+      "selected_episode_keys": 260,
+      "dropped_episode_keys": 14,
+      "episodes_with_dropped_keys": 14,
+      "shared_keys_with_changed_target": 76,
+      "max_shared_target_deviation": 0.2615232788971721,
+      "mean_episode_shared_target_deviation": 0.00468387914464609
+    },
+    "provenance/train": {
+      "completed_episodes": 167,
+      "actual_eligible_episode_keys": 491,
+      "covered_episode_keys": 518,
+      "selected_episode_keys": 491,
+      "dropped_episode_keys": 27,
+      "episodes_with_dropped_keys": 27,
+      "shared_keys_with_changed_target": 135,
+      "max_shared_target_deviation": 0.2508100515789089,
+      "mean_episode_shared_target_deviation": 0.004314563403644072
+    },
+    "provenance/evaluate": {
+      "completed_episodes": 80,
+      "actual_eligible_episode_keys": 254,
+      "covered_episode_keys": 268,
+      "selected_episode_keys": 254,
+      "dropped_episode_keys": 14,
+      "episodes_with_dropped_keys": 14,
+      "shared_keys_with_changed_target": 74,
+      "max_shared_target_deviation": 0.2615232788971721,
+      "mean_episode_shared_target_deviation": 0.004553913114893569
+    }
+  },
+  "release_state_sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+  "journal": "development/journal_verification.json",
+  "aborted_preflight": {
+    "completed_receipts_preserved": 67,
+    "inflight_max": 2,
+    "excluded_from_comparison": true,
+    "outcomes_used_for_changes": false,
+    "same_seeds_and_protocol_restarted_after_projection_fix": true,
+    "receipt": "aborted-preflight/STOP.json"
+  },
+  "aborted_comprehension": {
+    "completed_receipts_preserved": 817,
+    "inflight_max": 2,
+    "excluded_from_comparison": true,
+    "learning_parameters_changed": false,
+    "same_seeds_and_protocol_restarted_after_loop_projection_fix_and_static_atom_cache": true,
+    "receipt": "aborted-comprehension/STOP.json"
+  }
+}

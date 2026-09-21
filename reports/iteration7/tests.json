@@ -1,0 +1,29 @@
+{
+  "command": "python3 -m unittest discover -s tests -v",
+  "tests": 315,
+  "elapsed_seconds": 135.302,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "passed": true,
+  "log_sha256": "1e22e68ed848346ff6b4176b2ed03bcdea69c5af400b3d43556baeb4ce167447",
+  "source_sha256": {
+    "nettalee.py": "6ce333fbd78e1d8a7692b6cb310d69828b209af8dfafd3dec9605be9a0e35934",
+    "nettacode.py": "d9eb1a8de6dc2678533ac4dbb6d1a534e639440a116533859ffe7e95bd4d2af3",
+    "2048.py": "43428b406d24d5d4a7c3a3c24acb0e2555a8f1f3dbce7b9a142d4237702a72e8",
+    "doomer.py": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd",
+    "doom.py": "a28295346f238be3348ab5c728e484b8829bdb2dfae7644d4c5ff9c13aa074fe"
+  },
+  "suite_scope": "Full suite on the measured source freeze; subsequent CLI-only archive hardening verified separately below.",
+  "archive_hardening_supplement": {
+    "command": "python -m unittest discover -s tests -p test_2048_iteration7.py -v",
+    "tests": 10,
+    "new_regressions": 3,
+    "passed": true,
+    "elapsed_seconds": 2.754,
+    "released_bridge_sha256": "38a31075eb0ad454093ef335f41fc813bde1562a54097ebefec975cb8fb15302",
+    "scope": "Three added persistence regressions and seven existing bridge tests; observed journal-loss cause remains unproven. Existing output directory collision does not overwrite prior evidence.",
+    "log_sha256": "5359acbd45b7bee112b30c5d9b3a36cd1f03587e33b3220d059a1cdb6ad22079",
+    "log": "archive-bridge-tests.log"
+  }
+}

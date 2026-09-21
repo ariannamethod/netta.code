@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "applicable_final_sources": {
+    "nettalee.py": "6ce333fbd78e1d8a7692b6cb310d69828b209af8dfafd3dec9605be9a0e35934",
+    "nettacode.py": "d9eb1a8de6dc2678533ac4dbb6d1a534e639440a116533859ffe7e95bd4d2af3"
+  },
+  "runtime_sha256": "2f0c111880ea74b2567d271acd7218253728d69c49018fcf6c909a201f936946",
+  "initial_generation_comparisons": 476,
+  "current_final_generation_comparisons": 56,
+  "headline_generation_comparisons": 532,
+  "initial_learning_comparisons": 20,
+  "current_final_learning_comparisons": 5,
+  "headline_learning_comparisons": 25,
+  "archived_recheck_excluded": "superseded-final/",
+  "caller_routes": 6,
+  "caller_routes_reexecuted_for_observer_only_fix": false,
+  "public_states_unchanged": true,
+  "unchanged_ast_outside_optional_observer": true
+}

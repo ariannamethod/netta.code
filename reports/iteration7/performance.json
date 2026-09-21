@@ -1,0 +1,172 @@
+{
+  "scope": "One separate fixed-policy performance diagnosis; measured training/evaluation attempts unchanged.",
+  "record": "results/iteration7/2048/aborted-comprehension/replica_00/temporal/records/train/00004.json",
+  "record_sha256": "8849198040dfd757b737cc13383c46f1e269b2c5c1c9f6f5607138f449bb52ee",
+  "source_hash": "3c92c339653e844e44c728a983e9108302ee1f40155df2471c1f0a19a13ae5d9",
+  "source_bytes": 874,
+  "sample_seed": 111000004,
+  "episode_seed": 112000004,
+  "max_moves": 128,
+  "frozen_sha256": {
+    "2048.py": "43428b406d24d5d4a7c3a3c24acb0e2555a8f1f3dbce7b9a142d4237702a72e8",
+    "nettalee.py": "6ce333fbd78e1d8a7692b6cb310d69828b209af8dfafd3dec9605be9a0e35934"
+  },
+  "worker_limits": {
+    "cpu_soft_seconds": 10,
+    "cpu_hard_seconds": 10,
+    "address_space_bytes": 268435456,
+    "per_decision_wall_seconds": 1.5,
+    "episode_wall_seconds": 30
+  },
+  "arms": {
+    "off": {
+      "status": "move_limit",
+      "completed": true,
+      "score": 1272,
+      "moves": 128,
+      "reward": 0.7130044843049327,
+      "diagnostic": null,
+      "wall_seconds": 1.6450042639917228,
+      "response_attempts": 128,
+      "first_failed_response": null,
+      "last_successful_response": {
+        "index": 127,
+        "accepted": true,
+        "action": "up",
+        "status": "ok",
+        "response_seconds": 0.013118465998559259,
+        "process": {
+          "user_cpu_seconds": 1.56,
+          "system_cpu_seconds": 0.02,
+          "VmPeak_KiB": 46760,
+          "VmSize_KiB": 46760,
+          "VmHWM_KiB": 18232,
+          "VmRSS_KiB": 18232
+        }
+      },
+      "cleanup_killed": true,
+      "pre_close_process": {
+        "user_cpu_seconds": 1.56,
+        "system_cpu_seconds": 0.02,
+        "VmPeak_KiB": 46760,
+        "VmSize_KiB": 46760,
+        "VmHWM_KiB": 18232,
+        "VmRSS_KiB": 18232
+      },
+      "exit_code_before_original_close": null,
+      "final_exit_code": -9,
+      "final_signal": "SIGKILL",
+      "wait4_rusage": {
+        "user_cpu_seconds": 1.565315,
+        "system_cpu_seconds": 0.024260999999999998,
+        "total_cpu_seconds": 1.589576,
+        "peak_rss_KiB": 25168,
+        "minor_faults": 4895,
+        "major_faults": 0,
+        "voluntary_context_switches": 129,
+        "involuntary_context_switches": 16
+      }
+    },
+    "on": {
+      "status": "move_limit",
+      "completed": true,
+      "score": 1272,
+      "moves": 128,
+      "reward": 0.7130044843049327,
+      "diagnostic": null,
+      "wall_seconds": 7.325754823003081,
+      "response_attempts": 128,
+      "first_failed_response": null,
+      "last_successful_response": {
+        "index": 127,
+        "accepted": true,
+        "action": "up",
+        "status": "ok",
+        "response_seconds": 0.053159754010266624,
+        "process": {
+          "user_cpu_seconds": 7.19,
+          "system_cpu_seconds": 0.04,
+          "VmPeak_KiB": 57916,
+          "VmSize_KiB": 55868,
+          "VmHWM_KiB": 29248,
+          "VmRSS_KiB": 27412
+        }
+      },
+      "cleanup_killed": true,
+      "pre_close_process": {
+        "user_cpu_seconds": 7.19,
+        "system_cpu_seconds": 0.04,
+        "VmPeak_KiB": 57916,
+        "VmSize_KiB": 55868,
+        "VmHWM_KiB": 29248,
+        "VmRSS_KiB": 27412
+      },
+      "exit_code_before_original_close": null,
+      "final_exit_code": -9,
+      "final_signal": "SIGKILL",
+      "wait4_rusage": {
+        "user_cpu_seconds": 7.193363,
+        "system_cpu_seconds": 0.040649,
+        "total_cpu_seconds": 7.234012,
+        "peak_rss_KiB": 29248,
+        "minor_faults": 14611,
+        "major_faults": 0,
+        "voluntary_context_switches": 88,
+        "involuntary_context_switches": 102
+      }
+    }
+  },
+  "pair_shared_moves": 128,
+  "pair_shared_actions_observations_boards_exact": true,
+  "on_vs_original_record_shared_moves": 110,
+  "on_vs_original_record_shared_actions_observations_boards_exact": true,
+  "note": "Successful worker is killed only for normal close; failed worker exit was observed and wait4 resources captured before close. Worker implementation, limits, source and seed are unchanged.",
+  "cache_equivalence": {
+    "scope": "Static atom projection cache only; both sides use identical corrected iterator bookkeeping.",
+    "source_hash": "3c92c339653e844e44c728a983e9108302ee1f40155df2471c1f0a19a13ae5d9",
+    "runtime_sha256": "2f0c111880ea74b2567d271acd7218253728d69c49018fcf6c909a201f936946",
+    "observations": 128,
+    "observation_sha256": "1bf4ae7611d10df1a0688dae4758b0f299a5a9dc095e20bf95756be93b3849dd",
+    "full_results_identical": true,
+    "actions_equal_original_untraced_episode": true,
+    "arms": {
+      "uncached": {
+        "execution_cpu_seconds": 12.048958860000004,
+        "execution_wall_seconds": 12.051255939033581,
+        "full_result_sha256_per_observation_summary": {
+          "count": 128,
+          "canonical_sha256": "cf2a211df1768f5e1ca02181e08422a07552396bafe3bbc3ff199551bd67cfed"
+        },
+        "actions_summary": {
+          "count": 128,
+          "canonical_sha256": "ba8fa41270743e2169e53230e6190626f6ac3ef80d08df9282b5246171c92f8b"
+        },
+        "event_and_slice_counts_summary": {
+          "count": 128,
+          "canonical_sha256": "e4cf4b3831158a925933b914f4c6f40a311c6d7df2e63d97572811cb3085b1b8"
+        }
+      },
+      "cached": {
+        "execution_cpu_seconds": 7.227206457999992,
+        "execution_wall_seconds": 7.228274651977699,
+        "full_result_sha256_per_observation_summary": {
+          "count": 128,
+          "canonical_sha256": "cf2a211df1768f5e1ca02181e08422a07552396bafe3bbc3ff199551bd67cfed"
+        },
+        "actions_summary": {
+          "count": 128,
+          "canonical_sha256": "ba8fa41270743e2169e53230e6190626f6ac3ef80d08df9282b5246171c92f8b"
+        },
+        "event_and_slice_counts_summary": {
+          "count": 128,
+          "canonical_sha256": "e4cf4b3831158a925933b914f4c6f40a311c6d7df2e63d97572811cb3085b1b8"
+        }
+      }
+    },
+    "private_full_receipt": {
+      "path": "results/iteration7/performance/fixed/cache-equivalence.json",
+      "sha256": "cd9cd6bb84f024ce196a71d8552c3105aa9e63c8c4b2848eecebfb18443822f9"
+    }
+  },
+  "source": "board = [obs['c' + str(index)] for index in range(16)]\nactions = ['up', 'left', 'right', 'down']\nhorizontal = 0\nvertical = 0\nfor row in range(4):\n    for column in range(3):\n        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])\n        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])\nbest = -1000000\nfor direction in actions:\n    if obs['valid_' + direction]:\n        score = 0\n        for row in range(4):\n            for column in range(3):\n                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row\n                second = first + 1 if direction in ('left', 'right') else first + 4\n                if board[first] == board[second] and board[first] > 0:\n                    score += board[first] * 4\n        if score > best:\n            best = score\n            action = direction\n"
+}
