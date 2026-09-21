@@ -1,0 +1,62 @@
+{
+  "stage": "development",
+  "replicas": 2,
+  "training_attempts_per_arm_replica": 128,
+  "evaluation_attempts_per_arm_replica": 64,
+  "arms": {
+    "legacy": {
+      "decision_credit": false,
+      "contract": null
+    },
+    "uniform": {
+      "decision_credit": true,
+      "contract": "2048-uniform-v1"
+    },
+    "temporal": {
+      "decision_credit": true,
+      "contract": "2048-temporal-return-v1"
+    }
+  },
+  "decision_strength": 2.5,
+  "quality": false,
+  "executed_credit": false,
+  "max_moves": 128,
+  "workers": 2,
+  "seeds": {
+    "training_sample_base": 91000000,
+    "training_episode_base": 92000000,
+    "evaluation_sample_base": 93000000,
+    "evaluation_episode_base": 94000000,
+    "replica_stride": 10000
+  },
+  "comparators": [
+    "uniform_random_legal",
+    "greedy_merge_then_empty_LDRU"
+  ],
+  "prospective_export_replica": 0,
+  "checkpoint_rule": "final fixed-budget checkpoint; root decides arm adoption from complete evidence",
+  "confirmation_selection_rule": "The single temporal candidate advances only with positive completed-score/raw delta against uniform in BOTH development replicas, pooled gain >=25 points/raw against uniform, pooled mean played score >=uniform, and pooled completed-score/raw >=legacy. Confirmation uses all three arms, 3 fresh replicas, 256 train and 128 eval each. No hyperparameter sweep. If development does not qualify, keep release state and legacy defaults.",
+  "decision_target": "Discounted mean actual gains over current and up to7 subsequent observed moves, gamma.9, available-window normalization. Target = terminal reward + min(reward,1-reward)*(return-meanreturn)/maxabsdeviation; constant gains/returns keep uniform reward; endpoint rounding bounded[0,1]. Episode target mean preserved within floating-point tolerance. No oracle future actions, RNG calls or action substitution.",
+  "exposure_control": "Uniform uses identical receipt shape and actual executed-line eligibility, with the same terminal episode reward assigned to each decision. Each local association averages its eligible decision targets and updates once per episode.",
+  "exposure_fairness": "Arms share starting state, raw attempt budgets and environment/sample seeds. Each arm generates its own programs as learning proceeds; resulting episode lengths and traces may differ. No credit multiplier for repeated line events or total episode length.",
+  "generation_inputs": "Code generation sees its learned state and corpus, not the board. Board/action information changes host learning targets after actual execution.",
+  "evidence_layout": "Every measured attempt has an immutable per-index JSON receipt; completed phase JSONL is an atomic aggregation. Phase manifests bind every shard hash and exact count.",
+  "primary": "completed episode score per raw generation attempt; incomplete episodes, failures and replay rejections count zero",
+  "secondary": [
+    "completed/raw",
+    "score per played episode",
+    "reward/raw",
+    "syntax/runtime failures",
+    "corpus replays",
+    "unique played sources"
+  ],
+  "interpretation": "A generated-policy run includes novelty and syntax failures; fixed controls choose legal actions on every seed.",
+  "bundle_sha256": {
+    "2048.py": "c53cc562aecf644c05de2c214908f32d4a2b80b18a0d7d37f820ec115eff5685",
+    "input.json": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+    "nettalee.py": "b3837b8edb95c419b56fb313a1ba361978abbbe32747623752fa5d6f7323ccf7",
+    "predeclared_protocol.json": "f97c092c5c2bd67c0f4928d075cc437b5238ccbe4c880160f25784a9412b97bd",
+    "run_2048_iteration6.py": "f27701e06da94262b7c18c559350981c9cfda827599822ccc588d99a3963741a"
+  },
+  "created_before_first_measurement": true
+}

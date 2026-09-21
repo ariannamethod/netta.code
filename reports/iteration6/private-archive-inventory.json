@@ -1,0 +1,8 @@
+{
+  "archive": "netta-iteration6-research.zip",
+  "bytes": 21775680,
+  "sha256": "6514c658cc60ba471f985503794b4f5bd1e1bfe3423eeb80ec26e04d839b7fd6",
+  "files": 4684,
+  "uncompressed_input_bytes": 194895891,
+  "scope": "Complete sixth-pass immutable attempts, frozen candidate/source, checkpoints, audits, reproduction tools and verified execution examples; stored separately from the public repository."
+}

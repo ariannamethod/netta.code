@@ -1,0 +1,54 @@
+{
+  "protocol": "protocol-code.json",
+  "measured_attempts": 2560,
+  "totals": {
+    "table": {
+      "first": {
+        "attempts": 256,
+        "runtime_ok": 123,
+        "productive": 82,
+        "task_passed": 0,
+        "source_replay": 39
+      },
+      "branch": {
+        "attempts": 256,
+        "runtime_ok": 126,
+        "productive": 68,
+        "task_passed": 1,
+        "source_replay": 58
+      },
+      "branch_erased": {
+        "attempts": 256,
+        "runtime_ok": 133,
+        "productive": 73,
+        "task_passed": 1,
+        "source_replay": 60
+      }
+    },
+    "numbers": {
+      "first": {
+        "attempts": 256,
+        "runtime_ok": 164,
+        "productive": 153,
+        "task_passed": 141,
+        "source_replay": 10
+      },
+      "branch": {
+        "attempts": 256,
+        "runtime_ok": 165,
+        "productive": 152,
+        "task_passed": 143,
+        "source_replay": 12
+      },
+      "branch_erased": {
+        "attempts": 256,
+        "runtime_ok": 169,
+        "productive": 155,
+        "task_passed": 145,
+        "source_replay": 13
+      }
+    }
+  },
+  "advancement_gate_passed": false,
+  "decision": "Keep the public first-anchor model and state; candidate remains in the separate full experiment archive."
+}

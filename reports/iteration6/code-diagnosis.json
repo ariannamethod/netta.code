@@ -1,0 +1,282 @@
+{
+  "corpus_context_support": {
+    "first": {
+      "contexts": 2381,
+      "successor_support_histogram": {
+        "2": 404,
+        "43": 1,
+        "1": 1718,
+        "6": 12,
+        "3": 129,
+        "19": 1,
+        "4": 49,
+        "53": 1,
+        "147": 1,
+        "10": 2,
+        "5": 36,
+        "9": 5,
+        "7": 7,
+        "8": 4,
+        "96": 1,
+        "23": 1,
+        "13": 1,
+        "81": 1,
+        "14": 1,
+        "89": 1,
+        "16": 1,
+        "88": 1,
+        "20": 1,
+        "121": 1,
+        "18": 1
+      }
+    },
+    "later": {
+      "contexts": 4720,
+      "successor_support_histogram": {
+        "2": 332,
+        "3": 84,
+        "1": 4107,
+        "17": 2,
+        "25": 2,
+        "30": 5,
+        "9": 15,
+        "7": 13,
+        "12": 4,
+        "8": 14,
+        "5": 42,
+        "15": 2,
+        "48": 1,
+        "14": 4,
+        "29": 4,
+        "38": 2,
+        "45": 1,
+        "26": 1,
+        "4": 23,
+        "10": 8,
+        "13": 7,
+        "11": 7,
+        "16": 5,
+        "23": 2,
+        "6": 16,
+        "27": 2,
+        "20": 4,
+        "33": 1,
+        "21": 3,
+        "31": 1,
+        "19": 2,
+        "32": 1,
+        "18": 2,
+        "28": 1
+      }
+    }
+  },
+  "tasks": {
+    "table": {
+      "first": {
+        "attempts": 256,
+        "statuses": {
+          "experience_replay": 38,
+          "accepted": 42,
+          "syntax_error": 115,
+          "source_replay": 39,
+          "runtime_error": 17,
+          "behavior_replay": 4,
+          "trivial": 1
+        },
+        "exceptions": {
+          "none": 124,
+          "SyntaxError": 108,
+          "NameError": 16,
+          "IndentationError": 7,
+          "ValueError": 1
+        },
+        "runtime_ok": 123,
+        "productive": 82,
+        "task_passed": 0,
+        "replay_reasons": {
+          "whole_source": 39
+        }
+      },
+      "branch": {
+        "attempts": 256,
+        "statuses": {
+          "syntax_error": 106,
+          "accepted": 38,
+          "source_replay": 58,
+          "experience_replay": 27,
+          "runtime_error": 23,
+          "behavior_replay": 3,
+          "trivial": 1
+        },
+        "exceptions": {
+          "SyntaxError": 99,
+          "none": 127,
+          "NameError": 16,
+          "TypeError": 1,
+          "ValueError": 6,
+          "IndentationError": 7
+        },
+        "runtime_ok": 126,
+        "productive": 68,
+        "task_passed": 1,
+        "replay_reasons": {
+          "whole_source": 58
+        }
+      },
+      "branch_erased": {
+        "attempts": 256,
+        "statuses": {
+          "syntax_error": 103,
+          "accepted": 45,
+          "source_replay": 60,
+          "experience_replay": 24,
+          "runtime_error": 19,
+          "behavior_replay": 4,
+          "trivial": 1
+        },
+        "exceptions": {
+          "SyntaxError": 96,
+          "none": 134,
+          "NameError": 16,
+          "TypeError": 1,
+          "ValueError": 2,
+          "IndentationError": 7
+        },
+        "runtime_ok": 133,
+        "productive": 73,
+        "task_passed": 1,
+        "replay_reasons": {
+          "whole_source": 60
+        }
+      },
+      "actual_later_prior_use": {
+        "other": {
+          "attempts": 130,
+          "ambiguous_choices": 2207,
+          "consultations": 1269,
+          "zero_weight": 862,
+          "positive_weight": 407,
+          "positive_weight_sum": 379.4444726745894
+        },
+        "productive": {
+          "attempts": 68,
+          "ambiguous_choices": 1804,
+          "consultations": 1580,
+          "zero_weight": 882,
+          "positive_weight": 698,
+          "positive_weight_sum": 539.8732355513645
+        },
+        "source_replay": {
+          "attempts": 58,
+          "ambiguous_choices": 426,
+          "consultations": 282,
+          "zero_weight": 107,
+          "positive_weight": 175,
+          "positive_weight_sum": 174.09942745289942
+        }
+      }
+    },
+    "numbers": {
+      "first": {
+        "attempts": 256,
+        "statuses": {
+          "syntax_error": 83,
+          "experience_replay": 145,
+          "accepted": 7,
+          "source_replay": 10,
+          "runtime_error": 7,
+          "behavior_replay": 2,
+          "truncated": 2
+        },
+        "exceptions": {
+          "SyntaxError": 78,
+          "none": 166,
+          "IndentationError": 5,
+          "ValueError": 3,
+          "NameError": 4
+        },
+        "runtime_ok": 164,
+        "productive": 153,
+        "task_passed": 141,
+        "replay_reasons": {
+          "whole_source": 10
+        }
+      },
+      "branch": {
+        "attempts": 256,
+        "statuses": {
+          "syntax_error": 80,
+          "experience_replay": 141,
+          "accepted": 11,
+          "source_replay": 12,
+          "runtime_error": 11,
+          "behavior_replay": 1
+        },
+        "exceptions": {
+          "SyntaxError": 76,
+          "none": 165,
+          "IndentationError": 4,
+          "ValueError": 5,
+          "NameError": 6
+        },
+        "runtime_ok": 165,
+        "productive": 152,
+        "task_passed": 143,
+        "replay_reasons": {
+          "whole_source": 12
+        }
+      },
+      "branch_erased": {
+        "attempts": 256,
+        "statuses": {
+          "syntax_error": 77,
+          "experience_replay": 143,
+          "accepted": 12,
+          "source_replay": 13,
+          "runtime_error": 10,
+          "behavior_replay": 1
+        },
+        "exceptions": {
+          "SyntaxError": 72,
+          "none": 169,
+          "IndentationError": 5,
+          "ValueError": 4,
+          "NameError": 6
+        },
+        "runtime_ok": 169,
+        "productive": 155,
+        "task_passed": 145,
+        "replay_reasons": {
+          "whole_source": 13
+        }
+      },
+      "actual_later_prior_use": {
+        "other": {
+          "attempts": 92,
+          "ambiguous_choices": 2673,
+          "consultations": 1369,
+          "zero_weight": 1086,
+          "positive_weight": 283,
+          "positive_weight_sum": 266.6244499194658
+        },
+        "productive": {
+          "attempts": 152,
+          "ambiguous_choices": 1570,
+          "consultations": 1087,
+          "zero_weight": 708,
+          "positive_weight": 379,
+          "positive_weight_sum": 374.40637422785204
+        },
+        "source_replay": {
+          "attempts": 12,
+          "ambiguous_choices": 85,
+          "consultations": 54,
+          "zero_weight": 20,
+          "positive_weight": 34,
+          "positive_weight_sum": 34.0
+        }
+      }
+    }
+  },
+  "measured_seed_replays": 512
+}

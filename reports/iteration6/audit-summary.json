@@ -1,0 +1,206 @@
+{
+  "passed": true,
+  "baseline_commit": "e8b0f78ef507ca89b155d7c66e9e130d78a19a2a",
+  "completed_experiment_attempts": 3968,
+  "scope": "Independent exact-source generation, recorded-outcome causal learning replay, immutable receipts, host transitions/targets, snapshot continuation, all six routes, and screenshot provenance.",
+  "code": {
+    "attempts": 2560,
+    "exact_source_and_novelty_replays": 2560,
+    "causal_learning_updates_replayed": 1024,
+    "training_attempts": 1024,
+    "full_cpython_checkpoint_replays": 48,
+    "evaluation_attempts": 1536,
+    "independent_cpython_executions": 14,
+    "aggregate": {
+      "table": {
+        "first": {
+          "attempts": 256,
+          "runtime_ok": 123,
+          "productive": 82,
+          "task_passed": 0,
+          "source_replay": 39
+        },
+        "branch": {
+          "attempts": 256,
+          "runtime_ok": 126,
+          "productive": 68,
+          "task_passed": 1,
+          "source_replay": 58
+        },
+        "branch_erased": {
+          "attempts": 256,
+          "runtime_ok": 133,
+          "productive": 73,
+          "task_passed": 1,
+          "source_replay": 60
+        }
+      },
+      "numbers": {
+        "first": {
+          "attempts": 256,
+          "runtime_ok": 164,
+          "productive": 153,
+          "task_passed": 141,
+          "source_replay": 10
+        },
+        "branch": {
+          "attempts": 256,
+          "runtime_ok": 165,
+          "productive": 152,
+          "task_passed": 143,
+          "source_replay": 12
+        },
+        "branch_erased": {
+          "attempts": 256,
+          "runtime_ok": 169,
+          "productive": 155,
+          "task_passed": 145,
+          "source_replay": 13
+        }
+      }
+    },
+    "advancement_gate_passed": false,
+    "production_candidate_integrated": false,
+    "partial_journals_or_recovery": false
+  },
+  "2048": {
+    "immutable_attempts": 1408,
+    "board_transitions": 106504,
+    "exact_source_regenerations": 1152,
+    "counterfactual_decisions": 76793,
+    "causal_learning_updates_replayed": 768,
+    "train_attempts": 768,
+    "independent_cpython_action_traces": 15,
+    "evaluate_attempts": 384,
+    "rational_oracle_temporal_targets": 17100,
+    "temporal_changed_episode_key_pairs": 22,
+    "temporal_eligible_episode_key_pairs": 1047,
+    "temporal_changed_episodes": 21,
+    "completed_score_per_raw": {
+      "legacy": 568.15625,
+      "uniform": 606.6875,
+      "temporal": 606.6875,
+      "random_legal": 932.6875,
+      "fixed_greedy": 1259.1875
+    },
+    "paired_score_deltas": {
+      "uniform_minus_legacy": 38.53125,
+      "temporal_minus_legacy": 38.53125,
+      "temporal_minus_uniform": 0.0
+    },
+    "played_per128": {
+      "legacy": 76,
+      "uniform": 80,
+      "temporal": 80
+    },
+    "advancement_gate_passed": false,
+    "selection_checks": {
+      "positive_versus_uniform_both_replicas": false,
+      "pooled_gain_versus_uniform_at_least_25": false,
+      "played_mean_at_least_uniform": true,
+      "raw_score_at_least_legacy": true
+    },
+    "per_replica_temporal_minus_uniform": [
+      0.0,
+      0.0
+    ],
+    "temporal_uniform_identical_evaluation_sources": 128,
+    "temporal_uniform_identical_evaluation_episode_outcomes": 128,
+    "partial_journals_or_recovery": false,
+    "release_state_promoted": false
+  },
+  "target_semantics": {
+    "retrospective_realized_discounted_returns": true,
+    "isolated_causal_action_effect": false,
+    "episode_mean_preserved": true,
+    "numeric_edges_fixed_before_measurement": [
+      "constant-return floating-point noise normalization",
+      "tiny negative rounded endpoint rejected by core"
+    ],
+    "independent_rational_oracle_edge_cases": 32,
+    "actual_association_discrimination_gate_verified_before_implementation": true,
+    "proof_sha256": "1ba2ecfffe16b502f578a27e862543870a0c31e74347ecd7db82f46bb0c8f034"
+  },
+  "routes": {
+    "frontdoor": "nettalee.py",
+    "routes": [
+      "art",
+      "records",
+      "strings",
+      "code",
+      "2048",
+      "doom"
+    ],
+    "raw_attempts": 48,
+    "exact_source_regenerations": 48,
+    "2048_played": 7,
+    "native_doom_played": 5,
+    "all_release_snapshots_unchanged": true
+  },
+  "temporal_cli_resume": {
+    "passed": true,
+    "logical_attempts": 8,
+    "actual_raw_attempts": 16,
+    "played": 5,
+    "new_decision_episodes": 5,
+    "new_decision_steps": 160,
+    "all_receipts_identical_between_split_and_whole": true,
+    "saved_snapshot_bytes_identical": true,
+    "omitted_second_segment_mode_retains_saved_temporal": true,
+    "all_release_states_unchanged": true,
+    "input_checkpoint_unchanged": true,
+    "completed_checkpoint_sha256": "2c8074132dcca1dddbe842b79ab7ab4d1fe68a8b146ff779aeb3b05a9804f66a"
+  },
+  "doom": {
+    "new_gameplay_or_learning_experiment": false,
+    "byte_exact_original_screenshots_verified": 3,
+    "frame_source_action_hud_and_episode_provenance_verified": true,
+    "requirements_comments_only": true,
+    "optional_vizdoom_pin_unchanged": true
+  },
+  "release": {
+    "unchanged_model_bodies_and_core": true,
+    "unchanged_doom_bridge": true,
+    "all_six_release_states_sha256": {
+      "states/art.json": "158bb4c3361ccaec62518b49acd4598ff05e589f9694328773d5fc607a3c8060",
+      "states/strings.json": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+      "states/records.json": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+      "states/doom.json": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+      "states/code.json": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+      "states/2048.json": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b"
+    },
+    "bridge_2048_sha256": "c53cc562aecf644c05de2c214908f32d4a2b80b18a0d7d37f820ec115eff5685",
+    "full_suite": {
+      "tests": 274,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 145.7956057909978,
+      "passed": true,
+      "log_sha256": "12c048a422c088cd7847e82a058d1c03e0dd1bf577418186924c6f7c8e0cd8c1"
+    },
+    "verified_suite_log": "results/iteration6/final-tests.log"
+  },
+  "measured_boundaries": [
+    "Code branch memory raised numeric completions 141 to143 and table completions0 to1, but reduced table productive executions82 to68 and increased source copies; the registered gate failed.",
+    "Temporal2048 targets changed22 of1047 eligible episode-key pairs in21 training episodes, but all128 evaluation sources and episode outcomes equal the uniform control. No incremental gain was demonstrated.",
+    "The new temporal target is an explicit host option; no release snapshot or model-body change follows these experiments."
+  ],
+  "evidence_sha256": {
+    "baseline_identity.json": "26d4c3dbe74ca5289d5896e3a8a271643750f0740495f0a3e622343c5027fa06",
+    "code_contracts.json": "9411e6284d4a6cc115e4ffecf57aa9b1348ef673545518fd97cc55255dc3a799",
+    "code_development.json": "be35cb82647cce62436c7adb76352d4ef2e14ce375a79dbecd0efcb77df06859",
+    "credit_semantics.json": "95b06aefa814c0ae96b76814a98e34cc030b9e2fc9c3ad2560586f2d99010ec5",
+    "2048_development.json": "51c026399174944bd13b7a64b2a70562623f3715c5af10db4f1823f412f80a8d",
+    "2048_comparison.json": "d38348353f2e4bcd70a57ba7ef104c33b9f4bf7ec036c901c41a892c629af024",
+    "final_routes/summary.json": "b34fab7146959ba1f7245d1bc09ffb54e8e6689b304ddfc7768eb8d8471b8f1a",
+    "temporal_resume/summary.json": "aedc8c09eb2d9d0ef40ba60e3c5c13f4cd3fb432dca5c67ab3776d24efd01c98",
+    "doom_assets.json": "8a1c671ebce56d174dde2fb2bfea71c94da7d6c861838ae7d3b117d342f6966c"
+  },
+  "private_reproducible_audit_scripts": {
+    "audit_code.py": "6b68d04a906fd2811a66344949b958b8a01c12cf173d1113131802c940eb4491",
+    "audit_2048.py": "d45aba6ed6fcebf58bb7db6d6a1bf2eeded94aa6e33f01d2fb84a2b5f4a07dc0",
+    "audit_comparison.py": "270321b0cab4d4efee81a1e10d02826d8b63495d37ea0adcdd5cd46d6e1961f3",
+    "resume_temporal.py": "3febc469fbfba91fbf35dbf7b7b836026c22f8c364d0d26743943d16e7d7d86c"
+  }
+}

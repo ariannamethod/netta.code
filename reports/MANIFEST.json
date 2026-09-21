@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "INDEX.md",
-      "bytes": 4568,
-      "sha256": "8f990187f18b3f01f1034151e5ea0fa3db1e8bc1c48e4d737229642f025a2cfa"
+      "bytes": 4977,
+      "sha256": "7dfd1a528bd1f4766ab4ec8cf6c23cc6bfc5efee18a72adf68a3a9ac011be3e2"
     },
     {
       "path": "archive-inventory.json",
@@ -317,9 +317,84 @@
       "sha256": "582bcf5387d62284ca87a6ad6dd26fdbcb06d6a6671ae1c0d3599e14b4f4a8d0"
     },
     {
+      "path": "iteration6/2048-comparison.json",
+      "bytes": 3694,
+      "sha256": "f2f52bb100af100ec8cc53eb63273741e5127600e5dc0878003ac69982b78da8"
+    },
+    {
+      "path": "iteration6/2048-decision.json",
+      "bytes": 5830,
+      "sha256": "c17ff4956bcdb0f3fa929b198299d53ede75048feb58b63422b1ca431a05fe36"
+    },
+    {
+      "path": "iteration6/REPORT.md",
+      "bytes": 6899,
+      "sha256": "9053adf6a9072499521b2840851e33560311513e9985449e10adb7596635eceb"
+    },
+    {
+      "path": "iteration6/audit-doom-assets.json",
+      "bytes": 1060,
+      "sha256": "8a1c671ebce56d174dde2fb2bfea71c94da7d6c861838ae7d3b117d342f6966c"
+    },
+    {
+      "path": "iteration6/audit-summary.json",
+      "bytes": 8022,
+      "sha256": "46e751029f9c37f1d76fde33e0b9d50eada073e6c67156e275e29d263260a7fc"
+    },
+    {
+      "path": "iteration6/code-comparison.json",
+      "bytes": 1263,
+      "sha256": "a512a8de32bc9f35d8e6114be1c312bc0c16cccfa0f9cf04b1519fecfb513ea1"
+    },
+    {
+      "path": "iteration6/code-diagnosis.json",
+      "bytes": 6564,
+      "sha256": "19bc7e8cd7260fdf95e73be4208626974768002289791c43328a95a09ae31f88"
+    },
+    {
       "path": "iteration6/code-example.json",
       "bytes": 1518,
       "sha256": "0ac80d9f7907548f36a878501de4ea774f6d45f3a3a6a55cb3430f8d09659ba5"
+    },
+    {
+      "path": "iteration6/credit-diagnosis.json",
+      "bytes": 10861,
+      "sha256": "1ba2ecfffe16b502f578a27e862543870a0c31e74347ecd7db82f46bb0c8f034"
+    },
+    {
+      "path": "iteration6/preservation.json",
+      "bytes": 1620,
+      "sha256": "95699f5187376cdd6225547374ec8d6f3ffcda9ff534a050fff04fee84aa3e0b"
+    },
+    {
+      "path": "iteration6/private-archive-inventory.json",
+      "bytes": 406,
+      "sha256": "06f71a07d84a50348ebede4e7632502fd27a2e86528de1783f37a8c580861983"
+    },
+    {
+      "path": "iteration6/protocol-2048.json",
+      "bytes": 3722,
+      "sha256": "147442c135ef2dadbafe4cea9370718826c384f628867d233c630f7ae0b2b038"
+    },
+    {
+      "path": "iteration6/protocol-code.json",
+      "bytes": 2636,
+      "sha256": "190fe99fe9d67d908c52c7f5e8c5f1e2d85acffdd9c3c283b80f995ec4dece26"
+    },
+    {
+      "path": "iteration6/protocol-index.json",
+      "bytes": 476,
+      "sha256": "81bb983297f619db09347bc6fc865ad902f63b2b98906af61f70dc0179445658"
+    },
+    {
+      "path": "iteration6/tests.json",
+      "bytes": 201,
+      "sha256": "2b3824adb027c9f232e431dfe2d4c8fadb2693e2972d50b5d182710ebc1a5e33"
+    },
+    {
+      "path": "iteration6/tests.log",
+      "bytes": 40106,
+      "sha256": "12c048a422c088cd7847e82a058d1c03e0dd1bf577418186924c6f7c8e0cd8c1"
     },
     {
       "path": "measurements/doom/ask-frozen-verification.json",

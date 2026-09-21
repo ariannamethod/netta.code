@@ -2,6 +2,31 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Branching distant context and exact execution examples
+
+Tested a single private extension of first-anchor memory. Later context could
+modify the first-anchor continuation prior only when it supported at least two
+available successors. Its arithmetic-mixture weight was the bounded ratio of
+later-context to first-context Gini impurity; unary later support fell back
+exactly to the first-anchor law. The model kept the same candidates, smoothing,
+strength, corpus and execution judge. No syntax or indentation was rewritten.
+
+The fixed comparison used two replicas per task, each with 128 training and
+128 fresh evaluation attempts. Table productive execution changed 82→68 out of
+256 and source replays increased 39→58. Complete table tasks changed 0→1.
+Numeric task completions changed 141→143 out of 256, with source replays 10→12.
+Restoring first-only generation on the candidate-trained checkpoints produced
+73 table productive executions and 145 numeric task completions. The candidate
+failed the declared advancement gate; no confirmation or public model/state
+replacement followed. All 2,560 measured attempts remain in immutable receipts.
+
+README now includes an exact accepted numeric program from the prior frozen
+evaluation, its `[12, 15]` output and an independent CPython replay. The shared
+gallery and [compact report](reports/iteration6/REPORT.md) record the new memory
+comparison; the complete candidate and experiments are kept separately. The
+shared regression suite passes 274 tests; independent replay verifies every
+measured source and all 1024 Code training updates.
+
 ## 2026-09-21 — Recent-context experiment retains the first-unit memory
 
 Tested one fixed alternative to the published first-unit anchor. The candidate

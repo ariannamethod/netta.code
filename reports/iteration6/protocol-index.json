@@ -1,0 +1,8 @@
+{
+  "experiment_baseline_commit": "e8b0f78ef507ca89b155d7c66e9e130d78a19a2a",
+  "showcase_commit": "7e2dadce24903020627c716836f10a81facac83d",
+  "code_protocol": "protocol-code.json",
+  "game_protocol": "protocol-2048.json",
+  "mode": "Fixed candidate comparisons, generated source executed unchanged, independent state lives, no additional parameter sweep.",
+  "raw_evidence": "Full immutable attempt receipts and checkpoints saved separately from public compact reports."
+}

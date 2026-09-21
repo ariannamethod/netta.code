@@ -2,6 +2,10 @@
 
 Current behavior is described in the [project README](../README.md). Technical changes belong in [NETTALEELOG](../NETTALEELOG.md) and [NETTACODELOG](../NETTACODELOG.md); visible outputs belong in [gallery.html](../gallery.html).
 
+## Sixth engineering pass
+
+[Temporal credit, branching context and exact execution examples](iteration6/REPORT.md). Fixed 2048 and Code comparisons, source-level credit diagnosis, three original Doom frames and clarified dependency paths. [274 tests](iteration6/tests.json), [independent audit of 3,968 attempts](iteration6/audit-summary.json), [separate archive](iteration6/private-archive-inventory.json).
+
 ## Fifth engineering pass
 
 [Decision credit, combat engagement and recent-anchor memory](iteration5/REPORT.md). Three-arm 2048 comparisons, paired native Doom play, rejected Code memory experiments and immutable completed trajectory receipts. [253-test output](iteration5/tests.log), [six routes](iteration5/routes.json), [save/resume](iteration5/resume.json), [independent audit of 4,592 attempts](iteration5/audit-summary.json), [separate full archive](iteration5/private-archive-inventory.json).

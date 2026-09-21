@@ -1,0 +1,23 @@
+{
+  "protected_files": {
+    "states/2048.json": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+    "states/art.json": "158bb4c3361ccaec62518b49acd4598ff05e589f9694328773d5fc607a3c8060",
+    "states/strings.json": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+    "states/art-dev.json": "d7fd40646c4ed6a9d59e25ea56dcba79cd609a7e04818c6e3402cf472b79b5f0",
+    "states/doom-generic.json": "24e0d43283054b46e2a29012609021b7ec7935a17a8569f0829bd7912175e3f9",
+    "states/2048-dev.json": "ee6d037ff8d4dacffe7cf664e438262ffe1943b3b3ada8f0d4f456a147cb5b8e",
+    "states/doom.json": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+    "states/records.json": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+    "states/code.json": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+    "states/doom-generic-map02.json": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+    "nettalee.py": "b3837b8edb95c419b56fb313a1ba361978abbbe32747623752fa5d6f7323ccf7",
+    "nettacode.py": "77e6658fa333884a5c9b537b55d5cb7f0d6bb244fcb8b787490374566b706b6e",
+    "core_part.py": "abba34ed6a29d252bc31df007d10188176543c7907df2f9b8ba29165b13f8f02",
+    "code_memory_build.py": "00c308905f88706684f6204d9295d197f16bff3e2e2489b97a7bcd39b0f4d799",
+    "tools.json": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+    "doom.json": "aa2967900d2e4d3f9908187183764f933e1da0909f0494fe7e206321fcf5bc09"
+  },
+  "historical_log_entries_unchanged": true,
+  "author_title_preserved": true,
+  "thesis_unchanged": true
+}

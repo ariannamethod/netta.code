@@ -117,7 +117,7 @@ A separate memory comparison gave Code **422 / 768** sorted-number task completi
 
 A follow-up tested a more recent learned context as the distant anchor. Over 256 table-task evaluations, runtime successes rose **148 to 159** and `NameError` fell **18 to 11**, but source copies rose **56 to 100** and productive executions fell **91 to 57**. Sorted-number task completions fell **140 to 129 / 256**. The published first-unit anchor is retained; the recent-anchor candidate stays with its experiment.
 
-The shared release suite now passes **253 tests**. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the first memory and game comparisons; the [fifth-pass report](reports/iteration5/REPORT.md) follows decision-level credit, combat reward and the recent-anchor experiment. Full raw trajectories remain in the separate experiment archives.
+The shared release suite now passes **274 tests**. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the first memory and game comparisons; the [fifth-pass report](reports/iteration5/REPORT.md) follows decision-level credit, combat reward and the recent-anchor experiment. The [current refinement report](reports/iteration6/REPORT.md) adds temporal credit, branching-context memory and exact execution examples. Full raw trajectories remain in the separate experiment archives.
 
 ---
 
@@ -191,7 +191,11 @@ Each continuation association receives the mean of its encountered decision targ
 
 In two fixed runs of 128 training and 64 fresh evaluation attempts per arm, all three settings played **84 / 128** evaluated attempts. Score per raw attempt was **659.78** with existing learning, **687.69** with uniform decision credit and **683.88** with board-relative advantage. Advantage gained **24.09** points per raw attempt over existing learning; its predeclared advancement rule required at least 25 and a result above the uniform control. The published state and defaults are retained, with both decision contracts available explicitly.
 
-One generated policy from the fresh evaluation is shown below exactly as executed. Its episode reached **1,312 points**. On the recorded fourth move, left and right offered zero immediate merge gain, while up and down offered four; its own code selected `up`, earned four points and received decision target **1.0**.
+`--decision-credit temporal` evaluates the consequences of the current move over up to eight actual moves, with discount 0.9. The host centers these short returns around the episode's existing reward and keeps every target in [0,1]. Choices executed on every decision retain the episode mean; choices confined to particular branches can receive different credit. The generated program still selects and executes each move before the host computes its learning receipt.
+
+In the fixed temporal comparison, existing learning played **76 / 128** fresh attempts and scored **568.16** per raw attempt. Uniform and temporal credit each played **80 / 128** and scored **606.69**; all 128 generated sources and play outcomes matched (80 played episodes per arm). The temporal table acquired different branch credit, while the published state remains unchanged. The [comparison and source-level diagnosis](reports/iteration6/REPORT.md) identify which generated choices actually received a different signal.
+
+One generated policy from the fifth-pass advantage evaluation is shown below exactly as executed. Its episode reached **1,312 points**. On the recorded fourth move, left and right offered zero immediate merge gain, while up and down offered four; its own code selected `up`, earned four points and received decision target **1.0**.
 
 <details>
 <summary>Open the generated 2048 policy</summary>

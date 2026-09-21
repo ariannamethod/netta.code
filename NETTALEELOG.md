@@ -2,6 +2,47 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Temporal consequences and visible Doom play
+
+Added the explicit `2048-temporal-return-v1` decision contract through
+`2048.py play --decision-credit temporal`. Each target uses the discounted mean
+of the current move's gain and up to seven subsequent actual gains (discount
+0.9), centered around the existing episode reward and bounded to [0,1]. Common
+source choices retain the episode mean, while conditional choices can receive
+distinct credit. Constant-gain and endpoint-rounding cases have focused tests.
+Generation, exact indentation, game actions and the shared core are unchanged.
+
+Two replicas per arm used 128 learning and 64 fresh evaluation attempts.
+Existing learning played 76/128 attempts and scored 568.15625 per raw attempt;
+uniform and temporal credit both played 80/128 and scored 606.6875. All 128
+generated sources and play outcomes matched between uniform and temporal
+(80 played episodes per arm). Training
+had one differing source in an unplayed rejection and identical actual episodes.
+The temporal table nevertheless received distinct key-level feedback in 21 of
+153 credited episodes, affecting 22/1047 episode-key pairs, with maximum
+deviation 0.0229352. It failed the declared requirement to beat uniform, so the
+published state/defaults remain unchanged and no confirmation sweep followed.
+
+The source-level diagnosis traces the narrow signal to sampling choices:
+conditional runtime lines often contain only deterministic continuations.
+An exact replay of the preceding 768 training attempts found changed temporal
+credit in 44/3519 episode-key pairs. In one concrete policy the sampled choice
+was a merge-score multiplier; final action assignment itself was deterministic.
+The current line union also includes computations for discarded directions.
+
+README now includes exact generated Code, 2048 and Doom policies and three
+original Doom Generic PNGs: a shot, incoming projectile and ammunition pickup.
+The files live in `doom/assets/` with source/episode/frame provenance.
+`requirements.txt` remains package-free; `requirements-doom.txt` retains its
+ViZDoom pin only for the optional backend. Generic uses make, a C compiler and
+an external IWAD.
+
+The full suite passes 274 tests. Independent accounting verifies all 3968
+fixed-experiment attempts without recovery, 106504 board transitions, six
+real routes and exact temporal save/resume. All six public states remain
+unchanged. The [sixth-pass report](reports/iteration6/REPORT.md) and gallery
+record the comparisons; the full archive stays separate from public reports.
+
 ## 2026-09-21 — Decision-specific credit and combat engagement
 
 Added a separate optional per-decision credit table to both standalone bodies.

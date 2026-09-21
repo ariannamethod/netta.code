@@ -1,0 +1,210 @@
+{
+  "study": "Sixth2048 centered realized return",
+  "protocol": "predeclared_protocol.json",
+  "aggregate_evaluation": {
+    "legacy": {
+      "raw_attempts": 128,
+      "played": 76,
+      "runtime_ok": 107,
+      "syntax_error": 18,
+      "corpus_replay": 31,
+      "distinct_played_sources": 43,
+      "completed": 76,
+      "completed_score_per_raw_attempt": 568.15625,
+      "reward_per_raw_attempt": 0.37183687991957803,
+      "score_per_raw_attempt": 568.15625,
+      "mean_played_score": 956.8947368421053,
+      "best_score": 1324,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 38,
+        "move_limit": 38,
+        "corpus_probe_behavior_replay": 25,
+        "syntax_error": 18,
+        "corpus_source_replay": 6,
+        "runtime_error": 3
+      }
+    },
+    "uniform": {
+      "raw_attempts": 128,
+      "played": 80,
+      "runtime_ok": 108,
+      "syntax_error": 17,
+      "corpus_replay": 28,
+      "distinct_played_sources": 42,
+      "completed": 80,
+      "completed_score_per_raw_attempt": 606.6875,
+      "reward_per_raw_attempt": 0.3940054798098419,
+      "score_per_raw_attempt": 606.6875,
+      "mean_played_score": 970.7,
+      "best_score": 1324,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 39,
+        "move_limit": 41,
+        "corpus_probe_behavior_replay": 23,
+        "syntax_error": 17,
+        "corpus_source_replay": 5,
+        "runtime_error": 3
+      }
+    },
+    "temporal": {
+      "raw_attempts": 128,
+      "played": 80,
+      "runtime_ok": 108,
+      "syntax_error": 17,
+      "corpus_replay": 28,
+      "distinct_played_sources": 42,
+      "completed": 80,
+      "completed_score_per_raw_attempt": 606.6875,
+      "reward_per_raw_attempt": 0.3940054798098419,
+      "score_per_raw_attempt": 606.6875,
+      "mean_played_score": 970.7,
+      "best_score": 1324,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 39,
+        "move_limit": 41,
+        "corpus_probe_behavior_replay": 23,
+        "syntax_error": 17,
+        "corpus_source_replay": 5,
+        "runtime_error": 3
+      }
+    },
+    "random_legal": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 932.6875,
+      "reward_per_raw_attempt": 0.6213599620221139,
+      "score_per_raw_attempt": 932.6875,
+      "mean_played_score": 932.6875,
+      "best_score": 1384,
+      "max_tile": 128,
+      "statuses": {
+        "move_limit": 44,
+        "terminal": 84
+      }
+    },
+    "fixed_greedy": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 1259.1875,
+      "reward_per_raw_attempt": 0.7089995950668567,
+      "score_per_raw_attempt": 1259.1875,
+      "mean_played_score": 1259.1875,
+      "best_score": 1548,
+      "max_tile": 128,
+      "statuses": {
+        "move_limit": 122,
+        "terminal": 6
+      }
+    }
+  },
+  "per_replica_temporal_minus_uniform": [
+    0.0,
+    0.0
+  ],
+  "paired": {
+    "uniform_minus_legacy_raw_score": {
+      "mean": 38.53125,
+      "bootstrap_95": [
+        -5.125,
+        84.09375
+      ],
+      "paired_observations": 128
+    },
+    "temporal_minus_legacy_raw_score": {
+      "mean": 38.53125,
+      "bootstrap_95": [
+        -5.125,
+        84.09375
+      ],
+      "paired_observations": 128
+    },
+    "temporal_minus_uniform_raw_score": {
+      "mean": 0,
+      "bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "paired_observations": 128
+    }
+  },
+  "advancement_checks": {
+    "positive_against_uniform_both_replicas": false,
+    "pooled_gain_against_uniform_at_least25": false,
+    "played_mean_not_worse_than_uniform": true,
+    "primary_not_worse_than_legacy": true
+  },
+  "qualifies": false,
+  "decision": "No confirmation; preserve default and release snapshot.",
+  "raw_training_attempts": 768,
+  "raw_evaluation_attempts": 384,
+  "control_episodes": 256,
+  "immutable_receipts": 1408,
+  "elapsed_seconds": 334.24715893699613,
+  "source_and_episode_comparison": {
+    "0/train": {
+      "raw_attempts": 128,
+      "same_source": 127,
+      "same_status": 127,
+      "same_episode": 128
+    },
+    "0/evaluate": {
+      "raw_attempts": 64,
+      "same_source": 64,
+      "same_status": 64,
+      "same_episode": 64
+    },
+    "1/train": {
+      "raw_attempts": 128,
+      "same_source": 128,
+      "same_status": 128,
+      "same_episode": 128
+    },
+    "1/evaluate": {
+      "raw_attempts": 64,
+      "same_source": 64,
+      "same_status": 64,
+      "same_episode": 64
+    }
+  },
+  "key_level_diagnostic": {
+    "credited_episodes": 153,
+    "episodes_with_changed_key": 21,
+    "episode_key_pairs": 1047,
+    "changed_episode_key_pairs": 22,
+    "max_absolute_key_deviation": 0.022935178021010527,
+    "mean_episode_max_deviation": 0.0015831883786800649,
+    "mean_episode_mean_deviation": 0.00023292930957674352,
+    "weighted_mean_key_deviation": 0.00024057349261022488
+  },
+  "release_state_sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+  "journal": "development/journal_verification.json",
+  "focused_tests": {
+    "count": 37,
+    "seconds": 8.865
+  },
+  "initial_diagnosis": "../credit-diagnosis.json",
+  "changed_training_sources": [
+    {
+      "replica": 0,
+      "index": 120,
+      "sample_seed": 91000120,
+      "uniform_status": "corpus_source_replay",
+      "temporal_status": "corpus_probe_behavior_replay",
+      "uniform_source_hash": "04d5c405f1c7408c02bb46bb2c0f179d80f1573bca884a92ff2dc8b1d53ae51f",
+      "temporal_source_hash": "da97222724c151d49b81fa2bdb67a485fcea79eefddbfcf0526e410d1e385356"
+    }
+  ]
+}

@@ -24,7 +24,8 @@ import nettalee as core
 
 ROOT = Path(__file__).resolve().parent
 ACTIONS = ('left', 'right', 'up', 'down')
-DECISION_CONTRACTS = {'uniform': '2048-uniform-v1', 'advantage': '2048-action-advantage-v1'}
+DECISION_CONTRACTS = {'uniform': '2048-uniform-v1', 'advantage': '2048-action-advantage-v1',
+                      'temporal': '2048-temporal-return-v1'}
 
 
 def canonical(value):
@@ -104,6 +105,41 @@ def action_credit(board, action):
             'informative': legal and high != low, 'target': target}
 
 
+def temporal_targets(trajectory, reward):
+    """Allocate unchanged episode reward by short realized merge returns.
+
+    Each window includes the current move and at most seven actual later moves,
+    with discount .9. Truncated windows use their available discount mass. The
+    centered, bounded targets preserve the episode mean, so a source choice
+    executed at every decision receives exactly the uniform episode target.
+    """
+    if not trajectory:
+        raise ValueError('temporal targets require actual decisions')
+    if type(reward) not in (int, float) or not math.isfinite(reward) or not 0 <= reward <= 1:
+        raise ValueError('temporal reward must be finite and bounded')
+    gains = [transition['gain'] for transition in trajectory]
+    if any(type(gain) is not int or gain < 0 for gain in gains):
+        raise ValueError('temporal targets require nonnegative host merge gains')
+    # Constant gains can produce ulp-sized differences between weighted means
+    # of different window lengths. They carry no temporal preference.
+    if len(set(gains)) == 1:
+        return [float(reward)] * len(gains)
+    returns = []
+    for index in range(len(gains)):
+        weights = [.9 ** offset for offset in range(min(8, len(gains) - index))]
+        returns.append(math.fsum(weight * gains[index + offset]
+                                 for offset, weight in enumerate(weights)) / math.fsum(weights))
+    mean = math.fsum(returns) / len(returns)
+    radius = max(abs(value - mean) for value in returns)
+    if radius == 0:
+        return [float(reward)] * len(gains)
+    amplitude = min(reward, 1 - reward)
+    # Normalize before scaling and bound final rounding at zero/one; a negative
+    # ulp at an endpoint must not turn a genuine episode into invalid feedback.
+    return [max(0.0, min(1.0, reward + amplitude * ((value - mean) / radius)))
+            for value in returns]
+
+
 def decision_feedback(source, episode, contract):
     """Bind host decision targets to the exact executed source and real steps."""
     if contract not in DECISION_CONTRACTS.values():
@@ -123,6 +159,9 @@ def decision_feedback(source, episode, contract):
             raise ValueError('decision gain does not match host transition')
         target = episode['reward'] if contract == DECISION_CONTRACTS['uniform'] else comparison['target']
         decisions.append({'executed_lines': executed['executed_lines'], 'target': target})
+    if contract == DECISION_CONTRACTS['temporal']:
+        for decision, target in zip(decisions, temporal_targets(episode['trajectory'], episode['reward'])):
+            decision['target'] = target
     return {'source_hash': source_hash, 'contract': contract, 'decisions': decisions}
 
 
@@ -474,7 +513,7 @@ def run_cli():
         if command == 'play':
             item.add_argument('--control-learning', choices=('legacy', 'quality', 'trace', 'both'),
                               help='optional learning experiment, stored in the saved state; omitted preserves its current choice')
-            item.add_argument('--decision-credit', choices=('off', 'uniform', 'advantage'),
+            item.add_argument('--decision-credit', choices=('off', 'uniform', 'advantage', 'temporal'),
                               help='optional decision-local credit; omitted preserves the saved choice')
     args = parser.parse_args()
     if args.command == 'init':

@@ -1,0 +1,181 @@
+{
+  "schema": "netta-mechanism-review-v1",
+  "pass": 6,
+  "scope": "Read-only exact replay of fifth-pass training; no games rerun and no production source changes.",
+  "gate_delivery_order": "Exact-key counts and witness were sent to game2048 and root before sixth-pass temporal source edits. This compact artifact was written afterward from those completed measurements.",
+  "source_sha256": {
+    "core_part.py": "abba34ed6a29d252bc31df007d10188176543c7907df2f9b8ba29165b13f8f02",
+    "code_memory_build.py": "00c308905f88706684f6204d9295d197f16bff3e2e2489b97a7bcd39b0f4d799",
+    "results/iteration5/2048/development/bundle/2048.py": "0f263823e4650fd3a2f6cf84529d3b7a47c28a061891f582197dab0ab1c5fea6",
+    "results/iteration5/2048/development/bundle/nettalee.py": "eb72b2a4c3e30fdc989e0163fbbbe9dc381b95f9518cdbf5bb7d78e60e69752c",
+    "results/iteration6/code/candidate_build.py": "96d7edbf3c649b742cc7c59d161faa893f0ce3043cdaad5a278542d4d449120a",
+    "results/iteration6/code/candidate.py": "94cccbc826d862c0fb577b8550d9eef822cdabc01804999dcb8477406db65801"
+  },
+  "source_references": {
+    "core_part.py:266-305": "Host receipts map actual traced source lines to generated association keys, union per decision, then average target over eligible decisions.",
+    "core_part.py:308-325": "Choice byte intervals overlap non-newline bytes of actual executed lines; loop frequency is discarded.",
+    "core_part.py:427-433": "Only continuation choices having more than one candidate are recorded for credit.",
+    "core_part.py:681-687": "Each association receives one averaged target and one trial per completed observed episode.",
+    "code_memory_build.py:78-79": "Anchor prior enters through strength times log(anchored_probability/local_probability).",
+    "results/iteration6/code/candidate_build.py:48-60": "Recent weight is the admitted-candidate unsmoothed Gini ratio; fewer than two recent successors returns exactly zero.",
+    "results/iteration6/code/candidate_build.py:104-113": "First and recent smoothed probabilities are mixed arithmetically before the existing log ratio."
+  },
+  "replay_protocol": {
+    "root": "results/iteration5/2048/development",
+    "inputs": "replica_00 and replica_01; legacy, uniform, advantage; initial.json and records/train/00000..00127.json",
+    "generation": "Load frozen bundle model and each initial state; generate with each recorded sample_seed in original order.",
+    "verification": [
+      "State fingerprint equals recorded state_before.",
+      "Generated source equals recorded source exactly.",
+      "Replay original observe from recorded policy, episode, diagnostic, original receipt contract.",
+      "Resulting state fingerprint equals recorded state_after."
+    ],
+    "rows": 768,
+    "actual_environment_runs": 0,
+    "eligibility": "For each actual decision, call the frozen core _executed_choices(generated, set(executed_lines)); union tuple(choice[key]) once per decision.",
+    "eligible_episode_key_pair": "One key in the union of all actual decision key sets for one completed episode.",
+    "dynamic_episode_key_pair": "An eligible key missing from at least one decision; union minus intersection.",
+    "dynamic_position_check": "Repeat same construction for (byte_start, byte_end) instead of association key, to detect any loss caused by repeated keys.",
+    "mean_dynamic_key_fraction": "Unweighted mean across completed episodes of dynamic keys divided by eligible keys; zero for no dynamic keys.",
+    "eligibility_patterns_histogram": "Histogram of number of distinct per-decision association-key sets within each episode.",
+    "centered_target": "Q_i = sum(gamma**j * actual_gain[i+j]) / sum(gamma**j), j=0..min(8, remaining)-1; gamma=.9. Let m=mean(Q), d=max(abs(Q-m)). If d=0 targets equal terminal reward r; otherwise y_i=r+min(r,1-r)*(Q_i-m)/d.",
+    "key_centered_delta": "Mean y_i across decisions eligible for this key minus terminal episode reward r.",
+    "mean_episode_max_absolute_centered_delta": "Unweighted mean across completed episodes of maximum absolute key_centered_delta; zero when all keys are common."
+  },
+  "per_arm": {
+    "legacy": {
+      "training_rows_replayed_exactly": 256,
+      "completed_episodes": 173,
+      "episodes_dynamic_keys": 12,
+      "episodes_dynamic_positions": 12,
+      "episode_key_pairs": 1173,
+      "dynamic_episode_key_pairs": 14,
+      "changed_by_centered_return_pairs": 14,
+      "mean_dynamic_key_fraction": 0.011354252683732451,
+      "mean_dynamic_position_fraction": 0.011354252683732451,
+      "mean_episode_max_absolute_centered_delta": 0.0008447261374964056,
+      "max_absolute_centered_delta": 0.022557586329585044,
+      "eligibility_patterns_histogram": {
+        "1": 161,
+        "2": 12
+      }
+    },
+    "uniform": {
+      "training_rows_replayed_exactly": 256,
+      "completed_episodes": 178,
+      "episodes_dynamic_keys": 10,
+      "episodes_dynamic_positions": 10,
+      "episode_key_pairs": 1205,
+      "dynamic_episode_key_pairs": 11,
+      "changed_by_centered_return_pairs": 11,
+      "mean_dynamic_key_fraction": 0.00882825040128411,
+      "mean_dynamic_position_fraction": 0.00882825040128411,
+      "mean_episode_max_absolute_centered_delta": 0.0005936166949351652,
+      "max_absolute_centered_delta": 0.01945785222744645,
+      "eligibility_patterns_histogram": {
+        "1": 168,
+        "2": 10
+      }
+    },
+    "advantage": {
+      "training_rows_replayed_exactly": 256,
+      "completed_episodes": 168,
+      "episodes_dynamic_keys": 18,
+      "episodes_dynamic_positions": 18,
+      "episode_key_pairs": 1141,
+      "dynamic_episode_key_pairs": 19,
+      "changed_by_centered_return_pairs": 19,
+      "mean_dynamic_key_fraction": 0.01615646258503401,
+      "mean_dynamic_position_fraction": 0.01615646258503401,
+      "mean_episode_max_absolute_centered_delta": 0.0012744612960778963,
+      "max_absolute_centered_delta": 0.022557586329585044,
+      "eligibility_patterns_histogram": {
+        "1": 150,
+        "2": 18
+      }
+    }
+  },
+  "totals": {
+    "training_rows_replayed_exactly": 768,
+    "completed_episodes": 519,
+    "episodes_dynamic_keys": 40,
+    "episode_key_pairs": 3519,
+    "dynamic_episode_key_pairs": 44,
+    "changed_by_centered_return_pairs": 44,
+    "dynamic_episode_key_pair_fraction": 0.01250355214549588,
+    "mean_episode_max_absolute_centered_delta": 0.0008977088462936881,
+    "max_absolute_centered_delta": 0.022557586329585044
+  },
+  "witness": {
+    "record": "results/iteration5/2048/development/replica_01/legacy/records/train/00081.json",
+    "record_sha256": "86242aae3a59e75371dad392c1c92b81163a48f50f8a76a7f6c95a03f7635311",
+    "sample_seed": 71010081,
+    "source_sha256": "c7a408cd3f5e57de560e34c9ae37ac031e3c23ebb229c1dea08c95103a75096d",
+    "source": "board = [obs['c' + str(index)] for index in range(16)]\nactions = ['right', 'left', 'up', 'down']\nhorizontal = 0\nvertical = 0\nfor row in range(4):\n    for column in range(3):\n        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])\n        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])\nbest = -1000000\nfor direction in actions:\n    if obs['valid_' + direction]:\n        score = 0\n        for row in range(4):\n            for column in range(3):\n                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row\n                second = first + 1 if direction in ('left', 'right') else first + 4\n                if board[first] == board[second] and board[first] > 0:\n                    score += board[first] * 2\n        if score > best:\n            best = score\n            action = direction\n",
+    "choice_key": [
+      332,
+      474,
+      319,
+      50
+    ],
+    "decoded_context": [
+      "board[",
+      "first] ",
+      "* ",
+      "2"
+    ],
+    "line": 18,
+    "byte_start": 791,
+    "byte_end": 792,
+    "token": 50,
+    "token_text": "2",
+    "eligible_decisions": 83,
+    "actual_decisions": 128,
+    "episode_eligible_keys": 7,
+    "episode_dynamic_keys": 1,
+    "terminal_reward": 0.6759493670886076,
+    "centered_conditional_target": 0.6985069534181927,
+    "centered_delta": 0.022557586329585044,
+    "actual_actions_when_eligible": {
+      "up": 41,
+      "right": 42
+    },
+    "first_eligible_decision_index": 1,
+    "observed_semantics": "The varying key is literal 2 in the score increment. This statement runs while scoring all legal candidate directions, including directions not ultimately selected. The final action=direction line21 has no recorded generation choice."
+  },
+  "findings": [
+    "The proposed centered target has nonzero association-level discrimination: 44 dynamic episode-key pairs across 40 completed episodes. Thus it does not collapse entirely to uniform feedback.",
+    "Most generated choice keys have identical eligibility on every actual decision; episode-centered targets give those common keys the same averaged credit as uniform episode targets.",
+    "Measured dynamic positions equal dynamic keys in all three arms, so repeated-key collision does not explain the reduction from varying source lines to varying choice keys in this sample.",
+    "Many varying executed lines are deterministic generation continuations, which generate() does not record as choices. Line coverage therefore overstates the available learned-credit distinction.",
+    "Executed-line eligibility does not distinguish an occurrence contributing to the selected action from occurrences scoring discarded candidates. The witness exposes this directly."
+  ],
+  "code_review": {
+    "result": "Approved fixed mathematical mechanism is implemented; no source edits requested by this review.",
+    "effective_prior_at_strength_one": "Ignoring other score terms, local count exponent 1/.9 plus log(Panchor/Plocal) yields mass proportional to Plocal**(1/.9-1) * Panchor. The anchor nearly substitutes the local count prior.",
+    "sixth_mixture": "Pmix=(1-alpha)*Pfirst+alpha*Precent, with independent pseudo-count2 smoothing; alpha=min(1,Gini_recent/Gini_first) on admitted unsmoothed counts, unary recent=>0, first Gini0 and recent positive=>1.",
+    "exact_guarantee": "Unary recent admitted support returns exactly the original first-anchor distribution.",
+    "not_a_global_entropy_guarantee": {
+      "first_counts": [
+        50,
+        50
+      ],
+      "recent_counts": [
+        90,
+        10
+      ],
+      "local_counts": [
+        50,
+        50
+      ],
+      "alpha": 0.36,
+      "mixed_probabilities": [
+        0.6411764705882353,
+        0.3588235294117647
+      ],
+      "mixed_gini": 0.46013840830449815,
+      "first_gini": 0.5,
+      "conclusion": "The soft mixture may still be sharper than the first prior; describe deterministic fallback and arithmetic mixing, not guaranteed preservation of all branch diversity."
+    }
+  }
+}

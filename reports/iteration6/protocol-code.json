@@ -1,0 +1,80 @@
+{
+  "stage": "development",
+  "replicas": 2,
+  "train": 128,
+  "evaluate": 128,
+  "train_seed": 3100000000,
+  "eval_seed": 3200000000,
+  "task_stride": 100000,
+  "replica_stride": 1000000,
+  "hypothesis": "Only branching later context can adjust the first-anchor prior; deterministic later context has zero weight and cannot narrow it further.",
+  "fixed_candidate": {
+    "mode": "branch",
+    "strength": 1.0,
+    "smoothing": 2.0,
+    "suffix_depths": [
+      2,
+      1,
+      0
+    ],
+    "anchor": "latest first-occurring ordinary unit outside the local order window",
+    "weight": "zero for <2 supported candidates; otherwise min(1,Gini_later/Gini_first), one if Gini_first=0",
+    "probability_mixture": "(1-alpha)*p_first+alpha*p_later; arithmetic before log ratio"
+  },
+  "arms": [
+    "first",
+    "branch",
+    "branch_erased"
+  ],
+  "prospective_export_replica": {
+    "table": 0,
+    "numbers": 0
+  },
+  "advancement_gate": "branch table productive >= first+5; table passes >= first; numeric passes >= first; source_replay <= first separately for both tasks",
+  "confirmation_promotion_gate": "same gate on disjoint confirmation; no parameter sweep",
+  "state_sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+  "baseline_sha256": "77e6658fa333884a5c9b537b55d5cb7f0d6bb244fcb8b787490374566b706b6e",
+  "candidate_sha256": "94cccbc826d862c0fb577b8550d9eef822cdabc01804999dcb8477406db65801",
+  "builder_sha256": "96d7edbf3c649b742cc7c59d161faa893f0ce3043cdaad5a278542d4d449120a",
+  "runner_sha256": "d6f5277d286b41d23666ed604888944d1114a7a90978719d33b73cbaec4632a9",
+  "tools_sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+  "contracts": {
+    "table": {
+      "key": "9006de8b2f760d4d929e1baa52596558a7de43c8dbf7708834002c93c4a9dd65",
+      "profile": "code:table",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "record"
+      }
+    },
+    "numbers": {
+      "key": "a4cc5b8e409759adee90e618424324d7652b4cbbdd6d13959417e5f858fb1656",
+      "profile": "code:sorted_values",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "number",
+        "sorted": "ascending"
+      }
+    }
+  },
+  "stages_predeclared": {
+    "development": {
+      "replicas": 2,
+      "train": 128,
+      "evaluate": 128,
+      "train_seed": 3100000000,
+      "eval_seed": 3200000000
+    },
+    "confirmation": {
+      "replicas": 3,
+      "train": 256,
+      "evaluate": 256,
+      "train_seed": 3300000000,
+      "eval_seed": 3400000000
+    }
+  }
+}

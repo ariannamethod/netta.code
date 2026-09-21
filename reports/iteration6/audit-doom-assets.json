@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "provenance_sha256": "d5dcb6c873732907adc2de5bc6ba602386559393f5772b9245df3950bbedaab4",
+  "screenshots": [
+    {
+      "file": "doom/assets/combat-129-step016.png",
+      "sha256": "3da5d74e08ca93b3a115237ea06b2e3dfbfa74bb46326813bdccde607b2be556",
+      "bytes": 40207,
+      "actual_episode_and_frame_linkage": true
+    },
+    {
+      "file": "doom/assets/temporal-192-step064.png",
+      "sha256": "72133b96dec30cb41edd9e42f0fda1ec9cb78f84efb64fb4fa17988799f87306",
+      "bytes": 37669,
+      "actual_episode_and_frame_linkage": true
+    },
+    {
+      "file": "doom/assets/temporal-219-step064.png",
+      "sha256": "3f45312396d98e58f8a55c0ad096d1f30d6c63e26f8e5190d55c2324306898ad",
+      "bytes": 40751,
+      "actual_episode_and_frame_linkage": true
+    }
+  ],
+  "visual_descriptions_verified": [
+    "visible pistol muzzle flash",
+    "visible projectile",
+    "visible ammo pickup message"
+  ],
+  "gameplay_or_model_changes": false,
+  "native_backend_requires_no_pip_packages": true,
+  "optional_vizdoom_pin_unchanged": true
+}
