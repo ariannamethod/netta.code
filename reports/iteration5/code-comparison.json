@@ -1,0 +1,544 @@
+{
+  "protocol": {
+    "stage": "development",
+    "replicas": 2,
+    "train": 128,
+    "evaluate": 128,
+    "train_seed": 2100000000,
+    "eval_seed": 2200000000,
+    "task_stride": 100000,
+    "replica_stride": 1000000,
+    "hypothesis": "Most recently introduced ordinary unit outside the local order window distinguishes later source subfamilies sharing the first unit.",
+    "fixed_candidate": {
+      "mode": "recent",
+      "strength": 1.0,
+      "smoothing": 2.0,
+      "suffix_depths": [
+        2,
+        1,
+        0
+      ],
+      "fallback": "first anchor at the same suffix depth"
+    },
+    "arms": [
+      "first",
+      "recent",
+      "recent_erased"
+    ],
+    "prospective_export_replica": {
+      "table": 0,
+      "numbers": 0
+    },
+    "advancement_gate": "recent table passes >= first+2; recent numeric passes >= first; productive >= first separately for both tasks",
+    "confirmation_promotion_gate": "same gate on disjoint confirmation; no parameter sweep",
+    "state_sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+    "baseline_sha256": "41d1393c3149febf5354c40b98308b5f267af10e3ec59b69e744ae50bb76b354",
+    "candidate_sha256": "9257027d59fd51c251f90ad5f4f9c3145cbb58427b36469b5b054e40b83a138f",
+    "builder_sha256": "bb4c0ad2cb0223a37e4d0c96ed0424b1fd717c6822d21c8b80f8f0cf41570d80",
+    "runner_sha256": "4de25748e5f23d5cb30a33faa0e5ae61552c1a06764ae0322b8bd09864b711a8",
+    "tools_sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+    "contracts": {
+      "table": {
+        "key": "9006de8b2f760d4d929e1baa52596558a7de43c8dbf7708834002c93c4a9dd65",
+        "profile": "code:table",
+        "mode": "general",
+        "output": {
+          "literal_type": "list",
+          "min_items": 2,
+          "item_type": "record"
+        }
+      },
+      "numbers": {
+        "key": "a4cc5b8e409759adee90e618424324d7652b4cbbdd6d13959417e5f858fb1656",
+        "profile": "code:sorted_values",
+        "mode": "general",
+        "output": {
+          "literal_type": "list",
+          "min_items": 2,
+          "item_type": "number",
+          "sorted": "ascending"
+        }
+      }
+    },
+    "stages_predeclared": {
+      "development": {
+        "replicas": 2,
+        "train": 128,
+        "evaluate": 128,
+        "train_seed": 2100000000,
+        "eval_seed": 2200000000
+      },
+      "confirmation": {
+        "replicas": 3,
+        "train": 256,
+        "evaluate": 256,
+        "train_seed": 2300000000,
+        "eval_seed": 2400000000
+      }
+    }
+  },
+  "replicas": [
+    {
+      "task": "table",
+      "replica": 0,
+      "arms": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 72,
+          "productive": 41,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "statuses": {
+            "syntax_error": 45,
+            "source_replay": 31,
+            "accepted": 25,
+            "behavior_replay": 3,
+            "runtime_error": 11,
+            "experience_replay": 13
+          },
+          "exceptions": {
+            "SyntaxError": 41,
+            "none": 72,
+            "NameError": 11,
+            "IndentationError": 4
+          },
+          "undefined_names": {
+            "NameError: name 'row' is not defined": 6,
+            "NameError: name 'result' is not defined": 1,
+            "NameError: name 'mark' is not defined": 3,
+            "NameError: name 'limit' is not defined": 1
+          },
+          "task_statuses": {
+            "runtime_failed": 56,
+            "ineligible": 31,
+            "failed": 41
+          }
+        },
+        "recent": {
+          "attempts": 128,
+          "runtime_ok": 79,
+          "productive": 32,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "statuses": {
+            "syntax_error": 39,
+            "runtime_error": 9,
+            "source_replay": 46,
+            "experience_replay": 14,
+            "accepted": 17,
+            "trivial": 1,
+            "behavior_replay": 2
+          },
+          "exceptions": {
+            "SyntaxError": 39,
+            "NameError": 8,
+            "none": 80,
+            "ValueError": 1
+          },
+          "undefined_names": {
+            "NameError: name 'prefix' is not defined": 1,
+            "NameError: name 'result' is not defined": 2,
+            "NameError: name 'canvas' is not defined": 1,
+            "NameError: name 'mark' is not defined": 3,
+            "NameError: name 'limit' is not defined": 1
+          },
+          "task_statuses": {
+            "runtime_failed": 49,
+            "ineligible": 47,
+            "failed": 32
+          }
+        },
+        "recent_erased": {
+          "attempts": 128,
+          "runtime_ok": 76,
+          "productive": 44,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "statuses": {
+            "syntax_error": 44,
+            "runtime_error": 8,
+            "source_replay": 31,
+            "accepted": 25,
+            "experience_replay": 19,
+            "behavior_replay": 1
+          },
+          "exceptions": {
+            "SyntaxError": 42,
+            "NameError": 8,
+            "none": 76,
+            "IndentationError": 2
+          },
+          "undefined_names": {
+            "NameError: name 'prefix' is not defined": 1,
+            "NameError: name 'result' is not defined": 1,
+            "NameError: name 'mark' is not defined": 2,
+            "NameError: name 'row' is not defined": 1,
+            "NameError: name 'limit' is not defined": 1,
+            "NameError: name 'right' is not defined": 1,
+            "NameError: name 'next_index' is not defined": 1
+          },
+          "task_statuses": {
+            "runtime_failed": 52,
+            "ineligible": 32,
+            "failed": 44
+          }
+        }
+      }
+    },
+    {
+      "task": "table",
+      "replica": 1,
+      "arms": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 76,
+          "productive": 50,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "statuses": {
+            "accepted": 33,
+            "source_replay": 25,
+            "syntax_error": 44,
+            "experience_replay": 16,
+            "runtime_error": 8,
+            "behavior_replay": 2
+          },
+          "exceptions": {
+            "none": 76,
+            "SyntaxError": 41,
+            "NameError": 7,
+            "IndentationError": 3,
+            "TypeError": 1
+          },
+          "undefined_names": {
+            "NameError: name 'rows' is not defined": 1,
+            "NameError: name 'result' is not defined": 3,
+            "NameError: name 'canvas' is not defined": 1,
+            "NameError: name 'positions' is not defined": 1,
+            "NameError: name 'row' is not defined": 1
+          },
+          "task_statuses": {
+            "failed": 50,
+            "ineligible": 26,
+            "runtime_failed": 52
+          }
+        },
+        "recent": {
+          "attempts": 128,
+          "runtime_ok": 80,
+          "productive": 25,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "statuses": {
+            "source_replay": 54,
+            "experience_replay": 15,
+            "syntax_error": 42,
+            "accepted": 10,
+            "runtime_error": 6,
+            "behavior_replay": 1
+          },
+          "exceptions": {
+            "none": 80,
+            "SyntaxError": 39,
+            "ValueError": 3,
+            "IndentationError": 3,
+            "NameError": 3
+          },
+          "undefined_names": {
+            "NameError: name 'number' is not defined": 1,
+            "NameError: name 'mark' is not defined": 1,
+            "NameError: name 'row' is not defined": 1
+          },
+          "task_statuses": {
+            "ineligible": 55,
+            "failed": 25,
+            "runtime_failed": 48
+          }
+        },
+        "recent_erased": {
+          "attempts": 128,
+          "runtime_ok": 70,
+          "productive": 45,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "statuses": {
+            "accepted": 27,
+            "syntax_error": 49,
+            "source_replay": 24,
+            "experience_replay": 15,
+            "runtime_error": 8,
+            "behavior_replay": 4,
+            "policy_rejected": 1
+          },
+          "exceptions": {
+            "none": 70,
+            "SyntaxError": 47,
+            "NameError": 7,
+            "IndentationError": 2,
+            "ValueError": 1,
+            "RuntimePolicyError": 1
+          },
+          "undefined_names": {
+            "NameError: name 'result' is not defined": 1,
+            "NameError: name 'mark' is not defined": 1,
+            "NameError: name 'row' is not defined": 3,
+            "NameError: name 'canvas' is not defined": 1,
+            "NameError: name 'left' is not defined": 1
+          },
+          "task_statuses": {
+            "failed": 45,
+            "runtime_failed": 58,
+            "ineligible": 25
+          }
+        }
+      }
+    },
+    {
+      "task": "numbers",
+      "replica": 0,
+      "arms": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 85,
+          "productive": 78,
+          "task_passed": 74,
+          "unique_passed_sources": 12,
+          "statuses": {
+            "experience_replay": 72,
+            "syntax_error": 39,
+            "source_replay": 5,
+            "runtime_error": 3,
+            "accepted": 6,
+            "behavior_replay": 2,
+            "truncated": 1
+          },
+          "exceptions": {
+            "none": 86,
+            "SyntaxError": 37,
+            "NameError": 2,
+            "IndentationError": 2,
+            "ValueError": 1
+          },
+          "undefined_names": {
+            "NameError: name 'row' is not defined": 1,
+            "NameError: name 'column' is not defined": 1
+          },
+          "task_statuses": {
+            "passed": 74,
+            "runtime_failed": 43,
+            "ineligible": 7,
+            "failed": 4
+          }
+        },
+        "recent": {
+          "attempts": 128,
+          "runtime_ok": 81,
+          "productive": 72,
+          "task_passed": 70,
+          "unique_passed_sources": 17,
+          "statuses": {
+            "experience_replay": 60,
+            "syntax_error": 44,
+            "source_replay": 8,
+            "accepted": 12,
+            "behavior_replay": 1,
+            "runtime_error": 3
+          },
+          "exceptions": {
+            "none": 81,
+            "SyntaxError": 42,
+            "NameError": 1,
+            "TypeError": 1,
+            "IndentationError": 2,
+            "ValueError": 1
+          },
+          "undefined_names": {
+            "NameError: name 'column' is not defined": 1
+          },
+          "task_statuses": {
+            "passed": 70,
+            "runtime_failed": 47,
+            "ineligible": 9,
+            "failed": 2
+          }
+        },
+        "recent_erased": {
+          "attempts": 128,
+          "runtime_ok": 73,
+          "productive": 65,
+          "task_passed": 63,
+          "unique_passed_sources": 16,
+          "statuses": {
+            "experience_replay": 53,
+            "syntax_error": 51,
+            "source_replay": 6,
+            "accepted": 12,
+            "behavior_replay": 2,
+            "runtime_error": 4
+          },
+          "exceptions": {
+            "none": 73,
+            "SyntaxError": 48,
+            "IndentationError": 3,
+            "NameError": 3,
+            "TypeError": 1
+          },
+          "undefined_names": {
+            "NameError: name 'column' is not defined": 1,
+            "NameError: name 'row' is not defined": 1,
+            "NameError: name 'positions' is not defined": 1
+          },
+          "task_statuses": {
+            "passed": 63,
+            "runtime_failed": 55,
+            "ineligible": 8,
+            "failed": 2
+          }
+        }
+      }
+    },
+    {
+      "task": "numbers",
+      "replica": 1,
+      "arms": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 82,
+          "productive": 73,
+          "task_passed": 66,
+          "unique_passed_sources": 7,
+          "statuses": {
+            "syntax_error": 37,
+            "runtime_error": 8,
+            "experience_replay": 65,
+            "source_replay": 9,
+            "accepted": 8,
+            "truncated": 1
+          },
+          "exceptions": {
+            "SyntaxError": 35,
+            "NameError": 5,
+            "none": 83,
+            "ValueError": 3,
+            "IndentationError": 2
+          },
+          "undefined_names": {
+            "NameError: name 'result' is not defined": 1,
+            "NameError: name 'row' is not defined": 4
+          },
+          "task_statuses": {
+            "runtime_failed": 46,
+            "passed": 66,
+            "ineligible": 9,
+            "failed": 7
+          }
+        },
+        "recent": {
+          "attempts": 128,
+          "runtime_ok": 88,
+          "productive": 67,
+          "task_passed": 59,
+          "unique_passed_sources": 1,
+          "statuses": {
+            "syntax_error": 36,
+            "runtime_error": 4,
+            "experience_replay": 63,
+            "source_replay": 20,
+            "accepted": 4,
+            "behavior_replay": 1
+          },
+          "exceptions": {
+            "SyntaxError": 35,
+            "ValueError": 2,
+            "none": 88,
+            "NameError": 2,
+            "IndentationError": 1
+          },
+          "undefined_names": {
+            "NameError: name 'row' is not defined": 1,
+            "NameError: name 'mean' is not defined": 1
+          },
+          "task_statuses": {
+            "runtime_failed": 40,
+            "passed": 59,
+            "failed": 8,
+            "ineligible": 21
+          }
+        },
+        "recent_erased": {
+          "attempts": 128,
+          "runtime_ok": 93,
+          "productive": 82,
+          "task_passed": 63,
+          "unique_passed_sources": 4,
+          "statuses": {
+            "syntax_error": 31,
+            "experience_replay": 71,
+            "runtime_error": 4,
+            "accepted": 11,
+            "source_replay": 11
+          },
+          "exceptions": {
+            "SyntaxError": 30,
+            "none": 93,
+            "ValueError": 2,
+            "NameError": 2,
+            "IndentationError": 1
+          },
+          "undefined_names": {
+            "NameError: name 'row' is not defined": 2
+          },
+          "task_statuses": {
+            "runtime_failed": 35,
+            "passed": 63,
+            "failed": 19,
+            "ineligible": 11
+          }
+        }
+      }
+    }
+  ],
+  "totals": {
+    "table": {
+      "first": {
+        "attempts": 256,
+        "runtime_ok": 148,
+        "productive": 91,
+        "task_passed": 0
+      },
+      "recent": {
+        "attempts": 256,
+        "runtime_ok": 159,
+        "productive": 57,
+        "task_passed": 0
+      },
+      "recent_erased": {
+        "attempts": 256,
+        "runtime_ok": 146,
+        "productive": 89,
+        "task_passed": 0
+      }
+    },
+    "numbers": {
+      "first": {
+        "attempts": 256,
+        "runtime_ok": 167,
+        "productive": 151,
+        "task_passed": 140
+      },
+      "recent": {
+        "attempts": 256,
+        "runtime_ok": 169,
+        "productive": 139,
+        "task_passed": 129
+      },
+      "recent_erased": {
+        "attempts": 256,
+        "runtime_ok": 166,
+        "productive": 147,
+        "task_passed": 126
+      }
+    }
+  },
+  "advancement_gate_passed": false
+}

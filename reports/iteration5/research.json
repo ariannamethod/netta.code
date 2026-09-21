@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "title": "Counterfactual Multi-Agent Policy Gradients",
+      "url": "https://arxiv.org/abs/1705.08926",
+      "finding": "Uses a centralized critic and a counterfactual baseline marginalizing one agent action while keeping other agents actions fixed.",
+      "connection": "Alternative-action comparison motivates examining the credit assigned to a choice. Our 2048 host directly computes deterministic immediate gains of legal moves on the actual board."
+    },
+    {
+      "title": "RUDDER: Return Decomposition for Delayed Rewards",
+      "url": "https://arxiv.org/abs/1806.07857",
+      "finding": "Proposes reward redistribution and return decomposition for learning with delayed rewards.",
+      "connection": "The fifth pass compares uniform terminal reward against decision-specific host feedback on executed code branches."
+    }
+  ],
+  "design": "These sources informed the questions. Netta mechanisms and comparison protocols are specified independently in the local source and experiment receipts."
+}

@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "selection_checks": {
+    "positive_both_replicas": true,
+    "pooled_gain_at_least_25": false,
+    "played_mean_not_worse": true,
+    "outperforms_uniform_primary": false
+  },
+  "advancement_gate_passed": false,
+  "primary_completed_score_per_raw": {
+    "legacy": 659.78125,
+    "uniform": 687.6875,
+    "advantage": 683.875,
+    "random_legal": 987.125,
+    "fixed_greedy": 1277.875
+  },
+  "per_replica_advantage_minus_legacy": [
+    17.375,
+    30.8125
+  ],
+  "matched_completed_seed_controls": {
+    "legacy": {
+      "completed_seed_count": 84,
+      "mean_completed_score": 1005.3809523809524,
+      "random_legal_same_seed_mean": 986.047619047619,
+      "delta_versus_random_legal": 19.33333333333337,
+      "fixed_greedy_same_seed_mean": 1271.904761904762,
+      "delta_versus_fixed_greedy": -266.5238095238095
+    },
+    "uniform": {
+      "completed_seed_count": 84,
+      "mean_completed_score": 1047.904761904762,
+      "random_legal_same_seed_mean": 976.9047619047619,
+      "delta_versus_random_legal": 71.0,
+      "fixed_greedy_same_seed_mean": 1277.7142857142858,
+      "delta_versus_fixed_greedy": -229.80952380952385
+    },
+    "advantage": {
+      "completed_seed_count": 84,
+      "mean_completed_score": 1042.095238095238,
+      "random_legal_same_seed_mean": 976.1904761904761,
+      "delta_versus_random_legal": 65.90476190476193,
+      "fixed_greedy_same_seed_mean": 1273.2380952380952,
+      "delta_versus_fixed_greedy": -231.1428571428571
+    }
+  },
+  "interpretation": "Conditional strategy comparison uses each arm's completed seed subset; primary raw-attempt score retains all failures."
+}

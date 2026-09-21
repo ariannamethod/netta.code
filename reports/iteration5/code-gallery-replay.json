@@ -1,0 +1,27 @@
+{
+  "selection": "Earliest table replica0 evaluation replay whose exact bytes occur in corpus and source is under400bytes; illustration only.",
+  "seed": 2200000003,
+  "source": "size = 17\nmark = '%'\nfor row in range(size):\n    line = ''\n    for column in range(size):\n        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '\n    print(line)\n",
+  "source_sha256": "4d52b4d137c68605816f31998eef36b7cf03831332d6d6918743341fec0910eb",
+  "corpus_program_index": 149,
+  "status": "source_replay",
+  "novelty": {
+    "status": "source_replay",
+    "key": "0fa8530ff7ef73fd3a9a3846651007a6cb2e73b6bce8dbb643c31af738690894",
+    "shape": "0c063710b198f7a0f4f86e67385283131dbd1a0e4c7f2e0a3a35cb324030a525",
+    "new_shape": false,
+    "reason": "whole_source"
+  },
+  "stdout": "%   %   %   %   %\n % % % % % % % % \n  %   %   %   %  \n % % % % % % % % \n%   %   %   %   %\n % % % % % % % % \n  %   %   %   %  \n % % % % % % % % \n%   %   %   %   %\n % % % % % % % % \n  %   %   %   %  \n % % % % % % % % \n%   %   %   %   %\n % % % % % % % % \n  %   %   %   %  \n % % % % % % % % \n%   %   %   %   %\n",
+  "runtime_ok": true,
+  "productive": false,
+  "task_check": {
+    "status": "ineligible",
+    "passed": false,
+    "profile": "code:table",
+    "checks": [],
+    "source_hash": "4d52b4d137c68605816f31998eef36b7cf03831332d6d6918743341fec0910eb",
+    "output_sha256": "bf16e0dff4e818af4e24de9244f42e0ea6fb2de397cbfe0d370b0ca9511c122f"
+  },
+  "raw_path": "development/table_00/recent_evaluation.jsonl"
+}

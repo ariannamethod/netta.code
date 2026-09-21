@@ -1,0 +1,81 @@
+{
+  "arms": [
+    "legacy",
+    "temporal"
+  ],
+  "bridge_sha256": "95581eb007843a01071b2a3ef87f28361ed5a536d20cc51fbc4b8d1bff724656",
+  "config": {
+    "actions": {
+      "move_forward": "MOVE_FORWARD",
+      "shoot": "ATTACK",
+      "strafe_left": "MOVE_LEFT",
+      "strafe_right": "MOVE_RIGHT",
+      "turn_left": "TURN_LEFT",
+      "turn_right": "TURN_RIGHT"
+    },
+    "backend": "generic",
+    "decision_quantum": 4,
+    "format": 1,
+    "generic": {
+      "commercial": true,
+      "custom_engine": true,
+      "engine": "/workspace/scratch/aea72c843013/netta_python/results/iteration5/doom/frozen/doomgeneric",
+      "episode": 1,
+      "iwad": "/workspace/scratch/aea72c843013/doom-venv/lib/python3.12/site-packages/vizdoom/freedoom2.wad",
+      "iwad_sha256": "a8772e088847032510d97ba2312406a6998f21cbab44d4ff10696faa9c0ecd4b",
+      "map": 2,
+      "skill": 3
+    },
+    "max_decisions": 512,
+    "observation": {
+      "ammo_values": [
+        0,
+        10
+      ],
+      "excluded_labels": [
+        "DoomPlayer",
+        "Blood",
+        "BulletPuff"
+      ],
+      "health_thresholds": [
+        25,
+        75
+      ],
+      "health_values": [
+        25,
+        60,
+        100
+      ],
+      "scene_values": [
+        "empty",
+        "left",
+        "center",
+        "right"
+      ]
+    },
+    "reward": {
+      "ammo_weight": 0.005,
+      "damage_weight": 0.01,
+      "kill_weight": 1.0,
+      "scale": 3.0
+    },
+    "reward_mode": "combat",
+    "scenario": "defend_the_center"
+  },
+  "core_sha256": "83de6758434272eb64ed9a4c74cea9e9ecd534e69a3f089bea24a8f1447091ee",
+  "corpus_sha256": {
+    "legacy": "088499ffe15e50f262e64671050411176b5f82c9fc33bdf5df82a9cd4d0ce931",
+    "temporal": "e858937143d70bf1cef706f19c290d7eaf5f7b92c2249b76d4ba532b2d860630"
+  },
+  "development": true,
+  "eval_engine_start": 192,
+  "eval_generation_start": 40000000,
+  "evaluation_attempts_per_arm": 32,
+  "initialization": "freshbirth seed39000000 forboth, no transferred priorstate",
+  "interpretation": "joint sensor+structuralcorpus comparison; corpus differs explicitly; reward, initialization seed, budgets and episode seeds matched",
+  "max_decisions": 512,
+  "promotion": false,
+  "train_engine_start": 0,
+  "train_generation_start": 39000000,
+  "training_attempts_per_arm": 64
+}

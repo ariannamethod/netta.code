@@ -1,0 +1,338 @@
+{
+  "experiment": "attributed-v1 versus combat-engagement-v1",
+  "formula": "0 if player_damage_dealt<=0 else 0.5+0.5*tanh((dealt/100-.01*received-.005*ammo)/3)",
+  "baseline": "ea8e1519db2453375373ec3283a9988288b2b026",
+  "training": {
+    "attributed": {
+      "attempts": 128,
+      "own_reward_per_raw": 0.2812798882140213,
+      "per_raw": {
+        "ammo_spent": 21.2734375,
+        "kills": 1.9140625,
+        "player_damage_dealt": 49.4765625,
+        "player_damage_received": 41.1953125,
+        "player_direct_kills": 1.4140625
+      },
+      "played": 73,
+      "shared_combat_reward_per_raw": 0.26677227473795306,
+      "statuses": {
+        "corpus_behavior_replay": 33,
+        "invalid_action": 2,
+        "played": 73,
+        "runtime_error": 1,
+        "syntax_error": 19
+      },
+      "totals": {
+        "ammo_spent": 2723.0,
+        "kills": 245.0,
+        "player_damage_dealt": 6333,
+        "player_damage_received": 5273,
+        "player_direct_kills": 181
+      }
+    },
+    "combat": {
+      "attempts": 128,
+      "own_reward_per_raw": 0.27827310642461944,
+      "per_raw": {
+        "ammo_spent": 22.3359375,
+        "kills": 2.0,
+        "player_damage_dealt": 52.265625,
+        "player_damage_received": 41.171875,
+        "player_direct_kills": 1.4921875
+      },
+      "played": 75,
+      "shared_combat_reward_per_raw": 0.27827310642461944,
+      "statuses": {
+        "corpus_behavior_replay": 31,
+        "invalid_action": 1,
+        "played": 75,
+        "runtime_error": 1,
+        "syntax_error": 20
+      },
+      "totals": {
+        "ammo_spent": 2859.0,
+        "kills": 256.0,
+        "player_damage_dealt": 6690,
+        "player_damage_received": 5270,
+        "player_direct_kills": 191
+      }
+    }
+  },
+  "evaluation": {
+    "attributed": {
+      "attempts": 64,
+      "own_reward_per_raw": 0.269525170624829,
+      "per_raw": {
+        "ammo_spent": 19.578125,
+        "kills": 1.875,
+        "player_damage_dealt": 48.8125,
+        "player_damage_received": 31.765625,
+        "player_direct_kills": 1.390625
+      },
+      "played": 33,
+      "shared_combat_reward_per_raw": 0.2589238071487608,
+      "statuses": {
+        "corpus_behavior_replay": 13,
+        "invalid_action": 3,
+        "played": 33,
+        "runtime_error": 4,
+        "syntax_error": 11
+      },
+      "totals": {
+        "ammo_spent": 1253.0,
+        "kills": 120.0,
+        "player_damage_dealt": 3124,
+        "player_damage_received": 2033,
+        "player_direct_kills": 89
+      }
+    },
+    "combat": {
+      "attempts": 64,
+      "own_reward_per_raw": 0.2825592563163668,
+      "per_raw": {
+        "ammo_spent": 22.140625,
+        "kills": 2.09375,
+        "player_damage_dealt": 53.6875,
+        "player_damage_received": 36.984375,
+        "player_direct_kills": 1.53125
+      },
+      "played": 38,
+      "shared_combat_reward_per_raw": 0.2825592563163668,
+      "statuses": {
+        "corpus_behavior_replay": 12,
+        "invalid_action": 3,
+        "played": 38,
+        "runtime_error": 2,
+        "syntax_error": 9
+      },
+      "totals": {
+        "ammo_spent": 1417.0,
+        "kills": 134.0,
+        "player_damage_dealt": 3436,
+        "player_damage_received": 2367,
+        "player_direct_kills": 98
+      }
+    }
+  },
+  "paired_combat_reward_delta": 0.023635449167606022,
+  "bootstrap95": [
+    -0.013768913854401932,
+    0.0636105928965066
+  ],
+  "controls": {
+    "aim_and_shoot": {
+      "attempts": 16,
+      "attributed_reward_on_same_episodes": 0.5067221426395777,
+      "own_reward_per_raw": 0.5067221426395777,
+      "per_raw": {
+        "ammo_spent": 45.1875,
+        "kills": 3.8125,
+        "player_damage_dealt": 105.4375,
+        "player_damage_received": 78.625,
+        "player_direct_kills": 3.25
+      },
+      "played": 16,
+      "shared_combat_reward_per_raw": 0.5067221426395777,
+      "statuses": {
+        "played": 16
+      },
+      "totals": {
+        "ammo_spent": 723.0,
+        "kills": 61.0,
+        "player_damage_dealt": 1687,
+        "player_damage_received": 1258,
+        "player_direct_kills": 52
+      }
+    },
+    "move_forward": {
+      "attempts": 16,
+      "attributed_reward_on_same_episodes": 0.33924363123418283,
+      "own_reward_per_raw": 0.0,
+      "per_raw": {
+        "ammo_spent": 0.0,
+        "kills": 2.4375,
+        "player_damage_dealt": 0.0,
+        "player_damage_received": 100.0,
+        "player_direct_kills": 0.0
+      },
+      "played": 16,
+      "shared_combat_reward_per_raw": 0.0,
+      "statuses": {
+        "played": 16
+      },
+      "totals": {
+        "ammo_spent": 0.0,
+        "kills": 39.0,
+        "player_damage_dealt": 0,
+        "player_damage_received": 1600,
+        "player_direct_kills": 0
+      }
+    },
+    "turn_left": {
+      "attempts": 16,
+      "attributed_reward_on_same_episodes": 0.5,
+      "own_reward_per_raw": 0.0,
+      "per_raw": {
+        "ammo_spent": 0.0,
+        "kills": 0.0,
+        "player_damage_dealt": 0.0,
+        "player_damage_received": 0.0,
+        "player_direct_kills": 0.0
+      },
+      "played": 16,
+      "shared_combat_reward_per_raw": 0.0,
+      "statuses": {
+        "played": 16
+      },
+      "totals": {
+        "ammo_spent": 0.0,
+        "kills": 0.0,
+        "player_damage_dealt": 0,
+        "player_damage_received": 0,
+        "player_direct_kills": 0
+      }
+    }
+  },
+  "temporal_development": {
+    "comparison": {
+      "bootstrap95": [
+        -0.14887828314319662,
+        0.0659729711396471
+      ],
+      "paired_reward_delta": -0.0419110444558388,
+      "scope": "jointsensor+corpusdevelopment; statesremainprivate"
+    },
+    "legacy": {
+      "evaluate": {
+        "attempts": 32,
+        "per_raw": {
+          "ammo_spent": 23.28125,
+          "kills": 1.5625,
+          "player_damage_dealt": 48.875,
+          "player_damage_received": 39.9375,
+          "player_direct_kills": 1.3125
+        },
+        "played": 17,
+        "reward_per_raw": 0.2612350187837392,
+        "statuses": {
+          "corpus_behavior_replay": 9,
+          "played": 17,
+          "runtime_error": 1,
+          "syntax_error": 5
+        },
+        "totals": {
+          "ammo_spent": 745.0,
+          "kills": 50.0,
+          "player_damage_dealt": 1564,
+          "player_damage_received": 1278,
+          "player_direct_kills": 42
+        }
+      },
+      "train": {
+        "attempts": 64,
+        "per_raw": {
+          "ammo_spent": 16.6875,
+          "kills": 1.296875,
+          "player_damage_dealt": 32.359375,
+          "player_damage_received": 32.421875,
+          "player_direct_kills": 1.015625
+        },
+        "played": 26,
+        "reward_per_raw": 0.1737282799410753,
+        "statuses": {
+          "corpus_behavior_replay": 21,
+          "invalid_action": 1,
+          "played": 26,
+          "runtime_error": 3,
+          "syntax_error": 13
+        },
+        "totals": {
+          "ammo_spent": 1068.0,
+          "kills": 83.0,
+          "player_damage_dealt": 2071,
+          "player_damage_received": 2075,
+          "player_direct_kills": 65
+        }
+      }
+    },
+    "temporal": {
+      "evaluate": {
+        "attempts": 32,
+        "per_raw": {
+          "ammo_spent": 14.0625,
+          "kills": 1.875,
+          "player_damage_dealt": 41.09375,
+          "player_damage_received": 33.625,
+          "player_direct_kills": 1.46875
+        },
+        "played": 14,
+        "reward_per_raw": 0.2193239743279004,
+        "statuses": {
+          "corpus_behavior_replay": 11,
+          "played": 14,
+          "syntax_error": 7
+        },
+        "totals": {
+          "ammo_spent": 450.0,
+          "kills": 60.0,
+          "player_damage_dealt": 1315,
+          "player_damage_received": 1076,
+          "player_direct_kills": 47
+        }
+      },
+      "train": {
+        "attempts": 64,
+        "per_raw": {
+          "ammo_spent": 12.75,
+          "kills": 1.265625,
+          "player_damage_dealt": 33.8125,
+          "player_damage_received": 19.078125,
+          "player_direct_kills": 1.125
+        },
+        "played": 22,
+        "reward_per_raw": 0.18535437251850093,
+        "statuses": {
+          "corpus_behavior_replay": 18,
+          "invalid_action": 2,
+          "played": 22,
+          "syntax_error": 22
+        },
+        "totals": {
+          "ammo_spent": 816.0,
+          "kills": 81.0,
+          "player_damage_dealt": 2164,
+          "player_damage_received": 1221,
+          "player_direct_kills": 72
+        }
+      }
+    }
+  },
+  "verified_transition_count_immediate_primary": 109266,
+  "tests": 42,
+  "public_state_changes": false,
+  "aborted_development": "../doom-rescaled-aborted/STOP.json",
+  "gallery_example": {
+    "path": "combat/evaluate/0000",
+    "selection": "first played held-out combat attempt",
+    "source_sha256": "d86c38dddf4b81c4a68eef805517027c220857fae2257ba9888efbf92c053683",
+    "generation_seed": 28000000,
+    "engine_seed": 128,
+    "player_damage_dealt": 77,
+    "player_direct_kills": 2,
+    "native_killcount": 3,
+    "player_damage_received": 57,
+    "frame": "frame_064.png"
+  },
+  "source_sha256": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd",
+  "measurement_bridge_sha256": "95581eb007843a01071b2a3ef87f28361ed5a536d20cc51fbc4b8d1bff724656",
+  "recovery": {
+    "episodes": 28,
+    "rows": 3269,
+    "originals_preserved": true,
+    "retained_prefixes_byte_identical": true,
+    "final_states_and_counters_equal": true,
+    "postclosure_owner_hash_row_check": true,
+    "receipt": "recovery/receipt.json",
+    "immutable_hash_bound_artifact": true
+  }
+}

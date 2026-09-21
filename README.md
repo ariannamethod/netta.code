@@ -113,9 +113,11 @@ The Code numeric task is the cleanest current example of command-shaped experien
 
 The earlier free-play result still matters underneath this layer: experience had already raised productive execution strongly across art, strings, records and the mixed Code island. The newer mechanism narrows that pressure toward a declared result while leaving ordinary no-task trajectories unchanged.
 
-A separate memory comparison gave Code **422 / 768** sorted-number task completions with the distant anchor against **377 / 768** for the existing mechanism, after equal training budgets of 256 attempts in each of three runs. Switching the anchor off on the same candidate-trained checkpoints gave **393 / 768**. Table productive executions rose from **233 to 271**, while full table-task completions moved from **0 to 1**. The mixed corpus contains eight table examples from one family and 52 sorted-number examples; later context is the next concrete memory hypothesis for the record-processing variable families that still collide.
+A separate memory comparison gave Code **422 / 768** sorted-number task completions with the distant anchor against **377 / 768** for the existing mechanism, after equal training budgets of 256 attempts in each of three runs. Switching the anchor off on the same candidate-trained checkpoints gave **393 / 768**. Table productive executions rose from **233 to 271**, while full table-task completions moved from **0 to 1**. The mixed corpus contains eight table examples from one family and 52 sorted-number examples.
 
-The shared release suite now passes **212 tests**. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the memory and game comparisons; full raw trajectories remain in the separate experiment archives.
+A follow-up tested a more recent learned context as the distant anchor. Over 256 table-task evaluations, runtime successes rose **148 to 159** and `NameError` fell **18 to 11**, but source copies rose **56 to 100** and productive executions fell **91 to 57**. Sorted-number task completions fell **140 to 129 / 256**. The published first-unit anchor is retained; the recent-anchor candidate stays with its experiment.
+
+The shared release suite now passes **253 tests**. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the first memory and game comparisons; the [fifth-pass report](reports/iteration5/REPORT.md) follows decision-level credit, combat reward and the recent-anchor experiment. Full raw trajectories remain in the separate experiment archives.
 
 ---
 
@@ -173,6 +175,12 @@ Both game bridges expose `--control-learning legacy|quality|trace|both` for expl
 
 The fixed 2048 comparison used two runs per setting, each with 128 training and 64 fresh evaluation attempts. Score per raw attempt was **557.91** for the existing mechanism, **541.81** with the quality head, **557.91** with executed-line credit and **541.81** with both. In the corrective training runs, 302 of 325 completed programs executed every statement line, with average coverage of 99.36%; an episode-wide line filter therefore has little room to distinguish useful parts of these short policies. The published 2048 state and default learning settings are preserved; the explicit switches keep these mechanisms available for further islands and experiments.
 
+Decision-level credit adds a narrower question: what happened when this particular part of the program selected a move on this particular board? With `--decision-credit advantage`, the host compares the selected move's immediate merge gain with the minimum and maximum among that board's legal moves, assigning a bounded target; equal gains receive 0.5. The generated program keeps choosing the action. Its actual execution trace connects that target to the source choices that participated in the decision.
+
+Each continuation association receives the mean of its encountered decision targets and one credit trial per episode. A long loop or a longer episode cannot multiply its credit. Exact-source hashes and named host contracts bind the receipt to the saved life; the acquired decision table is separate from ordinary episode credit. `uniform` uses the same traces with the terminal episode reward assigned to every decision, while `off` disables this additional influence and retains its stored experience. The selected setting survives save/resume.
+
+In two fixed runs of 128 training and 64 fresh evaluation attempts per arm, all three settings played **84 / 128** evaluated attempts. Score per raw attempt was **659.78** with existing learning, **687.69** with uniform decision credit and **683.88** with board-relative advantage. Advantage gained **24.09** points per raw attempt over existing learning; its predeclared advancement rule required at least 25 and a result above the uniform control. The published state and defaults are retained, with both decision contracts available explicitly.
+
 The game is useful for the same reason the compiler is useful: it does not care how persuasive the code looks. The board moves or it does not.
 
 ---
@@ -196,13 +204,17 @@ Before play, the exact generated source is executed across the compact observati
 
 The Generic engine records actual monster health removed by player attacks, direct player kills, received damage after armor, ammunition expenditure and the separate native Doom killcount. `--reward-mode attributed` uses player-attributed damage, received damage and ammunition; monster infighting and barrel-explosion inflictors receive no direct attack credit. The existing saved life retains its legacy reward contract.
 
+`--reward-mode combat` adds an explicit engagement condition: an episode with zero player-attributed monster damage receives zero reward. Once the player has caused damage, the reward is exactly the existing attributed formula, including the same received-damage and ammunition terms. This contract has its own saved state, so a change in what the world rewards remains visible in the life being trained.
+
 The optional `--sensor temporal` adds the previous action, whether the player moved, whether damage was received and a coarse enemy distance. The separate `corpora/doom_temporal.txt` island contains 64 scripts in four structural families. Each new live observation executes the unchanged generated program and caches its result. This state learns under its own environment contract. One held-out generated policy in the development run used movement, previous-action and damage inputs and produced four direct kills during 128 decisions.
 
 The first real Doom pass used **24 generation attempts**. Twelve reached the game, representing **11 distinct generated programs** and **24 actual episodes**; the engine's total killcount was **88**, including monster infighting counted by Doom itself. A later frozen paired check over 16 shared generation/game seeds produced 11 played attempts with learned experience and 9 from the initial state, with a mean reward difference of **+0.0921** and bootstrap 95% interval **[-0.1267, 0.3128]**.
 
 One archived generated policy was replayed with the same engine seed and reproduced the trajectory and PNG hashes exactly. Saved Doom experience binds the backend, IWAD hash, map and difficulty to the state, because a life acquired in one Hell should at least remember which Hell it was.
 
-The attributed-reward comparison trained for another 128 attempts, then tested both checkpoints on the same 64 held-out engine starts. Direct player damage changed from **3,118 to 3,562**, direct kills from **92 to 97**, and received damage from **3,003 to 2,356**. Reward per raw attempt changed from **0.290485 to 0.306757**; the paired difference was **+0.016272**, with a bootstrap 95% interval of **[-0.055207, 0.084070]**. The published Doom state is preserved. Continuous turning earned the reward formula's neutral 0.5, giving the next reward experiment a specific passive behavior to account for.
+The attributed-reward comparison trained for another 128 attempts, then tested both checkpoints on the same 64 held-out engine starts. Direct player damage changed from **3,118 to 3,562**, direct kills from **92 to 97**, and received damage from **3,003 to 2,356**. Reward per raw attempt changed from **0.290485 to 0.306757**; the paired difference was **+0.016272**, with a bootstrap 95% interval of **[-0.055207, 0.084070]**. The published Doom state is preserved. Continuous turning earned the attributed formula's neutral 0.5; the separate combat contract now assigns zero to that zero-damage behavior.
+
+A further paired comparison trained the attributed and combat contracts for 128 attempts each from the same starting experience, then evaluated 64 fresh starts using one shared combat metric. Combat-trained experience played **38 / 64** attempts against **33 / 64**, caused **3,436** direct damage against **3,124**, and made **98** direct kills against **89**. Received damage was **2,367 versus 2,033**. Shared reward per raw attempt was **0.282559 versus 0.258924**, a paired difference of **+0.023635** with bootstrap 95% interval **[-0.013769, 0.063611]**. The combat option is available for its own life; published snapshots keep their existing contracts.
 
 The combat frame and exact Python policy are in **[gallery.html](gallery.html)**. WOLFE learned to play Doom by choosing functions; Netta Lee now writes the policy that chooses among them, which was apparently the calm and proportionate next experiment.
 
@@ -266,6 +278,17 @@ python3 2048.py evaluate \
   --attempts 256
 ```
 
+Continue a copy of the published 2048 life with decision-level feedback:
+
+```bash
+cp states/2048.json states/my-2048-decisions.json
+python3 2048.py play \
+  --state states/my-2048-decisions.json --decision-credit advantage \
+  --attempts 128 --out runs/2048-decisions
+```
+
+`--decision-credit uniform` selects the exposure control; `off` disables the additional credit. Omit the option to preserve the state's existing setting. Each learned target contract keeps its own state.
+
 Run Doom Generic with your own Doom/Freedoom IWAD:
 
 ```bash
@@ -288,6 +311,8 @@ python3 doomer.py train \
 ```
 
 The optional game-learning switches belong to `2048.py play` and `doomer.py train`. Evaluation uses the settings saved inside the chosen state.
+
+For combat-gated Doom training, use `--reward-mode combat` with a separate new state path. Existing `attributed` and `legacy` lives keep their original reward contracts.
 
 ---
 
@@ -313,6 +338,7 @@ reports/
   measurements/    protocols, summaries, audits and recovery receipts
   verification/    test output and bridge checks
   iteration4/      compact memory and game comparisons
+  iteration5/      decision credit, combat reward and recent-anchor comparisons
 
 corpora/
   art.txt

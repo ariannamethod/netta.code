@@ -207,6 +207,10 @@ class Organism:
                                  "quality_strength": 1.6}
         self.quality_head = None
         self.quality_observations = 0
+        self.decision_credit_config = {"enabled": False, "strength": 2.5, "contract": None}
+        self.decision_credit = {}
+        self.decision_credit_episodes = 0
+        self.decision_credit_steps = 0
         self.exploration = .5
         self.memory_strength = 1.5
         # Locality is a learned choice too. These are sampling settings over
@@ -239,6 +243,70 @@ class Organism:
         if quality and self.quality_head is None:
             self.quality_head = OutcomeHead(self.seed ^ 0x5155414C)
         return self
+
+    def configure_decision_credit(self, enabled=False, strength=2.5, contract=None):
+        """Select a host-defined, source-bound per-decision learning contract.
+
+        Acquired local action credit is separate from whole-episode credit.
+        Disabling it retains the stored associations for a frozen ablation.
+        """
+        if type(enabled) is not bool:
+            raise ValueError("decision credit enabled must be a boolean")
+        if (type(strength) not in (int, float) or not math.isfinite(strength)
+                or not 0 <= strength <= 8):
+            raise ValueError("decision credit strength must be finite and in [0, 8]")
+        if contract is None:
+            contract = self.decision_credit_config["contract"]
+        if contract is not None and (not isinstance(contract, str)
+                                     or not contract.strip() or len(contract) > 128):
+            raise ValueError("decision credit requires a named host contract")
+        if enabled and (self.mode != "control" or contract is None):
+            raise ValueError("active decision credit requires a control island and host contract")
+        if (self.decision_credit or self.decision_credit_episodes) and contract != self.decision_credit_config["contract"]:
+            raise ValueError("new decision contract needs separate acquired memory")
+        self.decision_credit_config = {"enabled": enabled, "strength": strength, "contract": contract}
+        return self
+
+    def _decision_targets(self, generated, feedback, episode_lines):
+        """Validate a complete host receipt before returning per-choice means.
+
+        The host defines targets from actual environment transitions. This
+        routine knows source positions and bounded numbers, with no action or
+        language semantics. One association counts once per observed decision
+        and receives one averaged update per episode.
+        """
+        source = generated.get("source")
+        if not isinstance(feedback, dict) or not isinstance(source, str):
+            raise ValueError("decision feedback requires a generated source and host receipt")
+        if feedback.get("source_hash") != digest(source):
+            raise ValueError("decision feedback source hash differs from generated source")
+        if feedback.get("contract") != self.decision_credit_config["contract"]:
+            raise ValueError("decision feedback contract differs from saved contract")
+        decisions = feedback.get("decisions")
+        if not isinstance(decisions, list) or not 1 <= len(decisions) <= 10000:
+            raise ValueError("decision feedback needs 1..10000 observed decisions")
+        if episode_lines is None:
+            raise ValueError("decision feedback requires the actual episode source-line trace")
+        normalized = []
+        for item in decisions:
+            if not isinstance(item, dict):
+                raise ValueError("invalid decision feedback entry")
+            target, lines = item.get("target"), item.get("executed_lines")
+            if (type(target) not in (int, float) or not math.isfinite(target)
+                    or not 0 <= target <= 1):
+                raise ValueError("decision target must be finite and in [0, 1]")
+            if (not isinstance(lines, (list, tuple)) or not lines
+                    or any(type(line) is not int or line not in episode_lines for line in lines)):
+                raise ValueError("decision lines must belong to the actual episode trace")
+            normalized.append((target, set(lines)))
+        by_line = {line: {tuple(choice["key"]) for choice in self._executed_choices(generated, {line})}
+                   for line in episode_lines}
+        targets = defaultdict(list)
+        for target, lines in normalized:
+            associations = set().union(*(by_line[line] for line in lines))
+            for key in associations:
+                targets[key].append(target)
+        return {key: math.fsum(values) / len(values) for key, values in targets.items()}, len(decisions)
 
     @staticmethod
     def _executed_choices(generated, executed_lines):
@@ -357,6 +425,11 @@ class Organism:
                 quality_logit, _ = self.quality_head.forward(x)
                 value += self.control_learning["quality_strength"] * max(
                     -4, min(4, quality_logit - self.quality_head.bias))
+            if self.decision_credit_config["enabled"]:
+                decision_wins, decision_trials = self.decision_credit.get(key, (0.0, 0.0))
+                decision_mean = (decision_wins + 1) / (decision_trials + 2)
+                decision_evidence = decision_trials / (decision_trials + 4)
+                value += self.decision_credit_config["strength"] * decision_evidence * (decision_mean - .5)
             if task_state is not None:
                 task_logit, _ = task_state["head"].forward(x)
                 task_wins, task_trials = task_state["credit"].get(key, (0.0, 0.0))
@@ -608,7 +681,7 @@ class Organism:
                 self.syntax_head.update(grammar_values[i * len(grammar_values) // min(12, len(grammar_values))], float(syntax_ok))
 
     def observe(self, generated, reward, runtime_ok, error_line=None, behavior=None, diagnostic=None,
-                executed_lines=None, environment_observed=False):
+                executed_lines=None, environment_observed=False, decision_feedback=None):
         """Acquire a bounded outcome supplied by an external environment.
 
         Used by the Doom bridge after real actions and consequences. A raw
@@ -632,6 +705,13 @@ class Organism:
             if any(type(line) is not int or not 1 <= line <= last_line for line in lines):
                 raise ValueError("executed lines must be valid source line numbers")
             executed_lines = set(lines)
+        decision_targets, decision_steps = None, 0
+        if decision_feedback is not None:
+            if not self.decision_credit_config["enabled"] or not environment_observed:
+                raise ValueError("decision feedback requires active learning and an observed episode")
+            decision_targets, decision_steps = self._decision_targets(generated, decision_feedback, executed_lines)
+        elif self.decision_credit_config["enabled"] and runtime_ok and environment_observed:
+            raise ValueError("active decision credit requires an observed-decision receipt")
         reward_choices = None
         # Replay rejection keeps its ordinary negative credit; only played
         # outcomes have executed branches to select for environment feedback.
@@ -650,6 +730,15 @@ class Organism:
             for i in range(min(12, len(values))):
                 self.quality_head.update(values[i * len(values) // min(12, len(values))], reward)
             self.quality_observations += 1
+        if decision_targets is not None and runtime_ok:
+            for key, target in decision_targets.items():
+                wins, trials = self.decision_credit.get(key, (0.0, 0.0))
+                if trials >= 64:
+                    wins *= .95
+                    trials *= .95
+                self.decision_credit[key] = [wins + target, trials + 1]
+            self.decision_credit_episodes += 1
+            self.decision_credit_steps += decision_steps
         if runtime_ok and behavior:
             self.visits[behavior] = self.visits.get(behavior, 0) + 1
             if reward > .5 and behavior not in self.behaviors:
@@ -671,6 +760,11 @@ class Organism:
                 "reference": self.reference,
                 "credit": [[list(k), v] for k, v in sorted(self.credit.items())],
                 "seen": sorted(self.seen), "behaviors": sorted(self.behaviors)}
+        if (self.decision_credit_config != {"enabled": False, "strength": 2.5, "contract": None}
+                or self.decision_credit or self.decision_credit_episodes):
+            body["decision_credit"] = dict(self.decision_credit_config,
+                episodes=self.decision_credit_episodes, decisions=self.decision_credit_steps,
+                credit=[[list(k), v] for k, v in sorted(self.decision_credit.items())])
         if self.anchor_strength or self.anchor_lived:
             body["anchor_strength"] = self.anchor_strength
             body["anchor_lived"] = [[list(k), sorted(v.items())] for k, v in sorted(self.anchor_lived.items())]
@@ -749,6 +843,36 @@ class Organism:
             if head is not None:
                 organism.quality_head = OutcomeHead(state=head)
             organism.quality_observations = observations
+        decision = body.get("decision_credit")
+        if decision is not None:
+            if not isinstance(decision, dict):
+                raise ValueError("invalid decision credit memory")
+            organism.configure_decision_credit(decision.get("enabled"), decision.get("strength"),
+                                               decision.get("contract"))
+            episodes, steps = decision.get("episodes"), decision.get("decisions")
+            if (type(episodes) is not int or type(steps) is not int
+                    or not 0 <= episodes <= steps or bool(episodes) != bool(steps)):
+                raise ValueError("invalid decision credit counters")
+            credits = decision.get("credit")
+            if not isinstance(credits, list):
+                raise ValueError("invalid decision credit associations")
+            if ((episodes or credits) and (organism.mode != "control" or decision.get("contract") is None)
+                    or credits and not episodes):
+                raise ValueError("decision experience requires its observed host contract")
+            for entry in credits:
+                if not isinstance(entry, list) or len(entry) != 2:
+                    raise ValueError("invalid decision credit entry")
+                key, counts = entry
+                if (not isinstance(key, list) or not 1 <= len(key) <= 4
+                        or any(type(unit) is not int or not EOS <= unit < len(organism.units.expansions)
+                               for unit in key)
+                        or tuple(key) in organism.decision_credit
+                        or not isinstance(counts, list) or len(counts) != 2
+                        or any(type(count) not in (int, float) or not math.isfinite(count) for count in counts)
+                        or not 0 <= counts[0] <= counts[1] or counts[1] <= 0):
+                    raise ValueError("invalid decision credit association")
+                organism.decision_credit[tuple(key)] = counts
+            organism.decision_credit_episodes, organism.decision_credit_steps = episodes, steps
         if "anchor_strength" in body or "anchor_lived" in body:
             organism.configure_anchor_memory(body.get("anchor_strength", 0.0))
             memories = body.get("anchor_lived", [])
@@ -791,6 +915,7 @@ class Organism:
     def without_experience(self):
         organism = Organism(self.programs, self.seed, self.order, mode=self.mode,
                             _pairs=self.units.pairs, _reference=self.reference)
+        organism.configure_decision_credit(**self.decision_credit_config)
         organism.configure_control_learning(**self.control_learning)
         if self.anchor_strength:
             organism.configure_anchor_memory(self.anchor_strength)

@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "stdlib_imports": {
+    "nettalee": [
+      "argparse",
+      "ast",
+      "builtins",
+      "collections",
+      "copy",
+      "dis",
+      "hashlib",
+      "io",
+      "json",
+      "keyword",
+      "math",
+      "os",
+      "pathlib",
+      "random",
+      "re",
+      "resource",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unicodedata",
+      "warnings"
+    ],
+    "nettacode": [
+      "argparse",
+      "ast",
+      "builtins",
+      "collections",
+      "copy",
+      "dis",
+      "hashlib",
+      "io",
+      "json",
+      "keyword",
+      "math",
+      "os",
+      "pathlib",
+      "random",
+      "re",
+      "resource",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unicodedata",
+      "warnings"
+    ]
+  },
+  "published_snapshots_unchanged": true,
+  "production_vs_frozen_valid_state": {
+    "snapshot_sha256": "e7912be749928774f909b86b8ed1e993167e8bc6f36d68bbcfc5cf7cec3b4f4f",
+    "explicit_seed_generations": 16,
+    "implicit_rng_generations": 3,
+    "state_bytes_equivalent": true
+  },
+  "additional_independent_boundary_checks": "18 malformed decision receipts per species, host counterfactual trust, partial-episode failure, disabled old-snapshot compatibility reviewed by audit child; focused tests/test_routes_iteration5.py covers transactional and saved-state contracts."
+}

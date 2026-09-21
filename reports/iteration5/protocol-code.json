@@ -1,0 +1,78 @@
+{
+  "stage": "development",
+  "replicas": 2,
+  "train": 128,
+  "evaluate": 128,
+  "train_seed": 2100000000,
+  "eval_seed": 2200000000,
+  "task_stride": 100000,
+  "replica_stride": 1000000,
+  "hypothesis": "Most recently introduced ordinary unit outside the local order window distinguishes later source subfamilies sharing the first unit.",
+  "fixed_candidate": {
+    "mode": "recent",
+    "strength": 1.0,
+    "smoothing": 2.0,
+    "suffix_depths": [
+      2,
+      1,
+      0
+    ],
+    "fallback": "first anchor at the same suffix depth"
+  },
+  "arms": [
+    "first",
+    "recent",
+    "recent_erased"
+  ],
+  "prospective_export_replica": {
+    "table": 0,
+    "numbers": 0
+  },
+  "advancement_gate": "recent table passes >= first+2; recent numeric passes >= first; productive >= first separately for both tasks",
+  "confirmation_promotion_gate": "same gate on disjoint confirmation; no parameter sweep",
+  "state_sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+  "baseline_sha256": "41d1393c3149febf5354c40b98308b5f267af10e3ec59b69e744ae50bb76b354",
+  "candidate_sha256": "9257027d59fd51c251f90ad5f4f9c3145cbb58427b36469b5b054e40b83a138f",
+  "builder_sha256": "bb4c0ad2cb0223a37e4d0c96ed0424b1fd717c6822d21c8b80f8f0cf41570d80",
+  "runner_sha256": "4de25748e5f23d5cb30a33faa0e5ae61552c1a06764ae0322b8bd09864b711a8",
+  "tools_sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+  "contracts": {
+    "table": {
+      "key": "9006de8b2f760d4d929e1baa52596558a7de43c8dbf7708834002c93c4a9dd65",
+      "profile": "code:table",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "record"
+      }
+    },
+    "numbers": {
+      "key": "a4cc5b8e409759adee90e618424324d7652b4cbbdd6d13959417e5f858fb1656",
+      "profile": "code:sorted_values",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "number",
+        "sorted": "ascending"
+      }
+    }
+  },
+  "stages_predeclared": {
+    "development": {
+      "replicas": 2,
+      "train": 128,
+      "evaluate": 128,
+      "train_seed": 2100000000,
+      "eval_seed": 2200000000
+    },
+    "confirmation": {
+      "replicas": 3,
+      "train": 256,
+      "evaluate": 256,
+      "train_seed": 2300000000,
+      "eval_seed": 2400000000
+    }
+  }
+}

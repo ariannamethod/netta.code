@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "counts": {
+    "training_attempts": 1024,
+    "independent_cpython_executions": 12,
+    "evaluation_attempts": 1536,
+    "checkpoint_replays": 48
+  },
+  "aggregate": {
+    "table": {
+      "first": {
+        "attempts": 256,
+        "runtime_ok": 148,
+        "productive": 91,
+        "task_passed": 0
+      },
+      "recent": {
+        "attempts": 256,
+        "runtime_ok": 159,
+        "productive": 57,
+        "task_passed": 0
+      },
+      "recent_erased": {
+        "attempts": 256,
+        "runtime_ok": 146,
+        "productive": 89,
+        "task_passed": 0
+      }
+    },
+    "numbers": {
+      "first": {
+        "attempts": 256,
+        "runtime_ok": 167,
+        "productive": 151,
+        "task_passed": 140
+      },
+      "recent": {
+        "attempts": 256,
+        "runtime_ok": 169,
+        "productive": 139,
+        "task_passed": 129
+      },
+      "recent_erased": {
+        "attempts": 256,
+        "runtime_ok": 166,
+        "productive": 147,
+        "task_passed": 126
+      }
+    }
+  },
+  "advancement_gate_passed": false,
+  "protocol_sha256": "c51b2f4477be6662c3410a16a9c1489b8521f5d45df20efac6e2c45f3476cde0",
+  "raw_sha256": {
+    "table_00/first_training.jsonl": "69c696b90f9b580b3ef34c91c0ae098f8e4f887a8a32be75dc3ac1f36f8d4264",
+    "table_00/first_evaluation.jsonl": "7e99a57dc0701a8faecc012cac6026b455dbc1c9d3604d8d3d441ad6b30be4f6",
+    "table_00/recent_training.jsonl": "7b58550d1167eca7b2ab7216e0e9a31e05fe7a5b487e61c27bcd69d0f5c20bbb",
+    "table_00/recent_evaluation.jsonl": "25d7a1baf9be254bd5a88a357bc52c077b15e61f36686d054230f8a52f1ad960",
+    "table_00/recent_erased_evaluation.jsonl": "e098dea08ec14f3ceb4ff51fa154ba84ca6343c2fc762908dc044cb4f42f956a",
+    "table_01/first_training.jsonl": "44c2cc8b9cd7d57de38f23fb704006ffa0699a1a7053292f34b5328eacd9a1a2",
+    "table_01/first_evaluation.jsonl": "0b9ac66b3076aa044064df462abfc535b6297277c4387983ccb63bf147e1b864",
+    "table_01/recent_training.jsonl": "e6b5621926a5215572b912d9b95cdfdff749a10733180bbc720db52c4dac0139",
+    "table_01/recent_evaluation.jsonl": "a7d1eac5ee6301a9850e483590110757c9187776b773020191a471848036e619",
+    "table_01/recent_erased_evaluation.jsonl": "32d10a2f03c766b19a1354e6a7bbf361062dde8a038830838e1814282b814ce6",
+    "numbers_00/first_training.jsonl": "74bbe0943f7d653cb10115185d9745d42e5c1d82b34a4309dbd75e180e805c6d",
+    "numbers_00/first_evaluation.jsonl": "dd1f40a0eb397c056ae5ff4d2e4e637ec9c2a97980725df83063125d32547715",
+    "numbers_00/recent_training.jsonl": "371f1818d333f74a1a613c5827a70e482fd43516ed9c2f0899530cc772db7834",
+    "numbers_00/recent_evaluation.jsonl": "7234bd0cb7ba8114f97094dc2a94b09757ecbba7b38a49e975b42f63cf2db5b1",
+    "numbers_00/recent_erased_evaluation.jsonl": "4643f1b9dd912747993528429bbd63ecdb194ae75e8e5da90581ddb0297fb95d",
+    "numbers_01/first_training.jsonl": "8ba6847d5dc2d81fa4fddb478fe817961ad8e04d251489a677a9534fc06aa77f",
+    "numbers_01/first_evaluation.jsonl": "4dccb2363d151f0498fe52e61574da01301d6cf7ecd34f331a3ed618ca744999",
+    "numbers_01/recent_training.jsonl": "46fc950eb131ae32e56eb37b5fbb33e70509189e8e9bf7db018d71f1df382013",
+    "numbers_01/recent_evaluation.jsonl": "8034d2c7b22990b146ab7ae7b20c5f4c6a62f6c39fa5a4bd980d6a23b72c4bc1",
+    "numbers_01/recent_erased_evaluation.jsonl": "4a1a125446ddc634978544c3b23d51464c89f8a567e90b821611ebfe8024101f"
+  }
+}

@@ -2,6 +2,10 @@
 
 Current behavior is described in the [project README](../README.md). Technical changes belong in [NETTALEELOG](../NETTALEELOG.md) and [NETTACODELOG](../NETTACODELOG.md); visible outputs belong in [gallery.html](../gallery.html).
 
+## Fifth engineering pass
+
+[Decision credit, combat engagement and recent-anchor memory](iteration5/REPORT.md). Three-arm 2048 comparisons, paired native Doom play, rejected Code memory experiments and immutable completed trajectory receipts. [253-test output](iteration5/tests.log), [six routes](iteration5/routes.json), [save/resume](iteration5/resume.json), [independent audit of 4,592 attempts](iteration5/audit-summary.json), [separate full archive](iteration5/private-archive-inventory.json).
+
 ## Fourth engineering pass
 
 [Measured changes, decisions and next hypotheses](iteration4/REPORT.md). Code distant memory, 2048 controls, Doom attribution and temporal sensing, plus independent audit receipts. The public states remain unchanged. [212-test output](iteration4/tests.log), [six-route receipt](iteration4/routes.json), [audit summary](iteration4/audit-summary.json), [separate archive inventory](iteration4/private-archive-inventory.json).

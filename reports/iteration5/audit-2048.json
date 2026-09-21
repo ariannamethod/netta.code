@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "counts": {
+    "board_transitions": 117990,
+    "exact_source_regenerations": 1152,
+    "causal_learning_updates_replayed": 768,
+    "counterfactual_decisions": 87642,
+    "train_attempts": 768,
+    "independent_cpython_action_traces": 15,
+    "evaluate_attempts": 384
+  },
+  "phase_metrics": {
+    "00/legacy/train": {
+      "attempts": 128,
+      "completed_score_per_raw_attempt": 620.71875
+    },
+    "00/legacy/evaluate": {
+      "attempts": 64,
+      "completed_score_per_raw_attempt": 558.375
+    },
+    "00/uniform/train": {
+      "attempts": 128,
+      "completed_score_per_raw_attempt": 660.75
+    },
+    "00/uniform/evaluate": {
+      "attempts": 64,
+      "completed_score_per_raw_attempt": 555.5625
+    },
+    "00/advantage/train": {
+      "attempts": 128,
+      "completed_score_per_raw_attempt": 640.1875
+    },
+    "00/advantage/evaluate": {
+      "attempts": 64,
+      "completed_score_per_raw_attempt": 575.75
+    },
+    "01/legacy/train": {
+      "attempts": 128,
+      "completed_score_per_raw_attempt": 770.9375
+    },
+    "01/legacy/evaluate": {
+      "attempts": 64,
+      "completed_score_per_raw_attempt": 761.1875
+    },
+    "01/uniform/train": {
+      "attempts": 128,
+      "completed_score_per_raw_attempt": 772.09375
+    },
+    "01/uniform/evaluate": {
+      "attempts": 64,
+      "completed_score_per_raw_attempt": 819.8125
+    },
+    "01/advantage/train": {
+      "attempts": 128,
+      "completed_score_per_raw_attempt": 730.6875
+    },
+    "01/advantage/evaluate": {
+      "attempts": 64,
+      "completed_score_per_raw_attempt": 792.0
+    }
+  },
+  "paired_score_deltas": {
+    "uniform_minus_legacy": 27.90625,
+    "advantage_minus_legacy": 24.09375,
+    "advantage_minus_uniform": -3.8125
+  },
+  "canonical_shard_manifests": {
+    "replica_00/legacy/train-shards.json": "b7c3014f04f5db8c7dba95379e08dfe6b168e2b0d85b853dffc12a5df6fc9a14",
+    "replica_00/legacy/evaluate-shards.json": "b7fa45953abc23efc6deb5dadb7bf75cad643b67d512b3d22ae523f342fdd7a3",
+    "replica_00/uniform/train-shards.json": "53cafffcc2b7a30db00aaddffb5d6c16ef5ce4ffa953203e1f67b34cd82946d8",
+    "replica_00/uniform/evaluate-shards.json": "b205b7a2bc1833e740bea1311d36a954b31fa164c9c803eda455f350843c4029",
+    "replica_00/advantage/train-shards.json": "eeaf822bc6db3b8ca82bb1dc04a4ea268e3c142f9cab0157fd511324ca32be5e",
+    "replica_00/advantage/evaluate-shards.json": "2a6ff58bcde319ad524e643c9708997c81a10ddb2bd6a8b3850b768798f4872d",
+    "replica_00/random_legal-shards.json": "83092ea89b30993f56d395cebb6baf1c3dd599df45d8265d1432d3bde9c00045",
+    "replica_00/fixed_greedy-shards.json": "fdeda20e829a1cc97cf78da03cc220e9fecccdca28ec5f2fdd5cc2bffbae52fc",
+    "replica_01/legacy/train-shards.json": "4d75da2c78183f57846a37299669b80c628963d0e11b26c49f1c22d8bebbf983",
+    "replica_01/legacy/evaluate-shards.json": "304fc9e52eb6978950c52b4b6add807e3194cf4eb997eb3b7e52966d67367b5d",
+    "replica_01/uniform/train-shards.json": "47b1412982e1c46f51ce48f35a047fe3fbe8e312f1579665cf407762d6281c3a",
+    "replica_01/uniform/evaluate-shards.json": "0fd3b46a140722fec97cab40437819bb73444ec05260597535d3c63386df7ced",
+    "replica_01/advantage/train-shards.json": "db22f8d31c6e0053b3e15605d23f297811785d906014b090f9665b9c30ef1691",
+    "replica_01/advantage/evaluate-shards.json": "93d999429ee24fb031951283d42b3738a3365dfb979b35bc46f8247f23c50e80",
+    "replica_01/random_legal-shards.json": "49e801fbe5391401fece8eef85cb62605e51447e3bbe957e3b1fd700ab3655bb",
+    "replica_01/fixed_greedy-shards.json": "bc596c544f11133fbc053920e42e1bb4ce023bfd30ad50561029118c138a27a0"
+  },
+  "aggregate_journal_mismatches_preserved": [],
+  "protocol_sha256": "47ad7cc06c970324645bcfd37c9ea366a162a5b8ed4ecff647a517854edab0f9"
+}

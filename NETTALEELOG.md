@@ -2,6 +2,81 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Decision-specific credit and combat engagement
+
+Added a separate optional per-decision credit table to both standalone bodies.
+The host binds its receipt to the exact generated source and named target
+contract. Each actually encountered decision carries executed lines and a
+bounded target. Each continuation association receives the mean target over
+decisions in which it participated, followed by one trial per episode. Repeated
+loop events and longer episodes cannot multiply credit. The existing episode
+credit, runtime/syntax heads, search and acquisition are preserved. Empty new
+memory has zero influence on generation and RNG use.
+
+`2048.py play --decision-credit advantage` computes a target from the selected
+move's immediate merge gain relative to the minimum and maximum among that
+board's legal moves; ties receive 0.5. The generated code still chooses every
+action. `uniform` supplies the same kind of actual trace with terminal reward
+assigned to each decision; `off` disables the extra influence while retaining
+acquired associations. Omitted flags preserve saved settings. Different learned
+contracts have separate states. Complete receipt validation precedes state
+mutation, and failed partial episodes retain ordinary failure learning without
+a decision-credit update. Thirteen focused core contracts pass on both bodies.
+
+The fixed 2048 development comparison used two replicas, each with 128 training
+and 64 fresh evaluation attempts per arm. Legacy, uniform and advantage each
+played 84/128 evaluated attempts. Completed score per raw attempt was 659.78125,
+687.6875 and 683.875 respectively; mean played score was 1005.38095, 1047.90476
+and 1042.09524. Advantage improved by 17.375 and 30.8125 per raw attempt in the
+two replicas, for a pooled gain of 24.09375 over legacy, with paired bootstrap
+95% interval [-22.25, 72.71875]. It scored 3.8125 below the uniform control.
+The predefined gate required at least 25 pooled points of gain and a result
+above uniform; it was not met. No confirmation sweep or state promotion followed.
+The published state and defaults remain unchanged. Random legal and fixed greedy
+controls scored 987.125 and 1277.875 per raw attempt across all 128 starts.
+
+Doom's explicit `--reward-mode combat` returns zero when the player deals no
+direct monster damage. With positive direct damage, it returns exactly the
+existing attributed formula, including the same damage and ammunition terms.
+A preliminary reward-rescaling run stopped after 37 training attempts and before
+evaluation when its changed acquisition threshold was identified; its evidence
+is retained separately. The final engagement gate preserves active-combat reward
+and the existing reward-above-0.5 acquisition rule.
+Both contracts trained from the same saved experience for 128 attempts, followed
+by 64 fresh shared engine starts evaluated with one common combat metric.
+Attributed versus combat-trained states played 33/64 versus 38/64 attempts,
+caused 3,124 versus 3,436 direct damage and 89 versus 98 direct kills. Received
+damage was 2,033 versus 2,367. Shared combat reward per raw attempt was 0.258924
+versus 0.282559; paired difference +0.023635, bootstrap 95% interval
+[-0.013769, 0.063611]. Published states and default reward contracts are retained.
+
+Controls each played 16 fixed starts. Turning-only and forward-only policies
+received zero combat reward; forward-only play still accumulated 39 native
+Doom kills with zero direct player damage. The aiming/shooting control dealt
+1,687 direct damage, made 52 direct kills and received mean reward 0.506722,
+identical under the two formulas on those same episodes.
+
+A separate temporal comparison changed the sensor and its code island together,
+using 64 training attempts and 32 fresh evaluation attempts per arm. Temporal
+played 14/32 attempts with reward/raw 0.219324; the legacy sensor/island played
+17/32 with 0.261235. Direct kills were 47 versus 42, direct damage 1,315 versus
+1,564. Temporal perception remains an explicit capability; these experimental
+states remain separate from the published life.
+
+Doom now publishes each completed trajectory under a content-hash filename,
+then binds its name, SHA256 and row count in the episode receipt. The canonical
+trajectory is written only after completion. Independent accounting recovered
+28 earlier truncated journals (3,269 missing rows) into separately identified
+immutable files, verifying every retained prefix and final native counter; all
+originals remain preserved. The final writer also passed a real native
+split-versus-uninterrupted save/resume comparison.
+
+The final shared suite passes 253 tests. README and gallery retain
+the current anatomy and measured examples. The compact
+[fifth-pass report](reports/iteration5/REPORT.md) links protocols, comparisons
+and audits; full raw attempts, checkpoints and trajectories stay in the separate
+compressed experiment archive.
+
 ## 2026-09-21 — Game consequences, temporal perception and shared routing
 
 Added independently selectable `quality` and `trace` learning mechanisms to the

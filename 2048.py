@@ -24,6 +24,7 @@ import nettalee as core
 
 ROOT = Path(__file__).resolve().parent
 ACTIONS = ('left', 'right', 'up', 'down')
+DECISION_CONTRACTS = {'uniform': '2048-uniform-v1', 'advantage': '2048-action-advantage-v1'}
 
 
 def canonical(value):
@@ -80,6 +81,49 @@ def slide(board, action):
             result[index] = value
         score += gained
     return result, score, result != board
+
+
+def action_credit(board, action):
+    """Host-only immediate merge comparison; no tile spawn or RNG access.
+
+    Legal actions with identical merge gains receive neutral .5. Otherwise the
+    actual selected gain is scaled between the minimum and maximum legal gain.
+    This measures one-move merge quality, not a prediction of future tiles.
+    """
+    gains = {}
+    for alternative in ACTIONS:
+        _, gain, changed = slide(board, alternative)
+        if changed:
+            gains[alternative] = gain
+    legal = action in gains
+    low, high = min(gains.values(), default=0), max(gains.values(), default=0)
+    chosen = gains.get(action)
+    target = (0.5 if high == low else (chosen - low) / (high - low)) if legal else 0.0
+    return {'legal_gains': gains, 'chosen_action': action, 'chosen_gain': chosen,
+            'minimum_gain': low, 'maximum_gain': high, 'action_legal': legal,
+            'informative': legal and high != low, 'target': target}
+
+
+def decision_feedback(source, episode, contract):
+    """Bind host decision targets to the exact executed source and real steps."""
+    if contract not in DECISION_CONTRACTS.values():
+        raise ValueError('unsupported 2048 decision-credit contract')
+    if not episode['completed']:
+        raise ValueError('incomplete episodes do not provide positive decision credit')
+    source_hash = hashlib.sha256(source.encode()).hexdigest()
+    decisions = []
+    for transition in episode['trajectory']:
+        executed = transition['decision']
+        if (not transition['valid'] or executed['source_hash'] != source_hash or
+                executed['action'] != transition['action'] or not executed['accepted']):
+            raise ValueError('decision receipt does not match executed source/action')
+        comparison = action_credit(transition['before'], transition['action'])
+        if (comparison != transition['action_credit'] or not comparison['action_legal'] or
+                comparison['chosen_gain'] != transition['gain']):
+            raise ValueError('decision gain does not match host transition')
+        target = episode['reward'] if contract == DECISION_CONTRACTS['uniform'] else comparison['target']
+        decisions.append({'executed_lines': executed['executed_lines'], 'target': target})
+    return {'source_hash': source_hash, 'contract': contract, 'decisions': decisions}
 
 
 class Game2048:
@@ -279,6 +323,7 @@ def run_episode(source, seed, max_moves=128):
                 break
             transition = game.step(action)
             transition.update(observation=obs, decision=decision)
+            transition['action_credit'] = action_credit(transition['before'], action)
             trajectory.append(transition)
             if not transition['valid']:
                 status = 'invalid_move'
@@ -330,12 +375,17 @@ def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128):
     record['runtime_ok'] = runtime_ok
     record['executed_lines'] = record.get('episode', {}).get('executed_lines', [])
     if learn:
+        feedback = None
+        config = getattr(model, 'decision_credit_config', {'enabled': False})
+        if config['enabled'] and record['played'] and runtime_ok:
+            feedback = decision_feedback(source, record['episode'], config['contract'])
         model.observe(generated, record['reward'], runtime_ok,
                       error_line=(diagnostic or {}).get('error_line'),
                       behavior=policy.get('behavior_hash') if policy and policy['accepted'] else None,
                       diagnostic=diagnostic or {'status': record['status']},
                       executed_lines=record['executed_lines'],
-                      environment_observed=record['played'])
+                      environment_observed=record['played'],
+                      decision_feedback=feedback)
         record['training_applied'] = True
     elif fingerprint(model.state_dict()) != before:
         raise AssertionError('frozen episode changed organism')
@@ -424,6 +474,8 @@ def run_cli():
         if command == 'play':
             item.add_argument('--control-learning', choices=('legacy', 'quality', 'trace', 'both'),
                               help='optional learning experiment, stored in the saved state; omitted preserves its current choice')
+            item.add_argument('--decision-credit', choices=('off', 'uniform', 'advantage'),
+                              help='optional decision-local credit; omitted preserves the saved choice')
     args = parser.parse_args()
     if args.command == 'init':
         programs = core.read_island(args.island)
@@ -439,6 +491,9 @@ def run_cli():
     if args.command == 'play' and args.control_learning is not None:
         model.configure_control_learning(quality=args.control_learning in ('quality', 'both'),
                                          executed_credit=args.control_learning in ('trace', 'both'))
+    if args.command == 'play' and args.decision_credit is not None:
+        model.configure_decision_credit(enabled=args.decision_credit != 'off',
+                                        contract=DECISION_CONTRACTS.get(args.decision_credit))
     args.out.mkdir(parents=True, exist_ok=False)
     protocol = {'command': args.command, 'attempts': args.attempts, 'sample_seed': args.seed,
                 'episode_seed': args.episode_seed, 'max_moves': args.max_moves,
@@ -447,6 +502,7 @@ def run_cli():
                 'core_sha256': hashlib.sha256(Path(core.__file__).read_bytes()).hexdigest()}
     if args.command == 'play':
         protocol['control_learning_override'] = args.control_learning
+        protocol['decision_credit_override'] = args.decision_credit
     save_json(args.out / 'protocol.json', protocol)
     reports = {}
     controls = [('trained', model)]

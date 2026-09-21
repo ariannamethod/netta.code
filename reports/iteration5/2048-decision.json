@@ -1,0 +1,165 @@
+{
+  "experiment": "2048 decision credit, iteration5",
+  "protocol": "development/protocol.json",
+  "raw_training_attempts": 768,
+  "raw_evaluation_attempts": 384,
+  "control_episodes": 256,
+  "replicas": 2,
+  "train_per_arm_replica": 128,
+  "evaluation_per_arm_replica": 64,
+  "max_moves": 128,
+  "aggregate_evaluation": {
+    "legacy": {
+      "raw_attempts": 128,
+      "played": 84,
+      "runtime_ok": 113,
+      "syntax_error": 13,
+      "corpus_replay": 29,
+      "distinct_played_sources": 52,
+      "completed": 84,
+      "completed_score_per_raw_attempt": 659.78125,
+      "reward_per_raw_attempt": 0.4185024002437358,
+      "score_per_raw_attempt": 659.78125,
+      "mean_played_score": 1005.3809523809524,
+      "best_score": 1412,
+      "max_tile": 128,
+      "statuses": {
+        "move_limit": 46,
+        "runtime_error": 2,
+        "terminal": 38,
+        "corpus_probe_behavior_replay": 24,
+        "corpus_source_replay": 5,
+        "syntax_error": 13
+      }
+    },
+    "uniform": {
+      "raw_attempts": 128,
+      "played": 84,
+      "runtime_ok": 112,
+      "syntax_error": 14,
+      "corpus_replay": 28,
+      "distinct_played_sources": 43,
+      "completed": 84,
+      "completed_score_per_raw_attempt": 687.6875,
+      "reward_per_raw_attempt": 0.4250684356648754,
+      "score_per_raw_attempt": 687.6875,
+      "mean_played_score": 1047.904761904762,
+      "best_score": 1412,
+      "max_tile": 128,
+      "statuses": {
+        "move_limit": 51,
+        "runtime_error": 2,
+        "terminal": 33,
+        "corpus_probe_behavior_replay": 20,
+        "corpus_source_replay": 8,
+        "syntax_error": 14
+      }
+    },
+    "advantage": {
+      "raw_attempts": 128,
+      "played": 84,
+      "runtime_ok": 113,
+      "syntax_error": 13,
+      "corpus_replay": 29,
+      "distinct_played_sources": 48,
+      "completed": 84,
+      "completed_score_per_raw_attempt": 683.875,
+      "reward_per_raw_attempt": 0.42555952439455064,
+      "score_per_raw_attempt": 683.875,
+      "mean_played_score": 1042.095238095238,
+      "best_score": 1372,
+      "max_tile": 128,
+      "statuses": {
+        "move_limit": 51,
+        "runtime_error": 2,
+        "terminal": 33,
+        "corpus_probe_behavior_replay": 21,
+        "corpus_source_replay": 8,
+        "syntax_error": 13
+      }
+    },
+    "random_legal": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 987.125,
+      "reward_per_raw_attempt": 0.6413411307376466,
+      "score_per_raw_attempt": 987.125,
+      "mean_played_score": 987.125,
+      "best_score": 1384,
+      "max_tile": 128,
+      "statuses": {
+        "move_limit": 54,
+        "terminal": 74
+      }
+    },
+    "fixed_greedy": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 1277.875,
+      "reward_per_raw_attempt": 0.7131640532354867,
+      "score_per_raw_attempt": 1277.875,
+      "mean_played_score": 1277.875,
+      "best_score": 1780,
+      "max_tile": 256,
+      "statuses": {
+        "move_limit": 127,
+        "terminal": 1
+      }
+    }
+  },
+  "per_replica_advantage_minus_legacy": [
+    17.375,
+    30.8125
+  ],
+  "advantage_minus_legacy_primary": 24.09375,
+  "advantage_minus_uniform_primary": -3.8125,
+  "selection_checks": {
+    "positive_both_replicas": true,
+    "pooled_gain_at_least_25": false,
+    "played_mean_not_worse": true,
+    "outperforms_uniform_primary": false
+  },
+  "decision": "Keep legacy defaults and existing release snapshot; no confirmation or hyperparameter sweep. The fixed immediate-merge target improved both replicas but did not pass the predeclared pooled threshold or exceed the uniform decision-exposure control.",
+  "paired": {
+    "uniform_minus_legacy_raw_score": {
+      "mean": 27.90625,
+      "bootstrap_95": [
+        -24.71875,
+        83.8125
+      ],
+      "paired_observations": 128
+    },
+    "advantage_minus_legacy_raw_score": {
+      "mean": 24.09375,
+      "bootstrap_95": [
+        -22.25,
+        72.71875
+      ],
+      "paired_observations": 128
+    },
+    "advantage_minus_uniform_raw_score": {
+      "mean": -3.8125,
+      "bootstrap_95": [
+        -72.09375,
+        63.375
+      ],
+      "paired_observations": 128
+    }
+  },
+  "journal": "development/journal_verification.json",
+  "immutable_receipts": 1408,
+  "elapsed_seconds": 348.79950083400036,
+  "release_state_sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+  "new_API": "2048.py play --decision-credit {off,uniform,advantage}; omitted preserves saved mode",
+  "source_of_targets": "Host immediate gains for each legal action on the pre-spawn board. Targets influence continuation credit after exact policy execution; generation does not receive the board."
+}

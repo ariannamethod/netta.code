@@ -2,6 +2,44 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Recent-context experiment retains the first-unit memory
+
+Tested one fixed alternative to the published first-unit anchor. The candidate
+uses the most recently introduced ordinary unit preceding the local context,
+with suffix depths 2/1/0, strength 1 and smoothing 2. The existing first-unit
+memory supplies a fallback at each suffix depth. Both candidates use the same
+corpus, units, execution court and declared output contracts.
+
+Two replicas per task used 128 training and 128 fresh evaluation attempts per
+arm. The third evaluation restored first-anchor mode on the same recent-trained
+checkpoint. Table task completions remained 0/256 in both learning arms. Table
+runtime successes rose 148 to 159 and NameError fell 18 to 11, while source replay
+rose 56 to 100 and productive execution fell 91 to 57. Numeric task completions
+fell 140 to 129/256; productive execution fell 151 to 139 and source replay doubled
+14 to 28. Numeric NameError fell 7 to 3.
+
+The advancement rule required two additional table completions, no numeric-task
+loss and no productive-execution loss on either task. It was not met, so the
+conditional confirmation and production integration were not run. The public
+first-unit memory, its CLI and `states/code.json` remain unchanged. Increased
+rejected source replay is the measured reason for retaining the existing rule.
+
+All 2,560 measured attempts reside in 20 complete atomic JSONL streams, checked
+by row count and file hash; per-attempt shards preserve the exact measured rows.
+No regeneration was needed. Nine isolated candidate tests passed. A retained
+source-replay example is generated seed 2,200,000,003: it
+exactly reproduces corpus program 149, executes successfully and is rejected by
+the unchanged whole-source replay check.
+
+Both standalone bodies also acquire the optional generic per-decision credit
+API used by the 2048 bridge. Source-bound host receipts assign targets to actual
+executed choices; each association receives one mean update per episode.
+Ordinary Code learning and old snapshots retain their previous behavior when
+the option is disabled. The final shared suite passes 253 tests.
+The [fifth-pass report](reports/iteration5/REPORT.md) links compact comparisons,
+protocols and audits. Full raw attempts, candidate sources and checkpoints stay
+in the separate compressed archive.
+
 ## 2026-09-21 — Code acquires an optional distant continuation memory
 
 Code/general now has an explicitly enabled memory mechanism distinct from Lee's

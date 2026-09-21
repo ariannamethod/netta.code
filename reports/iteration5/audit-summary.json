@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "scope": "Independent fifth-pass raw accounting, exact generated source, causal decision credit, saved-state continuation and six real routes.",
+  "completed_experiment_attempts": 4592,
+  "separate_aborted_experiment": {
+    "retained_completed_attempts": 37,
+    "path": "results/iteration5/doom-rescaled-aborted/STOP.json",
+    "excluded_from_primary_comparison": true
+  },
+  "code": {
+    "raw_attempts": 2560,
+    "canonical_journals_complete": true,
+    "advancement_gate_passed": false,
+    "table_passes_first_recent": [
+      0,
+      0
+    ],
+    "numeric_passes_first_recent": [
+      140,
+      129
+    ]
+  },
+  "2048": {
+    "immutable_attempts": 1408,
+    "board_transitions": 117990,
+    "exact_source_regenerations": 1152,
+    "causal_learning_updates_replayed": 768,
+    "counterfactual_decisions": 87642,
+    "train_attempts": 768,
+    "independent_cpython_action_traces": 15,
+    "evaluate_attempts": 384,
+    "aggregate_journals_complete": true,
+    "paired_completed_score_per_raw_deltas": {
+      "uniform_minus_legacy": 27.90625,
+      "advantage_minus_legacy": 24.09375,
+      "advantage_minus_uniform": -3.8125
+    },
+    "advancement_gate_passed": false,
+    "selection_checks": {
+      "positive_both_replicas": true,
+      "pooled_gain_at_least_25": false,
+      "played_mean_not_worse": true,
+      "outperforms_uniform_primary": false
+    },
+    "matched_seed_controls": {
+      "legacy": {
+        "completed_seed_count": 84,
+        "mean_completed_score": 1005.3809523809524,
+        "random_legal_same_seed_mean": 986.047619047619,
+        "delta_versus_random_legal": 19.33333333333337,
+        "fixed_greedy_same_seed_mean": 1271.904761904762,
+        "delta_versus_fixed_greedy": -266.5238095238095
+      },
+      "uniform": {
+        "completed_seed_count": 84,
+        "mean_completed_score": 1047.904761904762,
+        "random_legal_same_seed_mean": 976.9047619047619,
+        "delta_versus_random_legal": 71.0,
+        "fixed_greedy_same_seed_mean": 1277.7142857142858,
+        "delta_versus_fixed_greedy": -229.80952380952385
+      },
+      "advantage": {
+        "completed_seed_count": 84,
+        "mean_completed_score": 1042.095238095238,
+        "random_legal_same_seed_mean": 976.1904761904761,
+        "delta_versus_random_legal": 65.90476190476193,
+        "fixed_greedy_same_seed_mean": 1273.2380952380952,
+        "delta_versus_fixed_greedy": -231.1428571428571
+      }
+    }
+  },
+  "doom": {
+    "primary_agent_attempts": 384,
+    "control_episodes": 48,
+    "primary_native_transitions": 109266,
+    "temporal_attempts": 192,
+    "temporal_native_transitions": 32135,
+    "paired_common_reward_delta": 0.023635449167606022,
+    "bootstrap_95_percent": [
+      -0.013768913854401932,
+      0.0636105928965066
+    ],
+    "controls": {
+      "turn_left": {
+        "episodes": 16,
+        "reward_per_raw": 0.0,
+        "player_damage_dealt": 0
+      },
+      "move_forward": {
+        "episodes": 16,
+        "reward_per_raw": 0.0,
+        "player_damage_dealt": 0
+      },
+      "aim_and_shoot": {
+        "episodes": 16,
+        "reward_per_raw": 0.5067221426395777,
+        "player_damage_dealt": 1687
+      }
+    },
+    "explicit_recovery": {
+      "restored_episodes": 28,
+      "restored_rows": 3269,
+      "receipt_sha256": "bdcc1be0dae0937b2aa25e396dfc3f5f1ec769e4da5989b64137f7712659b100"
+    },
+    "original_truncated_files_preserved": true,
+    "temporal_joint_corpus_sensor_experiment_no_confirmed_gain": true
+  },
+  "routes": {
+    "single_frontdoor": "nettalee.py",
+    "sequence": [
+      "art",
+      "records",
+      "strings",
+      "code",
+      "2048",
+      "doom"
+    ],
+    "attempts_per_route": 8,
+    "exact_source_regenerations": 48,
+    "2048_played": 4,
+    "doom_played": 6,
+    "all_six_release_snapshots_unchanged": true,
+    "final_archive_change_validated_separately": true
+  },
+  "optin_resume": {
+    "passed": true,
+    "modes": {
+      "2048/uniform": {
+        "attempts": 8,
+        "played": 8,
+        "decision_episodes": 92,
+        "decision_steps": 9582,
+        "new_decision_episodes": 8,
+        "split_and_combined_snapshot_bytes_identical": true,
+        "all_retained_attempt_receipts_identical": true,
+        "combined_journal_rows": 8,
+        "complete_segment_journal_rows": 8
+      },
+      "2048/advantage": {
+        "attempts": 8,
+        "played": 7,
+        "decision_episodes": 88,
+        "decision_steps": 9263,
+        "new_decision_episodes": 7,
+        "split_and_combined_snapshot_bytes_identical": true,
+        "all_retained_attempt_receipts_identical": true,
+        "combined_journal_rows": 7,
+        "complete_segment_journal_rows": 8
+      },
+      "doom/combat": {
+        "attempts": 4,
+        "played": 2,
+        "split_and_combined_snapshot_bytes_identical": true,
+        "combat_rewards_recomputed": true,
+        "copied_state_environment_explicitly_rebound": true
+      }
+    },
+    "all_release_snapshots_unchanged": true,
+    "sources_unchanged": true
+  },
+  "final_bridge_archive": {
+    "old_route_bridge_sha256": "95581eb007843a01071b2a3ef87f28361ed5a536d20cc51fbc4b8d1bff724656",
+    "final_bridge_sha256": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd",
+    "immutable_recovery_files_checked": 28,
+    "actual_final_native_episodes_checked": 4
+  },
+  "models_standalone_stdlib_and_valid_checkpoint_parity": true,
+  "limitations": [
+    "Doom positive paired estimate includes zero in its interval; it does not establish a learning improvement.",
+    "Temporal Doom changes both corpus and sensor, so it is a joint experiment.",
+    "28 original Doom trajectories lost tails; their exact retained prefixes and final native episode evidence were verified against separate deterministic recoveries.",
+    "One opt-in advantage combined smoke journal retained only seven of eight rows. Complete measured split journals and byte-identical final snapshots remain available; the original partial journal is preserved."
+  ],
+  "evidence_sha256": {
+    "code_development.json": "bf0d969421002996dadd4ab2d08f672fd820b0e620bd89a013c4a9e3db472725",
+    "2048_development.json": "4d5873818c143fac7dbc0dca7c42b6d180666ec7e9e41269480e5df9669749ca",
+    "2048_comparison.json": "7d971ee55e569736a285a2c03469de45da43d6ef8a8a40cea5b78f97e1dfc6cb",
+    "doom_primary.json": "1a579b545e90dddc89da32072d783910eb4d8d4ad76634434bd28ea8962532eb",
+    "doom_temporal.json": "a40cb99b2edaa208ef08c992a506c059481e23d820dccf81a95c842a83906ffd",
+    "final_routes/summary.json": "7f6a70415587f8db69915d3c8440a54bf96f21b4b376fc683d990df6e24c2013",
+    "optin_resume/summary.json": "2311a89be7b373cbea74591d12d5de6c2469f5438c081b1ac79dbdd2795f6219",
+    "final_archive_validation.json": "97cad8399625082925fafdca34ed863fd9520cd620d56b2b05d90ffe8bbb9ef6",
+    "final_source_contracts.json": "6b6b6960923c8f8954dc0fe9330af3f6e0f1ec76892c8bcbbc0064b46bb07709"
+  },
+  "final_source_sha256": {
+    "nettalee.py": "b3837b8edb95c419b56fb313a1ba361978abbbe32747623752fa5d6f7323ccf7",
+    "nettacode.py": "77e6658fa333884a5c9b537b55d5cb7f0d6bb244fcb8b787490374566b706b6e",
+    "2048.py": "0f263823e4650fd3a2f6cf84529d3b7a47c28a061891f582197dab0ab1c5fea6",
+    "doomer.py": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd",
+    "doom.py": "a28295346f238be3348ab5c728e484b8829bdb2dfae7644d4c5ff9c13aa074fe",
+    "tools/audit_iteration5.py": "ae9aea1d683af6705948393fd7c6e9e5e82797676d7ecbf551acb06886d719ee",
+    "tests/test_routes_iteration5.py": "241e9e25ba0184ca16e517d219b2bbb551e38d341b890a3ea0d81cdfc2e2152d"
+  }
+}

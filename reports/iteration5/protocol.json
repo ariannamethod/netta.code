@@ -1,0 +1,55 @@
+{
+  "baseline_commit": "ea8e1519db2453375373ec3283a9988288b2b026",
+  "date": "2026-09-21",
+  "baseline": "baseline/manifest.json",
+  "constraints": {
+    "bodies": [
+      "nettalee.py",
+      "nettacode.py"
+    ],
+    "dependencies": "stdlib core; existing Doomnativeengine",
+    "generated_source": "exact bytes and whitespace; no repairs or action override",
+    "corpora": "fixed during comparisons",
+    "public_reports": "compact results, protocols and audit receipts; raw evidence saved separately"
+  },
+  "streams": {
+    "code": {
+      "hypothesis": "most recently introduced ordinary learned unit outside local context helps retain compatible continuations",
+      "comparison": "first anchor versus recent anchor with unchanged numeric/table contracts",
+      "development": "two replicas,128train128eval per task per arm",
+      "advance": "table passes improve by at least2; numeric passes no worse; productive counts no worse in either task",
+      "confirmation": "three fresh replicas,256train256eval per task per arm if development qualifies",
+      "export_replica": 0
+    },
+    "2048": {
+      "hypothesis": "actual board/action immediate merge advantage distinguishes executed branches",
+      "arms": [
+        "legacy",
+        "uniform terminal reward per decision",
+        "board-relative action reward per decision"
+      ],
+      "development": "two replicas,128train64eval per arm",
+      "advance": "candidate raw score improves in both replicas,pooledgain>=25,meanplayed>=legacy,pooledraw>uniformcontrol",
+      "confirmation": "three fresh replicas,256train128eval per arm if development qualifies",
+      "export_replica": 0
+    },
+    "doom": {
+      "hypothesis": "combat reward with zero reinforcement when no player damage is dealt changes acquired policy experience",
+      "comparison": "attributed-v1 versus combat-v1 under legacy sensor, same initialstate/seeds",
+      "training_attempts_each": 128,
+      "paired_evaluation_attempts_each": 64,
+      "fixed_controls": "turn,forward,aim;16starts each",
+      "comparison_metrics": [
+        "commoncombat reward/raw",
+        "actual playerdamage/raw",
+        "directkills/raw",
+        "receiveddamage/raw"
+      ],
+      "optional_temporal": "separate development, explicitly different corpora and sensor contracts",
+      "reward_formula": "0 if player_damage_dealt <= 0, otherwise unchanged attributed-v1 =0.5+0.5*tanh((dealt/100-.01*received-.005*ammo)/3)",
+      "design_correction": "Initial tanh rescaling development interrupted and preserved separately: changing the scale also shifts the shared reward>.5 continuation-acquisition threshold. The piecewise gate isolates zero-combat credit; fresh protocol and disjoint seeds."
+    }
+  },
+  "audit": "independent source/state/reward/count verification plus final real6route gate",
+  "publication": "retain current states unless specified measured comparison supports replacement; no parameter sweeps"
+}

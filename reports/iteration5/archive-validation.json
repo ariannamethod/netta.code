@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "old_route_bridge_sha256": "95581eb007843a01071b2a3ef87f28361ed5a536d20cc51fbc4b8d1bff724656",
+  "final_bridge_sha256": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd",
+  "reviewed_diff": "completed journal publication and trajectory metadata only; action, observation, reward and learning logic unchanged",
+  "recovered_immutable_episodes_verified": 28,
+  "recovered_episode_total_rows": 12839,
+  "actual_final_bridge_native_episodes": [
+    {
+      "episode": "results/iteration5/audit/optin_resume/doom_combat/combined/attempt_00002/episode.json",
+      "rows": 32,
+      "sha256": "d918f60745201e8e8e3aceb92ae04682957ad89cf05114bf6540adb0ee6b96d2"
+    },
+    {
+      "episode": "results/iteration5/audit/optin_resume/doom_combat/combined/attempt_00003/episode.json",
+      "rows": 32,
+      "sha256": "301183d1feb0fa8593de212055f5158e6e48fc102adb23bf821d1488f144102d"
+    },
+    {
+      "episode": "results/iteration5/audit/optin_resume/doom_combat/segment2/attempt_00000/episode.json",
+      "rows": 32,
+      "sha256": "d918f60745201e8e8e3aceb92ae04682957ad89cf05114bf6540adb0ee6b96d2"
+    },
+    {
+      "episode": "results/iteration5/audit/optin_resume/doom_combat/segment2/attempt_00001/episode.json",
+      "rows": 32,
+      "sha256": "301183d1feb0fa8593de212055f5158e6e48fc102adb23bf821d1488f144102d"
+    }
+  ],
+  "resume_evidence": "optin_resume/summary.json"
+}

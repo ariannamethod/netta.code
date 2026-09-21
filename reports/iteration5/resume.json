@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "modes": {
+    "2048/uniform": {
+      "attempts": 8,
+      "played": 8,
+      "decision_episodes": 92,
+      "decision_steps": 9582,
+      "new_decision_episodes": 8,
+      "split_and_combined_snapshot_bytes_identical": true,
+      "all_retained_attempt_receipts_identical": true,
+      "combined_journal_rows": 8,
+      "complete_segment_journal_rows": 8
+    },
+    "2048/advantage": {
+      "attempts": 8,
+      "played": 7,
+      "decision_episodes": 88,
+      "decision_steps": 9263,
+      "new_decision_episodes": 7,
+      "split_and_combined_snapshot_bytes_identical": true,
+      "all_retained_attempt_receipts_identical": true,
+      "combined_journal_rows": 7,
+      "complete_segment_journal_rows": 8
+    },
+    "doom/combat": {
+      "attempts": 4,
+      "played": 2,
+      "split_and_combined_snapshot_bytes_identical": true,
+      "combat_rewards_recomputed": true,
+      "copied_state_environment_explicitly_rebound": true
+    }
+  },
+  "all_release_snapshots_unchanged": true,
+  "sources_unchanged": true
+}

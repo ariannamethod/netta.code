@@ -1,0 +1,14 @@
+{
+  "thesis_unchanged": true,
+  "historical_log_entries_unchanged": true,
+  "published_states_unchanged": {
+    "states/art.json": "158bb4c3361ccaec62518b49acd4598ff05e589f9694328773d5fc607a3c8060",
+    "states/records.json": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+    "states/strings.json": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+    "states/code.json": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+    "states/2048.json": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+    "states/doom.json": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b"
+  },
+  "caller_configuration_unchanged": true,
+  "first_anchor_builder_unchanged": true
+}
