@@ -1,0 +1,95 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Netta Lee v3 — рисунки</title><style>body{background:#101721;color:#e4edf7;font:16px system-ui;max-width:1100px;margin:40px auto;padding:0 20px}h1{font-size:32px}p{color:#b7c4d5;line-height:1.6}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}article{padding:22px;background:#1a2432;border:1px solid #34445a;border-radius:14px}h2{font-size:15px;color:#83cbd7}.output{font:18px/1.2 monospace;white-space:pre;overflow:auto;min-height:220px}pre{white-space:pre;overflow:auto}summary{cursor:pointer}small{display:block;word-break:break-all;color:#94a7be;margin-top:16px}</style><h1>Netta Lee / v3</h1><p>Шесть выбранных результатов из фиксированных 600 попыток после 2 000 игр на расширенном острове. Показан точный stdout. В этом прогоне получены 271 продуктивное исполнение и 153 разных результата. Исходники повторно исполнены независимым CPython. Полные попытки — в results/v3_expanded/art/trained_evaluation.json.</p><div class="grid"><article><h2>Seed 2500000</h2><pre class="output"> @@@@@@@@@@@ 
+@           @
+@ x       + @
+@           @
+@           @
+@           @
+@           @
+@           @
+@           @
+@           @
+@ _________ @
+@           @
+ @@@@@@@@@@@ 
+</pre><details><summary>Исходный Python</summary><pre>size = 13
+mark = &#x27;@&#x27;
+canvas = [[&#x27; &#x27; for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = &#x27;x&#x27;
+canvas[2][-3] = &#x27;+&#x27;
+for column in range(2, size - 2):
+    canvas[-3][column] = &#x27;_&#x27;
+for row in canvas:
+    print(&#x27;&#x27;.join(row))
+</pre></details><small>SHA-256: 351a7b8b18d2ec89ba0913940c89f2085976d6ae767fe1bc396168a1737f674c</small></article><article><h2>Seed 2500346</h2><pre class="output"> .----. 
+|^    ^|
+|  UU  |
+ `----` 
+</pre><details><summary>Исходный Python</summary><pre>eye = &#x27;^&#x27;
+mouth = &#x27;UU&#x27;
+rows = [&#x27; .----. &#x27;, &#x27;|&#x27; + eye + &#x27;    &#x27; + eye + &#x27;|&#x27;, &#x27;|  &#x27; + mouth + &#x27;  |&#x27;, &#x27; `----` &#x27;]
+for row in rows:
+    print(row)
+</pre></details><small>SHA-256: 1a51669f820d97e8fd697b96d12d06cff3748fd5c708f5f526912e7bd3df15ff</small></article><article><h2>Seed 2500096</h2><pre class="output">+-----------------+ +-----------------+
+|       O O       | |       O O       |
+|        --       | |       --        |
++-----------------+ +-----------------+
+</pre><details><summary>Исходный Python</summary><pre>eye = &#x27;O&#x27;
+size = 17
+rows = [&#x27;+&#x27; + &#x27;-&#x27; * size + &#x27;+&#x27;, &#x27;|&#x27; + (eye + &#x27; &#x27; + eye).center(size) + &#x27;|&#x27;, &#x27;|&#x27; + &#x27;--&#x27;.center(size) + &#x27;|&#x27;, &#x27;+&#x27; + &#x27;-&#x27; * size + &#x27;+&#x27;]
+for row in rows:
+    print(row + &#x27; &#x27; + row[::-1])
+</pre></details><small>SHA-256: 0047cb1183ab2cefac04dd0869aa291f2eebe0c4774fa508518225a77ff7907a</small></article><article><h2>Seed 2500328</h2><pre class="output"> ---------------------
+(+                   +)
+           v          
+ ---------------------
+(+                   +)
+           v          
+ ---------------------
+</pre><details><summary>Исходный Python</summary><pre>eye = &#x27;+&#x27;
+width = 19
+line = &#x27;(&#x27; + eye + &#x27; &#x27; * width + eye + &#x27;)&#x27;
+print(&#x27; &#x27; + &#x27;-&#x27; * (len(line) - 2))
+print(line)
+print(&#x27; &#x27; + &#x27;v&#x27;.center(len(line) - 2))
+print(&#x27; &#x27; + &#x27;-&#x27; * (len(line) - 2))
+print(line)
+print(&#x27; &#x27; + &#x27;v&#x27;.center(len(line) - 2))
+print(&#x27; &#x27; + &#x27;-&#x27; * (len(line) - 2))
+</pre></details><small>SHA-256: 9230cba86eb6d4baa5a4aa63d69a02029f9497b7a93bbbf04daf3aa8c75370c7</small></article><article><h2>Seed 2500413</h2><pre class="output"> @@@@@
+ @@@@@
+  @@@@
+ @@@@@
+@@@@@@
+</pre><details><summary>Исходный Python</summary><pre>heights = [5, 5, 4, 5, 6]
+mark = &#x27;@&#x27;
+width = max(heights)
+for height in heights:
+    print(&#x27; &#x27; * (width - height) + mark * height)
+</pre></details><small>SHA-256: 67ba538c771b81ffe01eb9127e5d8849d220de262cdd246d5ef14e8f19cb0cfa</small></article><article><h2>Seed 2500511</h2><pre class="output">       /|
+      /XX|
+     /XXXX|
+    /XXXXXX|
+   /XXXXXXXX|
+  /XXXXXXXXXX|
+ /XXXXXXXXXXXX|
+/XXXXXXXXXXXXXX|
+|              X
+|             XXX
+|            XXXXX
+|           XXXXXXX
+|          XXXXXXXXX
+|         XXXXXXXXXXX
+|        XXXXXXXXXXXXX
+</pre><details><summary>Исходный Python</summary><pre>size = 15
+mark = &#x27;X&#x27;
+for row in range(size // 2 + 1):
+    print(&#x27; &#x27; * (size // 2 - row) + &#x27;/&#x27; + mark * (2 * row) + &#x27;|&#x27;)
+for row in range(size // 2):
+    print(&#x27;|&#x27; + &#x27; &#x27; * (size - row - 1) + mark * (row * 2 + 1))
+</pre></details><small>SHA-256: 84e705839cad143165ae14b9995399e62c753a7b64537b63af3f775da0e0db10</small></article></div></html>
