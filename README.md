@@ -1,11 +1,9 @@
-\`\`\`
-███╗   ██╗███████╗████████╗████████╗ █████╗      ██████╗ ██████╗ ██████╗ ███████╗
-████╗  ██║██╔════╝╚══██╔══╝╚══██╔══╝██╔══██╗    ██╔════╝██╔═══██╗██╔══██╗██╔════╝
-██╔██╗ ██║█████╗     ██║      ██║   ███████║    ██║     ██║   ██║██║  ██║█████╗
-██║╚██╗██║██╔══╝     ██║      ██║   ██╔══██║    ██║     ██║   ██║██║  ██║██╔══╝
-██║ ╚████║███████╗   ██║      ██║   ██║  ██║    ╚██████╗╚██████╔╝██████╔╝███████╗
-╚═╝  ╚═══╝╚══════╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝     ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
-\`\`\`
+```
+ _ __   ___| |_| |_ __ _   ___ ___   __| | ___
+| '_ \\ / _ \\ __| __/ _` | / __/ _ \\ / _` |/ _ \\
+| | | |  __/ |_| || (_| || (_| (_) | (_| |  __/
+|_| |_|\\___|\\__|\\__\\__,_(_)___\\___/ \\__,_|\\___|
+```
 
 # netta.code
 
@@ -26,7 +24,7 @@ The repository contains two organisms built around the same idea.
 
 **Netta Code** lives in a mixed island where different kinds of programs occupy the same world, so unrelated structures can collide and recombine inside one acquired experience.
 
-**Netta Lee** lives differently. Each specialization has its own island and its own saved life: art, strings, records, Doom and whatever comes next. A small caller named \`select_state()\` reads ordinary language, weighs declared lexical evidence and wakes the state whose experience belongs to the request, so she can spend one life learning one family of movements instead of asking one memory to vaguely contain every craft at once.
+**Netta Lee** lives differently. Each specialization has its own island and its own saved life: art, strings, records, Doom and whatever comes next. A small caller named `select_state()` reads ordinary language, weighs declared lexical evidence and wakes the state whose experience belongs to the request, so she can spend one life learning one family of movements instead of asking one memory to vaguely contain every craft at once.
 
 Bruce Lee probably meant martial arts. The repository chose Python.
 
@@ -40,9 +38,9 @@ The important part comes first: **agency is the training regime**. She plays, ex
 
 An island is a text file containing complete Python programs separated by:
 
-\`\`\`
+```
 # === PROGRAM ===
-\`\`\`
+```
 
 The framing disappears when the island is read; every byte inside each program remains part of the world. From those bytes Netta grows deterministic byte-pair units, builds local continuation tables and begins sampling programs from structures she has actually lived through, with the continuation order and search behavior differing between the two organisms.
 
@@ -52,7 +50,7 @@ The education loop therefore lives inside the activity itself. Netta does not le
 
 This is also why the environment can become more interesting without changing the basic idea. A text-processing island, a drawing island, a game controller and a future automation island all present different surfaces, but they share the same essential law: generated code meets consequences.
 
-The main bodies are ordinary Python files. \`nettalee.py\` and \`nettacode.py\` each carry their own organism, execution judge and caller; the core runs on the Python standard library, while Doom keeps its optional dependency separate because Hell, apparently, still has packaging requirements.
+The main bodies are ordinary Python files. `nettalee.py` and `nettacode.py` each carry their own organism, execution judge and caller; the core runs on the Python standard library, while Doom keeps its optional dependency separate because Hell, apparently, still has packaging requirements.
 
 ---
 
@@ -72,9 +70,9 @@ This adversarial little relationship is useful because a compiler and a runtime 
 
 ## Netta Lee
 
-\`nettalee.py\` is the specialist body. Her published states currently cover **art**, **strings**, **records** and **Doom**, with each island keeping its own corpus and its own saved experience.
+`nettalee.py` is the specialist body. Her published states currently cover **art**, **strings**, **records** and **Doom**, with each island keeping its own corpus and its own saved experience.
 
-The caller configuration lives in \`tools.json\`. Each state declares words, phrases and examples associated with the specialization; \`select_state()\` ranks that evidence, abstains when the signal is too weak or competing, and returns the saved state that belongs to the request. Some states also declare output contracts for particular commands, so the same ordinary-language front door can route toward a constrained executable result.
+The caller configuration lives in `tools.json`. Each state declares words, phrases and examples associated with the specialization; `select_state()` ranks that evidence, abstains when the signal is too weak or competing, and returns the saved state that belongs to the request. Some states also declare output contracts for particular commands, so the same ordinary-language front door can route toward a constrained executable result.
 
 A request for a compact drawing wakes the art life. A request about sorted words wakes the strings life. Doom wakes something with worse manners.
 
@@ -86,7 +84,7 @@ This is where the Bruce Lee joke stops being decoration and turns into architect
 
 ## Netta Code
 
-\`nettacode.py\` keeps the same general organism while living in \`corpora/mixed.txt\`, where different program families share one world. Its default continuation context is shorter and its corridor escape is more frequent, giving heterogeneous structures more room to meet inside a single experience.
+`nettacode.py` keeps the same general organism while living in `corpora/mixed.txt`, where different program families share one world. Its default continuation context is shorter and its corridor escape is more frequent, giving heterogeneous structures more room to meet inside a single experience.
 
 The two bodies therefore ask different questions with almost the same anatomy. Netta Lee asks what deep local experience becomes when each domain keeps its own life, while Netta Code asks what happens when executable habits from different domains are allowed to occupy the same memory and collide.
 
@@ -117,21 +115,21 @@ The art island is convenient because its results can be seen without asking a lo
 
 A few exact stdout examples:
 
-\`\`\`
+```
  .----.
 |^    ^|
 |  UU  |
- \`----\`
-\`\`\`
+ `----`
+```
 
-\`\`\`
+```
 +-----------------+ +-----------------+
 |       O O       | |       O O       |
 |        --       | |       --        |
 +-----------------+ +-----------------+
-\`\`\`
+```
 
-\`\`\`
+```
        /|
       /XX|
      /XXXX|
@@ -147,7 +145,7 @@ A few exact stdout examples:
 |          XXXXXXXXX
 |         XXXXXXXXXXX
 |        XXXXXXXXXXXXX
-\`\`\`
+```
 
 The selected set, together with the exact Python source and SHA-256 for every shown result, lives in **[gallery.html](gallery.html)**.
 
@@ -157,20 +155,20 @@ ASCII art was meant to be the easy island. It has already developed opinions.
 
 ## Doom
 
-\`nettadoom.py\` connects a Netta Lee control island to ViZDoom. A generated policy receives a compact observation containing health, ammunition and a coarse scene description, then chooses among six actions:
+`nettadoom.py` connects a Netta Lee control island to ViZDoom. A generated policy receives a compact observation containing health, ammunition and a coarse scene description, then chooses among six actions:
 
-\`\`\`
+```
 turn_left
 turn_right
 move_forward
 strafe_left
 strafe_right
 shoot
-\`\`\`
+```
 
 Before a policy enters the game, its exact generated source is executed over the complete compact observation space. The resulting action table is therefore a finite consequence of that program, and a controller that emits the same action everywhere is rejected as unreactive before Doom ever has to suffer it.
 
-Once admitted, real episodes can return kills, damage and ammunition use through Netta's external \`observe()\` path, allowing game consequences to become acquisition pressure for later policies.
+Once admitted, real episodes can return kills, damage and ammunition use through Netta's external `observe()` path, allowing game consequences to become acquisition pressure for later policies.
 
 The bridge and repeated-start machinery are already in the repository. The current log records that the first host used for this release hit engine-startup socket EPERM / SIGSEGV before a real episode completed, so the next Doom run begins exactly where the log leaves it.
 
@@ -180,7 +178,7 @@ WOLFE learned to play Doom by choosing functions. Netta Lee gets to write the po
 
 ## the caller
 
-\`select_state()\` is the small Wolfe-inspired front door to Netta Lee. It tokenizes an ordinary request, compares that request with the declarations in \`tools.json\`, ranks evidence across the saved states and returns a specialization when one state has earned a clear enough lead.
+`select_state()` is the small Wolfe-inspired front door to Netta Lee. It tokenizes an ordinary request, compares that request with the declarations in `tools.json`, ranks evidence across the saved states and returns a specialization when one state has earned a clear enough lead.
 
 Its job is deliberately narrower than the organism behind it. The caller chooses **which experience becomes active**; it does not generate the program, execute the program or learn from the result. That separation is what makes the same idea useful as a component inside another system: an upstream LLM can remain good at language, emit an ordinary instruction, and let a much smaller learned execution body handle the specialized action that instruction points toward.
 
@@ -194,45 +192,45 @@ A router and a specialist walk into a bar. The router points at the right bottle
 
 Grow a specialist state from an island:
 
-\`\`\`bash
+```bash
 python3 nettalee.py init \
   --island corpora/art.txt \
   --state states/art.json
-\`\`\`
+```
 
 Let her play and keep the experience:
 
-\`\`\`bash
+```bash
 python3 nettalee.py play \
   --state states/art.json \
   --games 100
-\`\`\`
+```
 
 Sample from a saved life without adding new experience:
 
-\`\`\`bash
+```bash
 python3 nettalee.py sample \
   --state states/art.json \
   --attempts 32 \
   --out out/
-\`\`\`
+```
 
 Ask the caller to choose a specialization from ordinary language:
 
-\`\`\`bash
+```bash
 python3 nettalee.py ask \
   "draw a compact picture" \
   --tools tools.json \
   --attempts 32 \
   --out out/
-\`\`\`
+```
 
 Inspect the accumulated state:
 
-\`\`\`bash
+```bash
 python3 nettalee.py inspect \
   --state states/art.json
-\`\`\`
+```
 
 Netta Code exposes the same basic surface around its mixed state.
 
@@ -240,7 +238,7 @@ Netta Code exposes the same basic surface around its mixed state.
 
 ## files
 
-\`\`\`
+```
 nettalee.py        Netta Lee: specialist organism, judge and select_state() caller
 nettacode.py       Netta Code: mixed-island organism
 nettadoom.py       ViZDoom execution bridge
@@ -265,7 +263,7 @@ states/
   records.json
   doom.json
   code.json
-\`\`\`
+```
 
 ---
 
