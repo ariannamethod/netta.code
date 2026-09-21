@@ -1486,7 +1486,10 @@ _ALLOWED_AST = {getattr(ast, name) for name in (
 ).split()}
 _COMPUTE_FUNCTIONS = set(_SAFE_FUNCTIONS) - {'range', 'enumerate', 'zip', 'reversed', 'list', 'tuple', 'dict', 'set', 'bool', 'str', 'int', 'float'}
 _COMPUTE_OPS = {'BINARY_OP', 'BINARY_SUBSCR', 'COMPARE_OP', 'CONTAINS_OP', 'IS_OP',
-                'UNARY_NEGATIVE', 'UNARY_INVERT', 'UNARY_NOT', 'LIST_APPEND', 'SET_ADD', 'MAP_ADD'}
+                'UNARY_NEGATIVE', 'UNARY_INVERT', 'UNARY_NOT', 'LIST_APPEND', 'SET_ADD', 'MAP_ADD',
+                'BINARY_ADD', 'BINARY_SUBTRACT', 'BINARY_MULTIPLY', 'BINARY_TRUE_DIVIDE',
+                'BINARY_FLOOR_DIVIDE', 'BINARY_MODULO', 'BINARY_POWER', 'BINARY_LSHIFT',
+                'BINARY_RSHIFT', 'BINARY_AND', 'BINARY_XOR', 'BINARY_OR'}
 
 
 class RuntimePolicyError(ValueError):
@@ -1571,6 +1574,42 @@ def _runtime_result(status, source, reason='', output='', metrics=None, accepted
             'metrics': metrics or {}}
 
 
+def _runtime_instructions(code, show_caches=False):
+    """Return bytecode instructions on CPython versions with different dis APIs."""
+    if show_caches:
+        try:
+            return dis.get_instructions(code, show_caches=True)
+        except TypeError:
+            pass
+    return dis.get_instructions(code)
+
+
+def _runtime_precise_position(instruction):
+    position = getattr(instruction, 'positions', None)
+    return bool(position is not None and getattr(position, 'lineno', None) is not None and
+                getattr(position, 'col_offset', None) is not None and
+                getattr(position, 'end_lineno', None) is not None and
+                getattr(position, 'end_col_offset', None) is not None)
+
+
+def _runtime_position_tuple(instruction, fallback_line=None):
+    """Instruction position as line/column tuple, falling back to line-only."""
+    if instruction is None:
+        return None
+    position = getattr(instruction, 'positions', None)
+    if position is not None and getattr(position, 'lineno', None) is not None:
+        lineno = position.lineno
+        end_lineno = getattr(position, 'end_lineno', None) or lineno
+        column = getattr(position, 'col_offset', None)
+        end_column = getattr(position, 'end_col_offset', None)
+        if column is not None and end_column is not None:
+            return (lineno, end_lineno, column, end_column)
+    lineno = getattr(instruction, 'starts_line', None) or fallback_line
+    if lineno is None:
+        return None
+    return (lineno, lineno, 0, 0)
+
+
 def _runtime_diagnostic(exc, source):
     """Native exception identity and exact generated-source range.
 
@@ -1585,10 +1624,12 @@ def _runtime_diagnostic(exc, source):
             if line is None or offset is None or offset <= 0 or not 1 <= line <= len(lines):
                 return None
             return len(lines[line - 1][:offset - 1].encode('utf-8'))
-        diagnostic.update(error_line=exc.lineno, error_end_line=exc.end_lineno,
+        end_lineno = getattr(exc, 'end_lineno', None) or exc.lineno
+        end_offset = getattr(exc, 'end_offset', None)
+        diagnostic.update(error_line=exc.lineno, error_end_line=end_lineno,
                           error_column=byte_column(exc.lineno, exc.offset),
-                          error_end_column=byte_column(exc.end_lineno, exc.end_offset),
-                          syntax_offset=exc.offset, syntax_end_offset=exc.end_offset)
+                          error_end_column=byte_column(end_lineno, end_offset),
+                          syntax_offset=exc.offset, syntax_end_offset=end_offset)
         return diagnostic
     generated = None
     cursor = exc.__traceback__
@@ -1598,14 +1639,52 @@ def _runtime_diagnostic(exc, source):
         cursor = cursor.tb_next
     if generated is not None:
         diagnostic['error_line'] = generated.tb_lineno
-        instruction = next((item for item in dis.get_instructions(generated.tb_frame.f_code, show_caches=True)
+        instruction = next((item for item in _runtime_instructions(generated.tb_frame.f_code, show_caches=True)
                             if item.offset == generated.tb_lasti), None)
-        if instruction is not None:
-            pos = instruction.positions
-            diagnostic.update(error_line=pos.lineno if pos.lineno is not None else generated.tb_lineno,
-                              error_column=pos.col_offset, error_end_line=pos.end_lineno,
-                              error_end_column=pos.end_col_offset)
+        position = _runtime_position_tuple(instruction, generated.tb_lineno)
+        if position is not None:
+            line, end_line, column, end_column = position
+            diagnostic.update(error_line=line, error_column=column,
+                              error_end_line=end_line, error_end_column=end_column)
     return diagnostic
+
+
+def _runtime_worker_args():
+    """Interpreter argv for judge workers, across CPython versions.
+
+    ``-P`` (safe_path) is useful when available, but older system Pythons reject
+    it before the worker protocol can answer. Keep the security hardening where
+    the interpreter knows it, and keep the organism runnable where it does not.
+    """
+    args = [sys.executable]
+    if getattr(sys.flags, 'safe_path', None) is not None:
+        args.append('-P')
+    args.extend(['-s', os.path.abspath(__file__), '--judge-worker'])
+    return args
+
+
+def _runtime_try_limit(resource_module, name, soft, hard):
+    """Apply one OS resource limit when this host/interpreter accepts it."""
+    limit = getattr(resource_module, name, None)
+    if limit is None:
+        return
+    try:
+        resource_module.setrlimit(limit, (soft, hard))
+    except (OSError, ValueError):
+        return
+
+
+def _runtime_apply_worker_limits():
+    """Best-effort worker sandbox limits; never turn platform refusal into code failure."""
+    try:
+        import resource
+    except ImportError:
+        return
+    _runtime_try_limit(resource, 'RLIMIT_AS', 256 * 1024 * 1024, 256 * 1024 * 1024)
+    _runtime_try_limit(resource, 'RLIMIT_CPU', 2, 2)
+    _runtime_try_limit(resource, 'RLIMIT_FSIZE', 0, 0)
+    _runtime_try_limit(resource, 'RLIMIT_NOFILE', 16, 16)
+    _runtime_try_limit(resource, 'RLIMIT_CORE', 0, 0)
 
 
 def _runtime_control_request(mode, inputs, actions):
@@ -1740,9 +1819,9 @@ class _ActionProvenance:
                 self.starts[node.end_lineno - 1] + node.end_col_offset)
 
     def ins_span(self, instruction):
-        p = instruction.positions
-        if not p.lineno or p.col_offset is None or not p.end_lineno or p.end_col_offset is None:
+        if not _runtime_precise_position(instruction):
             return None
+        p = instruction.positions
         return (self.starts[p.lineno - 1] + p.col_offset,
                 self.starts[p.end_lineno - 1] + p.end_col_offset)
 
@@ -2129,18 +2208,23 @@ def _runtime_execute(source, mode, inputs=None, actions=None, provenance=False, 
                 raise RuntimePolicyError('instruction limit')
             mapping = instructions.get(frame.f_code)
             if mapping is None:
-                mapping = {item.offset: item for item in dis.get_instructions(frame.f_code)}
+                mapping = {item.offset: item for item in _runtime_instructions(frame.f_code)}
                 instructions[frame.f_code] = mapping
             instruction = mapping.get(frame.f_lasti)
-            if instruction is None or not instruction.positions.lineno:
+            position = _runtime_position_tuple(instruction, frame.f_lineno)
+            if position is None:
                 return trace
-            if action_provenance is not None:
+            precise = _runtime_precise_position(instruction)
+            if action_provenance is not None and precise:
                 action_provenance.opcode(frame, instruction)
             op = instruction.opname
-            pos = instruction.positions
-            executed_spans.add((pos.lineno, pos.end_lineno, pos.col_offset, pos.end_col_offset))
-            location = (pos.lineno, pos.col_offset, pos.end_lineno, pos.end_col_offset)
-            call = next((n for n in calls if span(n) == location), None) if op.startswith('CALL') else None
+            line, end_line, column, end_column = position
+            executed_spans.add((line, end_line, column, end_column))
+            location = (line, column, end_line, end_column)
+            if precise:
+                call = next((n for n in calls if span(n) == location), None) if op.startswith('CALL') else None
+            else:
+                call = next((n for n in calls if n.lineno == line), None) if op.startswith('CALL') else None
             computational_call = call is not None and (isinstance(call.func, ast.Attribute) or
                 isinstance(call.func, ast.Name) and call.func.id in _COMPUTE_FUNCTIONS)
             if op in _COMPUTE_OPS or computational_call:
@@ -2148,12 +2232,22 @@ def _runtime_execute(source, mode, inputs=None, actions=None, provenance=False, 
                 counts[op] += 1
                 compute_spans[location] = steps
             if op in ('STORE_NAME', 'STORE_FAST'):
-                key = (pos.lineno, pos.col_offset, instruction.argval)
-                rhs = stores.get(key)
+                key = (line, column, instruction.argval)
+                if precise:
+                    rhs = stores.get(key)
+                    controls = conditional_stores.get(key, [])
+                else:
+                    rhs_key = next((candidate for candidate in stores
+                                    if candidate[0] == line and candidate[2] == instruction.argval), None)
+                    rhs = stores.get(rhs_key)
+                    controls = conditional_stores.get(rhs_key, [])
                 sink = (id(frame), 'store', instruction.argval, location)
-                taints[id(frame)][instruction.argval] = expression_computed(rhs, frame, sink_steps.get(sink, 0)) or any(expression_computed(test, frame) for test in conditional_stores.get(key, []))
+                taints[id(frame)][instruction.argval] = (
+                    expression_computed(rhs, frame, sink_steps.get(sink, 0)) or
+                    any(expression_computed(test, frame) for test in controls) or
+                    (not precise and line in computational))
                 sink_steps[sink] = steps
-            if op == 'STORE_SUBSCR' and location in subscript_stores:
+            if precise and op == 'STORE_SUBSCR' and location in subscript_stores:
                 name, rhs, controls = subscript_stores[location]
                 if expression_computed(rhs, frame) or any(expression_computed(test, frame) for test in controls):
                     value = frame.f_locals.get(name, namespace.get(name))
@@ -2165,6 +2259,7 @@ def _runtime_execute(source, mode, inputs=None, actions=None, provenance=False, 
                 if isinstance(call.func, ast.Name) and call.func.id == 'print':
                     sink = (id(frame), 'print', location)
                     output_computed |= any(expression_computed(value, frame, sink_steps.get(sink, 0)) for value in call.args)
+                    output_computed |= not precise and bool(computational)
                     sink_steps[sink] = steps
                 elif isinstance(call.func, ast.Attribute) and call.func.attr in {
                     'append', 'extend', 'insert', 'pop', 'remove', 'reverse', 'sort', 'clear',
@@ -2176,7 +2271,7 @@ def _runtime_execute(source, mode, inputs=None, actions=None, provenance=False, 
                         if len(before) > 131072:
                             raise RuntimePolicyError('mutation observation size limit')
                         pending_mutations[id(frame)] = (root.id, value, before, location)
-            if op == 'FORMAT_VALUE':
+            if precise and op == 'FORMAT_VALUE':
                 for value in formatted:
                     if contains(location, span(value)):
                         for part in ast.walk(value):
@@ -2241,12 +2336,7 @@ def _runtime_execute(source, mode, inputs=None, actions=None, provenance=False, 
 def worker_entry():
     """Private subprocess protocol; call only for --judge-worker."""
     try:
-        import resource
-        resource.setrlimit(resource.RLIMIT_AS, (256 * 1024 * 1024, 256 * 1024 * 1024))
-        resource.setrlimit(resource.RLIMIT_CPU, (2, 2))
-        resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
-        resource.setrlimit(resource.RLIMIT_NOFILE, (16, 16))
-        resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+        _runtime_apply_worker_limits()
         request = json.loads(sys.stdin.read(RUNTIME_SOURCE_LIMIT * 64))
         if 'observations' in request:
             observations = request['observations']
@@ -2292,7 +2382,7 @@ def judge(source, timeout=1.5, mode='general', inputs=None, actions=None, proven
         return result
     with tempfile.TemporaryDirectory(prefix='netta-run-') as workdir:
         try:
-            proc = subprocess.run([sys.executable, '-P', '-s', os.path.abspath(__file__), '--judge-worker'],
+            proc = subprocess.run(_runtime_worker_args(),
                                   input=json.dumps({'source': source, 'mode': mode, 'inputs': inputs, 'actions': actions,
                                                     'provenance': provenance, 'provenance_events': provenance_events}), text=True,
                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=workdir,
@@ -2340,7 +2430,7 @@ def judge_batch(source, observations, actions, timeout=3, provenance=False, prov
         return failures('policy_rejected', str(exc), exc)
     with tempfile.TemporaryDirectory(prefix='netta-control-') as workdir:
         try:
-            proc = subprocess.run([sys.executable, '-P', '-s', os.path.abspath(__file__), '--judge-worker'],
+            proc = subprocess.run(_runtime_worker_args(),
                                   input=json.dumps({'source': source, 'observations': observations, 'actions': actions,
                                                     'provenance': provenance, 'provenance_events': provenance_events}),
                                   text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=workdir,
