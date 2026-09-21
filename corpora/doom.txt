@@ -1,0 +1,740 @@
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif obs['health'] < 30:
+    action = 'strafe_left'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+if obs['health'] < 30:
+    action = 'strafe_left'
+elif obs['ammo'] == 0:
+    action = 'move_forward'
+elif obs['scene'] == 'center':
+    action = 'shoot'
+elif obs['scene'] == 'left':
+    action = 'turn_left'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+action = 'move_forward'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['health'] < 30:
+    action = 'strafe_left'
+# === PROGRAM ===
+scene = obs['scene']
+aimed = scene == 'center'
+loaded = obs['ammo'] > 0
+hurt = obs['health'] < 30
+if aimed and loaded and not hurt:
+    action = 'shoot'
+elif hurt:
+    action = 'strafe_left'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+scene = obs['scene']
+if scene in turns:
+    action = turns[scene]
+elif scene == 'center':
+    if obs['health'] >= 30 and obs['ammo'] > 0:
+        action = 'shoot'
+    else:
+        action = 'strafe_left'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['ammo'] > 0:
+    if scene == 'center':
+        action = 'shoot'
+    elif scene == 'left':
+        action = 'turn_left'
+    elif scene == 'right':
+        action = 'turn_right'
+    else:
+        action = 'move_forward'
+else:
+    action = 'strafe_left' if obs['health'] < 30 else 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'empty':
+    action = 'move_forward'
+elif obs['health'] < 30:
+    action = 'strafe_left'
+elif scene == 'center':
+    action = 'shoot' if obs['ammo'] else 'move_forward'
+else:
+    action = 'turn_left' if scene == 'left' else 'turn_right'
+# === PROGRAM ===
+choices = {'empty': 'move_forward', 'left': 'turn_left', 'right': 'turn_right', 'center': 'shoot'}
+action = choices[obs['scene']]
+if action == 'shoot' and obs['ammo'] == 0:
+    action = 'move_forward'
+if obs['health'] < 30 and obs['scene'] != 'empty':
+    action = 'strafe_left'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif obs['health'] < 30 and obs['ammo'] == 0:
+    action = 'strafe_left'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['health'] >= 30:
+    if scene == 'center' and obs['ammo']:
+        action = 'shoot'
+    elif scene == 'left':
+        action = 'turn_left'
+    elif scene == 'right':
+        action = 'turn_right'
+    else:
+        action = 'move_forward'
+else:
+    action = 'strafe_left' if scene == 'center' else 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+left = scene == 'left'
+right = scene == 'right'
+if left or right:
+    action = 'turn_left' if left else 'turn_right'
+elif scene == 'center' and obs['ammo'] >= 1:
+    action = 'shoot'
+else:
+    action = 'strafe_left' if obs['health'] < 30 else 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+action = 'move_forward'
+if scene != 'empty':
+    action = 'strafe_left'
+    if obs['health'] >= 30:
+        if scene == 'left':
+            action = 'turn_left'
+        elif scene == 'right':
+            action = 'turn_right'
+        elif obs['ammo'] > 0:
+            action = 'shoot'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['ammo'] == 0 and scene != 'empty':
+    action = 'strafe_left'
+elif scene == 'center':
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'move_forward' if obs['health'] >= 30 else 'strafe_left'
+# === PROGRAM ===
+scene = obs['scene']
+turns = ['turn_left', 'turn_right']
+if scene == 'left':
+    action = turns[0]
+elif scene == 'right':
+    action = turns[1]
+elif obs['health'] < 30:
+    action = 'strafe_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+can_shoot = obs['ammo'] >= 1 and scene == 'center'
+should_escape = obs['health'] < 30 and scene != 'empty'
+if can_shoot:
+    action = 'shoot'
+elif should_escape:
+    action = 'strafe_left'
+elif scene in ('left', 'right'):
+    action = 'turn_' + scene
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'center':
+    action = 'shoot' if obs['ammo'] else 'strafe_left'
+elif scene == 'empty':
+    action = 'move_forward'
+else:
+    if obs['health'] < 30:
+        action = 'strafe_left'
+    else:
+        action = 'turn_' + scene
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif obs['health'] < 50:
+    action = 'strafe_right'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+if obs['health'] < 50:
+    action = 'strafe_right'
+elif obs['ammo'] == 0:
+    action = 'turn_left'
+elif obs['scene'] == 'center':
+    action = 'shoot'
+elif obs['scene'] == 'left':
+    action = 'turn_left'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+action = 'turn_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['health'] < 50:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+aimed = scene == 'center'
+loaded = obs['ammo'] > 0
+hurt = obs['health'] < 50
+if aimed and loaded and not hurt:
+    action = 'shoot'
+elif hurt:
+    action = 'strafe_right'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+scene = obs['scene']
+if scene in turns:
+    action = turns[scene]
+elif scene == 'center':
+    if obs['health'] >= 50 and obs['ammo'] > 0:
+        action = 'shoot'
+    else:
+        action = 'strafe_right'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['ammo'] > 0:
+    if scene == 'center':
+        action = 'shoot'
+    elif scene == 'left':
+        action = 'turn_left'
+    elif scene == 'right':
+        action = 'turn_right'
+    else:
+        action = 'turn_left'
+else:
+    action = 'strafe_right' if obs['health'] < 50 else 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'empty':
+    action = 'turn_left'
+elif obs['health'] < 50:
+    action = 'strafe_right'
+elif scene == 'center':
+    action = 'shoot' if obs['ammo'] else 'move_forward'
+else:
+    action = 'turn_left' if scene == 'left' else 'turn_right'
+# === PROGRAM ===
+choices = {'empty': 'turn_left', 'left': 'turn_left', 'right': 'turn_right', 'center': 'shoot'}
+action = choices[obs['scene']]
+if action == 'shoot' and obs['ammo'] == 0:
+    action = 'move_forward'
+if obs['health'] < 50 and obs['scene'] != 'empty':
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif obs['health'] < 50 and obs['ammo'] == 0:
+    action = 'strafe_right'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['health'] >= 50:
+    if scene == 'center' and obs['ammo']:
+        action = 'shoot'
+    elif scene == 'left':
+        action = 'turn_left'
+    elif scene == 'right':
+        action = 'turn_right'
+    else:
+        action = 'turn_left'
+else:
+    action = 'strafe_right' if scene == 'center' else 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+left = scene == 'left'
+right = scene == 'right'
+if left or right:
+    action = 'turn_left' if left else 'turn_right'
+elif scene == 'center' and obs['ammo'] >= 3:
+    action = 'shoot'
+else:
+    action = 'strafe_right' if obs['health'] < 50 else 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+action = 'turn_left'
+if scene != 'empty':
+    action = 'strafe_right'
+    if obs['health'] >= 50:
+        if scene == 'left':
+            action = 'turn_left'
+        elif scene == 'right':
+            action = 'turn_right'
+        elif obs['ammo'] > 0:
+            action = 'shoot'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['ammo'] == 0 and scene != 'empty':
+    action = 'strafe_right'
+elif scene == 'center':
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_left' if obs['health'] >= 50 else 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+turns = ['turn_left', 'turn_right']
+if scene == 'left':
+    action = turns[0]
+elif scene == 'right':
+    action = turns[1]
+elif obs['health'] < 50:
+    action = 'strafe_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+can_shoot = obs['ammo'] >= 3 and scene == 'center'
+should_escape = obs['health'] < 50 and scene != 'empty'
+if can_shoot:
+    action = 'shoot'
+elif should_escape:
+    action = 'strafe_right'
+elif scene in ('left', 'right'):
+    action = 'turn_' + scene
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'center':
+    action = 'shoot' if obs['ammo'] else 'strafe_right'
+elif scene == 'empty':
+    action = 'turn_left'
+else:
+    if obs['health'] < 50:
+        action = 'strafe_right'
+    else:
+        action = 'turn_' + scene
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif obs['health'] < 75:
+    action = 'move_forward'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+if obs['health'] < 75:
+    action = 'move_forward'
+elif obs['ammo'] == 0:
+    action = 'turn_right'
+elif obs['scene'] == 'center':
+    action = 'shoot'
+elif obs['scene'] == 'left':
+    action = 'turn_left'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+action = 'turn_right'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'move_forward'
+if obs['health'] < 75:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+aimed = scene == 'center'
+loaded = obs['ammo'] > 0
+hurt = obs['health'] < 75
+if aimed and loaded and not hurt:
+    action = 'shoot'
+elif hurt:
+    action = 'move_forward'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+scene = obs['scene']
+if scene in turns:
+    action = turns[scene]
+elif scene == 'center':
+    if obs['health'] >= 75 and obs['ammo'] > 0:
+        action = 'shoot'
+    else:
+        action = 'move_forward'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['ammo'] > 0:
+    if scene == 'center':
+        action = 'shoot'
+    elif scene == 'left':
+        action = 'turn_left'
+    elif scene == 'right':
+        action = 'turn_right'
+    else:
+        action = 'turn_right'
+else:
+    action = 'move_forward' if obs['health'] < 75 else 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'empty':
+    action = 'turn_right'
+elif obs['health'] < 75:
+    action = 'move_forward'
+elif scene == 'center':
+    action = 'shoot' if obs['ammo'] else 'move_forward'
+else:
+    action = 'turn_left' if scene == 'left' else 'turn_right'
+# === PROGRAM ===
+choices = {'empty': 'turn_right', 'left': 'turn_left', 'right': 'turn_right', 'center': 'shoot'}
+action = choices[obs['scene']]
+if action == 'shoot' and obs['ammo'] == 0:
+    action = 'move_forward'
+if obs['health'] < 75 and obs['scene'] != 'empty':
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif obs['health'] < 75 and obs['ammo'] == 0:
+    action = 'move_forward'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['health'] >= 75:
+    if scene == 'center' and obs['ammo']:
+        action = 'shoot'
+    elif scene == 'left':
+        action = 'turn_left'
+    elif scene == 'right':
+        action = 'turn_right'
+    else:
+        action = 'turn_right'
+else:
+    action = 'move_forward' if scene == 'center' else 'turn_right'
+# === PROGRAM ===
+scene = obs['scene']
+left = scene == 'left'
+right = scene == 'right'
+if left or right:
+    action = 'turn_left' if left else 'turn_right'
+elif scene == 'center' and obs['ammo'] >= 6:
+    action = 'shoot'
+else:
+    action = 'move_forward' if obs['health'] < 75 else 'turn_right'
+# === PROGRAM ===
+scene = obs['scene']
+action = 'turn_right'
+if scene != 'empty':
+    action = 'move_forward'
+    if obs['health'] >= 75:
+        if scene == 'left':
+            action = 'turn_left'
+        elif scene == 'right':
+            action = 'turn_right'
+        elif obs['ammo'] > 0:
+            action = 'shoot'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['ammo'] == 0 and scene != 'empty':
+    action = 'move_forward'
+elif scene == 'center':
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_right' if obs['health'] >= 75 else 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+turns = ['turn_left', 'turn_right']
+if scene == 'left':
+    action = turns[0]
+elif scene == 'right':
+    action = turns[1]
+elif obs['health'] < 75:
+    action = 'move_forward'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+scene = obs['scene']
+can_shoot = obs['ammo'] >= 6 and scene == 'center'
+should_escape = obs['health'] < 75 and scene != 'empty'
+if can_shoot:
+    action = 'shoot'
+elif should_escape:
+    action = 'move_forward'
+elif scene in ('left', 'right'):
+    action = 'turn_' + scene
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'center':
+    action = 'shoot' if obs['ammo'] else 'move_forward'
+elif scene == 'empty':
+    action = 'turn_right'
+else:
+    if obs['health'] < 75:
+        action = 'move_forward'
+    else:
+        action = 'turn_' + scene
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif obs['health'] < 90:
+    action = 'turn_left'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+if obs['health'] < 90:
+    action = 'turn_left'
+elif obs['ammo'] == 0:
+    action = 'strafe_right'
+elif obs['scene'] == 'center':
+    action = 'shoot'
+elif obs['scene'] == 'left':
+    action = 'turn_left'
+else:
+    action = 'turn_right'
+# === PROGRAM ===
+action = 'strafe_right'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'turn_left'
+if obs['health'] < 90:
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+aimed = scene == 'center'
+loaded = obs['ammo'] > 0
+hurt = obs['health'] < 90
+if aimed and loaded and not hurt:
+    action = 'shoot'
+elif hurt:
+    action = 'turn_left'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+scene = obs['scene']
+if scene in turns:
+    action = turns[scene]
+elif scene == 'center':
+    if obs['health'] >= 90 and obs['ammo'] > 0:
+        action = 'shoot'
+    else:
+        action = 'turn_left'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['ammo'] > 0:
+    if scene == 'center':
+        action = 'shoot'
+    elif scene == 'left':
+        action = 'turn_left'
+    elif scene == 'right':
+        action = 'turn_right'
+    else:
+        action = 'strafe_right'
+else:
+    action = 'turn_left' if obs['health'] < 90 else 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'empty':
+    action = 'strafe_right'
+elif obs['health'] < 90:
+    action = 'turn_left'
+elif scene == 'center':
+    action = 'shoot' if obs['ammo'] else 'move_forward'
+else:
+    action = 'turn_left' if scene == 'left' else 'turn_right'
+# === PROGRAM ===
+choices = {'empty': 'strafe_right', 'left': 'turn_left', 'right': 'turn_right', 'center': 'shoot'}
+action = choices[obs['scene']]
+if action == 'shoot' and obs['ammo'] == 0:
+    action = 'move_forward'
+if obs['health'] < 90 and obs['scene'] != 'empty':
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif obs['health'] < 90 and obs['ammo'] == 0:
+    action = 'turn_left'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['health'] >= 90:
+    if scene == 'center' and obs['ammo']:
+        action = 'shoot'
+    elif scene == 'left':
+        action = 'turn_left'
+    elif scene == 'right':
+        action = 'turn_right'
+    else:
+        action = 'strafe_right'
+else:
+    action = 'turn_left' if scene == 'center' else 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+left = scene == 'left'
+right = scene == 'right'
+if left or right:
+    action = 'turn_left' if left else 'turn_right'
+elif scene == 'center' and obs['ammo'] >= 9:
+    action = 'shoot'
+else:
+    action = 'turn_left' if obs['health'] < 90 else 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+action = 'strafe_right'
+if scene != 'empty':
+    action = 'turn_left'
+    if obs['health'] >= 90:
+        if scene == 'left':
+            action = 'turn_left'
+        elif scene == 'right':
+            action = 'turn_right'
+        elif obs['ammo'] > 0:
+            action = 'shoot'
+# === PROGRAM ===
+scene = obs['scene']
+if obs['ammo'] == 0 and scene != 'empty':
+    action = 'turn_left'
+elif scene == 'center':
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_right' if obs['health'] >= 90 else 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+turns = ['turn_left', 'turn_right']
+if scene == 'left':
+    action = turns[0]
+elif scene == 'right':
+    action = turns[1]
+elif obs['health'] < 90:
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+can_shoot = obs['ammo'] >= 9 and scene == 'center'
+should_escape = obs['health'] < 90 and scene != 'empty'
+if can_shoot:
+    action = 'shoot'
+elif should_escape:
+    action = 'turn_left'
+elif scene in ('left', 'right'):
+    action = 'turn_' + scene
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+if scene == 'center':
+    action = 'shoot' if obs['ammo'] else 'turn_left'
+elif scene == 'empty':
+    action = 'strafe_right'
+else:
+    if obs['health'] < 90:
+        action = 'turn_left'
+    else:
+        action = 'turn_' + scene

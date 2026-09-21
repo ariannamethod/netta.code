@@ -1,0 +1,1920 @@
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+total = 0
+for name, value in rows:
+    total += value
+print(total)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+total = 0
+for name, value in rows:
+    total += value
+print(total)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+total = 0
+for name, value in rows:
+    total += value
+print(total)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+total = 0
+for name, value in rows:
+    total += value
+print(total)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+total = 0
+for name, value in rows:
+    total += value
+print(total)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+total = 0
+for name, value in rows:
+    total += value
+print(total)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+total = 0
+for name, value in rows:
+    total += value
+print(total)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+total = 0
+for name, value in rows:
+    total += value
+print(total)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+selected = []
+for name, value in rows:
+    if value >= 2:
+        selected.append([name, value])
+print(selected)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+selected = []
+for name, value in rows:
+    if value >= 3:
+        selected.append([name, value])
+print(selected)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+selected = []
+for name, value in rows:
+    if value >= 4:
+        selected.append([name, value])
+print(selected)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+selected = []
+for name, value in rows:
+    if value >= 2:
+        selected.append([name, value])
+print(selected)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+selected = []
+for name, value in rows:
+    if value >= 3:
+        selected.append([name, value])
+print(selected)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+selected = []
+for name, value in rows:
+    if value >= 4:
+        selected.append([name, value])
+print(selected)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+selected = []
+for name, value in rows:
+    if value >= 2:
+        selected.append([name, value])
+print(selected)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+selected = []
+for name, value in rows:
+    if value >= 3:
+        selected.append([name, value])
+print(selected)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+lookup = dict()
+for name, value in rows:
+    lookup[name] = lookup.get(name, 0) + value
+print(lookup)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+lookup = dict()
+for name, value in rows:
+    lookup[name] = lookup.get(name, 0) + value
+print(lookup)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+lookup = dict()
+for name, value in rows:
+    lookup[name] = lookup.get(name, 0) + value
+print(lookup)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+lookup = dict()
+for name, value in rows:
+    lookup[name] = lookup.get(name, 0) + value
+print(lookup)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+lookup = dict()
+for name, value in rows:
+    lookup[name] = lookup.get(name, 0) + value
+print(lookup)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+lookup = dict()
+for name, value in rows:
+    lookup[name] = lookup.get(name, 0) + value
+print(lookup)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+lookup = dict()
+for name, value in rows:
+    lookup[name] = lookup.get(name, 0) + value
+print(lookup)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+lookup = dict()
+for name, value in rows:
+    lookup[name] = lookup.get(name, 0) + value
+print(lookup)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+ordered = sorted((value, name) for name, value in rows)
+for value, name in reversed(ordered):
+    print(name + ':' + str(value))
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+ordered = sorted((value, name) for name, value in rows)
+for value, name in reversed(ordered):
+    print(name + ':' + str(value))
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+ordered = sorted((value, name) for name, value in rows)
+for value, name in reversed(ordered):
+    print(name + ':' + str(value))
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+ordered = sorted((value, name) for name, value in rows)
+for value, name in reversed(ordered):
+    print(name + ':' + str(value))
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+ordered = sorted((value, name) for name, value in rows)
+for value, name in reversed(ordered):
+    print(name + ':' + str(value))
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+ordered = sorted((value, name) for name, value in rows)
+for value, name in reversed(ordered):
+    print(name + ':' + str(value))
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+ordered = sorted((value, name) for name, value in rows)
+for value, name in reversed(ordered):
+    print(name + ':' + str(value))
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+ordered = sorted((value, name) for name, value in rows)
+for value, name in reversed(ordered):
+    print(name + ':' + str(value))
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+values = [value for name, value in rows]
+mean = sum(values) / len(values)
+print(round(mean, 2))
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+values = [value for name, value in rows]
+mean = sum(values) / len(values)
+print(round(mean, 2))
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+values = [value for name, value in rows]
+mean = sum(values) / len(values)
+print(round(mean, 2))
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+values = [value for name, value in rows]
+mean = sum(values) / len(values)
+print(round(mean, 2))
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+values = [value for name, value in rows]
+mean = sum(values) / len(values)
+print(round(mean, 2))
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+values = [value for name, value in rows]
+mean = sum(values) / len(values)
+print(round(mean, 2))
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+values = [value for name, value in rows]
+mean = sum(values) / len(values)
+print(round(mean, 2))
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+values = [value for name, value in rows]
+mean = sum(values) / len(values)
+print(round(mean, 2))
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+scaled = []
+for name, value in rows:
+    scaled.append([name, value * 2])
+print(scaled)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+scaled = []
+for name, value in rows:
+    scaled.append([name, value * 3])
+print(scaled)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+scaled = []
+for name, value in rows:
+    scaled.append([name, value * 4])
+print(scaled)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+scaled = []
+for name, value in rows:
+    scaled.append([name, value * 5])
+print(scaled)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+scaled = []
+for name, value in rows:
+    scaled.append([name, value * 6])
+print(scaled)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+scaled = []
+for name, value in rows:
+    scaled.append([name, value * 7])
+print(scaled)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+scaled = []
+for name, value in rows:
+    scaled.append([name, value * 8])
+print(scaled)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+scaled = []
+for name, value in rows:
+    scaled.append([name, value * 9])
+print(scaled)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+width = max(len(name) for name, value in rows)
+for name, value in rows:
+    print(name.ljust(width) + ' | ' + str(value))
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+width = max(len(name) for name, value in rows)
+for name, value in rows:
+    print(name.ljust(width) + ' | ' + str(value))
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+width = max(len(name) for name, value in rows)
+for name, value in rows:
+    print(name.ljust(width) + ' | ' + str(value))
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+width = max(len(name) for name, value in rows)
+for name, value in rows:
+    print(name.ljust(width) + ' | ' + str(value))
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+width = max(len(name) for name, value in rows)
+for name, value in rows:
+    print(name.ljust(width) + ' | ' + str(value))
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+width = max(len(name) for name, value in rows)
+for name, value in rows:
+    print(name.ljust(width) + ' | ' + str(value))
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+width = max(len(name) for name, value in rows)
+for name, value in rows:
+    print(name.ljust(width) + ' | ' + str(value))
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+width = max(len(name) for name, value in rows)
+for name, value in rows:
+    print(name.ljust(width) + ' | ' + str(value))
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+buckets = dict()
+for name, value in rows:
+    group = value // 2
+    if group not in buckets:
+        buckets[group] = []
+    buckets[group].append(name)
+print(buckets)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+buckets = dict()
+for name, value in rows:
+    group = value // 3
+    if group not in buckets:
+        buckets[group] = []
+    buckets[group].append(name)
+print(buckets)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+buckets = dict()
+for name, value in rows:
+    group = value // 4
+    if group not in buckets:
+        buckets[group] = []
+    buckets[group].append(name)
+print(buckets)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+buckets = dict()
+for name, value in rows:
+    group = value // 2
+    if group not in buckets:
+        buckets[group] = []
+    buckets[group].append(name)
+print(buckets)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+buckets = dict()
+for name, value in rows:
+    group = value // 3
+    if group not in buckets:
+        buckets[group] = []
+    buckets[group].append(name)
+print(buckets)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+buckets = dict()
+for name, value in rows:
+    group = value // 4
+    if group not in buckets:
+        buckets[group] = []
+    buckets[group].append(name)
+print(buckets)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+buckets = dict()
+for name, value in rows:
+    group = value // 2
+    if group not in buckets:
+        buckets[group] = []
+    buckets[group].append(name)
+print(buckets)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+buckets = dict()
+for name, value in rows:
+    group = value // 3
+    if group not in buckets:
+        buckets[group] = []
+    buckets[group].append(name)
+print(buckets)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+names = [name for name, value in rows]
+values = [value for name, value in rows]
+rebuilt = list(zip(names, values))
+print(rebuilt)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+names = [name for name, value in rows]
+values = [value for name, value in rows]
+rebuilt = list(zip(names, values))
+print(rebuilt)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+names = [name for name, value in rows]
+values = [value for name, value in rows]
+rebuilt = list(zip(names, values))
+print(rebuilt)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+names = [name for name, value in rows]
+values = [value for name, value in rows]
+rebuilt = list(zip(names, values))
+print(rebuilt)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+names = [name for name, value in rows]
+values = [value for name, value in rows]
+rebuilt = list(zip(names, values))
+print(rebuilt)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+names = [name for name, value in rows]
+values = [value for name, value in rows]
+rebuilt = list(zip(names, values))
+print(rebuilt)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+names = [name for name, value in rows]
+values = [value for name, value in rows]
+rebuilt = list(zip(names, values))
+print(rebuilt)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+names = [name for name, value in rows]
+values = [value for name, value in rows]
+rebuilt = list(zip(names, values))
+print(rebuilt)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = []
+seen = set()
+for name, value in rows:
+    if name not in seen:
+        result.append([name, value])
+        seen.add(name)
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = []
+seen = set()
+for name, value in rows:
+    if name not in seen:
+        result.append([name, value])
+        seen.add(name)
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = []
+seen = set()
+for name, value in rows:
+    if name not in seen:
+        result.append([name, value])
+        seen.add(name)
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = []
+seen = set()
+for name, value in rows:
+    if name not in seen:
+        result.append([name, value])
+        seen.add(name)
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = []
+seen = set()
+for name, value in rows:
+    if name not in seen:
+        result.append([name, value])
+        seen.add(name)
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = []
+seen = set()
+for name, value in rows:
+    if name not in seen:
+        result.append([name, value])
+        seen.add(name)
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = []
+seen = set()
+for name, value in rows:
+    if name not in seen:
+        result.append([name, value])
+        seen.add(name)
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = []
+seen = set()
+for name, value in rows:
+    if name not in seen:
+        result.append([name, value])
+        seen.add(name)
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = []
+running = 0
+for name, value in rows:
+    running += value
+    result.append([name, running])
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = []
+running = 0
+for name, value in rows:
+    running += value
+    result.append([name, running])
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = []
+running = 0
+for name, value in rows:
+    running += value
+    result.append([name, running])
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = []
+running = 0
+for name, value in rows:
+    running += value
+    result.append([name, running])
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = []
+running = 0
+for name, value in rows:
+    running += value
+    result.append([name, running])
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = []
+running = 0
+for name, value in rows:
+    running += value
+    result.append([name, running])
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = []
+running = 0
+for name, value in rows:
+    running += value
+    result.append([name, running])
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = []
+running = 0
+for name, value in rows:
+    running += value
+    result.append([name, running])
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = dict()
+for index, row in enumerate(rows):
+    result[str(index)] = {'name': row[0], 'value': row[1]}
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = dict()
+for index, row in enumerate(rows):
+    result[str(index)] = {'name': row[0], 'value': row[1]}
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = dict()
+for index, row in enumerate(rows):
+    result[str(index)] = {'name': row[0], 'value': row[1]}
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = dict()
+for index, row in enumerate(rows):
+    result[str(index)] = {'name': row[0], 'value': row[1]}
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = dict()
+for index, row in enumerate(rows):
+    result[str(index)] = {'name': row[0], 'value': row[1]}
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = dict()
+for index, row in enumerate(rows):
+    result[str(index)] = {'name': row[0], 'value': row[1]}
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = dict()
+for index, row in enumerate(rows):
+    result[str(index)] = {'name': row[0], 'value': row[1]}
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = dict()
+for index, row in enumerate(rows):
+    result[str(index)] = {'name': row[0], 'value': row[1]}
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+small = []
+large = []
+for row in rows:
+    if row[1] < 2:
+        small.append(row)
+    else:
+        large.append(row)
+print(small)
+print(large)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+small = []
+large = []
+for row in rows:
+    if row[1] < 3:
+        small.append(row)
+    else:
+        large.append(row)
+print(small)
+print(large)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+small = []
+large = []
+for row in rows:
+    if row[1] < 4:
+        small.append(row)
+    else:
+        large.append(row)
+print(small)
+print(large)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+small = []
+large = []
+for row in rows:
+    if row[1] < 2:
+        small.append(row)
+    else:
+        large.append(row)
+print(small)
+print(large)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+small = []
+large = []
+for row in rows:
+    if row[1] < 3:
+        small.append(row)
+    else:
+        large.append(row)
+print(small)
+print(large)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+small = []
+large = []
+for row in rows:
+    if row[1] < 4:
+        small.append(row)
+    else:
+        large.append(row)
+print(small)
+print(large)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+small = []
+large = []
+for row in rows:
+    if row[1] < 2:
+        small.append(row)
+    else:
+        large.append(row)
+print(small)
+print(large)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+small = []
+large = []
+for row in rows:
+    if row[1] < 3:
+        small.append(row)
+    else:
+        large.append(row)
+print(small)
+print(large)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+best = rows[0]
+for row in rows[1:]:
+    if row[1] > best[1]:
+        best = row
+print(best)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+best = rows[0]
+for row in rows[1:]:
+    if row[1] > best[1]:
+        best = row
+print(best)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+best = rows[0]
+for row in rows[1:]:
+    if row[1] > best[1]:
+        best = row
+print(best)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+best = rows[0]
+for row in rows[1:]:
+    if row[1] > best[1]:
+        best = row
+print(best)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+best = rows[0]
+for row in rows[1:]:
+    if row[1] > best[1]:
+        best = row
+print(best)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+best = rows[0]
+for row in rows[1:]:
+    if row[1] > best[1]:
+        best = row
+print(best)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+best = rows[0]
+for row in rows[1:]:
+    if row[1] > best[1]:
+        best = row
+print(best)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+best = rows[0]
+for row in rows[1:]:
+    if row[1] > best[1]:
+        best = row
+print(best)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+values = [row[1] for row in rows]
+low = min(values)
+high = max(values)
+normalized = []
+for name, value in rows:
+    normalized.append([name, round((value - low) / (high - low), 2)])
+print(normalized)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+values = [row[1] for row in rows]
+low = min(values)
+high = max(values)
+normalized = []
+for name, value in rows:
+    normalized.append([name, round((value - low) / (high - low), 2)])
+print(normalized)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+values = [row[1] for row in rows]
+low = min(values)
+high = max(values)
+normalized = []
+for name, value in rows:
+    normalized.append([name, round((value - low) / (high - low), 2)])
+print(normalized)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+values = [row[1] for row in rows]
+low = min(values)
+high = max(values)
+normalized = []
+for name, value in rows:
+    normalized.append([name, round((value - low) / (high - low), 2)])
+print(normalized)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+values = [row[1] for row in rows]
+low = min(values)
+high = max(values)
+normalized = []
+for name, value in rows:
+    normalized.append([name, round((value - low) / (high - low), 2)])
+print(normalized)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+values = [row[1] for row in rows]
+low = min(values)
+high = max(values)
+normalized = []
+for name, value in rows:
+    normalized.append([name, round((value - low) / (high - low), 2)])
+print(normalized)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+values = [row[1] for row in rows]
+low = min(values)
+high = max(values)
+normalized = []
+for name, value in rows:
+    normalized.append([name, round((value - low) / (high - low), 2)])
+print(normalized)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+values = [row[1] for row in rows]
+low = min(values)
+high = max(values)
+normalized = []
+for name, value in rows:
+    normalized.append([name, round((value - low) / (high - low), 2)])
+print(normalized)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+def adjust(row, offset):
+    return [row[0].upper(), row[1] + offset]
+result = [adjust(row, 2) for row in rows]
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+def adjust(row, offset):
+    return [row[0].upper(), row[1] + offset]
+result = [adjust(row, 3) for row in rows]
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+def adjust(row, offset):
+    return [row[0].upper(), row[1] + offset]
+result = [adjust(row, 4) for row in rows]
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+def adjust(row, offset):
+    return [row[0].upper(), row[1] + offset]
+result = [adjust(row, 5) for row in rows]
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+def adjust(row, offset):
+    return [row[0].upper(), row[1] + offset]
+result = [adjust(row, 6) for row in rows]
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+def adjust(row, offset):
+    return [row[0].upper(), row[1] + offset]
+result = [adjust(row, 7) for row in rows]
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+def adjust(row, offset):
+    return [row[0].upper(), row[1] + offset]
+result = [adjust(row, 8) for row in rows]
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+def adjust(row, offset):
+    return [row[0].upper(), row[1] + offset]
+result = [adjust(row, 9) for row in rows]
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+ordered = sorted((value, name) for name, value in rows)
+rank = 0
+previous = None
+result = []
+for index, pair in enumerate(ordered):
+    value, name = pair
+    if value != previous:
+        rank = index + 1
+    result.append([name, rank])
+    previous = value
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+ordered = sorted((value, name) for name, value in rows)
+rank = 0
+previous = None
+result = []
+for index, pair in enumerate(ordered):
+    value, name = pair
+    if value != previous:
+        rank = index + 1
+    result.append([name, rank])
+    previous = value
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+ordered = sorted((value, name) for name, value in rows)
+rank = 0
+previous = None
+result = []
+for index, pair in enumerate(ordered):
+    value, name = pair
+    if value != previous:
+        rank = index + 1
+    result.append([name, rank])
+    previous = value
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+ordered = sorted((value, name) for name, value in rows)
+rank = 0
+previous = None
+result = []
+for index, pair in enumerate(ordered):
+    value, name = pair
+    if value != previous:
+        rank = index + 1
+    result.append([name, rank])
+    previous = value
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+ordered = sorted((value, name) for name, value in rows)
+rank = 0
+previous = None
+result = []
+for index, pair in enumerate(ordered):
+    value, name = pair
+    if value != previous:
+        rank = index + 1
+    result.append([name, rank])
+    previous = value
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+ordered = sorted((value, name) for name, value in rows)
+rank = 0
+previous = None
+result = []
+for index, pair in enumerate(ordered):
+    value, name = pair
+    if value != previous:
+        rank = index + 1
+    result.append([name, rank])
+    previous = value
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+ordered = sorted((value, name) for name, value in rows)
+rank = 0
+previous = None
+result = []
+for index, pair in enumerate(ordered):
+    value, name = pair
+    if value != previous:
+        rank = index + 1
+    result.append([name, rank])
+    previous = value
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+ordered = sorted((value, name) for name, value in rows)
+rank = 0
+previous = None
+result = []
+for index, pair in enumerate(ordered):
+    value, name = pair
+    if value != previous:
+        rank = index + 1
+    result.append([name, rank])
+    previous = value
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = []
+for first in range(len(rows)):
+    for second in range(first + 1, len(rows)):
+        result.append([rows[first][0], rows[second][0], rows[second][1] - rows[first][1]])
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = []
+for first in range(len(rows)):
+    for second in range(first + 1, len(rows)):
+        result.append([rows[first][0], rows[second][0], rows[second][1] - rows[first][1]])
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = []
+for first in range(len(rows)):
+    for second in range(first + 1, len(rows)):
+        result.append([rows[first][0], rows[second][0], rows[second][1] - rows[first][1]])
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = []
+for first in range(len(rows)):
+    for second in range(first + 1, len(rows)):
+        result.append([rows[first][0], rows[second][0], rows[second][1] - rows[first][1]])
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = []
+for first in range(len(rows)):
+    for second in range(first + 1, len(rows)):
+        result.append([rows[first][0], rows[second][0], rows[second][1] - rows[first][1]])
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = []
+for first in range(len(rows)):
+    for second in range(first + 1, len(rows)):
+        result.append([rows[first][0], rows[second][0], rows[second][1] - rows[first][1]])
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = []
+for first in range(len(rows)):
+    for second in range(first + 1, len(rows)):
+        result.append([rows[first][0], rows[second][0], rows[second][1] - rows[first][1]])
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = []
+for first in range(len(rows)):
+    for second in range(first + 1, len(rows)):
+        result.append([rows[first][0], rows[second][0], rows[second][1] - rows[first][1]])
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+weights = {name: len(name) for name, value in rows}
+result = []
+for name, value in rows:
+    result.append([name, value, weights[name], value * weights[name]])
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+weights = {name: len(name) for name, value in rows}
+result = []
+for name, value in rows:
+    result.append([name, value, weights[name], value * weights[name]])
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+weights = {name: len(name) for name, value in rows}
+result = []
+for name, value in rows:
+    result.append([name, value, weights[name], value * weights[name]])
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+weights = {name: len(name) for name, value in rows}
+result = []
+for name, value in rows:
+    result.append([name, value, weights[name], value * weights[name]])
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+weights = {name: len(name) for name, value in rows}
+result = []
+for name, value in rows:
+    result.append([name, value, weights[name], value * weights[name]])
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+weights = {name: len(name) for name, value in rows}
+result = []
+for name, value in rows:
+    result.append([name, value, weights[name], value * weights[name]])
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+weights = {name: len(name) for name, value in rows}
+result = []
+for name, value in rows:
+    result.append([name, value, weights[name], value * weights[name]])
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+weights = {name: len(name) for name, value in rows}
+result = []
+for name, value in rows:
+    result.append([name, value, weights[name], value * weights[name]])
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = []
+for index in range(len(rows)):
+    window = rows[max(0, index - 1):index + 1]
+    result.append([rows[index][0], sum(row[1] for row in window) / len(window)])
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = []
+for index in range(len(rows)):
+    window = rows[max(0, index - 1):index + 1]
+    result.append([rows[index][0], sum(row[1] for row in window) / len(window)])
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = []
+for index in range(len(rows)):
+    window = rows[max(0, index - 1):index + 1]
+    result.append([rows[index][0], sum(row[1] for row in window) / len(window)])
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = []
+for index in range(len(rows)):
+    window = rows[max(0, index - 1):index + 1]
+    result.append([rows[index][0], sum(row[1] for row in window) / len(window)])
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = []
+for index in range(len(rows)):
+    window = rows[max(0, index - 1):index + 1]
+    result.append([rows[index][0], sum(row[1] for row in window) / len(window)])
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = []
+for index in range(len(rows)):
+    window = rows[max(0, index - 1):index + 1]
+    result.append([rows[index][0], sum(row[1] for row in window) / len(window)])
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = []
+for index in range(len(rows)):
+    window = rows[max(0, index - 1):index + 1]
+    result.append([rows[index][0], sum(row[1] for row in window) / len(window)])
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = []
+for index in range(len(rows)):
+    window = rows[max(0, index - 1):index + 1]
+    result.append([rows[index][0], sum(row[1] for row in window) / len(window)])
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+low = rows[0][1]
+high = low
+result = []
+for name, value in rows:
+    low = min(low, value)
+    high = max(high, value)
+    result.append([name, low, high])
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+low = rows[0][1]
+high = low
+result = []
+for name, value in rows:
+    low = min(low, value)
+    high = max(high, value)
+    result.append([name, low, high])
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+low = rows[0][1]
+high = low
+result = []
+for name, value in rows:
+    low = min(low, value)
+    high = max(high, value)
+    result.append([name, low, high])
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+low = rows[0][1]
+high = low
+result = []
+for name, value in rows:
+    low = min(low, value)
+    high = max(high, value)
+    result.append([name, low, high])
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+low = rows[0][1]
+high = low
+result = []
+for name, value in rows:
+    low = min(low, value)
+    high = max(high, value)
+    result.append([name, low, high])
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+low = rows[0][1]
+high = low
+result = []
+for name, value in rows:
+    low = min(low, value)
+    high = max(high, value)
+    result.append([name, low, high])
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+low = rows[0][1]
+high = low
+result = []
+for name, value in rows:
+    low = min(low, value)
+    high = max(high, value)
+    result.append([name, low, high])
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+low = rows[0][1]
+high = low
+result = []
+for name, value in rows:
+    low = min(low, value)
+    high = max(high, value)
+    result.append([name, low, high])
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+names = []
+values = []
+for name, value in rows:
+    names.append(name)
+    values.append(value)
+fields = {'name': names, 'value': values}
+print(fields)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+names = []
+values = []
+for name, value in rows:
+    names.append(name)
+    values.append(value)
+fields = {'name': names, 'value': values}
+print(fields)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+names = []
+values = []
+for name, value in rows:
+    names.append(name)
+    values.append(value)
+fields = {'name': names, 'value': values}
+print(fields)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+names = []
+values = []
+for name, value in rows:
+    names.append(name)
+    values.append(value)
+fields = {'name': names, 'value': values}
+print(fields)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+names = []
+values = []
+for name, value in rows:
+    names.append(name)
+    values.append(value)
+fields = {'name': names, 'value': values}
+print(fields)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+names = []
+values = []
+for name, value in rows:
+    names.append(name)
+    values.append(value)
+fields = {'name': names, 'value': values}
+print(fields)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+names = []
+values = []
+for name, value in rows:
+    names.append(name)
+    values.append(value)
+fields = {'name': names, 'value': values}
+print(fields)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+names = []
+values = []
+for name, value in rows:
+    names.append(name)
+    values.append(value)
+fields = {'name': names, 'value': values}
+print(fields)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = []
+for index in range(0, len(rows), 2):
+    chunk = rows[index:index + 2]
+    result.append([len(chunk), sum(row[1] for row in chunk)])
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = []
+for index in range(0, len(rows), 2):
+    chunk = rows[index:index + 2]
+    result.append([len(chunk), sum(row[1] for row in chunk)])
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = []
+for index in range(0, len(rows), 2):
+    chunk = rows[index:index + 2]
+    result.append([len(chunk), sum(row[1] for row in chunk)])
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = []
+for index in range(0, len(rows), 2):
+    chunk = rows[index:index + 2]
+    result.append([len(chunk), sum(row[1] for row in chunk)])
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = []
+for index in range(0, len(rows), 2):
+    chunk = rows[index:index + 2]
+    result.append([len(chunk), sum(row[1] for row in chunk)])
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = []
+for index in range(0, len(rows), 2):
+    chunk = rows[index:index + 2]
+    result.append([len(chunk), sum(row[1] for row in chunk)])
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = []
+for index in range(0, len(rows), 2):
+    chunk = rows[index:index + 2]
+    result.append([len(chunk), sum(row[1] for row in chunk)])
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = []
+for index in range(0, len(rows), 2):
+    chunk = rows[index:index + 2]
+    result.append([len(chunk), sum(row[1] for row in chunk)])
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = dict()
+for name, value in rows:
+    bucket = (value // 2) * 2
+    result[bucket] = result.get(bucket, 0) + 1
+print(sorted(result.items()))
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = dict()
+for name, value in rows:
+    bucket = (value // 3) * 3
+    result[bucket] = result.get(bucket, 0) + 1
+print(sorted(result.items()))
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = dict()
+for name, value in rows:
+    bucket = (value // 4) * 4
+    result[bucket] = result.get(bucket, 0) + 1
+print(sorted(result.items()))
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = dict()
+for name, value in rows:
+    bucket = (value // 2) * 2
+    result[bucket] = result.get(bucket, 0) + 1
+print(sorted(result.items()))
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = dict()
+for name, value in rows:
+    bucket = (value // 3) * 3
+    result[bucket] = result.get(bucket, 0) + 1
+print(sorted(result.items()))
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = dict()
+for name, value in rows:
+    bucket = (value // 4) * 4
+    result[bucket] = result.get(bucket, 0) + 1
+print(sorted(result.items()))
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = dict()
+for name, value in rows:
+    bucket = (value // 2) * 2
+    result[bucket] = result.get(bucket, 0) + 1
+print(sorted(result.items()))
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = dict()
+for name, value in rows:
+    bucket = (value // 3) * 3
+    result[bucket] = result.get(bucket, 0) + 1
+print(sorted(result.items()))
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+maximum = max(value for name, value in rows)
+result = [name for name, value in rows if value == maximum]
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+maximum = max(value for name, value in rows)
+result = [name for name, value in rows if value == maximum]
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+maximum = max(value for name, value in rows)
+result = [name for name, value in rows if value == maximum]
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+maximum = max(value for name, value in rows)
+result = [name for name, value in rows if value == maximum]
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+maximum = max(value for name, value in rows)
+result = [name for name, value in rows if value == maximum]
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+maximum = max(value for name, value in rows)
+result = [name for name, value in rows if value == maximum]
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+maximum = max(value for name, value in rows)
+result = [name for name, value in rows if value == maximum]
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+maximum = max(value for name, value in rows)
+result = [name for name, value in rows if value == maximum]
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = dict()
+for name, value in rows:
+    if value not in result:
+        result[value] = []
+    result[value].append(name)
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = dict()
+for name, value in rows:
+    if value not in result:
+        result[value] = []
+    result[value].append(name)
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = dict()
+for name, value in rows:
+    if value not in result:
+        result[value] = []
+    result[value].append(name)
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = dict()
+for name, value in rows:
+    if value not in result:
+        result[value] = []
+    result[value].append(name)
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = dict()
+for name, value in rows:
+    if value not in result:
+        result[value] = []
+    result[value].append(name)
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = dict()
+for name, value in rows:
+    if value not in result:
+        result[value] = []
+    result[value].append(name)
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = dict()
+for name, value in rows:
+    if value not in result:
+        result[value] = []
+    result[value].append(name)
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = dict()
+for name, value in rows:
+    if value not in result:
+        result[value] = []
+    result[value].append(name)
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = []
+for name, value in rows:
+    candidate = [name, value]
+    if candidate not in result:
+        result.append(candidate)
+print(sorted(result))
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = []
+for name, value in rows:
+    candidate = [name, value]
+    if candidate not in result:
+        result.append(candidate)
+print(sorted(result))
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = []
+for name, value in rows:
+    candidate = [name, value]
+    if candidate not in result:
+        result.append(candidate)
+print(sorted(result))
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = []
+for name, value in rows:
+    candidate = [name, value]
+    if candidate not in result:
+        result.append(candidate)
+print(sorted(result))
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = []
+for name, value in rows:
+    candidate = [name, value]
+    if candidate not in result:
+        result.append(candidate)
+print(sorted(result))
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = []
+for name, value in rows:
+    candidate = [name, value]
+    if candidate not in result:
+        result.append(candidate)
+print(sorted(result))
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = []
+for name, value in rows:
+    candidate = [name, value]
+    if candidate not in result:
+        result.append(candidate)
+print(sorted(result))
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = []
+for name, value in rows:
+    candidate = [name, value]
+    if candidate not in result:
+        result.append(candidate)
+print(sorted(result))
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+baseline = rows[0][1]
+result = []
+for name, value in rows:
+    delta = value - baseline
+    result.append({'name': name, 'delta': delta, 'up': delta > 0})
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+baseline = rows[0][1]
+result = []
+for name, value in rows:
+    delta = value - baseline
+    result.append({'name': name, 'delta': delta, 'up': delta > 0})
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+baseline = rows[0][1]
+result = []
+for name, value in rows:
+    delta = value - baseline
+    result.append({'name': name, 'delta': delta, 'up': delta > 0})
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+baseline = rows[0][1]
+result = []
+for name, value in rows:
+    delta = value - baseline
+    result.append({'name': name, 'delta': delta, 'up': delta > 0})
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+baseline = rows[0][1]
+result = []
+for name, value in rows:
+    delta = value - baseline
+    result.append({'name': name, 'delta': delta, 'up': delta > 0})
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+baseline = rows[0][1]
+result = []
+for name, value in rows:
+    delta = value - baseline
+    result.append({'name': name, 'delta': delta, 'up': delta > 0})
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+baseline = rows[0][1]
+result = []
+for name, value in rows:
+    delta = value - baseline
+    result.append({'name': name, 'delta': delta, 'up': delta > 0})
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+baseline = rows[0][1]
+result = []
+for name, value in rows:
+    delta = value - baseline
+    result.append({'name': name, 'delta': delta, 'up': delta > 0})
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = sorted(value for name, value in rows)
+print(result)

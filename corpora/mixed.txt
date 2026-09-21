@@ -1,0 +1,1888 @@
+# === PROGRAM ===
+limit = 7
+values = []
+for number in range(limit):
+    values.append(number * number)
+print(values)
+# === PROGRAM ===
+limit = 9
+values = []
+for number in range(limit):
+    values.append(number * number)
+print(values)
+# === PROGRAM ===
+limit = 11
+values = []
+for number in range(limit):
+    values.append(number * number)
+print(values)
+# === PROGRAM ===
+limit = 13
+values = []
+for number in range(limit):
+    values.append(number * number)
+print(values)
+# === PROGRAM ===
+limit = 15
+values = []
+for number in range(limit):
+    values.append(number * number)
+print(values)
+# === PROGRAM ===
+limit = 17
+values = []
+for number in range(limit):
+    values.append(number * number)
+print(values)
+# === PROGRAM ===
+limit = 19
+values = []
+for number in range(limit):
+    values.append(number * number)
+print(values)
+# === PROGRAM ===
+limit = 21
+values = []
+for number in range(limit):
+    values.append(number * number)
+print(values)
+# === PROGRAM ===
+count = 7
+a = 0
+b = 1
+result = []
+for index in range(count):
+    result.append(a)
+    a, b = b, a + b
+print(result)
+# === PROGRAM ===
+count = 9
+a = 0
+b = 1
+result = []
+for index in range(count):
+    result.append(a)
+    a, b = b, a + b
+print(result)
+# === PROGRAM ===
+count = 11
+a = 0
+b = 1
+result = []
+for index in range(count):
+    result.append(a)
+    a, b = b, a + b
+print(result)
+# === PROGRAM ===
+count = 13
+a = 0
+b = 1
+result = []
+for index in range(count):
+    result.append(a)
+    a, b = b, a + b
+print(result)
+# === PROGRAM ===
+count = 15
+a = 0
+b = 1
+result = []
+for index in range(count):
+    result.append(a)
+    a, b = b, a + b
+print(result)
+# === PROGRAM ===
+count = 17
+a = 0
+b = 1
+result = []
+for index in range(count):
+    result.append(a)
+    a, b = b, a + b
+print(result)
+# === PROGRAM ===
+count = 19
+a = 0
+b = 1
+result = []
+for index in range(count):
+    result.append(a)
+    a, b = b, a + b
+print(result)
+# === PROGRAM ===
+count = 21
+a = 0
+b = 1
+result = []
+for index in range(count):
+    result.append(a)
+    a, b = b, a + b
+print(result)
+# === PROGRAM ===
+number = 7
+result = 1
+for factor in range(2, number + 1):
+    result *= factor
+print(result)
+# === PROGRAM ===
+number = 9
+result = 1
+for factor in range(2, number + 1):
+    result *= factor
+print(result)
+# === PROGRAM ===
+number = 11
+result = 1
+for factor in range(2, number + 1):
+    result *= factor
+print(result)
+# === PROGRAM ===
+number = 13
+result = 1
+for factor in range(2, number + 1):
+    result *= factor
+print(result)
+# === PROGRAM ===
+number = 15
+result = 1
+for factor in range(2, number + 1):
+    result *= factor
+print(result)
+# === PROGRAM ===
+number = 17
+result = 1
+for factor in range(2, number + 1):
+    result *= factor
+print(result)
+# === PROGRAM ===
+number = 19
+result = 1
+for factor in range(2, number + 1):
+    result *= factor
+print(result)
+# === PROGRAM ===
+number = 21
+result = 1
+for factor in range(2, number + 1):
+    result *= factor
+print(result)
+# === PROGRAM ===
+limit = 7
+primes = []
+for number in range(2, limit * 3):
+    prime = True
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+            break
+    if prime:
+        primes.append(number)
+print(primes)
+# === PROGRAM ===
+limit = 9
+primes = []
+for number in range(2, limit * 3):
+    prime = True
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+            break
+    if prime:
+        primes.append(number)
+print(primes)
+# === PROGRAM ===
+limit = 11
+primes = []
+for number in range(2, limit * 3):
+    prime = True
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+            break
+    if prime:
+        primes.append(number)
+print(primes)
+# === PROGRAM ===
+limit = 13
+primes = []
+for number in range(2, limit * 3):
+    prime = True
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+            break
+    if prime:
+        primes.append(number)
+print(primes)
+# === PROGRAM ===
+limit = 15
+primes = []
+for number in range(2, limit * 3):
+    prime = True
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+            break
+    if prime:
+        primes.append(number)
+print(primes)
+# === PROGRAM ===
+limit = 17
+primes = []
+for number in range(2, limit * 3):
+    prime = True
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+            break
+    if prime:
+        primes.append(number)
+print(primes)
+# === PROGRAM ===
+limit = 19
+primes = []
+for number in range(2, limit * 3):
+    prime = True
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+            break
+    if prime:
+        primes.append(number)
+print(primes)
+# === PROGRAM ===
+limit = 21
+primes = []
+for number in range(2, limit * 3):
+    prime = True
+    for divisor in range(2, number):
+        if number % divisor == 0:
+            prime = False
+            break
+    if prime:
+        primes.append(number)
+print(primes)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+ordered = list(values)
+for index in range(len(ordered)):
+    for next_index in range(index + 1, len(ordered)):
+        if ordered[index] > ordered[next_index]:
+            ordered[index], ordered[next_index] = ordered[next_index], ordered[index]
+print(ordered)
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+ordered = list(values)
+for index in range(len(ordered)):
+    for next_index in range(index + 1, len(ordered)):
+        if ordered[index] > ordered[next_index]:
+            ordered[index], ordered[next_index] = ordered[next_index], ordered[index]
+print(ordered)
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+ordered = list(values)
+for index in range(len(ordered)):
+    for next_index in range(index + 1, len(ordered)):
+        if ordered[index] > ordered[next_index]:
+            ordered[index], ordered[next_index] = ordered[next_index], ordered[index]
+print(ordered)
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+ordered = list(values)
+for index in range(len(ordered)):
+    for next_index in range(index + 1, len(ordered)):
+        if ordered[index] > ordered[next_index]:
+            ordered[index], ordered[next_index] = ordered[next_index], ordered[index]
+print(ordered)
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+ordered = list(values)
+for index in range(len(ordered)):
+    for next_index in range(index + 1, len(ordered)):
+        if ordered[index] > ordered[next_index]:
+            ordered[index], ordered[next_index] = ordered[next_index], ordered[index]
+print(ordered)
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+ordered = list(values)
+for index in range(len(ordered)):
+    for next_index in range(index + 1, len(ordered)):
+        if ordered[index] > ordered[next_index]:
+            ordered[index], ordered[next_index] = ordered[next_index], ordered[index]
+print(ordered)
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+ordered = list(values)
+for index in range(len(ordered)):
+    for next_index in range(index + 1, len(ordered)):
+        if ordered[index] > ordered[next_index]:
+            ordered[index], ordered[next_index] = ordered[next_index], ordered[index]
+print(ordered)
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+ordered = list(values)
+for index in range(len(ordered)):
+    for next_index in range(index + 1, len(ordered)):
+        if ordered[index] > ordered[next_index]:
+            ordered[index], ordered[next_index] = ordered[next_index], ordered[index]
+print(ordered)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+size = 2
+averages = []
+for index in range(len(values) - size + 1):
+    averages.append(sum(values[index:index + size]) / size)
+print(averages)
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+size = 3
+averages = []
+for index in range(len(values) - size + 1):
+    averages.append(sum(values[index:index + size]) / size)
+print(averages)
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+size = 4
+averages = []
+for index in range(len(values) - size + 1):
+    averages.append(sum(values[index:index + size]) / size)
+print(averages)
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+size = 5
+averages = []
+for index in range(len(values) - size + 1):
+    averages.append(sum(values[index:index + size]) / size)
+print(averages)
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+size = 6
+averages = []
+for index in range(len(values) - size + 1):
+    averages.append(sum(values[index:index + size]) / size)
+print(averages)
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+size = 7
+averages = []
+for index in range(len(values) - size + 1):
+    averages.append(sum(values[index:index + size]) / size)
+print(averages)
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+size = 8
+averages = []
+for index in range(len(values) - size + 1):
+    averages.append(sum(values[index:index + size]) / size)
+print(averages)
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+size = 9
+averages = []
+for index in range(len(values) - size + 1):
+    averages.append(sum(values[index:index + size]) / size)
+print(averages)
+# === PROGRAM ===
+size = 2
+matrix = []
+for row in range(size):
+    matrix.append([(row + 1) * (column + 1) for column in range(size)])
+print(matrix)
+# === PROGRAM ===
+size = 3
+matrix = []
+for row in range(size):
+    matrix.append([(row + 1) * (column + 1) for column in range(size)])
+print(matrix)
+# === PROGRAM ===
+size = 4
+matrix = []
+for row in range(size):
+    matrix.append([(row + 1) * (column + 1) for column in range(size)])
+print(matrix)
+# === PROGRAM ===
+size = 5
+matrix = []
+for row in range(size):
+    matrix.append([(row + 1) * (column + 1) for column in range(size)])
+print(matrix)
+# === PROGRAM ===
+size = 6
+matrix = []
+for row in range(size):
+    matrix.append([(row + 1) * (column + 1) for column in range(size)])
+print(matrix)
+# === PROGRAM ===
+size = 7
+matrix = []
+for row in range(size):
+    matrix.append([(row + 1) * (column + 1) for column in range(size)])
+print(matrix)
+# === PROGRAM ===
+size = 8
+matrix = []
+for row in range(size):
+    matrix.append([(row + 1) * (column + 1) for column in range(size)])
+print(matrix)
+# === PROGRAM ===
+size = 9
+matrix = []
+for row in range(size):
+    matrix.append([(row + 1) * (column + 1) for column in range(size)])
+print(matrix)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+result = []
+for index in range(1, len(values)):
+    result.append(values[index] - values[index - 1])
+print(result)
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+result = []
+for index in range(1, len(values)):
+    result.append(values[index] - values[index - 1])
+print(result)
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+result = []
+for index in range(1, len(values)):
+    result.append(values[index] - values[index - 1])
+print(result)
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+result = []
+for index in range(1, len(values)):
+    result.append(values[index] - values[index - 1])
+print(result)
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+result = []
+for index in range(1, len(values)):
+    result.append(values[index] - values[index - 1])
+print(result)
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+result = []
+for index in range(1, len(values)):
+    result.append(values[index] - values[index - 1])
+print(result)
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+result = []
+for index in range(1, len(values)):
+    result.append(values[index] - values[index - 1])
+print(result)
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+result = []
+for index in range(1, len(values)):
+    result.append(values[index] - values[index - 1])
+print(result)
+# === PROGRAM ===
+number = 7
+bits = []
+while number > 0:
+    bits.append(str(number % 2))
+    number //= 2
+print(''.join(reversed(bits)))
+# === PROGRAM ===
+number = 9
+bits = []
+while number > 0:
+    bits.append(str(number % 2))
+    number //= 2
+print(''.join(reversed(bits)))
+# === PROGRAM ===
+number = 11
+bits = []
+while number > 0:
+    bits.append(str(number % 2))
+    number //= 2
+print(''.join(reversed(bits)))
+# === PROGRAM ===
+number = 13
+bits = []
+while number > 0:
+    bits.append(str(number % 2))
+    number //= 2
+print(''.join(reversed(bits)))
+# === PROGRAM ===
+number = 15
+bits = []
+while number > 0:
+    bits.append(str(number % 2))
+    number //= 2
+print(''.join(reversed(bits)))
+# === PROGRAM ===
+number = 17
+bits = []
+while number > 0:
+    bits.append(str(number % 2))
+    number //= 2
+print(''.join(reversed(bits)))
+# === PROGRAM ===
+number = 19
+bits = []
+while number > 0:
+    bits.append(str(number % 2))
+    number //= 2
+print(''.join(reversed(bits)))
+# === PROGRAM ===
+number = 21
+bits = []
+while number > 0:
+    bits.append(str(number % 2))
+    number //= 2
+print(''.join(reversed(bits)))
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+result = dict()
+for value in values:
+    result[value] = result.get(value, 0) + 1
+print(result)
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+result = dict()
+for value in values:
+    result[value] = result.get(value, 0) + 1
+print(result)
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+result = dict()
+for value in values:
+    result[value] = result.get(value, 0) + 1
+print(result)
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+result = dict()
+for value in values:
+    result[value] = result.get(value, 0) + 1
+print(result)
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+result = dict()
+for value in values:
+    result[value] = result.get(value, 0) + 1
+print(result)
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+result = dict()
+for value in values:
+    result[value] = result.get(value, 0) + 1
+print(result)
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+result = dict()
+for value in values:
+    result[value] = result.get(value, 0) + 1
+print(result)
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+result = dict()
+for value in values:
+    result[value] = result.get(value, 0) + 1
+print(result)
+# === PROGRAM ===
+left = 7
+right = 2
+while right:
+    left, right = right, left % right
+print(left)
+# === PROGRAM ===
+left = 9
+right = 3
+while right:
+    left, right = right, left % right
+print(left)
+# === PROGRAM ===
+left = 11
+right = 4
+while right:
+    left, right = right, left % right
+print(left)
+# === PROGRAM ===
+left = 13
+right = 5
+while right:
+    left, right = right, left % right
+print(left)
+# === PROGRAM ===
+left = 15
+right = 6
+while right:
+    left, right = right, left % right
+print(left)
+# === PROGRAM ===
+left = 17
+right = 7
+while right:
+    left, right = right, left % right
+print(left)
+# === PROGRAM ===
+left = 19
+right = 8
+while right:
+    left, right = right, left % right
+print(left)
+# === PROGRAM ===
+left = 21
+right = 9
+while right:
+    left, right = right, left % right
+print(left)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+mean = sum(values) / len(values)
+variance = sum((value - mean) ** 2 for value in values) / len(values)
+print(round(variance, 3))
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+mean = sum(values) / len(values)
+variance = sum((value - mean) ** 2 for value in values) / len(values)
+print(round(variance, 3))
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+mean = sum(values) / len(values)
+variance = sum((value - mean) ** 2 for value in values) / len(values)
+print(round(variance, 3))
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+mean = sum(values) / len(values)
+variance = sum((value - mean) ** 2 for value in values) / len(values)
+print(round(variance, 3))
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+mean = sum(values) / len(values)
+variance = sum((value - mean) ** 2 for value in values) / len(values)
+print(round(variance, 3))
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+mean = sum(values) / len(values)
+variance = sum((value - mean) ** 2 for value in values) / len(values)
+print(round(variance, 3))
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+mean = sum(values) / len(values)
+variance = sum((value - mean) ** 2 for value in values) / len(values)
+print(round(variance, 3))
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+mean = sum(values) / len(values)
+variance = sum((value - mean) ** 2 for value in values) / len(values)
+print(round(variance, 3))
+# === PROGRAM ===
+size = 2
+matrix = [[row + column for column in range(size)] for row in range(size)]
+transposed = [list(column) for column in zip(*matrix)]
+print(transposed)
+# === PROGRAM ===
+size = 3
+matrix = [[row + column for column in range(size)] for row in range(size)]
+transposed = [list(column) for column in zip(*matrix)]
+print(transposed)
+# === PROGRAM ===
+size = 4
+matrix = [[row + column for column in range(size)] for row in range(size)]
+transposed = [list(column) for column in zip(*matrix)]
+print(transposed)
+# === PROGRAM ===
+size = 5
+matrix = [[row + column for column in range(size)] for row in range(size)]
+transposed = [list(column) for column in zip(*matrix)]
+print(transposed)
+# === PROGRAM ===
+size = 6
+matrix = [[row + column for column in range(size)] for row in range(size)]
+transposed = [list(column) for column in zip(*matrix)]
+print(transposed)
+# === PROGRAM ===
+size = 7
+matrix = [[row + column for column in range(size)] for row in range(size)]
+transposed = [list(column) for column in zip(*matrix)]
+print(transposed)
+# === PROGRAM ===
+size = 8
+matrix = [[row + column for column in range(size)] for row in range(size)]
+transposed = [list(column) for column in zip(*matrix)]
+print(transposed)
+# === PROGRAM ===
+size = 9
+matrix = [[row + column for column in range(size)] for row in range(size)]
+transposed = [list(column) for column in zip(*matrix)]
+print(transposed)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+left = values[::2]
+right = values[1::2]
+products = [a * b for a, b in zip(left, right)]
+print(sum(products))
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+left = values[::2]
+right = values[1::2]
+products = [a * b for a, b in zip(left, right)]
+print(sum(products))
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+left = values[::2]
+right = values[1::2]
+products = [a * b for a, b in zip(left, right)]
+print(sum(products))
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+left = values[::2]
+right = values[1::2]
+products = [a * b for a, b in zip(left, right)]
+print(sum(products))
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+left = values[::2]
+right = values[1::2]
+products = [a * b for a, b in zip(left, right)]
+print(sum(products))
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+left = values[::2]
+right = values[1::2]
+products = [a * b for a, b in zip(left, right)]
+print(sum(products))
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+left = values[::2]
+right = values[1::2]
+products = [a * b for a, b in zip(left, right)]
+print(sum(products))
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+left = values[::2]
+right = values[1::2]
+products = [a * b for a, b in zip(left, right)]
+print(sum(products))
+# === PROGRAM ===
+number = 7
+result = []
+for divisor in range(1, number + 1):
+    if number % divisor == 0:
+        result.append(divisor)
+print(result)
+# === PROGRAM ===
+number = 9
+result = []
+for divisor in range(1, number + 1):
+    if number % divisor == 0:
+        result.append(divisor)
+print(result)
+# === PROGRAM ===
+number = 11
+result = []
+for divisor in range(1, number + 1):
+    if number % divisor == 0:
+        result.append(divisor)
+print(result)
+# === PROGRAM ===
+number = 13
+result = []
+for divisor in range(1, number + 1):
+    if number % divisor == 0:
+        result.append(divisor)
+print(result)
+# === PROGRAM ===
+number = 15
+result = []
+for divisor in range(1, number + 1):
+    if number % divisor == 0:
+        result.append(divisor)
+print(result)
+# === PROGRAM ===
+number = 17
+result = []
+for divisor in range(1, number + 1):
+    if number % divisor == 0:
+        result.append(divisor)
+print(result)
+# === PROGRAM ===
+number = 19
+result = []
+for divisor in range(1, number + 1):
+    if number % divisor == 0:
+        result.append(divisor)
+print(result)
+# === PROGRAM ===
+number = 21
+result = []
+for divisor in range(1, number + 1):
+    if number % divisor == 0:
+        result.append(divisor)
+print(result)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+def distance(left, right):
+    return abs(left - right)
+result = [distance(a, b) for a, b in zip(values, values[1:])]
+print(result)
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+def distance(left, right):
+    return abs(left - right)
+result = [distance(a, b) for a, b in zip(values, values[1:])]
+print(result)
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+def distance(left, right):
+    return abs(left - right)
+result = [distance(a, b) for a, b in zip(values, values[1:])]
+print(result)
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+def distance(left, right):
+    return abs(left - right)
+result = [distance(a, b) for a, b in zip(values, values[1:])]
+print(result)
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+def distance(left, right):
+    return abs(left - right)
+result = [distance(a, b) for a, b in zip(values, values[1:])]
+print(result)
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+def distance(left, right):
+    return abs(left - right)
+result = [distance(a, b) for a, b in zip(values, values[1:])]
+print(result)
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+def distance(left, right):
+    return abs(left - right)
+result = [distance(a, b) for a, b in zip(values, values[1:])]
+print(result)
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+def distance(left, right):
+    return abs(left - right)
+result = [distance(a, b) for a, b in zip(values, values[1:])]
+print(result)
+# === PROGRAM ===
+size = 7
+mark = '#'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = 'o'
+canvas[2][-3] = 'o'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 9
+mark = '*'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '*'
+canvas[2][-3] = '*'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 11
+mark = '+'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '@'
+canvas[2][-3] = '@'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 13
+mark = '@'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '^'
+canvas[2][-3] = '^'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = 'x'
+canvas[2][-3] = 'x'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 17
+mark = '%'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = 'O'
+canvas[2][-3] = 'O'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '+'
+canvas[2][-3] = '+'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 21
+mark = '='
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '='
+canvas[2][-3] = '='
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+text = 'still waters turn slowly'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'green grass grows in spring'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'little moons drift past noon'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'north winds weave white waves'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+text = 'still waters turn slowly'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'green grass grows in spring'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'little moons drift past noon'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'north winds weave white waves'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+sums = dict()
+counts = dict()
+for name, value in rows:
+    sums[name] = sums.get(name, 0) + value
+    counts[name] = counts.get(name, 0) + 1
+result = {name: round(sums[name] / counts[name], 2) for name in sums}
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = dict()
+for name, value in rows:
+    initial = name[0]
+    if initial not in result:
+        result[initial] = dict()
+    result[initial][name] = result[initial].get(name, 0) + value
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+total = sum(value for name, value in rows)
+result = [[name, round(100 * value / total, 1)] for name, value in rows]
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+values = sorted(value for name, value in rows)
+center = len(values) // 2
+result = values[center] if len(values) % 2 else (values[center - 1] + values[center]) / 2
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['maple', 7], ['moss', 13], ['maple', 13], ['fern', 12]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['amber', 8], ['iron', 14], ['silver', 15], ['tin', 13]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['north', 9], ['west', 15], ['south', 17], ['east', 14]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+rows = [['swift', 10], ['quiet', 16], ['bright', 19], ['quiet', 15]]
+result = sorted(value for name, value in rows)
+print(result)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+result = [value * value for value in values if value % 2 == 1]
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+result = [value * value for value in values if value % 2 == 1]
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+result = [value * value for value in values if value % 2 == 1]
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+result = [value * value for value in values if value % 2 == 1]
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+result = [value * value for value in values if value % 2 == 1]
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+result = [value * value for value in values if value % 2 == 1]
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+result = [value * value for value in values if value % 2 == 1]
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+result = [value * value for value in values if value % 2 == 1]
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+result = []
+running = 0
+for value in values:
+    running += value
+    result.append(running)
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+result = []
+running = 0
+for value in values:
+    running += value
+    result.append(running)
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+result = []
+running = 0
+for value in values:
+    running += value
+    result.append(running)
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+result = []
+running = 0
+for value in values:
+    running += value
+    result.append(running)
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+result = []
+running = 0
+for value in values:
+    running += value
+    result.append(running)
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+result = []
+running = 0
+for value in values:
+    running += value
+    result.append(running)
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+result = []
+running = 0
+for value in values:
+    running += value
+    result.append(running)
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+result = []
+running = 0
+for value in values:
+    running += value
+    result.append(running)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+result = [max(values[max(0, index - 1):index + 2]) for index in range(len(values))]
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+result = [max(values[max(0, index - 1):index + 2]) for index in range(len(values))]
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+result = [max(values[max(0, index - 1):index + 2]) for index in range(len(values))]
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+result = [max(values[max(0, index - 1):index + 2]) for index in range(len(values))]
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+result = [max(values[max(0, index - 1):index + 2]) for index in range(len(values))]
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+result = [max(values[max(0, index - 1):index + 2]) for index in range(len(values))]
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+result = [max(values[max(0, index - 1):index + 2]) for index in range(len(values))]
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+result = [max(values[max(0, index - 1):index + 2]) for index in range(len(values))]
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+result = {index: value * (index + 1) for index, value in enumerate(values)}
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+result = {index: value * (index + 1) for index, value in enumerate(values)}
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+result = {index: value * (index + 1) for index, value in enumerate(values)}
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+result = {index: value * (index + 1) for index, value in enumerate(values)}
+# === PROGRAM ===
+values = [8, 2, 5, 3, 6, 7, 11, 9, 6, 12]
+result = {index: value * (index + 1) for index, value in enumerate(values)}
+# === PROGRAM ===
+values = [9, 2, 4, 3, 7, 7, 11, 10, 6, 13]
+result = {index: value * (index + 1) for index, value in enumerate(values)}
+# === PROGRAM ===
+values = [10, 2, 3, 3, 8, 7, 11, 11, 6, 14]
+result = {index: value * (index + 1) for index, value in enumerate(values)}
+# === PROGRAM ===
+values = [11, 2, 2, 3, 9, 7, 11, 12, 6, 15]
+result = {index: value * (index + 1) for index, value in enumerate(values)}

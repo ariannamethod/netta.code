@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "states": [
+    {
+      "name": "art",
+      "state": "states/art.json",
+      "judge": "art",
+      "keywords": [
+        "art",
+        "ascii",
+        "draw",
+        "drawing",
+        "face",
+        "picture",
+        "нарисуй",
+        "рисунок",
+        "рисунки",
+        "рожу",
+        "лицо"
+      ],
+      "phrases": [
+        "ascii art",
+        "символьная графика",
+        "сделай рисунок"
+      ],
+      "examples": [
+        "draw a strange face",
+        "нарисуй что-нибудь",
+        "хочу символьный рисунок"
+      ],
+      "commands": [
+        {
+          "name": "compact_marks",
+          "requests": [
+            "draw compact marked art",
+            "нарисуй компактный узор"
+          ],
+          "output": {
+            "min_lines": 3,
+            "max_lines": 12,
+            "min_width": 3,
+            "max_width": 24,
+            "contains": [
+              "#",
+              "."
+            ]
+          }
+        },
+        {
+          "name": "compact_picture",
+          "requests": [
+            "нарисуй компактный рисунок",
+            "draw a compact picture"
+          ],
+          "output": {
+            "min_lines": 3,
+            "max_lines": 18,
+            "min_width": 3,
+            "max_width": 40
+          }
+        }
+      ]
+    },
+    {
+      "name": "strings",
+      "state": "states/strings.json",
+      "judge": "general",
+      "keywords": [
+        "strings",
+        "string",
+        "text",
+        "words",
+        "строки",
+        "строку",
+        "строк",
+        "текст",
+        "слова"
+      ],
+      "phrases": [
+        "clean text",
+        "text processing",
+        "обработка строк",
+        "преобразуй текст"
+      ],
+      "examples": [
+        "transform words in a sentence",
+        "обработай текст со словами",
+        "normalize a string"
+      ],
+      "commands": [
+        {
+          "name": "unique_sorted_words",
+          "requests": [
+            "output unique sorted words",
+            "выведи отсортированный список уникальных слов"
+          ],
+          "output": {
+            "literal_type": "list",
+            "min_items": 2,
+            "item_type": "string",
+            "unique": true,
+            "sorted": "ascending"
+          }
+        }
+      ]
+    },
+    {
+      "name": "records",
+      "state": "states/records.json",
+      "judge": "general",
+      "keywords": [
+        "records",
+        "table",
+        "tables",
+        "rows",
+        "таблица",
+        "таблицу",
+        "таблицы",
+        "таблиц",
+        "записи",
+        "записей"
+      ],
+      "phrases": [
+        "aggregate records",
+        "group rows",
+        "обработка записей",
+        "сводная таблица"
+      ],
+      "examples": [
+        "group records and calculate totals",
+        "посчитай суммы по таблице",
+        "отфильтруй записи"
+      ],
+      "commands": [
+        {
+          "name": "sorted_values",
+          "requests": [
+            "output sorted numeric values",
+            "выведи отсортированный список чисел"
+          ],
+          "output": {
+            "literal_type": "list",
+            "min_items": 2,
+            "item_type": "number",
+            "sorted": "ascending"
+          }
+        },
+        {
+          "name": "row_report",
+          "requests": [
+            "выведи многострочный отчёт",
+            "print a multiline report"
+          ],
+          "output": {
+            "min_lines": 2,
+            "max_lines": 30,
+            "min_width": 3,
+            "max_width": 120
+          }
+        },
+        {
+          "name": "table",
+          "requests": [
+            "выведи таблицу имён и чисел",
+            "print a table of names and numbers"
+          ],
+          "output": {
+            "literal_type": "list",
+            "min_items": 2,
+            "item_type": "record"
+          }
+        }
+      ]
+    },
+    {
+      "name": "doom",
+      "state": "states/doom.json",
+      "judge": "control",
+      "keywords": [
+        "doom",
+        "дум",
+        "vizdoom",
+        "виздум"
+      ],
+      "phrases": [
+        "play doom",
+        "играй в дум",
+        "сыграй в doom"
+      ],
+      "examples": [
+        "play a round of Doom",
+        "сыграй партию в дум",
+        "запусти опыт Doom"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# nettalee.py and nettacode.py use the Python standard library.
+# Optional Doom environment: see requirements-doom.txt.

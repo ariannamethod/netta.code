@@ -1,0 +1,144 @@
+# === PROGRAM ===
+count = 3
+row = [1]
+result = []
+for step in range(count):
+    result.append(row)
+    row = [1] + [row[index] + row[index + 1] for index in range(len(row) - 1)] + [1]
+print(result)
+# === PROGRAM ===
+count = 4
+row = [1]
+result = []
+for step in range(count):
+    result.append(row)
+    row = [1] + [row[index] + row[index + 1] for index in range(len(row) - 1)] + [1]
+print(result)
+# === PROGRAM ===
+count = 5
+row = [1]
+result = []
+for step in range(count):
+    result.append(row)
+    row = [1] + [row[index] + row[index + 1] for index in range(len(row) - 1)] + [1]
+print(result)
+# === PROGRAM ===
+count = 6
+row = [1]
+result = []
+for step in range(count):
+    result.append(row)
+    row = [1] + [row[index] + row[index + 1] for index in range(len(row) - 1)] + [1]
+print(result)
+# === PROGRAM ===
+values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]
+point = 2
+result = 0
+for coefficient in values:
+    result = result * point + coefficient
+print(result)
+# === PROGRAM ===
+values = [5, 2, 8, 3, 3, 7, 11, 6, 6, 9]
+point = 3
+result = 0
+for coefficient in values:
+    result = result * point + coefficient
+print(result)
+# === PROGRAM ===
+values = [6, 2, 7, 3, 4, 7, 11, 7, 6, 10]
+point = 4
+result = 0
+for coefficient in values:
+    result = result * point + coefficient
+print(result)
+# === PROGRAM ===
+values = [7, 2, 6, 3, 5, 7, 11, 8, 6, 11]
+point = 5
+result = 0
+for coefficient in values:
+    result = result * point + coefficient
+print(result)
+# === PROGRAM ===
+limit = 7 * 3
+prime = [True] * limit
+prime[0] = False
+prime[1] = False
+for number in range(2, limit):
+    if prime[number]:
+        for multiple in range(number * number, limit, number):
+            prime[multiple] = False
+print([number for number in range(limit) if prime[number]])
+# === PROGRAM ===
+limit = 9 * 3
+prime = [True] * limit
+prime[0] = False
+prime[1] = False
+for number in range(2, limit):
+    if prime[number]:
+        for multiple in range(number * number, limit, number):
+            prime[multiple] = False
+print([number for number in range(limit) if prime[number]])
+# === PROGRAM ===
+limit = 11 * 3
+prime = [True] * limit
+prime[0] = False
+prime[1] = False
+for number in range(2, limit):
+    if prime[number]:
+        for multiple in range(number * number, limit, number):
+            prime[multiple] = False
+print([number for number in range(limit) if prime[number]])
+# === PROGRAM ===
+limit = 13 * 3
+prime = [True] * limit
+prime[0] = False
+prime[1] = False
+for number in range(2, limit):
+    if prime[number]:
+        for multiple in range(number * number, limit, number):
+            prime[multiple] = False
+print([number for number in range(limit) if prime[number]])
+# === PROGRAM ===
+values = sorted([4, 2, 9, 3, 2, 7, 11, 5, 6, 8])
+left = []
+right = []
+for value in reversed(values):
+    if sum(left) <= sum(right):
+        left.append(value)
+    else:
+        right.append(value)
+print(left)
+print(right)
+# === PROGRAM ===
+values = sorted([5, 2, 8, 3, 3, 7, 11, 6, 6, 9])
+left = []
+right = []
+for value in reversed(values):
+    if sum(left) <= sum(right):
+        left.append(value)
+    else:
+        right.append(value)
+print(left)
+print(right)
+# === PROGRAM ===
+values = sorted([6, 2, 7, 3, 4, 7, 11, 7, 6, 10])
+left = []
+right = []
+for value in reversed(values):
+    if sum(left) <= sum(right):
+        left.append(value)
+    else:
+        right.append(value)
+print(left)
+print(right)
+# === PROGRAM ===
+values = sorted([7, 2, 6, 3, 5, 7, 11, 8, 6, 11])
+left = []
+right = []
+for value in reversed(values):
+    if sum(left) <= sum(right):
+        left.append(value)
+    else:
+        right.append(value)
+print(left)
+print(right)

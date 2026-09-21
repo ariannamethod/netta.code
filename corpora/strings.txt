@@ -1,0 +1,1984 @@
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = []
+for word in words:
+    result.append(word.upper())
+print(' '.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = []
+for word in words:
+    result.append(word.upper())
+print(' '.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = []
+for word in words:
+    result.append(word.upper())
+print(' '.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = []
+for word in words:
+    result.append(word.upper())
+print(' '.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = []
+for word in words:
+    result.append(word.upper())
+print(' '.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = []
+for word in words:
+    result.append(word.upper())
+print(' '.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = []
+for word in words:
+    result.append(word.upper())
+print(' '.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = []
+for word in words:
+    result.append(word.upper())
+print(' '.join(result))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+result = ''
+for letter in text:
+    if letter.lower() not in 'aeiou':
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+result = ''
+for letter in text:
+    if letter.lower() not in 'aeiou':
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'green grass grows in spring'
+result = ''
+for letter in text:
+    if letter.lower() not in 'aeiou':
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'little moons drift past noon'
+result = ''
+for letter in text:
+    if letter.lower() not in 'aeiou':
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+result = ''
+for letter in text:
+    if letter.lower() not in 'aeiou':
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+result = ''
+for letter in text:
+    if letter.lower() not in 'aeiou':
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'north winds weave white waves'
+result = ''
+for letter in text:
+    if letter.lower() not in 'aeiou':
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+result = ''
+for letter in text:
+    if letter.lower() not in 'aeiou':
+        result += letter
+print(result)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = [word[::-1] for word in words]
+print('-'.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = [word[::-1] for word in words]
+print('-'.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = [word[::-1] for word in words]
+print('-'.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = [word[::-1] for word in words]
+print('-'.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = [word[::-1] for word in words]
+print('-'.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = [word[::-1] for word in words]
+print('-'.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = [word[::-1] for word in words]
+print('-'.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = [word[::-1] for word in words]
+print('-'.join(result))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+counts = dict()
+for letter in text.lower():
+    if letter != ' ':
+        counts[letter] = counts.get(letter, 0) + 1
+for letter in sorted(counts):
+    print(letter + ':' + str(counts[letter]))
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+counts = dict()
+for letter in text.lower():
+    if letter != ' ':
+        counts[letter] = counts.get(letter, 0) + 1
+for letter in sorted(counts):
+    print(letter + ':' + str(counts[letter]))
+# === PROGRAM ===
+text = 'green grass grows in spring'
+counts = dict()
+for letter in text.lower():
+    if letter != ' ':
+        counts[letter] = counts.get(letter, 0) + 1
+for letter in sorted(counts):
+    print(letter + ':' + str(counts[letter]))
+# === PROGRAM ===
+text = 'little moons drift past noon'
+counts = dict()
+for letter in text.lower():
+    if letter != ' ':
+        counts[letter] = counts.get(letter, 0) + 1
+for letter in sorted(counts):
+    print(letter + ':' + str(counts[letter]))
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+counts = dict()
+for letter in text.lower():
+    if letter != ' ':
+        counts[letter] = counts.get(letter, 0) + 1
+for letter in sorted(counts):
+    print(letter + ':' + str(counts[letter]))
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+counts = dict()
+for letter in text.lower():
+    if letter != ' ':
+        counts[letter] = counts.get(letter, 0) + 1
+for letter in sorted(counts):
+    print(letter + ':' + str(counts[letter]))
+# === PROGRAM ===
+text = 'north winds weave white waves'
+counts = dict()
+for letter in text.lower():
+    if letter != ' ':
+        counts[letter] = counts.get(letter, 0) + 1
+for letter in sorted(counts):
+    print(letter + ':' + str(counts[letter]))
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+counts = dict()
+for letter in text.lower():
+    if letter != ' ':
+        counts[letter] = counts.get(letter, 0) + 1
+for letter in sorted(counts):
+    print(letter + ':' + str(counts[letter]))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = []
+for word in words:
+    if len(word) >= 2:
+        result.append(word)
+print(','.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = []
+for word in words:
+    if len(word) >= 3:
+        result.append(word)
+print(','.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = []
+for word in words:
+    if len(word) >= 4:
+        result.append(word)
+print(','.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = []
+for word in words:
+    if len(word) >= 2:
+        result.append(word)
+print(','.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = []
+for word in words:
+    if len(word) >= 3:
+        result.append(word)
+print(','.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = []
+for word in words:
+    if len(word) >= 4:
+        result.append(word)
+print(','.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = []
+for word in words:
+    if len(word) >= 2:
+        result.append(word)
+print(','.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = []
+for word in words:
+    if len(word) >= 3:
+        result.append(word)
+print(','.join(result))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+result = []
+for index, letter in enumerate(text):
+    if index % 2 == 0:
+        result.append(letter.upper())
+    else:
+        result.append(letter.lower())
+print(''.join(result))
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+result = []
+for index, letter in enumerate(text):
+    if index % 2 == 0:
+        result.append(letter.upper())
+    else:
+        result.append(letter.lower())
+print(''.join(result))
+# === PROGRAM ===
+text = 'green grass grows in spring'
+result = []
+for index, letter in enumerate(text):
+    if index % 2 == 0:
+        result.append(letter.upper())
+    else:
+        result.append(letter.lower())
+print(''.join(result))
+# === PROGRAM ===
+text = 'little moons drift past noon'
+result = []
+for index, letter in enumerate(text):
+    if index % 2 == 0:
+        result.append(letter.upper())
+    else:
+        result.append(letter.lower())
+print(''.join(result))
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+result = []
+for index, letter in enumerate(text):
+    if index % 2 == 0:
+        result.append(letter.upper())
+    else:
+        result.append(letter.lower())
+print(''.join(result))
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+result = []
+for index, letter in enumerate(text):
+    if index % 2 == 0:
+        result.append(letter.upper())
+    else:
+        result.append(letter.lower())
+print(''.join(result))
+# === PROGRAM ===
+text = 'north winds weave white waves'
+result = []
+for index, letter in enumerate(text):
+    if index % 2 == 0:
+        result.append(letter.upper())
+    else:
+        result.append(letter.lower())
+print(''.join(result))
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+result = []
+for index, letter in enumerate(text):
+    if index % 2 == 0:
+        result.append(letter.upper())
+    else:
+        result.append(letter.lower())
+print(''.join(result))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = sorted(set(words))
+print(' / '.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = sorted(set(words))
+print(' / '.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = sorted(set(words))
+print(' / '.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = sorted(set(words))
+print(' / '.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = sorted(set(words))
+print(' / '.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = sorted(set(words))
+print(' / '.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = sorted(set(words))
+print(' / '.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = sorted(set(words))
+print(' / '.join(result))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+words = text.split()
+result = []
+for word in reversed(words):
+    result.append(word.capitalize())
+print(' '.join(result))
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+words = text.split()
+result = []
+for word in reversed(words):
+    result.append(word.capitalize())
+print(' '.join(result))
+# === PROGRAM ===
+text = 'green grass grows in spring'
+words = text.split()
+result = []
+for word in reversed(words):
+    result.append(word.capitalize())
+print(' '.join(result))
+# === PROGRAM ===
+text = 'little moons drift past noon'
+words = text.split()
+result = []
+for word in reversed(words):
+    result.append(word.capitalize())
+print(' '.join(result))
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+words = text.split()
+result = []
+for word in reversed(words):
+    result.append(word.capitalize())
+print(' '.join(result))
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+words = text.split()
+result = []
+for word in reversed(words):
+    result.append(word.capitalize())
+print(' '.join(result))
+# === PROGRAM ===
+text = 'north winds weave white waves'
+words = text.split()
+result = []
+for word in reversed(words):
+    result.append(word.capitalize())
+print(' '.join(result))
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+words = text.split()
+result = []
+for word in reversed(words):
+    result.append(word.capitalize())
+print(' '.join(result))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+width = max(len(word) for word in words)
+for word in words:
+    print(word.center(width, '.'))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+width = max(len(word) for word in words)
+for word in words:
+    print(word.center(width, '.'))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+width = max(len(word) for word in words)
+for word in words:
+    print(word.center(width, '.'))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+width = max(len(word) for word in words)
+for word in words:
+    print(word.center(width, '.'))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+width = max(len(word) for word in words)
+for word in words:
+    print(word.center(width, '.'))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+width = max(len(word) for word in words)
+for word in words:
+    print(word.center(width, '.'))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+width = max(len(word) for word in words)
+for word in words:
+    print(word.center(width, '.'))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+width = max(len(word) for word in words)
+for word in words:
+    print(word.center(width, '.'))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+result = text.strip().lower().replace(' ', '_')
+print(result)
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+result = text.strip().lower().replace(' ', '_')
+print(result)
+# === PROGRAM ===
+text = 'green grass grows in spring'
+result = text.strip().lower().replace(' ', '_')
+print(result)
+# === PROGRAM ===
+text = 'little moons drift past noon'
+result = text.strip().lower().replace(' ', '_')
+print(result)
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+result = text.strip().lower().replace(' ', '_')
+print(result)
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+result = text.strip().lower().replace(' ', '_')
+print(result)
+# === PROGRAM ===
+text = 'north winds weave white waves'
+result = text.strip().lower().replace(' ', '_')
+print(result)
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+result = text.strip().lower().replace(' ', '_')
+print(result)
+# === PROGRAM ===
+text = 'still waters turn slowly'
+step = 2
+chunks = []
+for index in range(0, len(text), step):
+    chunks.append(text[index:index + step])
+print('|'.join(chunks))
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+step = 3
+chunks = []
+for index in range(0, len(text), step):
+    chunks.append(text[index:index + step])
+print('|'.join(chunks))
+# === PROGRAM ===
+text = 'green grass grows in spring'
+step = 4
+chunks = []
+for index in range(0, len(text), step):
+    chunks.append(text[index:index + step])
+print('|'.join(chunks))
+# === PROGRAM ===
+text = 'little moons drift past noon'
+step = 2
+chunks = []
+for index in range(0, len(text), step):
+    chunks.append(text[index:index + step])
+print('|'.join(chunks))
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+step = 3
+chunks = []
+for index in range(0, len(text), step):
+    chunks.append(text[index:index + step])
+print('|'.join(chunks))
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+step = 4
+chunks = []
+for index in range(0, len(text), step):
+    chunks.append(text[index:index + step])
+print('|'.join(chunks))
+# === PROGRAM ===
+text = 'north winds weave white waves'
+step = 2
+chunks = []
+for index in range(0, len(text), step):
+    chunks.append(text[index:index + step])
+print('|'.join(chunks))
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+step = 3
+chunks = []
+for index in range(0, len(text), step):
+    chunks.append(text[index:index + step])
+print('|'.join(chunks))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+initials = ''.join(word[0].upper() for word in words if word)
+print(initials)
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+initials = ''.join(word[0].upper() for word in words if word)
+print(initials)
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+initials = ''.join(word[0].upper() for word in words if word)
+print(initials)
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+initials = ''.join(word[0].upper() for word in words if word)
+print(initials)
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+initials = ''.join(word[0].upper() for word in words if word)
+print(initials)
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+initials = ''.join(word[0].upper() for word in words if word)
+print(initials)
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+initials = ''.join(word[0].upper() for word in words if word)
+print(initials)
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+initials = ''.join(word[0].upper() for word in words if word)
+print(initials)
+# === PROGRAM ===
+text = 'still waters turn slowly'
+result = []
+previous = ''
+for letter in text:
+    if letter != previous:
+        result.append(letter)
+    previous = letter
+print(''.join(result))
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+result = []
+previous = ''
+for letter in text:
+    if letter != previous:
+        result.append(letter)
+    previous = letter
+print(''.join(result))
+# === PROGRAM ===
+text = 'green grass grows in spring'
+result = []
+previous = ''
+for letter in text:
+    if letter != previous:
+        result.append(letter)
+    previous = letter
+print(''.join(result))
+# === PROGRAM ===
+text = 'little moons drift past noon'
+result = []
+previous = ''
+for letter in text:
+    if letter != previous:
+        result.append(letter)
+    previous = letter
+print(''.join(result))
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+result = []
+previous = ''
+for letter in text:
+    if letter != previous:
+        result.append(letter)
+    previous = letter
+print(''.join(result))
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+result = []
+previous = ''
+for letter in text:
+    if letter != previous:
+        result.append(letter)
+    previous = letter
+print(''.join(result))
+# === PROGRAM ===
+text = 'north winds weave white waves'
+result = []
+previous = ''
+for letter in text:
+    if letter != previous:
+        result.append(letter)
+    previous = letter
+print(''.join(result))
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+result = []
+previous = ''
+for letter in text:
+    if letter != previous:
+        result.append(letter)
+    previous = letter
+print(''.join(result))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = dict()
+for word in words:
+    size = len(word)
+    if size not in result:
+        result[size] = []
+    result[size].append(word)
+for size in sorted(result):
+    print(str(size) + ':' + ','.join(result[size]))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = dict()
+for word in words:
+    size = len(word)
+    if size not in result:
+        result[size] = []
+    result[size].append(word)
+for size in sorted(result):
+    print(str(size) + ':' + ','.join(result[size]))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = dict()
+for word in words:
+    size = len(word)
+    if size not in result:
+        result[size] = []
+    result[size].append(word)
+for size in sorted(result):
+    print(str(size) + ':' + ','.join(result[size]))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = dict()
+for word in words:
+    size = len(word)
+    if size not in result:
+        result[size] = []
+    result[size].append(word)
+for size in sorted(result):
+    print(str(size) + ':' + ','.join(result[size]))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = dict()
+for word in words:
+    size = len(word)
+    if size not in result:
+        result[size] = []
+    result[size].append(word)
+for size in sorted(result):
+    print(str(size) + ':' + ','.join(result[size]))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = dict()
+for word in words:
+    size = len(word)
+    if size not in result:
+        result[size] = []
+    result[size].append(word)
+for size in sorted(result):
+    print(str(size) + ':' + ','.join(result[size]))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = dict()
+for word in words:
+    size = len(word)
+    if size not in result:
+        result[size] = []
+    result[size].append(word)
+for size in sorted(result):
+    print(str(size) + ':' + ','.join(result[size]))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = dict()
+for word in words:
+    size = len(word)
+    if size not in result:
+        result[size] = []
+    result[size].append(word)
+for size in sorted(result):
+    print(str(size) + ':' + ','.join(result[size]))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+shift = 2
+result = ''
+for letter in text.lower():
+    if 'a' <= letter <= 'z':
+        result += chr((ord(letter) - ord('a') + shift) % 26 + ord('a'))
+    else:
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+shift = 3
+result = ''
+for letter in text.lower():
+    if 'a' <= letter <= 'z':
+        result += chr((ord(letter) - ord('a') + shift) % 26 + ord('a'))
+    else:
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'green grass grows in spring'
+shift = 4
+result = ''
+for letter in text.lower():
+    if 'a' <= letter <= 'z':
+        result += chr((ord(letter) - ord('a') + shift) % 26 + ord('a'))
+    else:
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'little moons drift past noon'
+shift = 2
+result = ''
+for letter in text.lower():
+    if 'a' <= letter <= 'z':
+        result += chr((ord(letter) - ord('a') + shift) % 26 + ord('a'))
+    else:
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+shift = 3
+result = ''
+for letter in text.lower():
+    if 'a' <= letter <= 'z':
+        result += chr((ord(letter) - ord('a') + shift) % 26 + ord('a'))
+    else:
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+shift = 4
+result = ''
+for letter in text.lower():
+    if 'a' <= letter <= 'z':
+        result += chr((ord(letter) - ord('a') + shift) % 26 + ord('a'))
+    else:
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'north winds weave white waves'
+shift = 2
+result = ''
+for letter in text.lower():
+    if 'a' <= letter <= 'z':
+        result += chr((ord(letter) - ord('a') + shift) % 26 + ord('a'))
+    else:
+        result += letter
+print(result)
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+shift = 3
+result = ''
+for letter in text.lower():
+    if 'a' <= letter <= 'z':
+        result += chr((ord(letter) - ord('a') + shift) % 26 + ord('a'))
+    else:
+        result += letter
+print(result)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+def shorten(word, width):
+    if len(word) > width:
+        return word[:width] + '.'
+    return word
+for word in words:
+    print(shorten(word, 2))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+def shorten(word, width):
+    if len(word) > width:
+        return word[:width] + '.'
+    return word
+for word in words:
+    print(shorten(word, 3))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+def shorten(word, width):
+    if len(word) > width:
+        return word[:width] + '.'
+    return word
+for word in words:
+    print(shorten(word, 4))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+def shorten(word, width):
+    if len(word) > width:
+        return word[:width] + '.'
+    return word
+for word in words:
+    print(shorten(word, 2))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+def shorten(word, width):
+    if len(word) > width:
+        return word[:width] + '.'
+    return word
+for word in words:
+    print(shorten(word, 3))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+def shorten(word, width):
+    if len(word) > width:
+        return word[:width] + '.'
+    return word
+for word in words:
+    print(shorten(word, 4))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+def shorten(word, width):
+    if len(word) > width:
+        return word[:width] + '.'
+    return word
+for word in words:
+    print(shorten(word, 2))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+def shorten(word, width):
+    if len(word) > width:
+        return word[:width] + '.'
+    return word
+for word in words:
+    print(shorten(word, 3))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'green grass grows in spring'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'little moons drift past noon'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'north winds weave white waves'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+result = []
+previous = text[0]
+count = 0
+for letter in text:
+    if letter != previous:
+        result.append(previous + str(count))
+        previous = letter
+        count = 0
+    count += 1
+result.append(previous + str(count))
+print(''.join(result))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+result = dict()
+for index in range(len(text) - 1):
+    pair = text[index:index + 2]
+    result[pair] = result.get(pair, 0) + 1
+print(result)
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+result = dict()
+for index in range(len(text) - 1):
+    pair = text[index:index + 2]
+    result[pair] = result.get(pair, 0) + 1
+print(result)
+# === PROGRAM ===
+text = 'green grass grows in spring'
+result = dict()
+for index in range(len(text) - 1):
+    pair = text[index:index + 2]
+    result[pair] = result.get(pair, 0) + 1
+print(result)
+# === PROGRAM ===
+text = 'little moons drift past noon'
+result = dict()
+for index in range(len(text) - 1):
+    pair = text[index:index + 2]
+    result[pair] = result.get(pair, 0) + 1
+print(result)
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+result = dict()
+for index in range(len(text) - 1):
+    pair = text[index:index + 2]
+    result[pair] = result.get(pair, 0) + 1
+print(result)
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+result = dict()
+for index in range(len(text) - 1):
+    pair = text[index:index + 2]
+    result[pair] = result.get(pair, 0) + 1
+print(result)
+# === PROGRAM ===
+text = 'north winds weave white waves'
+result = dict()
+for index in range(len(text) - 1):
+    pair = text[index:index + 2]
+    result[pair] = result.get(pair, 0) + 1
+print(result)
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+result = dict()
+for index in range(len(text) - 1):
+    pair = text[index:index + 2]
+    result[pair] = result.get(pair, 0) + 1
+print(result)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+width = max(len(word) for word in words)
+result = ''
+for index in range(width):
+    for word in words:
+        if index < len(word):
+            result += word[index]
+print(result)
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+width = max(len(word) for word in words)
+result = ''
+for index in range(width):
+    for word in words:
+        if index < len(word):
+            result += word[index]
+print(result)
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+width = max(len(word) for word in words)
+result = ''
+for index in range(width):
+    for word in words:
+        if index < len(word):
+            result += word[index]
+print(result)
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+width = max(len(word) for word in words)
+result = ''
+for index in range(width):
+    for word in words:
+        if index < len(word):
+            result += word[index]
+print(result)
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+width = max(len(word) for word in words)
+result = ''
+for index in range(width):
+    for word in words:
+        if index < len(word):
+            result += word[index]
+print(result)
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+width = max(len(word) for word in words)
+result = ''
+for index in range(width):
+    for word in words:
+        if index < len(word):
+            result += word[index]
+print(result)
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+width = max(len(word) for word in words)
+result = ''
+for index in range(width):
+    for word in words:
+        if index < len(word):
+            result += word[index]
+print(result)
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+width = max(len(word) for word in words)
+result = ''
+for index in range(width):
+    for word in words:
+        if index < len(word):
+            result += word[index]
+print(result)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+shift = 2 % len(words)
+result = words[shift:] + words[:shift]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+shift = 3 % len(words)
+result = words[shift:] + words[:shift]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+shift = 4 % len(words)
+result = words[shift:] + words[:shift]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+shift = 2 % len(words)
+result = words[shift:] + words[:shift]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+shift = 3 % len(words)
+result = words[shift:] + words[:shift]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+shift = 4 % len(words)
+result = words[shift:] + words[:shift]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+shift = 2 % len(words)
+result = words[shift:] + words[:shift]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+shift = 3 % len(words)
+result = words[shift:] + words[:shift]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+prefix = words[0]
+for word in words[1:]:
+    while prefix and not word.startswith(prefix):
+        prefix = prefix[:-1]
+print('[' + prefix + ']')
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+pairs = [(len(word), word) for word in words]
+result = [word for size, word in sorted(pairs)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+pairs = [(len(word), word) for word in words]
+result = [word for size, word in sorted(pairs)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+pairs = [(len(word), word) for word in words]
+result = [word for size, word in sorted(pairs)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+pairs = [(len(word), word) for word in words]
+result = [word for size, word in sorted(pairs)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+pairs = [(len(word), word) for word in words]
+result = [word for size, word in sorted(pairs)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+pairs = [(len(word), word) for word in words]
+result = [word for size, word in sorted(pairs)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+pairs = [(len(word), word) for word in words]
+result = [word for size, word in sorted(pairs)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+pairs = [(len(word), word) for word in words]
+result = [word for size, word in sorted(pairs)]
+print(' '.join(result))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+result = []
+current = ''
+for letter in text:
+    if letter in 'aeiou':
+        current += letter
+    elif current:
+        result.append(current)
+        current = ''
+if current:
+    result.append(current)
+print('/'.join(result))
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+result = []
+current = ''
+for letter in text:
+    if letter in 'aeiou':
+        current += letter
+    elif current:
+        result.append(current)
+        current = ''
+if current:
+    result.append(current)
+print('/'.join(result))
+# === PROGRAM ===
+text = 'green grass grows in spring'
+result = []
+current = ''
+for letter in text:
+    if letter in 'aeiou':
+        current += letter
+    elif current:
+        result.append(current)
+        current = ''
+if current:
+    result.append(current)
+print('/'.join(result))
+# === PROGRAM ===
+text = 'little moons drift past noon'
+result = []
+current = ''
+for letter in text:
+    if letter in 'aeiou':
+        current += letter
+    elif current:
+        result.append(current)
+        current = ''
+if current:
+    result.append(current)
+print('/'.join(result))
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+result = []
+current = ''
+for letter in text:
+    if letter in 'aeiou':
+        current += letter
+    elif current:
+        result.append(current)
+        current = ''
+if current:
+    result.append(current)
+print('/'.join(result))
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+result = []
+current = ''
+for letter in text:
+    if letter in 'aeiou':
+        current += letter
+    elif current:
+        result.append(current)
+        current = ''
+if current:
+    result.append(current)
+print('/'.join(result))
+# === PROGRAM ===
+text = 'north winds weave white waves'
+result = []
+current = ''
+for letter in text:
+    if letter in 'aeiou':
+        current += letter
+    elif current:
+        result.append(current)
+        current = ''
+if current:
+    result.append(current)
+print('/'.join(result))
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+result = []
+current = ''
+for letter in text:
+    if letter in 'aeiou':
+        current += letter
+    elif current:
+        result.append(current)
+        current = ''
+if current:
+    result.append(current)
+print('/'.join(result))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+width = 2 + 7
+lines = []
+line = ''
+for word in words:
+    if line and len(line) + len(word) + 1 > width:
+        lines.append(line)
+        line = ''
+    line += (' ' if line else '') + word
+if line:
+    lines.append(line)
+print('\n'.join(lines))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+width = 3 + 7
+lines = []
+line = ''
+for word in words:
+    if line and len(line) + len(word) + 1 > width:
+        lines.append(line)
+        line = ''
+    line += (' ' if line else '') + word
+if line:
+    lines.append(line)
+print('\n'.join(lines))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+width = 4 + 7
+lines = []
+line = ''
+for word in words:
+    if line and len(line) + len(word) + 1 > width:
+        lines.append(line)
+        line = ''
+    line += (' ' if line else '') + word
+if line:
+    lines.append(line)
+print('\n'.join(lines))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+width = 2 + 7
+lines = []
+line = ''
+for word in words:
+    if line and len(line) + len(word) + 1 > width:
+        lines.append(line)
+        line = ''
+    line += (' ' if line else '') + word
+if line:
+    lines.append(line)
+print('\n'.join(lines))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+width = 3 + 7
+lines = []
+line = ''
+for word in words:
+    if line and len(line) + len(word) + 1 > width:
+        lines.append(line)
+        line = ''
+    line += (' ' if line else '') + word
+if line:
+    lines.append(line)
+print('\n'.join(lines))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+width = 4 + 7
+lines = []
+line = ''
+for word in words:
+    if line and len(line) + len(word) + 1 > width:
+        lines.append(line)
+        line = ''
+    line += (' ' if line else '') + word
+if line:
+    lines.append(line)
+print('\n'.join(lines))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+width = 2 + 7
+lines = []
+line = ''
+for word in words:
+    if line and len(line) + len(word) + 1 > width:
+        lines.append(line)
+        line = ''
+    line += (' ' if line else '') + word
+if line:
+    lines.append(line)
+print('\n'.join(lines))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+width = 3 + 7
+lines = []
+line = ''
+for word in words:
+    if line and len(line) + len(word) + 1 > width:
+        lines.append(line)
+        line = ''
+    line += (' ' if line else '') + word
+if line:
+    lines.append(line)
+print('\n'.join(lines))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'green grass grows in spring'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'little moons drift past noon'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'north winds weave white waves'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+positions = dict()
+for index, letter in enumerate(text):
+    if letter not in positions:
+        positions[letter] = []
+    positions[letter].append(index)
+print(positions)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = []
+current = ''
+for word in words:
+    current += word[:1]
+    result.append(current)
+print(','.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = []
+current = ''
+for word in words:
+    current += word[:1]
+    result.append(current)
+print(','.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = []
+current = ''
+for word in words:
+    current += word[:1]
+    result.append(current)
+print(','.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = []
+current = ''
+for word in words:
+    current += word[:1]
+    result.append(current)
+print(','.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = []
+current = ''
+for word in words:
+    current += word[:1]
+    result.append(current)
+print(','.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = []
+current = ''
+for word in words:
+    current += word[:1]
+    result.append(current)
+print(','.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = []
+current = ''
+for word in words:
+    current += word[:1]
+    result.append(current)
+print(','.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = []
+current = ''
+for word in words:
+    current += word[:1]
+    result.append(current)
+print(','.join(result))
+# === PROGRAM ===
+text = 'still waters turn slowly'
+width = 2
+rows = [text[index:index + width] for index in range(0, len(text), width)]
+result = ''
+for column in range(width):
+    for row in rows:
+        if column < len(row):
+            result += row[column]
+print(result)
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+width = 3
+rows = [text[index:index + width] for index in range(0, len(text), width)]
+result = ''
+for column in range(width):
+    for row in rows:
+        if column < len(row):
+            result += row[column]
+print(result)
+# === PROGRAM ===
+text = 'green grass grows in spring'
+width = 4
+rows = [text[index:index + width] for index in range(0, len(text), width)]
+result = ''
+for column in range(width):
+    for row in rows:
+        if column < len(row):
+            result += row[column]
+print(result)
+# === PROGRAM ===
+text = 'little moons drift past noon'
+width = 2
+rows = [text[index:index + width] for index in range(0, len(text), width)]
+result = ''
+for column in range(width):
+    for row in rows:
+        if column < len(row):
+            result += row[column]
+print(result)
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+width = 3
+rows = [text[index:index + width] for index in range(0, len(text), width)]
+result = ''
+for column in range(width):
+    for row in rows:
+        if column < len(row):
+            result += row[column]
+print(result)
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+width = 4
+rows = [text[index:index + width] for index in range(0, len(text), width)]
+result = ''
+for column in range(width):
+    for row in rows:
+        if column < len(row):
+            result += row[column]
+print(result)
+# === PROGRAM ===
+text = 'north winds weave white waves'
+width = 2
+rows = [text[index:index + width] for index in range(0, len(text), width)]
+result = ''
+for column in range(width):
+    for row in rows:
+        if column < len(row):
+            result += row[column]
+print(result)
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+width = 3
+rows = [text[index:index + width] for index in range(0, len(text), width)]
+result = ''
+for column in range(width):
+    for row in rows:
+        if column < len(row):
+            result += row[column]
+print(result)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+for count, word in sorted((count, word) for word, count in counts.items()):
+    print(word + '=' + str(count))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+for count, word in sorted((count, word) for word, count in counts.items()):
+    print(word + '=' + str(count))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+for count, word in sorted((count, word) for word, count in counts.items()):
+    print(word + '=' + str(count))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+for count, word in sorted((count, word) for word, count in counts.items()):
+    print(word + '=' + str(count))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+for count, word in sorted((count, word) for word, count in counts.items()):
+    print(word + '=' + str(count))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+for count, word in sorted((count, word) for word, count in counts.items()):
+    print(word + '=' + str(count))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+for count, word in sorted((count, word) for word, count in counts.items()):
+    print(word + '=' + str(count))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+for count, word in sorted((count, word) for word, count in counts.items()):
+    print(word + '=' + str(count))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+groups = dict()
+for word in words:
+    key = ''.join(sorted(word))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(word)
+print(groups)
+# === PROGRAM ===
+text = 'still waters turn slowly'
+size = 2
+seen = set()
+result = []
+for index in range(len(text) - size + 1):
+    part = text[index:index + size]
+    if part in seen and part not in result:
+        result.append(part)
+    seen.add(part)
+print(result)
+# === PROGRAM ===
+text = 'copper clouds cross the hill'
+size = 3
+seen = set()
+result = []
+for index in range(len(text) - size + 1):
+    part = text[index:index + size]
+    if part in seen and part not in result:
+        result.append(part)
+    seen.add(part)
+print(result)
+# === PROGRAM ===
+text = 'green grass grows in spring'
+size = 4
+seen = set()
+result = []
+for index in range(len(text) - size + 1):
+    part = text[index:index + size]
+    if part in seen and part not in result:
+        result.append(part)
+    seen.add(part)
+print(result)
+# === PROGRAM ===
+text = 'little moons drift past noon'
+size = 2
+seen = set()
+result = []
+for index in range(len(text) - size + 1):
+    part = text[index:index + size]
+    if part in seen and part not in result:
+        result.append(part)
+    seen.add(part)
+print(result)
+# === PROGRAM ===
+text = 'moss and maple meet the mist'
+size = 3
+seen = set()
+result = []
+for index in range(len(text) - size + 1):
+    part = text[index:index + size]
+    if part in seen and part not in result:
+        result.append(part)
+    seen.add(part)
+print(result)
+# === PROGRAM ===
+text = 'silver sings softly in sand'
+size = 4
+seen = set()
+result = []
+for index in range(len(text) - size + 1):
+    part = text[index:index + size]
+    if part in seen and part not in result:
+        result.append(part)
+    seen.add(part)
+print(result)
+# === PROGRAM ===
+text = 'north winds weave white waves'
+size = 2
+seen = set()
+result = []
+for index in range(len(text) - size + 1):
+    part = text[index:index + size]
+    if part in seen and part not in result:
+        result.append(part)
+    seen.add(part)
+print(result)
+# === PROGRAM ===
+text = 'bright birds bring blue berries'
+size = 3
+seen = set()
+result = []
+for index in range(len(text) - size + 1):
+    part = text[index:index + size]
+    if part in seen and part not in result:
+        result.append(part)
+    seen.add(part)
+print(result)
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = [word.upper() if index % 2 else word.lower() for index, word in enumerate(words)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = [word.upper() if index % 2 else word.lower() for index, word in enumerate(words)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = [word.upper() if index % 2 else word.lower() for index, word in enumerate(words)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = [word.upper() if index % 2 else word.lower() for index, word in enumerate(words)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = [word.upper() if index % 2 else word.lower() for index, word in enumerate(words)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = [word.upper() if index % 2 else word.lower() for index, word in enumerate(words)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = [word.upper() if index % 2 else word.lower() for index, word in enumerate(words)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = [word.upper() if index % 2 else word.lower() for index, word in enumerate(words)]
+print(' '.join(result))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = []
+for word in words:
+    result.append(word + word[-2::-1])
+print(' '.join(result))
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = []
+for word in words:
+    result.append(word + word[-2::-1])
+print(' '.join(result))
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = []
+for word in words:
+    result.append(word + word[-2::-1])
+print(' '.join(result))
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = []
+for word in words:
+    result.append(word + word[-2::-1])
+print(' '.join(result))
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = []
+for word in words:
+    result.append(word + word[-2::-1])
+print(' '.join(result))
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = []
+for word in words:
+    result.append(word + word[-2::-1])
+print(' '.join(result))
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = []
+for word in words:
+    result.append(word + word[-2::-1])
+print(' '.join(result))
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = []
+for word in words:
+    result.append(word + word[-2::-1])
+print(' '.join(result))
+# === PROGRAM ===
+words = ['river', 'stone', 'river', 'leaf', 'moon']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['copper', 'glass', 'oak', 'glass', 'sand']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['cloud', 'wind', 'rain', 'mist', 'rain']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['zero', 'one', 'three', 'eight', 'three']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['maple', 'moss', 'maple', 'fern', 'pine']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['amber', 'iron', 'silver', 'tin', 'iron']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['north', 'west', 'south', 'east', 'north']
+result = sorted(set(words))
+print(result)
+# === PROGRAM ===
+words = ['swift', 'quiet', 'bright', 'quiet', 'soft']
+result = sorted(set(words))
+print(result)

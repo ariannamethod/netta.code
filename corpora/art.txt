@@ -1,0 +1,2296 @@
+# === PROGRAM ===
+width = 7
+eye = 'o'
+print(' ' + '_' * width)
+print('|' + eye + ' ' * (width - 2) + eye + '|')
+print('|' + ' ' * width + '|')
+print('|' + '_' * width + '|')
+# === PROGRAM ===
+width = 9
+eye = '*'
+print(' ' + '_' * width)
+print('|' + eye + ' ' * (width - 2) + eye + '|')
+print('|' + ' ' * width + '|')
+print('|' + '_' * width + '|')
+# === PROGRAM ===
+width = 11
+eye = '@'
+print(' ' + '_' * width)
+print('|' + eye + ' ' * (width - 2) + eye + '|')
+print('|' + ' ' * width + '|')
+print('|' + '_' * width + '|')
+# === PROGRAM ===
+width = 13
+eye = '^'
+print(' ' + '_' * width)
+print('|' + eye + ' ' * (width - 2) + eye + '|')
+print('|' + ' ' * width + '|')
+print('|' + '_' * width + '|')
+# === PROGRAM ===
+width = 15
+eye = 'x'
+print(' ' + '_' * width)
+print('|' + eye + ' ' * (width - 2) + eye + '|')
+print('|' + ' ' * width + '|')
+print('|' + '_' * width + '|')
+# === PROGRAM ===
+width = 17
+eye = 'O'
+print(' ' + '_' * width)
+print('|' + eye + ' ' * (width - 2) + eye + '|')
+print('|' + ' ' * width + '|')
+print('|' + '_' * width + '|')
+# === PROGRAM ===
+width = 19
+eye = '+'
+print(' ' + '_' * width)
+print('|' + eye + ' ' * (width - 2) + eye + '|')
+print('|' + ' ' * width + '|')
+print('|' + '_' * width + '|')
+# === PROGRAM ===
+width = 21
+eye = '='
+print(' ' + '_' * width)
+print('|' + eye + ' ' * (width - 2) + eye + '|')
+print('|' + ' ' * width + '|')
+print('|' + '_' * width + '|')
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    print(' ' * (size - row - 1) + mark * (row * 2 + 1))
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    print(' ' * (size - row - 1) + mark * (row * 2 + 1))
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    print(' ' * (size - row - 1) + mark * (row * 2 + 1))
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    print(' ' * (size - row - 1) + mark * (row * 2 + 1))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    print(' ' * (size - row - 1) + mark * (row * 2 + 1))
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    print(' ' * (size - row - 1) + mark * (row * 2 + 1))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    print(' ' * (size - row - 1) + mark * (row * 2 + 1))
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    print(' ' * (size - row - 1) + mark * (row * 2 + 1))
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == column or row + column == size - 1:
+            line += mark
+        else:
+            line += ' '
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == column or row + column == size - 1:
+            line += mark
+        else:
+            line += ' '
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == column or row + column == size - 1:
+            line += mark
+        else:
+            line += ' '
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == column or row + column == size - 1:
+            line += mark
+        else:
+            line += ' '
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == column or row + column == size - 1:
+            line += mark
+        else:
+            line += ' '
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == column or row + column == size - 1:
+            line += mark
+        else:
+            line += ' '
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == column or row + column == size - 1:
+            line += mark
+        else:
+            line += ' '
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == column or row + column == size - 1:
+            line += mark
+        else:
+            line += ' '
+    print(line)
+# === PROGRAM ===
+width = 7
+height = 3
+mark = '#'
+for row in range(height):
+    if row == 0 or row == height - 1:
+        print(mark * width)
+    else:
+        print(mark + ' ' * (width - 2) + mark)
+# === PROGRAM ===
+width = 9
+height = 4
+mark = '*'
+for row in range(height):
+    if row == 0 or row == height - 1:
+        print(mark * width)
+    else:
+        print(mark + ' ' * (width - 2) + mark)
+# === PROGRAM ===
+width = 11
+height = 5
+mark = '+'
+for row in range(height):
+    if row == 0 or row == height - 1:
+        print(mark * width)
+    else:
+        print(mark + ' ' * (width - 2) + mark)
+# === PROGRAM ===
+width = 13
+height = 6
+mark = '@'
+for row in range(height):
+    if row == 0 or row == height - 1:
+        print(mark * width)
+    else:
+        print(mark + ' ' * (width - 2) + mark)
+# === PROGRAM ===
+width = 15
+height = 7
+mark = 'X'
+for row in range(height):
+    if row == 0 or row == height - 1:
+        print(mark * width)
+    else:
+        print(mark + ' ' * (width - 2) + mark)
+# === PROGRAM ===
+width = 17
+height = 8
+mark = '%'
+for row in range(height):
+    if row == 0 or row == height - 1:
+        print(mark * width)
+    else:
+        print(mark + ' ' * (width - 2) + mark)
+# === PROGRAM ===
+width = 19
+height = 9
+mark = 'O'
+for row in range(height):
+    if row == 0 or row == height - 1:
+        print(mark * width)
+    else:
+        print(mark + ' ' * (width - 2) + mark)
+# === PROGRAM ===
+width = 21
+height = 10
+mark = '='
+for row in range(height):
+    if row == 0 or row == height - 1:
+        print(mark * width)
+    else:
+        print(mark + ' ' * (width - 2) + mark)
+# === PROGRAM ===
+radius = 3
+mark = '#'
+for row in range(-radius, radius + 1):
+    width = radius - abs(row)
+    print(' ' * abs(row) + mark * (2 * width + 1))
+# === PROGRAM ===
+radius = 4
+mark = '*'
+for row in range(-radius, radius + 1):
+    width = radius - abs(row)
+    print(' ' * abs(row) + mark * (2 * width + 1))
+# === PROGRAM ===
+radius = 5
+mark = '+'
+for row in range(-radius, radius + 1):
+    width = radius - abs(row)
+    print(' ' * abs(row) + mark * (2 * width + 1))
+# === PROGRAM ===
+radius = 6
+mark = '@'
+for row in range(-radius, radius + 1):
+    width = radius - abs(row)
+    print(' ' * abs(row) + mark * (2 * width + 1))
+# === PROGRAM ===
+radius = 7
+mark = 'X'
+for row in range(-radius, radius + 1):
+    width = radius - abs(row)
+    print(' ' * abs(row) + mark * (2 * width + 1))
+# === PROGRAM ===
+radius = 8
+mark = '%'
+for row in range(-radius, radius + 1):
+    width = radius - abs(row)
+    print(' ' * abs(row) + mark * (2 * width + 1))
+# === PROGRAM ===
+radius = 9
+mark = 'O'
+for row in range(-radius, radius + 1):
+    width = radius - abs(row)
+    print(' ' * abs(row) + mark * (2 * width + 1))
+# === PROGRAM ===
+radius = 10
+mark = '='
+for row in range(-radius, radius + 1):
+    width = radius - abs(row)
+    print(' ' * abs(row) + mark * (2 * width + 1))
+# === PROGRAM ===
+size = 7
+marks = '#.'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += marks[(row + column) % len(marks)]
+    print(line)
+# === PROGRAM ===
+size = 9
+marks = '* '
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += marks[(row + column) % len(marks)]
+    print(line)
+# === PROGRAM ===
+size = 11
+marks = '+-'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += marks[(row + column) % len(marks)]
+    print(line)
+# === PROGRAM ===
+size = 13
+marks = '@o'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += marks[(row + column) % len(marks)]
+    print(line)
+# === PROGRAM ===
+size = 15
+marks = 'X.'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += marks[(row + column) % len(marks)]
+    print(line)
+# === PROGRAM ===
+size = 17
+marks = '%-'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += marks[(row + column) % len(marks)]
+    print(line)
+# === PROGRAM ===
+size = 19
+marks = 'O:'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += marks[(row + column) % len(marks)]
+    print(line)
+# === PROGRAM ===
+size = 21
+marks = '=+'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += marks[(row + column) % len(marks)]
+    print(line)
+# === PROGRAM ===
+eye = 'o'
+mouth = '__'
+rows = [' .----. ', '|' + eye + '    ' + eye + '|', '|  ' + mouth + '  |', ' `----` ']
+for row in rows:
+    print(row)
+# === PROGRAM ===
+eye = '*'
+mouth = '~~'
+rows = [' .----. ', '|' + eye + '    ' + eye + '|', '|  ' + mouth + '  |', ' `----` ']
+for row in rows:
+    print(row)
+# === PROGRAM ===
+eye = '@'
+mouth = 'vv'
+rows = [' .----. ', '|' + eye + '    ' + eye + '|', '|  ' + mouth + '  |', ' `----` ']
+for row in rows:
+    print(row)
+# === PROGRAM ===
+eye = '^'
+mouth = '--'
+rows = [' .----. ', '|' + eye + '    ' + eye + '|', '|  ' + mouth + '  |', ' `----` ']
+for row in rows:
+    print(row)
+# === PROGRAM ===
+eye = 'x'
+mouth = 'oo'
+rows = [' .----. ', '|' + eye + '    ' + eye + '|', '|  ' + mouth + '  |', ' `----` ']
+for row in rows:
+    print(row)
+# === PROGRAM ===
+eye = 'O'
+mouth = '=='
+rows = [' .----. ', '|' + eye + '    ' + eye + '|', '|  ' + mouth + '  |', ' `----` ']
+for row in rows:
+    print(row)
+# === PROGRAM ===
+eye = '+'
+mouth = 'UU'
+rows = [' .----. ', '|' + eye + '    ' + eye + '|', '|  ' + mouth + '  |', ' `----` ']
+for row in rows:
+    print(row)
+# === PROGRAM ===
+eye = '='
+mouth = '..'
+rows = [' .----. ', '|' + eye + '    ' + eye + '|', '|  ' + mouth + '  |', ' `----` ']
+for row in rows:
+    print(row)
+# === PROGRAM ===
+size = 7
+mark = '#'
+rows = []
+for width in range(1, size + 1):
+    rows.append(mark * width)
+for row in rows + list(reversed(rows[:-1])):
+    print(row)
+# === PROGRAM ===
+size = 9
+mark = '*'
+rows = []
+for width in range(1, size + 1):
+    rows.append(mark * width)
+for row in rows + list(reversed(rows[:-1])):
+    print(row)
+# === PROGRAM ===
+size = 11
+mark = '+'
+rows = []
+for width in range(1, size + 1):
+    rows.append(mark * width)
+for row in rows + list(reversed(rows[:-1])):
+    print(row)
+# === PROGRAM ===
+size = 13
+mark = '@'
+rows = []
+for width in range(1, size + 1):
+    rows.append(mark * width)
+for row in rows + list(reversed(rows[:-1])):
+    print(row)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+rows = []
+for width in range(1, size + 1):
+    rows.append(mark * width)
+for row in rows + list(reversed(rows[:-1])):
+    print(row)
+# === PROGRAM ===
+size = 17
+mark = '%'
+rows = []
+for width in range(1, size + 1):
+    rows.append(mark * width)
+for row in rows + list(reversed(rows[:-1])):
+    print(row)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+rows = []
+for width in range(1, size + 1):
+    rows.append(mark * width)
+for row in rows + list(reversed(rows[:-1])):
+    print(row)
+# === PROGRAM ===
+size = 21
+mark = '='
+rows = []
+for width in range(1, size + 1):
+    rows.append(mark * width)
+for row in rows + list(reversed(rows[:-1])):
+    print(row)
+# === PROGRAM ===
+width = 7
+mark = '#'
+for row in range(width):
+    print(' ' * row + mark + ' ' * (width - row - 1) + mark)
+# === PROGRAM ===
+width = 9
+mark = '*'
+for row in range(width):
+    print(' ' * row + mark + ' ' * (width - row - 1) + mark)
+# === PROGRAM ===
+width = 11
+mark = '+'
+for row in range(width):
+    print(' ' * row + mark + ' ' * (width - row - 1) + mark)
+# === PROGRAM ===
+width = 13
+mark = '@'
+for row in range(width):
+    print(' ' * row + mark + ' ' * (width - row - 1) + mark)
+# === PROGRAM ===
+width = 15
+mark = 'X'
+for row in range(width):
+    print(' ' * row + mark + ' ' * (width - row - 1) + mark)
+# === PROGRAM ===
+width = 17
+mark = '%'
+for row in range(width):
+    print(' ' * row + mark + ' ' * (width - row - 1) + mark)
+# === PROGRAM ===
+width = 19
+mark = 'O'
+for row in range(width):
+    print(' ' * row + mark + ' ' * (width - row - 1) + mark)
+# === PROGRAM ===
+width = 21
+mark = '='
+for row in range(width):
+    print(' ' * row + mark + ' ' * (width - row - 1) + mark)
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == size // 2 or column == size // 2:
+            line += mark
+        else:
+            line += '.'
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == size // 2 or column == size // 2:
+            line += mark
+        else:
+            line += '.'
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == size // 2 or column == size // 2:
+            line += mark
+        else:
+            line += '.'
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == size // 2 or column == size // 2:
+            line += mark
+        else:
+            line += '.'
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == size // 2 or column == size // 2:
+            line += mark
+        else:
+            line += '.'
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == size // 2 or column == size // 2:
+            line += mark
+        else:
+            line += '.'
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == size // 2 or column == size // 2:
+            line += mark
+        else:
+            line += '.'
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == size // 2 or column == size // 2:
+            line += mark
+        else:
+            line += '.'
+    print(line)
+# === PROGRAM ===
+heights = [2, 4, 1, 5, 3]
+mark = '#'
+for level in reversed(range(1, max(heights) + 1)):
+    line = ''
+    for height in heights:
+        line += mark if height >= level else ' '
+    print(line)
+print('-' * len(heights))
+# === PROGRAM ===
+heights = [3, 5, 2, 6, 4]
+mark = '*'
+for level in reversed(range(1, max(heights) + 1)):
+    line = ''
+    for height in heights:
+        line += mark if height >= level else ' '
+    print(line)
+print('-' * len(heights))
+# === PROGRAM ===
+heights = [4, 4, 3, 7, 5]
+mark = '+'
+for level in reversed(range(1, max(heights) + 1)):
+    line = ''
+    for height in heights:
+        line += mark if height >= level else ' '
+    print(line)
+print('-' * len(heights))
+# === PROGRAM ===
+heights = [5, 5, 4, 5, 6]
+mark = '@'
+for level in reversed(range(1, max(heights) + 1)):
+    line = ''
+    for height in heights:
+        line += mark if height >= level else ' '
+    print(line)
+print('-' * len(heights))
+# === PROGRAM ===
+heights = [6, 4, 5, 6, 7]
+mark = 'X'
+for level in reversed(range(1, max(heights) + 1)):
+    line = ''
+    for height in heights:
+        line += mark if height >= level else ' '
+    print(line)
+print('-' * len(heights))
+# === PROGRAM ===
+heights = [7, 5, 6, 7, 8]
+mark = '%'
+for level in reversed(range(1, max(heights) + 1)):
+    line = ''
+    for height in heights:
+        line += mark if height >= level else ' '
+    print(line)
+print('-' * len(heights))
+# === PROGRAM ===
+heights = [8, 4, 7, 5, 9]
+mark = 'O'
+for level in reversed(range(1, max(heights) + 1)):
+    line = ''
+    for height in heights:
+        line += mark if height >= level else ' '
+    print(line)
+print('-' * len(heights))
+# === PROGRAM ===
+heights = [9, 5, 8, 6, 10]
+mark = '='
+for level in reversed(range(1, max(heights) + 1)):
+    line = ''
+    for height in heights:
+        line += mark if height >= level else ' '
+    print(line)
+print('-' * len(heights))
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    left = min(row, size - row - 1)
+    print(' ' * left + mark * (size - 2 * left))
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    left = min(row, size - row - 1)
+    print(' ' * left + mark * (size - 2 * left))
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    left = min(row, size - row - 1)
+    print(' ' * left + mark * (size - 2 * left))
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    left = min(row, size - row - 1)
+    print(' ' * left + mark * (size - 2 * left))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    left = min(row, size - row - 1)
+    print(' ' * left + mark * (size - 2 * left))
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    left = min(row, size - row - 1)
+    print(' ' * left + mark * (size - 2 * left))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    left = min(row, size - row - 1)
+    print(' ' * left + mark * (size - 2 * left))
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    left = min(row, size - row - 1)
+    print(' ' * left + mark * (size - 2 * left))
+# === PROGRAM ===
+width = 7
+mark = '#'
+rows = []
+for row in range(3):
+    cells = [mark if (column + row) % 3 == 0 else '.' for column in range(width)]
+    rows.append(''.join(cells))
+print('\n'.join(rows))
+# === PROGRAM ===
+width = 9
+mark = '*'
+rows = []
+for row in range(4):
+    cells = [mark if (column + row) % 3 == 0 else '.' for column in range(width)]
+    rows.append(''.join(cells))
+print('\n'.join(rows))
+# === PROGRAM ===
+width = 11
+mark = '+'
+rows = []
+for row in range(5):
+    cells = [mark if (column + row) % 3 == 0 else '.' for column in range(width)]
+    rows.append(''.join(cells))
+print('\n'.join(rows))
+# === PROGRAM ===
+width = 13
+mark = '@'
+rows = []
+for row in range(6):
+    cells = [mark if (column + row) % 3 == 0 else '.' for column in range(width)]
+    rows.append(''.join(cells))
+print('\n'.join(rows))
+# === PROGRAM ===
+width = 15
+mark = 'X'
+rows = []
+for row in range(7):
+    cells = [mark if (column + row) % 3 == 0 else '.' for column in range(width)]
+    rows.append(''.join(cells))
+print('\n'.join(rows))
+# === PROGRAM ===
+width = 17
+mark = '%'
+rows = []
+for row in range(8):
+    cells = [mark if (column + row) % 3 == 0 else '.' for column in range(width)]
+    rows.append(''.join(cells))
+print('\n'.join(rows))
+# === PROGRAM ===
+width = 19
+mark = 'O'
+rows = []
+for row in range(9):
+    cells = [mark if (column + row) % 3 == 0 else '.' for column in range(width)]
+    rows.append(''.join(cells))
+print('\n'.join(rows))
+# === PROGRAM ===
+width = 21
+mark = '='
+rows = []
+for row in range(10):
+    cells = [mark if (column + row) % 3 == 0 else '.' for column in range(width)]
+    rows.append(''.join(cells))
+print('\n'.join(rows))
+# === PROGRAM ===
+size = 7
+mark = '#'
+def draw_row(width):
+    return '|' + mark * width + '|'
+for width in range(1, size + 1):
+    print(draw_row(width))
+# === PROGRAM ===
+size = 9
+mark = '*'
+def draw_row(width):
+    return '|' + mark * width + '|'
+for width in range(1, size + 1):
+    print(draw_row(width))
+# === PROGRAM ===
+size = 11
+mark = '+'
+def draw_row(width):
+    return '|' + mark * width + '|'
+for width in range(1, size + 1):
+    print(draw_row(width))
+# === PROGRAM ===
+size = 13
+mark = '@'
+def draw_row(width):
+    return '|' + mark * width + '|'
+for width in range(1, size + 1):
+    print(draw_row(width))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+def draw_row(width):
+    return '|' + mark * width + '|'
+for width in range(1, size + 1):
+    print(draw_row(width))
+# === PROGRAM ===
+size = 17
+mark = '%'
+def draw_row(width):
+    return '|' + mark * width + '|'
+for width in range(1, size + 1):
+    print(draw_row(width))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+def draw_row(width):
+    return '|' + mark * width + '|'
+for width in range(1, size + 1):
+    print(draw_row(width))
+# === PROGRAM ===
+size = 21
+mark = '='
+def draw_row(width):
+    return '|' + mark * width + '|'
+for width in range(1, size + 1):
+    print(draw_row(width))
+# === PROGRAM ===
+eye = 'o'
+width = 7
+line = '(' + eye + ' ' * width + eye + ')'
+print(' ' + '-' * (len(line) - 2))
+print(line)
+print(' ' + 'v'.center(len(line) - 2))
+print(' ' + '-' * (len(line) - 2))
+# === PROGRAM ===
+eye = '*'
+width = 9
+line = '(' + eye + ' ' * width + eye + ')'
+print(' ' + '-' * (len(line) - 2))
+print(line)
+print(' ' + 'v'.center(len(line) - 2))
+print(' ' + '-' * (len(line) - 2))
+# === PROGRAM ===
+eye = '@'
+width = 11
+line = '(' + eye + ' ' * width + eye + ')'
+print(' ' + '-' * (len(line) - 2))
+print(line)
+print(' ' + 'v'.center(len(line) - 2))
+print(' ' + '-' * (len(line) - 2))
+# === PROGRAM ===
+eye = '^'
+width = 13
+line = '(' + eye + ' ' * width + eye + ')'
+print(' ' + '-' * (len(line) - 2))
+print(line)
+print(' ' + 'v'.center(len(line) - 2))
+print(' ' + '-' * (len(line) - 2))
+# === PROGRAM ===
+eye = 'x'
+width = 15
+line = '(' + eye + ' ' * width + eye + ')'
+print(' ' + '-' * (len(line) - 2))
+print(line)
+print(' ' + 'v'.center(len(line) - 2))
+print(' ' + '-' * (len(line) - 2))
+# === PROGRAM ===
+eye = 'O'
+width = 17
+line = '(' + eye + ' ' * width + eye + ')'
+print(' ' + '-' * (len(line) - 2))
+print(line)
+print(' ' + 'v'.center(len(line) - 2))
+print(' ' + '-' * (len(line) - 2))
+# === PROGRAM ===
+eye = '+'
+width = 19
+line = '(' + eye + ' ' * width + eye + ')'
+print(' ' + '-' * (len(line) - 2))
+print(line)
+print(' ' + 'v'.center(len(line) - 2))
+print(' ' + '-' * (len(line) - 2))
+# === PROGRAM ===
+eye = '='
+width = 21
+line = '(' + eye + ' ' * width + eye + ')'
+print(' ' + '-' * (len(line) - 2))
+print(line)
+print(' ' + 'v'.center(len(line) - 2))
+print(' ' + '-' * (len(line) - 2))
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = min(row, column, size - row - 1, size - column - 1)
+        line += mark if distance % 2 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = min(row, column, size - row - 1, size - column - 1)
+        line += mark if distance % 2 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = min(row, column, size - row - 1, size - column - 1)
+        line += mark if distance % 2 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = min(row, column, size - row - 1, size - column - 1)
+        line += mark if distance % 2 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = min(row, column, size - row - 1, size - column - 1)
+        line += mark if distance % 2 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = min(row, column, size - row - 1, size - column - 1)
+        line += mark if distance % 2 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = min(row, column, size - row - 1, size - column - 1)
+        line += mark if distance % 2 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = min(row, column, size - row - 1, size - column - 1)
+        line += mark if distance % 2 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 7
+mark = '#'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = 'o'
+canvas[2][-3] = 'o'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 9
+mark = '*'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '*'
+canvas[2][-3] = '*'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 11
+mark = '+'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '@'
+canvas[2][-3] = '@'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 13
+mark = '@'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '^'
+canvas[2][-3] = '^'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = 'x'
+canvas[2][-3] = 'x'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 17
+mark = '%'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = 'O'
+canvas[2][-3] = 'O'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '+'
+canvas[2][-3] = '+'
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 21
+mark = '='
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for column in range(1, size - 1):
+    canvas[0][column] = mark
+    canvas[-1][column] = mark
+for row in range(1, size - 1):
+    canvas[row][0] = mark
+    canvas[row][-1] = mark
+canvas[2][2] = '='
+canvas[2][-3] = '='
+for column in range(2, size - 2):
+    canvas[-3][column] = '_'
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 7
+mark = '#'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 7
+mark = '#'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if (center - 1) ** 2 <= distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if (center - 1) ** 2 <= distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if (center - 1) ** 2 <= distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if (center - 1) ** 2 <= distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if (center - 1) ** 2 <= distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if (center - 1) ** 2 <= distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if (center - 1) ** 2 <= distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+center = size // 2
+for row in range(size):
+    line = ''
+    for column in range(size):
+        distance = (row - center) ** 2 + (column - center) ** 2
+        line += mark if (center - 1) ** 2 <= distance <= center ** 2 else ' '
+    print(line)
+# === PROGRAM ===
+size = 7
+mark = '#'
+for level in range(2, size // 2 + 2):
+    for width in range(1, level * 2, 2):
+        print((mark * width).center(size))
+print('|'.center(size))
+print(('_' * (size // 2)).center(size))
+# === PROGRAM ===
+size = 9
+mark = '*'
+for level in range(2, size // 2 + 2):
+    for width in range(1, level * 2, 2):
+        print((mark * width).center(size))
+print('|'.center(size))
+print(('_' * (size // 2)).center(size))
+# === PROGRAM ===
+size = 11
+mark = '+'
+for level in range(2, size // 2 + 2):
+    for width in range(1, level * 2, 2):
+        print((mark * width).center(size))
+print('|'.center(size))
+print(('_' * (size // 2)).center(size))
+# === PROGRAM ===
+size = 13
+mark = '@'
+for level in range(2, size // 2 + 2):
+    for width in range(1, level * 2, 2):
+        print((mark * width).center(size))
+print('|'.center(size))
+print(('_' * (size // 2)).center(size))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for level in range(2, size // 2 + 2):
+    for width in range(1, level * 2, 2):
+        print((mark * width).center(size))
+print('|'.center(size))
+print(('_' * (size // 2)).center(size))
+# === PROGRAM ===
+size = 17
+mark = '%'
+for level in range(2, size // 2 + 2):
+    for width in range(1, level * 2, 2):
+        print((mark * width).center(size))
+print('|'.center(size))
+print(('_' * (size // 2)).center(size))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for level in range(2, size // 2 + 2):
+    for width in range(1, level * 2, 2):
+        print((mark * width).center(size))
+print('|'.center(size))
+print(('_' * (size // 2)).center(size))
+# === PROGRAM ===
+size = 21
+mark = '='
+for level in range(2, size // 2 + 2):
+    for width in range(1, level * 2, 2):
+        print((mark * width).center(size))
+print('|'.center(size))
+print(('_' * (size // 2)).center(size))
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size // 2 + 1):
+    print(' ' * (size // 2 - row) + '/' + mark * (2 * row) + '|')
+for row in range(size // 2):
+    print('|' + ' ' * (size - 2) + '|')
+print('+' + '-' * (size - 2) + '+')
+# === PROGRAM ===
+size = 7
+mark = '#'
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+column = 0
+step_row = 0
+step_column = 1
+for index in range(size * size):
+    canvas[row][column] = mark
+    next_row = row + step_row
+    next_column = column + step_column
+    probe_row = row + 2 * step_row
+    probe_column = column + 2 * step_column
+    blocked = not (0 <= next_row < size and 0 <= next_column < size)
+    if not blocked and 0 <= probe_row < size and 0 <= probe_column < size:
+        blocked = canvas[probe_row][probe_column] == mark
+    if blocked:
+        step_row, step_column = step_column, -step_row
+        next_row = row + step_row
+        next_column = column + step_column
+    if not (0 <= next_row < size and 0 <= next_column < size):
+        break
+    if canvas[next_row][next_column] == mark:
+        break
+    row, column = next_row, next_column
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 9
+mark = '*'
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+column = 0
+step_row = 0
+step_column = 1
+for index in range(size * size):
+    canvas[row][column] = mark
+    next_row = row + step_row
+    next_column = column + step_column
+    probe_row = row + 2 * step_row
+    probe_column = column + 2 * step_column
+    blocked = not (0 <= next_row < size and 0 <= next_column < size)
+    if not blocked and 0 <= probe_row < size and 0 <= probe_column < size:
+        blocked = canvas[probe_row][probe_column] == mark
+    if blocked:
+        step_row, step_column = step_column, -step_row
+        next_row = row + step_row
+        next_column = column + step_column
+    if not (0 <= next_row < size and 0 <= next_column < size):
+        break
+    if canvas[next_row][next_column] == mark:
+        break
+    row, column = next_row, next_column
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 11
+mark = '+'
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+column = 0
+step_row = 0
+step_column = 1
+for index in range(size * size):
+    canvas[row][column] = mark
+    next_row = row + step_row
+    next_column = column + step_column
+    probe_row = row + 2 * step_row
+    probe_column = column + 2 * step_column
+    blocked = not (0 <= next_row < size and 0 <= next_column < size)
+    if not blocked and 0 <= probe_row < size and 0 <= probe_column < size:
+        blocked = canvas[probe_row][probe_column] == mark
+    if blocked:
+        step_row, step_column = step_column, -step_row
+        next_row = row + step_row
+        next_column = column + step_column
+    if not (0 <= next_row < size and 0 <= next_column < size):
+        break
+    if canvas[next_row][next_column] == mark:
+        break
+    row, column = next_row, next_column
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 13
+mark = '@'
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+column = 0
+step_row = 0
+step_column = 1
+for index in range(size * size):
+    canvas[row][column] = mark
+    next_row = row + step_row
+    next_column = column + step_column
+    probe_row = row + 2 * step_row
+    probe_column = column + 2 * step_column
+    blocked = not (0 <= next_row < size and 0 <= next_column < size)
+    if not blocked and 0 <= probe_row < size and 0 <= probe_column < size:
+        blocked = canvas[probe_row][probe_column] == mark
+    if blocked:
+        step_row, step_column = step_column, -step_row
+        next_row = row + step_row
+        next_column = column + step_column
+    if not (0 <= next_row < size and 0 <= next_column < size):
+        break
+    if canvas[next_row][next_column] == mark:
+        break
+    row, column = next_row, next_column
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+column = 0
+step_row = 0
+step_column = 1
+for index in range(size * size):
+    canvas[row][column] = mark
+    next_row = row + step_row
+    next_column = column + step_column
+    probe_row = row + 2 * step_row
+    probe_column = column + 2 * step_column
+    blocked = not (0 <= next_row < size and 0 <= next_column < size)
+    if not blocked and 0 <= probe_row < size and 0 <= probe_column < size:
+        blocked = canvas[probe_row][probe_column] == mark
+    if blocked:
+        step_row, step_column = step_column, -step_row
+        next_row = row + step_row
+        next_column = column + step_column
+    if not (0 <= next_row < size and 0 <= next_column < size):
+        break
+    if canvas[next_row][next_column] == mark:
+        break
+    row, column = next_row, next_column
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 17
+mark = '%'
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+column = 0
+step_row = 0
+step_column = 1
+for index in range(size * size):
+    canvas[row][column] = mark
+    next_row = row + step_row
+    next_column = column + step_column
+    probe_row = row + 2 * step_row
+    probe_column = column + 2 * step_column
+    blocked = not (0 <= next_row < size and 0 <= next_column < size)
+    if not blocked and 0 <= probe_row < size and 0 <= probe_column < size:
+        blocked = canvas[probe_row][probe_column] == mark
+    if blocked:
+        step_row, step_column = step_column, -step_row
+        next_row = row + step_row
+        next_column = column + step_column
+    if not (0 <= next_row < size and 0 <= next_column < size):
+        break
+    if canvas[next_row][next_column] == mark:
+        break
+    row, column = next_row, next_column
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+column = 0
+step_row = 0
+step_column = 1
+for index in range(size * size):
+    canvas[row][column] = mark
+    next_row = row + step_row
+    next_column = column + step_column
+    probe_row = row + 2 * step_row
+    probe_column = column + 2 * step_column
+    blocked = not (0 <= next_row < size and 0 <= next_column < size)
+    if not blocked and 0 <= probe_row < size and 0 <= probe_column < size:
+        blocked = canvas[probe_row][probe_column] == mark
+    if blocked:
+        step_row, step_column = step_column, -step_row
+        next_row = row + step_row
+        next_column = column + step_column
+    if not (0 <= next_row < size and 0 <= next_column < size):
+        break
+    if canvas[next_row][next_column] == mark:
+        break
+    row, column = next_row, next_column
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 21
+mark = '='
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+column = 0
+step_row = 0
+step_column = 1
+for index in range(size * size):
+    canvas[row][column] = mark
+    next_row = row + step_row
+    next_column = column + step_column
+    probe_row = row + 2 * step_row
+    probe_column = column + 2 * step_column
+    blocked = not (0 <= next_row < size and 0 <= next_column < size)
+    if not blocked and 0 <= probe_row < size and 0 <= probe_column < size:
+        blocked = canvas[probe_row][probe_column] == mark
+    if blocked:
+        step_row, step_column = step_column, -step_row
+        next_row = row + step_row
+        next_column = column + step_column
+    if not (0 <= next_row < size and 0 <= next_column < size):
+        break
+    if canvas[next_row][next_column] == mark:
+        break
+    row, column = next_row, next_column
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 7
+mark = '#'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for edge in range(0, size // 2 + 1, 2):
+    for index in range(edge, size - edge):
+        canvas[edge][index] = mark
+        canvas[size - edge - 1][index] = mark
+        canvas[index][edge] = mark
+        canvas[index][size - edge - 1] = mark
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 9
+mark = '*'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for edge in range(0, size // 2 + 1, 2):
+    for index in range(edge, size - edge):
+        canvas[edge][index] = mark
+        canvas[size - edge - 1][index] = mark
+        canvas[index][edge] = mark
+        canvas[index][size - edge - 1] = mark
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 11
+mark = '+'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for edge in range(0, size // 2 + 1, 2):
+    for index in range(edge, size - edge):
+        canvas[edge][index] = mark
+        canvas[size - edge - 1][index] = mark
+        canvas[index][edge] = mark
+        canvas[index][size - edge - 1] = mark
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 13
+mark = '@'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for edge in range(0, size // 2 + 1, 2):
+    for index in range(edge, size - edge):
+        canvas[edge][index] = mark
+        canvas[size - edge - 1][index] = mark
+        canvas[index][edge] = mark
+        canvas[index][size - edge - 1] = mark
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for edge in range(0, size // 2 + 1, 2):
+    for index in range(edge, size - edge):
+        canvas[edge][index] = mark
+        canvas[size - edge - 1][index] = mark
+        canvas[index][edge] = mark
+        canvas[index][size - edge - 1] = mark
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 17
+mark = '%'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for edge in range(0, size // 2 + 1, 2):
+    for index in range(edge, size - edge):
+        canvas[edge][index] = mark
+        canvas[size - edge - 1][index] = mark
+        canvas[index][edge] = mark
+        canvas[index][size - edge - 1] = mark
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for edge in range(0, size // 2 + 1, 2):
+    for index in range(edge, size - edge):
+        canvas[edge][index] = mark
+        canvas[size - edge - 1][index] = mark
+        canvas[index][edge] = mark
+        canvas[index][size - edge - 1] = mark
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 21
+mark = '='
+canvas = [[' ' for column in range(size)] for row in range(size)]
+for edge in range(0, size // 2 + 1, 2):
+    for index in range(edge, size - edge):
+        canvas[edge][index] = mark
+        canvas[size - edge - 1][index] = mark
+        canvas[index][edge] = mark
+        canvas[index][size - edge - 1] = mark
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 7
+eye = 'o'
+left = [' /', '(' + eye, '| ', ' ' + chr(92)]
+for row in left:
+    print(row + ' ' * (size // 2) + row[::-1])
+# === PROGRAM ===
+size = 9
+eye = '*'
+left = [' /', '(' + eye, '| ', ' ' + chr(92)]
+for row in left:
+    print(row + ' ' * (size // 2) + row[::-1])
+# === PROGRAM ===
+size = 11
+eye = '@'
+left = [' /', '(' + eye, '| ', ' ' + chr(92)]
+for row in left:
+    print(row + ' ' * (size // 2) + row[::-1])
+# === PROGRAM ===
+size = 13
+eye = '^'
+left = [' /', '(' + eye, '| ', ' ' + chr(92)]
+for row in left:
+    print(row + ' ' * (size // 2) + row[::-1])
+# === PROGRAM ===
+size = 15
+eye = 'x'
+left = [' /', '(' + eye, '| ', ' ' + chr(92)]
+for row in left:
+    print(row + ' ' * (size // 2) + row[::-1])
+# === PROGRAM ===
+size = 17
+eye = 'O'
+left = [' /', '(' + eye, '| ', ' ' + chr(92)]
+for row in left:
+    print(row + ' ' * (size // 2) + row[::-1])
+# === PROGRAM ===
+size = 19
+eye = '+'
+left = [' /', '(' + eye, '| ', ' ' + chr(92)]
+for row in left:
+    print(row + ' ' * (size // 2) + row[::-1])
+# === PROGRAM ===
+size = 21
+eye = '='
+left = [' /', '(' + eye, '| ', ' ' + chr(92)]
+for row in left:
+    print(row + ' ' * (size // 2) + row[::-1])
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    line = ''
+    for column in range(size):
+        line += mark if (row + column) % 4 == 0 or (row - column) % 4 == 0 else ' '
+    print(line)
+# === PROGRAM ===
+values = [2, 4, 1, 5, 3]
+mark = '#'
+for index, value in enumerate(values):
+    print(str(index) + '|' + mark * value)
+print(' ' + '-' * (max(values) + 1))
+# === PROGRAM ===
+values = [3, 5, 2, 6, 4]
+mark = '*'
+for index, value in enumerate(values):
+    print(str(index) + '|' + mark * value)
+print(' ' + '-' * (max(values) + 1))
+# === PROGRAM ===
+values = [4, 4, 3, 7, 5]
+mark = '+'
+for index, value in enumerate(values):
+    print(str(index) + '|' + mark * value)
+print(' ' + '-' * (max(values) + 1))
+# === PROGRAM ===
+values = [5, 5, 4, 5, 6]
+mark = '@'
+for index, value in enumerate(values):
+    print(str(index) + '|' + mark * value)
+print(' ' + '-' * (max(values) + 1))
+# === PROGRAM ===
+values = [6, 4, 5, 6, 7]
+mark = 'X'
+for index, value in enumerate(values):
+    print(str(index) + '|' + mark * value)
+print(' ' + '-' * (max(values) + 1))
+# === PROGRAM ===
+values = [7, 5, 6, 7, 8]
+mark = '%'
+for index, value in enumerate(values):
+    print(str(index) + '|' + mark * value)
+print(' ' + '-' * (max(values) + 1))
+# === PROGRAM ===
+values = [8, 4, 7, 5, 9]
+mark = 'O'
+for index, value in enumerate(values):
+    print(str(index) + '|' + mark * value)
+print(' ' + '-' * (max(values) + 1))
+# === PROGRAM ===
+values = [9, 5, 8, 6, 10]
+mark = '='
+for index, value in enumerate(values):
+    print(str(index) + '|' + mark * value)
+print(' ' + '-' * (max(values) + 1))
+# === PROGRAM ===
+eye = 'o'
+size = 7
+rows = ['+' + '-' * size + '+', '|' + (eye + ' ' + eye).center(size) + '|', '|' + '__'.center(size) + '|', '+' + '-' * size + '+']
+for row in rows:
+    print(row + ' ' + row[::-1])
+# === PROGRAM ===
+eye = '*'
+size = 9
+rows = ['+' + '-' * size + '+', '|' + (eye + ' ' + eye).center(size) + '|', '|' + '~~'.center(size) + '|', '+' + '-' * size + '+']
+for row in rows:
+    print(row + ' ' + row[::-1])
+# === PROGRAM ===
+eye = '@'
+size = 11
+rows = ['+' + '-' * size + '+', '|' + (eye + ' ' + eye).center(size) + '|', '|' + 'vv'.center(size) + '|', '+' + '-' * size + '+']
+for row in rows:
+    print(row + ' ' + row[::-1])
+# === PROGRAM ===
+eye = '^'
+size = 13
+rows = ['+' + '-' * size + '+', '|' + (eye + ' ' + eye).center(size) + '|', '|' + '--'.center(size) + '|', '+' + '-' * size + '+']
+for row in rows:
+    print(row + ' ' + row[::-1])
+# === PROGRAM ===
+eye = 'x'
+size = 15
+rows = ['+' + '-' * size + '+', '|' + (eye + ' ' + eye).center(size) + '|', '|' + 'oo'.center(size) + '|', '+' + '-' * size + '+']
+for row in rows:
+    print(row + ' ' + row[::-1])
+# === PROGRAM ===
+eye = 'O'
+size = 17
+rows = ['+' + '-' * size + '+', '|' + (eye + ' ' + eye).center(size) + '|', '|' + '=='.center(size) + '|', '+' + '-' * size + '+']
+for row in rows:
+    print(row + ' ' + row[::-1])
+# === PROGRAM ===
+eye = '+'
+size = 19
+rows = ['+' + '-' * size + '+', '|' + (eye + ' ' + eye).center(size) + '|', '|' + 'UU'.center(size) + '|', '+' + '-' * size + '+']
+for row in rows:
+    print(row + ' ' + row[::-1])
+# === PROGRAM ===
+eye = '='
+size = 21
+rows = ['+' + '-' * size + '+', '|' + (eye + ' ' + eye).center(size) + '|', '|' + '..'.center(size) + '|', '+' + '-' * size + '+']
+for row in rows:
+    print(row + ' ' + row[::-1])
+# === PROGRAM ===
+heights = [2, 4, 1, 5, 3]
+mark = '#'
+width = max(heights)
+for height in heights:
+    print(' ' * (width - height) + mark * height)
+for height in reversed(heights):
+    print(' ' * (width - height) + mark * height)
+# === PROGRAM ===
+heights = [3, 5, 2, 6, 4]
+mark = '*'
+width = max(heights)
+for height in heights:
+    print(' ' * (width - height) + mark * height)
+for height in reversed(heights):
+    print(' ' * (width - height) + mark * height)
+# === PROGRAM ===
+heights = [4, 4, 3, 7, 5]
+mark = '+'
+width = max(heights)
+for height in heights:
+    print(' ' * (width - height) + mark * height)
+for height in reversed(heights):
+    print(' ' * (width - height) + mark * height)
+# === PROGRAM ===
+heights = [5, 5, 4, 5, 6]
+mark = '@'
+width = max(heights)
+for height in heights:
+    print(' ' * (width - height) + mark * height)
+for height in reversed(heights):
+    print(' ' * (width - height) + mark * height)
+# === PROGRAM ===
+heights = [6, 4, 5, 6, 7]
+mark = 'X'
+width = max(heights)
+for height in heights:
+    print(' ' * (width - height) + mark * height)
+for height in reversed(heights):
+    print(' ' * (width - height) + mark * height)
+# === PROGRAM ===
+heights = [7, 5, 6, 7, 8]
+mark = '%'
+width = max(heights)
+for height in heights:
+    print(' ' * (width - height) + mark * height)
+for height in reversed(heights):
+    print(' ' * (width - height) + mark * height)
+# === PROGRAM ===
+heights = [8, 4, 7, 5, 9]
+mark = 'O'
+width = max(heights)
+for height in heights:
+    print(' ' * (width - height) + mark * height)
+for height in reversed(heights):
+    print(' ' * (width - height) + mark * height)
+# === PROGRAM ===
+heights = [9, 5, 8, 6, 10]
+mark = '='
+width = max(heights)
+for height in heights:
+    print(' ' * (width - height) + mark * height)
+for height in reversed(heights):
+    print(' ' * (width - height) + mark * height)
+# === PROGRAM ===
+size = 7
+mark = '#'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 9
+mark = '*'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 11
+mark = '+'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 13
+mark = '@'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 15
+mark = 'X'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 17
+mark = '%'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 19
+mark = 'O'
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 21
+mark = '='
+for row in range(size):
+    line = ''.join(mark if abs(row - column) <= 1 else '.' for column in range(size))
+    print(line)
+# === PROGRAM ===
+size = 7
+eye = 'o'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == 0 or row == size - 1 or column == 0 or column == size - 1:
+            cell = '#'
+        elif row == 2 and column in (2, size - 3):
+            cell = eye
+        elif row == size - 3 and 2 <= column <= size - 3:
+            cell = '_'
+        else:
+            cell = ' '
+        line += cell
+    print(line)
+# === PROGRAM ===
+size = 9
+eye = '*'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == 0 or row == size - 1 or column == 0 or column == size - 1:
+            cell = '*'
+        elif row == 2 and column in (2, size - 3):
+            cell = eye
+        elif row == size - 3 and 2 <= column <= size - 3:
+            cell = '_'
+        else:
+            cell = ' '
+        line += cell
+    print(line)
+# === PROGRAM ===
+size = 11
+eye = '@'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == 0 or row == size - 1 or column == 0 or column == size - 1:
+            cell = '+'
+        elif row == 2 and column in (2, size - 3):
+            cell = eye
+        elif row == size - 3 and 2 <= column <= size - 3:
+            cell = '_'
+        else:
+            cell = ' '
+        line += cell
+    print(line)
+# === PROGRAM ===
+size = 13
+eye = '^'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == 0 or row == size - 1 or column == 0 or column == size - 1:
+            cell = '@'
+        elif row == 2 and column in (2, size - 3):
+            cell = eye
+        elif row == size - 3 and 2 <= column <= size - 3:
+            cell = '_'
+        else:
+            cell = ' '
+        line += cell
+    print(line)
+# === PROGRAM ===
+size = 15
+eye = 'x'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == 0 or row == size - 1 or column == 0 or column == size - 1:
+            cell = 'X'
+        elif row == 2 and column in (2, size - 3):
+            cell = eye
+        elif row == size - 3 and 2 <= column <= size - 3:
+            cell = '_'
+        else:
+            cell = ' '
+        line += cell
+    print(line)
+# === PROGRAM ===
+size = 17
+eye = 'O'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == 0 or row == size - 1 or column == 0 or column == size - 1:
+            cell = '%'
+        elif row == 2 and column in (2, size - 3):
+            cell = eye
+        elif row == size - 3 and 2 <= column <= size - 3:
+            cell = '_'
+        else:
+            cell = ' '
+        line += cell
+    print(line)
+# === PROGRAM ===
+size = 19
+eye = '+'
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == 0 or row == size - 1 or column == 0 or column == size - 1:
+            cell = 'O'
+        elif row == 2 and column in (2, size - 3):
+            cell = eye
+        elif row == size - 3 and 2 <= column <= size - 3:
+            cell = '_'
+        else:
+            cell = ' '
+        line += cell
+    print(line)
+# === PROGRAM ===
+size = 21
+eye = '='
+for row in range(size):
+    line = ''
+    for column in range(size):
+        if row == 0 or row == size - 1 or column == 0 or column == size - 1:
+            cell = '='
+        elif row == 2 and column in (2, size - 3):
+            cell = eye
+        elif row == size - 3 and 2 <= column <= size - 3:
+            cell = '_'
+        else:
+            cell = ' '
+        line += cell
+    print(line)
+# === PROGRAM ===
+size = 7
+marks = '#.'
+for row in range(size):
+    blocks = []
+    for column in range(size):
+        blocks.append(marks[(row // 2 + column // 2) % len(marks)])
+    print(''.join(blocks))
+# === PROGRAM ===
+size = 9
+marks = '* '
+for row in range(size):
+    blocks = []
+    for column in range(size):
+        blocks.append(marks[(row // 2 + column // 2) % len(marks)])
+    print(''.join(blocks))
+# === PROGRAM ===
+size = 11
+marks = '+-'
+for row in range(size):
+    blocks = []
+    for column in range(size):
+        blocks.append(marks[(row // 2 + column // 2) % len(marks)])
+    print(''.join(blocks))
+# === PROGRAM ===
+size = 13
+marks = '@o'
+for row in range(size):
+    blocks = []
+    for column in range(size):
+        blocks.append(marks[(row // 2 + column // 2) % len(marks)])
+    print(''.join(blocks))
+# === PROGRAM ===
+size = 15
+marks = 'X.'
+for row in range(size):
+    blocks = []
+    for column in range(size):
+        blocks.append(marks[(row // 2 + column // 2) % len(marks)])
+    print(''.join(blocks))
+# === PROGRAM ===
+size = 17
+marks = '%-'
+for row in range(size):
+    blocks = []
+    for column in range(size):
+        blocks.append(marks[(row // 2 + column // 2) % len(marks)])
+    print(''.join(blocks))
+# === PROGRAM ===
+size = 19
+marks = 'O:'
+for row in range(size):
+    blocks = []
+    for column in range(size):
+        blocks.append(marks[(row // 2 + column // 2) % len(marks)])
+    print(''.join(blocks))
+# === PROGRAM ===
+size = 21
+marks = '=+'
+for row in range(size):
+    blocks = []
+    for column in range(size):
+        blocks.append(marks[(row // 2 + column // 2) % len(marks)])
+    print(''.join(blocks))
+# === PROGRAM ===
+size = 7
+mark = '#'
+center = size // 2
+for row in range(size):
+    width = center - abs(row - center)
+    tail = mark * center if row == center else ' ' * center
+    print(tail + mark * (width + 1))
+# === PROGRAM ===
+size = 9
+mark = '*'
+center = size // 2
+for row in range(size):
+    width = center - abs(row - center)
+    tail = mark * center if row == center else ' ' * center
+    print(tail + mark * (width + 1))
+# === PROGRAM ===
+size = 11
+mark = '+'
+center = size // 2
+for row in range(size):
+    width = center - abs(row - center)
+    tail = mark * center if row == center else ' ' * center
+    print(tail + mark * (width + 1))
+# === PROGRAM ===
+size = 13
+mark = '@'
+center = size // 2
+for row in range(size):
+    width = center - abs(row - center)
+    tail = mark * center if row == center else ' ' * center
+    print(tail + mark * (width + 1))
+# === PROGRAM ===
+size = 15
+mark = 'X'
+center = size // 2
+for row in range(size):
+    width = center - abs(row - center)
+    tail = mark * center if row == center else ' ' * center
+    print(tail + mark * (width + 1))
+# === PROGRAM ===
+size = 17
+mark = '%'
+center = size // 2
+for row in range(size):
+    width = center - abs(row - center)
+    tail = mark * center if row == center else ' ' * center
+    print(tail + mark * (width + 1))
+# === PROGRAM ===
+size = 19
+mark = 'O'
+center = size // 2
+for row in range(size):
+    width = center - abs(row - center)
+    tail = mark * center if row == center else ' ' * center
+    print(tail + mark * (width + 1))
+# === PROGRAM ===
+size = 21
+mark = '='
+center = size // 2
+for row in range(size):
+    width = center - abs(row - center)
+    tail = mark * center if row == center else ' ' * center
+    print(tail + mark * (width + 1))

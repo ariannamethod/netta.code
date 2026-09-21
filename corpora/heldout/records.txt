@@ -1,0 +1,160 @@
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+result = []
+for name, value in rows:
+    dominated = False
+    for other, score in rows:
+        if len(other) <= len(name) and score >= value and (len(other) < len(name) or score > value):
+            dominated = True
+    if not dominated:
+        result.append([name, value])
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+result = []
+for name, value in rows:
+    dominated = False
+    for other, score in rows:
+        if len(other) <= len(name) and score >= value and (len(other) < len(name) or score > value):
+            dominated = True
+    if not dominated:
+        result.append([name, value])
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+result = []
+for name, value in rows:
+    dominated = False
+    for other, score in rows:
+        if len(other) <= len(name) and score >= value and (len(other) < len(name) or score > value):
+            dominated = True
+    if not dominated:
+        result.append([name, value])
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+result = []
+for name, value in rows:
+    dominated = False
+    for other, score in rows:
+        if len(other) <= len(name) and score >= value and (len(other) < len(name) or score > value):
+            dominated = True
+    if not dominated:
+        result.append([name, value])
+print(result)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+budget = 2 * 3
+selected = []
+remaining = budget
+for cost, name in sorted((value, name) for name, value in rows):
+    if cost <= remaining:
+        selected.append(name)
+        remaining -= cost
+print(selected)
+print(remaining)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+budget = 3 * 3
+selected = []
+remaining = budget
+for cost, name in sorted((value, name) for name, value in rows):
+    if cost <= remaining:
+        selected.append(name)
+        remaining -= cost
+print(selected)
+print(remaining)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+budget = 4 * 3
+selected = []
+remaining = budget
+for cost, name in sorted((value, name) for name, value in rows):
+    if cost <= remaining:
+        selected.append(name)
+        remaining -= cost
+print(selected)
+print(remaining)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+budget = 2 * 3
+selected = []
+remaining = budget
+for cost, name in sorted((value, name) for name, value in rows):
+    if cost <= remaining:
+        selected.append(name)
+        remaining -= cost
+print(selected)
+print(remaining)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+matrix = []
+for name, value in rows:
+    matrix.append([abs(value - other_value) + abs(len(name) - len(other_name)) for other_name, other_value in rows])
+print(matrix)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+matrix = []
+for name, value in rows:
+    matrix.append([abs(value - other_value) + abs(len(name) - len(other_name)) for other_name, other_value in rows])
+print(matrix)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+matrix = []
+for name, value in rows:
+    matrix.append([abs(value - other_value) + abs(len(name) - len(other_name)) for other_name, other_value in rows])
+print(matrix)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+matrix = []
+for name, value in rows:
+    matrix.append([abs(value - other_value) + abs(len(name) - len(other_name)) for other_name, other_value in rows])
+print(matrix)
+# === PROGRAM ===
+rows = [['river', 3], ['stone', 9], ['river', 5], ['leaf', 12]]
+total = sum(value for name, value in rows)
+result = []
+for target in range(0, total, 2):
+    running = 0
+    for name, value in rows:
+        running += value
+        if target < running:
+            result.append(name)
+            break
+print(result)
+# === PROGRAM ===
+rows = [['copper', 4], ['glass', 10], ['oak', 7], ['glass', 13]]
+total = sum(value for name, value in rows)
+result = []
+for target in range(0, total, 3):
+    running = 0
+    for name, value in rows:
+        running += value
+        if target < running:
+            result.append(name)
+            break
+print(result)
+# === PROGRAM ===
+rows = [['cloud', 5], ['wind', 11], ['rain', 9], ['mist', 14]]
+total = sum(value for name, value in rows)
+result = []
+for target in range(0, total, 4):
+    running = 0
+    for name, value in rows:
+        running += value
+        if target < running:
+            result.append(name)
+            break
+print(result)
+# === PROGRAM ===
+rows = [['zero', 6], ['one', 12], ['three', 11], ['eight', 15]]
+total = sum(value for name, value in rows)
+result = []
+for target in range(0, total, 5):
+    running = 0
+    for name, value in rows:
+        running += value
+        if target < running:
+            result.append(name)
+            break
+print(result)

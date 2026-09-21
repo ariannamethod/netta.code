@@ -1,0 +1,156 @@
+# === PROGRAM ===
+size = 7
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+error = size // 2
+for column in range(size):
+    canvas[row][column] = '#'
+    error -= size // 3
+    if error < 0:
+        row += 1
+        error += size
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 9
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+error = size // 2
+for column in range(size):
+    canvas[row][column] = '*'
+    error -= size // 3
+    if error < 0:
+        row += 1
+        error += size
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 11
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+error = size // 2
+for column in range(size):
+    canvas[row][column] = '+'
+    error -= size // 3
+    if error < 0:
+        row += 1
+        error += size
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 13
+canvas = [['.' for column in range(size)] for row in range(size)]
+row = 0
+error = size // 2
+for column in range(size):
+    canvas[row][column] = '@'
+    error -= size // 3
+    if error < 0:
+        row += 1
+        error += size
+for line in canvas:
+    print(''.join(line))
+# === PROGRAM ===
+size = 7
+canvas = [['.' for column in range(size)] for row in range(size)]
+pending = [(size // 2, size // 2)]
+while pending:
+    row, column = pending.pop()
+    if abs(row - size // 2) + abs(column - size // 2) <= size // 2 and canvas[row][column] == '.':
+        canvas[row][column] = '#'
+        for next_row, next_column in [(row - 1, column), (row + 1, column), (row, column - 1), (row, column + 1)]:
+            if 0 <= next_row < size and 0 <= next_column < size:
+                pending.append((next_row, next_column))
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 9
+canvas = [['.' for column in range(size)] for row in range(size)]
+pending = [(size // 2, size // 2)]
+while pending:
+    row, column = pending.pop()
+    if abs(row - size // 2) + abs(column - size // 2) <= size // 2 and canvas[row][column] == '.':
+        canvas[row][column] = '*'
+        for next_row, next_column in [(row - 1, column), (row + 1, column), (row, column - 1), (row, column + 1)]:
+            if 0 <= next_row < size and 0 <= next_column < size:
+                pending.append((next_row, next_column))
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 11
+canvas = [['.' for column in range(size)] for row in range(size)]
+pending = [(size // 2, size // 2)]
+while pending:
+    row, column = pending.pop()
+    if abs(row - size // 2) + abs(column - size // 2) <= size // 2 and canvas[row][column] == '.':
+        canvas[row][column] = '+'
+        for next_row, next_column in [(row - 1, column), (row + 1, column), (row, column - 1), (row, column + 1)]:
+            if 0 <= next_row < size and 0 <= next_column < size:
+                pending.append((next_row, next_column))
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 13
+canvas = [['.' for column in range(size)] for row in range(size)]
+pending = [(size // 2, size // 2)]
+while pending:
+    row, column = pending.pop()
+    if abs(row - size // 2) + abs(column - size // 2) <= size // 2 and canvas[row][column] == '.':
+        canvas[row][column] = '@'
+        for next_row, next_column in [(row - 1, column), (row + 1, column), (row, column - 1), (row, column + 1)]:
+            if 0 <= next_row < size and 0 <= next_column < size:
+                pending.append((next_row, next_column))
+for row in canvas:
+    print(''.join(row))
+# === PROGRAM ===
+size = 7
+row = [0] * size
+row[size // 2] = 1
+for step in range(size):
+    print(''.join('#' if value else '.' for value in row))
+    row = [row[(index - 1) % size] ^ row[(index + 1) % size] for index in range(size)]
+# === PROGRAM ===
+size = 9
+row = [0] * size
+row[size // 2] = 1
+for step in range(size):
+    print(''.join('*' if value else '.' for value in row))
+    row = [row[(index - 1) % size] ^ row[(index + 1) % size] for index in range(size)]
+# === PROGRAM ===
+size = 11
+row = [0] * size
+row[size // 2] = 1
+for step in range(size):
+    print(''.join('+' if value else '.' for value in row))
+    row = [row[(index - 1) % size] ^ row[(index + 1) % size] for index in range(size)]
+# === PROGRAM ===
+size = 13
+row = [0] * size
+row[size // 2] = 1
+for step in range(size):
+    print(''.join('@' if value else '.' for value in row))
+    row = [row[(index - 1) % size] ^ row[(index + 1) % size] for index in range(size)]
+# === PROGRAM ===
+size = 7
+sprite = [['#' if row == column or column == 0 else '.' for column in range(size)] for row in range(size)]
+rotated = [list(reversed(column)) for column in zip(*sprite)]
+for row in rotated:
+    print(''.join(row))
+# === PROGRAM ===
+size = 9
+sprite = [['*' if row == column or column == 0 else '.' for column in range(size)] for row in range(size)]
+rotated = [list(reversed(column)) for column in zip(*sprite)]
+for row in rotated:
+    print(''.join(row))
+# === PROGRAM ===
+size = 11
+sprite = [['+' if row == column or column == 0 else '.' for column in range(size)] for row in range(size)]
+rotated = [list(reversed(column)) for column in zip(*sprite)]
+for row in rotated:
+    print(''.join(row))
+# === PROGRAM ===
+size = 13
+sprite = [['@' if row == column or column == 0 else '.' for column in range(size)] for row in range(size)]
+rotated = [list(reversed(column)) for column in zip(*sprite)]
+for row in rotated:
+    print(''.join(row))
