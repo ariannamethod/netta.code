@@ -311,10 +311,11 @@ def probe_observations():
 def policy_worker():
     """Fresh process per policy; bounded CPython runtime reset on every observation."""
     import resource
-    resource.setrlimit(resource.RLIMIT_AS, (256 << 20, 256 << 20))
-    resource.setrlimit(resource.RLIMIT_CPU, (10, 10))
-    resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
-    resource.setrlimit(resource.RLIMIT_NOFILE, (16, 16))
+    core._runtime_try_limit(resource, 'RLIMIT_AS', 256 << 20, 256 << 20)
+    core._runtime_try_limit(resource, 'RLIMIT_CPU', 10, 10)
+    core._runtime_try_limit(resource, 'RLIMIT_FSIZE', 0, 0)
+    core._runtime_try_limit(resource, 'RLIMIT_NOFILE', 16, 16)
+    core._runtime_try_limit(resource, 'RLIMIT_CORE', 0, 0)
     request = json.loads(sys.stdin.readline(core.RUNTIME_SOURCE_LIMIT * 8))
     source = request['source']
     provenance = request.get('provenance', False)
@@ -347,7 +348,11 @@ def policy_worker():
 class PolicyProcess:
     def __init__(self, source, timeout=1.5, provenance=False):
         self.timeout = timeout
-        self.process = subprocess.Popen([sys.executable, '-P', '-s', str(Path(__file__).resolve()), '--policy-worker'],
+        worker_args = [sys.executable]
+        if getattr(sys.flags, 'safe_path', None) is not None:
+            worker_args.append('-P')
+        worker_args.extend(['-s', str(Path(__file__).resolve()), '--policy-worker'])
+        self.process = subprocess.Popen(worker_args,
                                         stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                         stderr=subprocess.DEVNULL, text=True, bufsize=1,
                                         cwd='/tmp', env={'PATH': os.defpath, 'PYTHONHASHSEED': '0'})
