@@ -52,7 +52,7 @@ The education loop therefore lives inside the activity itself. Netta does not le
 
 This is also why the environment can become more interesting without changing the basic idea. A text-processing island, a drawing island, a game controller and a future automation island all present different surfaces, but they share the same essential law: generated code meets consequences.
 
-The main bodies are ordinary Python files. `nettalee.py` and `nettacode.py` each carry their own organism, execution judge and caller; the core runs on the Python standard library, while Doom keeps its optional dependency separate because Hell, apparently, still has packaging requirements.
+The main bodies are ordinary Python files. `nettalee.py` and `nettacode.py` each carry their own organism, execution judge and caller; both models and the 2048 host use the Python standard library. The vendored Doom Generic engine builds locally with a C compiler and `make`, then loads an external IWAD. `requirements.txt` has no packages to install; `requirements-doom.txt` is only for the optional `--backend vizdoom` path. Hell has two entrances, and the default one is already in `doom/`.
 
 ---
 
@@ -159,6 +159,16 @@ A few exact art stdout examples remain pleasantly unnecessary:
 |        XXXXXXXXXXXXX
 ```
 
+Code's mixed island also produced this accepted sorted-values program during a fresh task evaluation:
+
+```python
+rows = [['swift', 15], ['leaf', 12]]
+result = sorted(value for name, value in rows)
+print(result)
+```
+
+Its exact output is `[12, 15]`. The [execution receipt](reports/iteration6/code-example.json) records the generation seed, novelty acceptance, task checks and a separate CPython replay.
+
 The complete selected set lives in **[gallery.html](gallery.html)**. ASCII art was supposed to be the harmless demonstration island; it is now sharing a gallery with Doom and a 2048 trajectory because scope control went very well.
 
 ---
@@ -177,9 +187,36 @@ The fixed 2048 comparison used two runs per setting, each with 128 training and 
 
 Decision-level credit adds a narrower question: what happened when this particular part of the program selected a move on this particular board? With `--decision-credit advantage`, the host compares the selected move's immediate merge gain with the minimum and maximum among that board's legal moves, assigning a bounded target; equal gains receive 0.5. The generated program keeps choosing the action. Its actual execution trace connects that target to the source choices that participated in the decision.
 
-Each continuation association receives the mean of its encountered decision targets and one credit trial per episode. A long loop or a longer episode cannot multiply its credit. Exact-source hashes and named host contracts bind the receipt to the saved life; the acquired decision table is separate from ordinary episode credit. `uniform` uses the same traces with the terminal episode reward assigned to every decision, while `off` disables this additional influence and retains its stored experience. The selected setting survives save/resume.
+Each continuation association receives the mean of its encountered decision targets and one credit trial per episode. A long loop or a longer episode cannot multiply its credit. Exact-source hashes and named host contracts bind the receipt to the saved life; the acquired decision table is separate from ordinary episode credit. `uniform` uses the same trace and update rules on its own actual decisions, with terminal episode reward assigned to every decision, while `off` disables this additional influence and retains its stored experience. The selected setting survives save/resume.
 
 In two fixed runs of 128 training and 64 fresh evaluation attempts per arm, all three settings played **84 / 128** evaluated attempts. Score per raw attempt was **659.78** with existing learning, **687.69** with uniform decision credit and **683.88** with board-relative advantage. Advantage gained **24.09** points per raw attempt over existing learning; its predeclared advancement rule required at least 25 and a result above the uniform control. The published state and defaults are retained, with both decision contracts available explicitly.
+
+One generated policy from the fresh evaluation is shown below exactly as executed. Its episode reached **1,312 points**. On the recorded fourth move, left and right offered zero immediate merge gain, while up and down offered four; its own code selected `up`, earned four points and received decision target **1.0**.
+
+<details>
+<summary>Open the generated 2048 policy</summary>
+
+```python
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'left', 'right', 'down']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * 2
+        if score > best:
+            best = score
+            action = direction
+```
+
+The exact board, spawn, source hash and unchanged evaluation-state hashes are in the [decision receipt](reports/iteration5/2048-gallery-sample.json).
+
+</details>
 
 The game is useful for the same reason the compiler is useful: it does not care how persuasive the code looks. The board moves or it does not.
 
@@ -215,6 +252,38 @@ One archived generated policy was replayed with the same engine seed and reprodu
 The attributed-reward comparison trained for another 128 attempts, then tested both checkpoints on the same 64 held-out engine starts. Direct player damage changed from **3,118 to 3,562**, direct kills from **92 to 97**, and received damage from **3,003 to 2,356**. Reward per raw attempt changed from **0.290485 to 0.306757**; the paired difference was **+0.016272**, with a bootstrap 95% interval of **[-0.055207, 0.084070]**. The published Doom state is preserved. Continuous turning earned the attributed formula's neutral 0.5; the separate combat contract now assigns zero to that zero-damage behavior.
 
 A further paired comparison trained the attributed and combat contracts for 128 attempts each from the same starting experience, then evaluated 64 fresh starts using one shared combat metric. Combat-trained experience played **38 / 64** attempts against **33 / 64**, caused **3,436** direct damage against **3,124**, and made **98** direct kills against **89**. Received damage was **2,367 versus 2,033**. Shared reward per raw attempt was **0.282559 versus 0.258924**, a paired difference of **+0.023635** with bootstrap 95% interval **[-0.013769, 0.063611]**. The combat option is available for its own life; published snapshots keep their existing contracts.
+
+This is the exact Python policy from the first played held-out combat episode. Across **512 decisions**, it dealt **77 direct damage**, made **two direct kills**, and received **57 damage**. Doom's separate native counter reported three kills.
+
+```python
+scene = obs['scene']
+if obs['ammo'] == 0 and scene != 'empty':
+    action = 'turn_left'
+elif scene == 'center':
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_left'
+```
+
+Three moments from generated policies playing **Freedoom Phase 2, MAP02**:
+
+![Netta Lee fires at enemies across the pool: combat episode 129, decision 16.](doom/assets/combat-129-step016.png)
+
+*The pistol fires. Combat evaluation, engine start 129, decision 16.*
+
+![A projectile approaches during a temporal-sensor episode: start 192, decision 64.](doom/assets/temporal-192-step064.png)
+
+*A projectile crosses the platform. Temporal perception, engine start 192, decision 64.*
+
+![Netta Lee has moved beside fallen enemies and picked up ammunition: start 219, decision 64.](doom/assets/temporal-219-step064.png)
+
+*Movement reaches an ammunition pickup. Temporal perception, engine start 219, decision 64.*
+
+The engine emitted these frames during the recorded games. [Frame provenance](doom/assets/provenance.json) links each image to its exact policy, native step and episode counters.
 
 The combat frame and exact Python policy are in **[gallery.html](gallery.html)**. WOLFE learned to play Doom by choosing functions; Netta Lee now writes the policy that chooses among them, which was apparently the calm and proportionate next experiment.
 

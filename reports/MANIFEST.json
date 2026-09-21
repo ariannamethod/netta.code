@@ -317,6 +317,11 @@
       "sha256": "582bcf5387d62284ca87a6ad6dd26fdbcb06d6a6671ae1c0d3599e14b4f4a8d0"
     },
     {
+      "path": "iteration6/code-example.json",
+      "bytes": 1518,
+      "sha256": "0ac80d9f7907548f36a878501de4ea774f6d45f3a3a6a55cb3430f8d09659ba5"
+    },
+    {
       "path": "measurements/doom/ask-frozen-verification.json",
       "bytes": 674,
       "sha256": "90b1160e313e99529294017098f96b266def77955582bbfaedc5d201502baef8"

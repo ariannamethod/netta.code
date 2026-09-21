@@ -1,1 +1,4 @@
+# Optional ViZDoom backend only: python doomer.py ... --backend vizdoom
+# Not used by the default vendored Generic Doom backend.
+# Install with: python -m pip install -r requirements-doom.txt
 vizdoom==1.3.0

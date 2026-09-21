@@ -1,2 +1,4 @@
-# nettalee.py and nettacode.py use the Python standard library.
-# Optional Doom environment: see requirements-doom.txt.
+# nettalee.py and nettacode.py use only the Python standard library.
+# The default vendored Generic Doom backend needs make, a C compiler, and an
+# external IWAD; it has no pip dependencies.
+# requirements-doom.txt is only for the optional --backend vizdoom path.

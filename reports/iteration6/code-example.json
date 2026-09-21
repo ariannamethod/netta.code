@@ -1,0 +1,50 @@
+{
+  "source": "rows = [['swift', 15], ['leaf', 12]]\nresult = sorted(value for name, value in rows)\nprint(result)\n",
+  "source_hash": "089f1278d54831d7d9f415f5d0e1553cacf29c114b6707357fe491234b0eee4c",
+  "status": "accepted",
+  "accepted": true,
+  "productive": true,
+  "runtime_ok": true,
+  "seed": 2200100035,
+  "task_check": {
+    "status": "passed",
+    "passed": true,
+    "profile": "code:sorted_values",
+    "checks": [
+      {
+        "constraint": "literal_type",
+        "expected": "list",
+        "actual": "list",
+        "passed": true
+      },
+      {
+        "constraint": "min_items",
+        "expected": 2,
+        "actual": 2,
+        "passed": true
+      },
+      {
+        "constraint": "item_type",
+        "expected": "number",
+        "actual": [
+          "int"
+        ],
+        "passed": true
+      },
+      {
+        "constraint": "sorted",
+        "expected": "ascending",
+        "actual": true,
+        "passed": true
+      }
+    ],
+    "source_hash": "089f1278d54831d7d9f415f5d0e1553cacf29c114b6707357fe491234b0eee4c",
+    "output_sha256": "7a31d1e0de1217997ed6a609a8b383d7101294f5d6422f4333fe380607720043"
+  },
+  "selection": "First accepted task-passing program in first-anchor numeric held-out evaluation, replica 0.",
+  "record": "results/iteration5/code/development/numbers_00/first_evaluation.jsonl",
+  "record_sha256": "dd1f40a0eb397c056ae5ff4d2e4e637ec9c2a97980725df83063125d32547715",
+  "record_index": 35,
+  "output": "[12, 15]\n",
+  "independent_cpython_verified": true
+}

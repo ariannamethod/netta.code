@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "origin": "Unedited PNGs emitted by the vendored Doom Generic engine during actual fifth-pass Netta Lee evaluation episodes. Each copied file is byte-identical to its recorded source.",
+  "selection": "Selected for visible muzzle flash, incoming projectile and ammunition pickup across three recorded episodes.",
+  "game": "Freedoom Phase 2, MAP02, skill 3",
+  "dimensions": [
+    640,
+    400
+  ],
+  "reward_contract": "player-combat-engagement-v1",
+  "engine_sha256": "9e36e9687cfa5df9f7992eaca7ee5786509c5b191db5df18a4286d533ba3dade",
+  "iwad_sha256": "a8772e088847032510d97ba2312406a6998f21cbab44d4ff10696faa9c0ecd4b",
+  "source_availability": "Complete sources and trajectories are preserved in netta-iteration5-research.zip; source paths identify entries under netta_python/. This compact manifest and the images are published.",
+  "frames": [
+    {
+      "file": "doom/assets/combat-129-step016.png",
+      "source": "results/iteration5/doom/combat/evaluate/0001/frame_016.png",
+      "sha256": "3da5d74e08ca93b3a115237ea06b2e3dfbfa74bb46326813bdccde607b2be556",
+      "bytes": 40207,
+      "description": "Pistol muzzle flash in a legacy-sensor combat evaluation.",
+      "experiment": "fifth-pass combat",
+      "generation_seed": 28000001,
+      "engine_rng_phase": 129,
+      "completed_decisions_at_frame": 16,
+      "native_tic": 66,
+      "action": "shoot",
+      "frame_health": 100,
+      "frame_ammo": 46,
+      "policy_source_sha256": "d8b6ccb9cb912bef34dd952443786d9760405d0542b491dd8c8a989025c876fb",
+      "policy_source": "results/iteration5/doom/combat/evaluate/0001/candidate.py",
+      "episode_source": "results/iteration5/doom/combat/evaluate/0001/episode.json",
+      "episode_sha256": "1148b6b6f28797be1df9e5b1dc942fee61df3d44391e35fc689b82753f338a99",
+      "episode": {
+        "decisions": 512,
+        "player_damage_dealt": 20,
+        "player_direct_kills": 1,
+        "player_damage_received": 60,
+        "native_killcount": 3.0,
+        "reward": 0.42474282505435756,
+        "ended_dead": false
+      }
+    },
+    {
+      "file": "doom/assets/temporal-192-step064.png",
+      "source": "results/iteration5/doom/temporal-development/temporal/evaluate/0000/frame_064.png",
+      "sha256": "72133b96dec30cb41edd9e42f0fda1ec9cb78f84efb64fb4fa17988799f87306",
+      "bytes": 37669,
+      "description": "Temporal-sensor evaluation with a projectile visible above the platform.",
+      "experiment": "fifth-pass temporal-development/temporal",
+      "generation_seed": 40000000,
+      "engine_rng_phase": 192,
+      "completed_decisions_at_frame": 64,
+      "native_tic": 258,
+      "action": "shoot",
+      "frame_health": 94,
+      "frame_ammo": 34,
+      "policy_source_sha256": "c92923b9aaeba91f5551d6211a7eb8742e2bafe96630096d6e9739ab0416e020",
+      "policy_source": "results/iteration5/doom/temporal-development/temporal/evaluate/0000/candidate.py",
+      "episode_source": "results/iteration5/doom/temporal-development/temporal/evaluate/0000/episode.json",
+      "episode_sha256": "e7d54523eb5c14d4efb75e6076f5bb6148ba4cca8d67808684133ae4146d1b24",
+      "episode": {
+        "decisions": 512,
+        "player_damage_dealt": 130,
+        "player_direct_kills": 4,
+        "player_damage_received": 66,
+        "native_killcount": 8.0,
+        "reward": 0.5357721111140789,
+        "ended_dead": false
+      }
+    },
+    {
+      "file": "doom/assets/temporal-219-step064.png",
+      "source": "results/iteration5/doom/temporal-development/temporal/evaluate/0027/frame_064.png",
+      "sha256": "3f45312396d98e58f8a55c0ad096d1f30d6c63e26f8e5190d55c2324306898ad",
+      "bytes": 40751,
+      "description": "Temporal-sensor evaluation after movement and an ammunition pickup.",
+      "experiment": "fifth-pass temporal-development/temporal",
+      "generation_seed": 40000027,
+      "engine_rng_phase": 219,
+      "completed_decisions_at_frame": 64,
+      "native_tic": 258,
+      "action": "move_forward",
+      "frame_health": 82,
+      "frame_ammo": 44,
+      "policy_source_sha256": "e1715aab326db07f4f02b7ee8cc6400d72d97abc59baf0ca04d1e33a584a6739",
+      "policy_source": "results/iteration5/doom/temporal-development/temporal/evaluate/0027/candidate.py",
+      "episode_source": "results/iteration5/doom/temporal-development/temporal/evaluate/0027/episode.json",
+      "episode_sha256": "ec496000ac5cb1ecfe8737e4859602289d2e7aa559d27dd7ff28fb647d059238",
+      "episode": {
+        "decisions": 236,
+        "player_damage_dealt": 200,
+        "player_direct_kills": 6,
+        "player_damage_received": 100,
+        "native_killcount": 6.0,
+        "reward": 0.6456563062257954,
+        "ended_dead": true
+      }
+    }
+  ]
+}
