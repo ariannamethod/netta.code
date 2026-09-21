@@ -1,0 +1,12 @@
+{
+  "nettalee.py": {
+    "sha256": "83de6758434272eb64ed9a4c74cea9e9ecd534e69a3f089bea24a8f1447091ee",
+    "nonstdlib_imports": [],
+    "imports_count": 21
+  },
+  "nettacode.py": {
+    "sha256": "41d1393c3149febf5354c40b98308b5f267af10e3ec59b69e744ae50bb76b354",
+    "nonstdlib_imports": [],
+    "imports_count": 21
+  }
+}

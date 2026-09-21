@@ -1,0 +1,164 @@
+{
+  "tasks": {
+    "table": {
+      "arms": {
+        "baseline": {
+          "attempts": 768,
+          "runtime_ok": 345,
+          "productive": 233,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "name_errors": 40,
+          "syntax_errors": 366
+        },
+        "anchor": {
+          "attempts": 768,
+          "runtime_ok": 385,
+          "productive": 271,
+          "task_passed": 1,
+          "unique_passed_sources": 1,
+          "name_errors": 48,
+          "syntax_errors": 322
+        },
+        "anchor_erased": {
+          "attempts": 768,
+          "runtime_ok": 308,
+          "productive": 217,
+          "task_passed": 0,
+          "unique_passed_sources": 0,
+          "name_errors": 45,
+          "syntax_errors": 406
+        }
+      },
+      "anchor_vs_baseline": {
+        "productive": {
+          "left_only": 94,
+          "right_only": 56,
+          "difference": 38,
+          "rate_difference": 0.049479166666666664,
+          "paired_bootstrap95": [
+            0.01953125,
+            0.08203125
+          ]
+        },
+        "runtime_ok": {
+          "left_only": 109,
+          "right_only": 69,
+          "difference": 40,
+          "rate_difference": 0.052083333333333336,
+          "paired_bootstrap95": [
+            0.018229166666666668,
+            0.08723958333333333
+          ]
+        },
+        "task_passed": {
+          "left_only": 1,
+          "right_only": 0,
+          "difference": 1,
+          "rate_difference": 0.0013020833333333333,
+          "paired_bootstrap95": [
+            0.0,
+            0.00390625
+          ]
+        }
+      },
+      "replica_passes": {
+        "baseline": [
+          0,
+          0,
+          0
+        ],
+        "anchor": [
+          0,
+          1,
+          0
+        ],
+        "anchor_erased": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "numbers": {
+      "arms": {
+        "baseline": {
+          "attempts": 768,
+          "runtime_ok": 447,
+          "productive": 427,
+          "task_passed": 377,
+          "unique_passed_sources": 17,
+          "name_errors": 35,
+          "syntax_errors": 273
+        },
+        "anchor": {
+          "attempts": 768,
+          "runtime_ok": 499,
+          "productive": 472,
+          "task_passed": 422,
+          "unique_passed_sources": 28,
+          "name_errors": 15,
+          "syntax_errors": 236
+        },
+        "anchor_erased": {
+          "attempts": 768,
+          "runtime_ok": 461,
+          "productive": 445,
+          "task_passed": 393,
+          "unique_passed_sources": 20,
+          "name_errors": 34,
+          "syntax_errors": 265
+        }
+      },
+      "anchor_vs_baseline": {
+        "productive": {
+          "left_only": 99,
+          "right_only": 54,
+          "difference": 45,
+          "rate_difference": 0.05859375,
+          "paired_bootstrap95": [
+            0.02734375,
+            0.08984375
+          ]
+        },
+        "runtime_ok": {
+          "left_only": 102,
+          "right_only": 50,
+          "difference": 52,
+          "rate_difference": 0.06770833333333333,
+          "paired_bootstrap95": [
+            0.036458333333333336,
+            0.09895833333333333
+          ]
+        },
+        "task_passed": {
+          "left_only": 78,
+          "right_only": 33,
+          "difference": 45,
+          "rate_difference": 0.05859375,
+          "paired_bootstrap95": [
+            0.032552083333333336,
+            0.0859375
+          ]
+        }
+      },
+      "replica_passes": {
+        "baseline": [
+          141,
+          114,
+          122
+        ],
+        "anchor": [
+          147,
+          120,
+          155
+        ],
+        "anchor_erased": [
+          137,
+          112,
+          144
+        ]
+      }
+    }
+  }
+}

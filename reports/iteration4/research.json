@@ -1,0 +1,23 @@
+{
+  "sources": [
+    {
+      "title": "CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2207.01780",
+      "relevance": "Execution outcomes train a critic that feeds back into code generation.",
+      "experiment": "Separate environment-return head alongside existing syntax and runtime heads."
+    },
+    {
+      "title": "RUDDER: Return Decomposition for Delayed Rewards",
+      "url": "https://arxiv.org/abs/1806.07857",
+      "relevance": "Studies delayed rewards and learned return redistribution.",
+      "experiment": "Compare whole-program reward credit with executed-line eligibility; deduplicate each continuation per program."
+    },
+    {
+      "title": "Memory-based control with recurrent neural networks",
+      "url": "https://arxiv.org/abs/1512.04455",
+      "relevance": "Studies memory in partially observed control tasks.",
+      "experiment": "Measure temporal observation inputs separately from reward-head changes."
+    }
+  ],
+  "application": "The listed Netta experiments are our design choices; results are measured against the frozen baseline."
+}

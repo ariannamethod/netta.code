@@ -2,6 +2,55 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Code acquires an optional distant continuation memory
+
+Code/general now has an explicitly enabled memory mechanism distinct from Lee's
+local island memory. It associates the first ordinary learned unit of a program
+with the latest zero to two units and the next continuation. Corpus associations
+are derived lazily from the same island; successful generated programs add
+acquired counts. A finite likelihood ratio weights existing candidates. Source
+units, indentation, candidates, execution rules and command contracts are
+unchanged. The mixed island supplies 2,381 sparse anchor contexts.
+
+`--anchor-memory` enables the mechanism on `init`, `play`, or
+`ask --learn-task --save SNAPSHOT`. Strength and acquired counts persist in the
+saved state. API `configure_anchor_memory(strength=0)` disables its influence
+while retaining acquired associations for reactivation. Old snapshots without
+anchor fields keep strength zero and exact generation/save behavior. Erasing
+experience preserves the active mechanism's setting and clears acquired counts.
+`nettacode.py` remains standalone; Lee does not receive the Code-specific memory.
+
+The frozen comparison used three replicas, each with 256 training and 256 fresh
+evaluation attempts per task and arm. Sorted-number task completions were
+377/768 for existing memory, 422/768 with the anchor, and 393/768 after disabling
+only the anchor on the same candidate-trained checkpoints. Each replica improved:
+141 to 147, 114 to 120, and 122 to 155. The paired gain was 5.86 percentage points,
+bootstrap 95% interval 3.26 to 8.59. Summed within-replica distinct successful
+numeric programs increased from 17 to 28.
+
+Table productive executions rose 233 to 271; complete table-task outputs were
+0/768 versus 1/768. Executing all 272 corpus programs found eight table examples
+from one percentage-record family and 52 sorted-number examples. Table syntax
+failures fell 366 to 322, while NameError rose 40 to 48; numeric NameError fell
+35 to 15. The first-unit anchor helps broad continuation coherence. Remembering
+a later learned context is the next hypothesis for record programs sharing the
+same beginning but using different variable families.
+
+The mechanism is available as an opt-in. `states/code.json` stays unchanged; no
+export replica was prospectively designated. An independent checker reconciled
+8,960 training/evaluation attempts and 97 direct CPython source executions.
+Twenty-two absent raw-log tail rows were recovered separately by complete frozen
+replays matching all 362 surviving rows and both original summaries. Original
+logs remain unchanged in the private experiment archive.
+
+Shared changes add optional game-quality and executed-line learning, exact
+cross-species caller dispatch and save/resume checks. They preserve ordinary
+generation when disabled. The final suite passes 212 tests; six actual caller
+routes reproduced 48/48 sources and left all states unchanged. See the compact
+[fourth-pass report](reports/iteration4/REPORT.md), its Code comparison and
+independent audit; README and gallery keep the current public anatomy and
+selected results. Full raw experiments remain outside the repository.
+
 ## 2026-09-21 — Game adapters renamed; reports published
 
 The game adapters are now `doomer.py`, `doom.py` (its short entry point), and

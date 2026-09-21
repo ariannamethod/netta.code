@@ -1,0 +1,45 @@
+{
+  "hypothesis": "A distant first-unit anchor plus local suffix retains family-compatible continuations across long programs.",
+  "candidate": "anchor_1.0_local_2_1_0_smoothing_2",
+  "train_games": 256,
+  "eval_games": 256,
+  "replicas": 3,
+  "train_seed": 1400000000,
+  "eval_seed": 1500000000,
+  "task_stride": 100000,
+  "replica_stride": 1000000,
+  "arms": [
+    "baseline",
+    "anchor",
+    "anchor_erased"
+  ],
+  "state_sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+  "baseline_sha256": "790567ab5fa6de144fba59deb14b9f79037d4fd89f60d6f3047a814dd7cc3174",
+  "candidate_sha256": "d3ac60e25bcff3d49fd712b370447834d89ef8f1a6f0d24082ecb89b07f328f9",
+  "tools_sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+  "runner_sha256": "a866468d27c34af8b22cd27de06e40527c2fbb6dfa7ae02d2f4eb17363469dc7",
+  "contracts": {
+    "table": {
+      "key": "9006de8b2f760d4d929e1baa52596558a7de43c8dbf7708834002c93c4a9dd65",
+      "profile": "code:table",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "record"
+      }
+    },
+    "numbers": {
+      "key": "a4cc5b8e409759adee90e618424324d7652b4cbbdd6d13959417e5f858fb1656",
+      "profile": "code:sorted_values",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "number",
+        "sorted": "ascending"
+      }
+    }
+  },
+  "promotion_rule": "Improve table counts without losing numeric performance; use a disjoint confirmation only if development supports mechanism."
+}

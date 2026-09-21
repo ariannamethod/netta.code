@@ -1,0 +1,27 @@
+{
+  "gallery_bytes": 135199,
+  "historical_content_unchanged": true,
+  "source_sha256": "12dfec054b6b50363c00235f2d8b4d9c0930638f9717c79dd9182892bcf9c58e",
+  "frame_sha256": "2ce18b41cc714666ae9b647cfcea22797c6decfedf2ba53e661dac48c001e38d",
+  "source_and_frame_exact": true,
+  "code_counts": {
+    "numbers": {
+      "baseline": 377,
+      "anchor": 422
+    },
+    "table": {
+      "baseline": 0,
+      "anchor": 1
+    }
+  },
+  "doom_reward": [
+    0.29048501117796977,
+    0.30675667811084956
+  ],
+  "doom_ci": [
+    -0.05520659749734097,
+    0.08407032404580388
+  ],
+  "temporal_played": 4,
+  "temporal_attempts": 16
+}

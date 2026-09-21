@@ -1,0 +1,55 @@
+{
+  "stage": "development",
+  "replicas": 2,
+  "training_attempts_per_arm_replica": 128,
+  "evaluation_attempts_per_arm_replica": 64,
+  "arms": {
+    "trace": {
+      "quality": false,
+      "executed_credit": true
+    },
+    "both": {
+      "quality": true,
+      "executed_credit": true
+    }
+  },
+  "quality_strength": 1.6,
+  "max_moves": 128,
+  "workers": 2,
+  "seeds": {
+    "training_sample_base": 21000000,
+    "training_episode_base": 22000000,
+    "evaluation_sample_base": 23000000,
+    "evaluation_episode_base": 24000000,
+    "replica_stride": 10000
+  },
+  "comparators": [
+    "uniform_random_legal",
+    "greedy_merge_then_empty_LDRU"
+  ],
+  "prospective_export_replica": 0,
+  "checkpoint_rule": "final fixed-budget checkpoint; root decides arm adoption from complete evidence",
+  "confirmation_selection_rule": "Among quality/trace/both with positive completed-score/raw delta in both development replicas, aggregate gain >=25 points/raw and pooled mean played score >=baseline, select largest aggregate completed-score/raw gain. Tie priority trace,quality,both. Confirm chosen arm against baseline with 3 fresh replicas, 256 train and 128 eval each. If none qualifies, retain current release state and report optional mechanisms experimental without a confirmatory sweep.",
+  "primary": "completed episode score per raw generation attempt; incomplete episodes, failures and replay rejections count zero",
+  "secondary": [
+    "completed/raw",
+    "score per played episode",
+    "reward/raw",
+    "syntax/runtime failures",
+    "corpus replays",
+    "unique played sources"
+  ],
+  "interpretation": "A generated-policy run includes novelty and syntax failures; fixed controls choose legal actions on every seed.",
+  "bundle_sha256": {
+    "2048.py": "2c8f51bd0cd71a1dcc1d15b5bec316bd6f00afd670dba9628cb9222f19ec7600",
+    "input.json": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+    "nettalee.py": "83de6758434272eb64ed9a4c74cea9e9ecd534e69a3f089bea24a8f1447091ee",
+    "run_2048_iteration4.py": "f9171b400a980e0cd08447f67729ee0193f81c037d9ca65929cf554d3fbd64a6"
+  },
+  "created_before_first_measurement": true,
+  "reused_baseline": {
+    "experiment": "/workspace/scratch/aea72c843013/netta_python/results/iteration4/2048/development",
+    "protocol_sha256": "0b88226fd2d10be79ee068ce467d3e63fe59ddfa7ad16114791a242577179697",
+    "reason": "Only executed_credit+unplayed gate changed; baseline has executed_credit=False."
+  }
+}

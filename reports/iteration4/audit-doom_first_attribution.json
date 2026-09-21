@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "directory": "/workspace/scratch/aea72c843013/netta_python/results/iteration4/doom",
+  "arms": {
+    "train": {
+      "attempts": 128,
+      "played": 66,
+      "statuses": {
+        "played": 66,
+        "corpus_behavior_replay": 36,
+        "invalid_action": 3,
+        "syntax_error": 19,
+        "runtime_error": 4
+      },
+      "reward_per_raw": 0.25992045669301317,
+      "totals": {
+        "kills": 215,
+        "player_damage_dealt": 5837,
+        "player_direct_kills": 167,
+        "player_damage_received": 4359,
+        "ammo_spent": 2643
+      }
+    },
+    "baseline": {
+      "attempts": 64,
+      "played": 39,
+      "statuses": {
+        "syntax_error": 9,
+        "invalid_action": 4,
+        "played": 39,
+        "corpus_behavior_replay": 12
+      },
+      "reward_per_raw": 0.29048501117796977,
+      "totals": {
+        "kills": 131,
+        "player_damage_dealt": 3118,
+        "player_direct_kills": 92,
+        "player_damage_received": 3003,
+        "ammo_spent": 1323
+      }
+    },
+    "trained": {
+      "attempts": 64,
+      "played": 38,
+      "statuses": {
+        "syntax_error": 11,
+        "invalid_action": 2,
+        "played": 38,
+        "corpus_behavior_replay": 12,
+        "runtime_error": 1
+      },
+      "reward_per_raw": 0.30675667811084956,
+      "totals": {
+        "kills": 119,
+        "player_damage_dealt": 3562,
+        "player_direct_kills": 97,
+        "player_damage_received": 2356,
+        "ammo_spent": 1539
+      }
+    }
+  },
+  "counts": {
+    "decisions": 59501,
+    "independent_policy_observations": 1085
+  },
+  "controls": {
+    "always_turn_left": {
+      "episodes": 16,
+      "decisions": 8192,
+      "reward_per_raw": 0.5,
+      "totals": {
+        "kills": 0,
+        "damage": 0,
+        "ammo_spent": 0,
+        "player_damage_dealt": 0,
+        "player_direct_kills": 0,
+        "player_damage_received": 0
+      }
+    },
+    "always_move_forward": {
+      "episodes": 16,
+      "decisions": 2848,
+      "reward_per_raw": 0.33924363123418283,
+      "totals": {
+        "kills": 39,
+        "damage": 1600,
+        "ammo_spent": 0,
+        "player_damage_dealt": 0,
+        "player_direct_kills": 0,
+        "player_damage_received": 1600
+      }
+    },
+    "aim_and_shoot": {
+      "episodes": 16,
+      "decisions": 6030,
+      "reward_per_raw": 0.5067221426395777,
+      "totals": {
+        "kills": 61,
+        "damage": 1258,
+        "ammo_spent": 723,
+        "player_damage_dealt": 1687,
+        "player_direct_kills": 52,
+        "player_damage_received": 1258
+      }
+    }
+  },
+  "paired_reward_delta": 0.016271666932879788,
+  "recovered_trajectories": 27,
+  "reward_scope": "frozen first-version Doom source-player attribution; independently verified fixed MAP02 contains zero barrels",
+  "map_things": 196,
+  "map_barrels": 0,
+  "temporal_development": {
+    "train": {
+      "attempts": 32,
+      "played": 13,
+      "statuses": {
+        "syntax_error": 5,
+        "corpus_behavior_replay": 13,
+        "played": 13,
+        "runtime_error": 1
+      },
+      "reward_per_raw": 0.2143538609635011,
+      "decisions": 1664
+    },
+    "evaluate": {
+      "attempts": 16,
+      "played": 4,
+      "statuses": {
+        "corpus_behavior_replay": 8,
+        "syntax_error": 4,
+        "played": 4
+      },
+      "reward_per_raw": 0.13376918859541959,
+      "decisions": 512
+    }
+  },
+  "generation_train_eval_disjoint": true,
+  "engine_train_eval_phases_disjoint": true
+}

@@ -1,0 +1,156 @@
+{
+  "experiment": "Doom iteration4",
+  "comparison": {
+    "baseline": {
+      "attempts": 64,
+      "played": 39,
+      "reward_per_raw": 0.29048501117796977,
+      "statuses": {
+        "corpus_behavior_replay": 12,
+        "invalid_action": 4,
+        "played": 39,
+        "syntax_error": 9
+      },
+      "totals": {
+        "ammo_spent": 1323.0,
+        "kills": 131.0,
+        "player_damage_dealt": 3118,
+        "player_damage_received": 3003,
+        "player_direct_kills": 92
+      }
+    },
+    "bootstrap_95_percent": [
+      -0.05520659749734097,
+      0.08407032404580388
+    ],
+    "controls": {
+      "aim_and_shoot": {
+        "attempts": 16,
+        "played": 16,
+        "reward_per_raw": 0.5067221426395777,
+        "statuses": {
+          "played": 16
+        },
+        "totals": {
+          "ammo_spent": 723.0,
+          "kills": 61.0,
+          "player_damage_dealt": 1687,
+          "player_damage_received": 1258,
+          "player_direct_kills": 52
+        }
+      },
+      "always_move_forward": {
+        "attempts": 16,
+        "played": 16,
+        "reward_per_raw": 0.33924363123418283,
+        "statuses": {
+          "played": 16
+        },
+        "totals": {
+          "ammo_spent": 0.0,
+          "kills": 39.0,
+          "player_damage_dealt": 0,
+          "player_damage_received": 1600,
+          "player_direct_kills": 0
+        }
+      },
+      "always_turn_left": {
+        "attempts": 16,
+        "played": 16,
+        "reward_per_raw": 0.5,
+        "statuses": {
+          "played": 16
+        },
+        "totals": {
+          "ammo_spent": 0.0,
+          "kills": 0.0,
+          "player_damage_dealt": 0,
+          "player_damage_received": 0,
+          "player_direct_kills": 0
+        }
+      }
+    },
+    "paired_reward_delta": 0.016271666932879788,
+    "selected_state": "trained-state.json",
+    "state_selection": "fixed after128training, beforeevaluation",
+    "trained": {
+      "attempts": 64,
+      "played": 38,
+      "reward_per_raw": 0.30675667811084956,
+      "statuses": {
+        "corpus_behavior_replay": 12,
+        "invalid_action": 2,
+        "played": 38,
+        "runtime_error": 1,
+        "syntax_error": 11
+      },
+      "totals": {
+        "ammo_spent": 1539.0,
+        "kills": 119.0,
+        "player_damage_dealt": 3562,
+        "player_damage_received": 2356,
+        "player_direct_kills": 97
+      }
+    }
+  },
+  "temporal": {
+    "corpus": {
+      "accepted": true,
+      "probe_inputs": 168,
+      "programs": 64,
+      "unique_probe_behaviors": 52
+    },
+    "training": {
+      "attempts": 32,
+      "played": 13,
+      "reward_per_raw": 0.2143538609635011,
+      "statuses": {
+        "corpus_behavior_replay": 13,
+        "played": 13,
+        "runtime_error": 1,
+        "syntax_error": 5
+      }
+    },
+    "evaluation": {
+      "attempts": 16,
+      "played": 4,
+      "reward_per_raw": 0.13376918859541959,
+      "statuses": {
+        "corpus_behavior_replay": 8,
+        "played": 4,
+        "syntax_error": 4
+      }
+    },
+    "promoted": false,
+    "example": "temporal-development/evaluate/0003",
+    "example_direct_kills": 4,
+    "example_player_damage": 120
+  },
+  "verification": {
+    "tests": 33,
+    "legacy_physics_parity": 512,
+    "final_engine_parity": 512,
+    "recovered_episodes": 27,
+    "recovered_rows": 3205,
+    "recovery": "separate frozenengine replays; originals unchanged, exact retained prefixes plus all final counters match",
+    "quality_trace_smoke": {
+      "attempts": 8,
+      "played": 3,
+      "head_observations": 3
+    },
+    "second_recovery_files": 2
+  },
+  "promotion": "no replacement of states/doom.json; attributed reward and temporal sensor opt in with separate explicit state contract",
+  "publish_files": [
+    "doomer.py",
+    "doom/headless.c",
+    "doom/src/p_inter.c",
+    "doom/UPSTREAM.json",
+    "corpora/doom_temporal.txt"
+  ],
+  "private_files": [
+    "tools/evaluate_doom_iteration4.py",
+    "tests/test_doom_iteration4.py"
+  ],
+  "next_hypothesis": "combat reward that gives no positive reinforcement for zero dealt damage; turning control currently receives neutral0.5"
+}

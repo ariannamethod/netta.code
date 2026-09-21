@@ -889,5 +889,13 @@
       "sha256": "d392cb68bf7c05b5950db5556757fb9271e8be903674afa01ab4b6d9d767871d"
     }
   ],
-  "game_data": "External IWAD required; not included"
+  "game_data": "External IWAD required; not included",
+  "local_modifications": [
+    {
+      "path": "src/p_inter.c",
+      "sha256": "54a78414a1392c538cedc64bacb945ffafeb865f5cc33c9110107c53509b0253",
+      "bytes": 20249,
+      "change": "Read-only direct player damage/kills and received-damage accounting after immunity/armor. Capped monster health loss, barrel inflictors excluded (vanilla barrels can retain stale target attribution). Doom damage, RNG, and killcount unchanged."
+    }
+  ]
 }

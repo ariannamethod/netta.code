@@ -1,0 +1,209 @@
+{
+  "passed": true,
+  "directory": "/workspace/scratch/aea72c843013/netta_python/results/iteration4/code/confirmation",
+  "protocol_sha256": "55b7b54f52d0b8025e916f4cb5984568d203d0adfba2812e345f3a4e336e62d6",
+  "counts": {
+    "training_attempts": 3072,
+    "independent_cpython_executions": 19,
+    "evaluation_attempts": 4608,
+    "checkpoint_replays": 85,
+    "recovered_evaluation_rows": 14
+  },
+  "measurements": [
+    {
+      "task": "table",
+      "replica": 0,
+      "arm": "baseline",
+      "attempts": 256,
+      "runtime_ok": 125,
+      "productive": 87,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 0,
+      "arm": "anchor",
+      "attempts": 256,
+      "runtime_ok": 137,
+      "productive": 105,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 0,
+      "arm": "anchor_erased",
+      "attempts": 256,
+      "runtime_ok": 101,
+      "productive": 76,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 1,
+      "arm": "baseline",
+      "attempts": 256,
+      "runtime_ok": 112,
+      "productive": 82,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 1,
+      "arm": "anchor",
+      "attempts": 256,
+      "runtime_ok": 122,
+      "productive": 89,
+      "task_passed": 1
+    },
+    {
+      "task": "table",
+      "replica": 1,
+      "arm": "anchor_erased",
+      "attempts": 256,
+      "runtime_ok": 103,
+      "productive": 76,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 2,
+      "arm": "baseline",
+      "attempts": 256,
+      "runtime_ok": 108,
+      "productive": 64,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 2,
+      "arm": "anchor",
+      "attempts": 256,
+      "runtime_ok": 126,
+      "productive": 77,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 2,
+      "arm": "anchor_erased",
+      "attempts": 256,
+      "runtime_ok": 104,
+      "productive": 65,
+      "task_passed": 0
+    },
+    {
+      "task": "numbers",
+      "replica": 0,
+      "arm": "baseline",
+      "attempts": 256,
+      "runtime_ok": 165,
+      "productive": 155,
+      "task_passed": 141
+    },
+    {
+      "task": "numbers",
+      "replica": 0,
+      "arm": "anchor",
+      "attempts": 256,
+      "runtime_ok": 169,
+      "productive": 156,
+      "task_passed": 147
+    },
+    {
+      "task": "numbers",
+      "replica": 0,
+      "arm": "anchor_erased",
+      "attempts": 256,
+      "runtime_ok": 159,
+      "productive": 151,
+      "task_passed": 137
+    },
+    {
+      "task": "numbers",
+      "replica": 1,
+      "arm": "baseline",
+      "attempts": 256,
+      "runtime_ok": 141,
+      "productive": 137,
+      "task_passed": 114
+    },
+    {
+      "task": "numbers",
+      "replica": 1,
+      "arm": "anchor",
+      "attempts": 256,
+      "runtime_ok": 149,
+      "productive": 142,
+      "task_passed": 120
+    },
+    {
+      "task": "numbers",
+      "replica": 1,
+      "arm": "anchor_erased",
+      "attempts": 256,
+      "runtime_ok": 137,
+      "productive": 134,
+      "task_passed": 112
+    },
+    {
+      "task": "numbers",
+      "replica": 2,
+      "arm": "baseline",
+      "attempts": 256,
+      "runtime_ok": 141,
+      "productive": 135,
+      "task_passed": 122
+    },
+    {
+      "task": "numbers",
+      "replica": 2,
+      "arm": "anchor",
+      "attempts": 256,
+      "runtime_ok": 181,
+      "productive": 174,
+      "task_passed": 155
+    },
+    {
+      "task": "numbers",
+      "replica": 2,
+      "arm": "anchor_erased",
+      "attempts": 256,
+      "runtime_ok": 165,
+      "productive": 160,
+      "task_passed": 144
+    }
+  ],
+  "raw_sha256": {
+    "table_00/baseline_training.jsonl": "84dae73c16c609c8f2829a376f48b52fc7f62eed6ca775a3e7fbcf8c6c719888",
+    "table_00/baseline_evaluation.jsonl": "8b67258ee0235547e4c9a55be3d1adf6140669409c2dee0fa30aca9943611ddf",
+    "table_00/anchor_training.jsonl": "7de247326758783a56458bd480e2c4588fad1b217eba83e51b43f97559cfff86",
+    "table_00/anchor_evaluation.jsonl": "c1708f778a5a891f56e860381507e8a8551f660a6f659d30b2f3279507a509e2",
+    "table_00/anchor_erased_evaluation.jsonl": "bff8bb8406bea5ee99c65f0155efd1b109f63d7284d7c86ad60095a55976ae1f",
+    "table_01/baseline_training.jsonl": "9a486fef11f5381bb2848b332e0f5185ac91b9e7880e2b6d5f93b30ca7934009",
+    "table_01/baseline_evaluation.jsonl": "2d72b044d6cc24b5308210e3d206d38671cbde8cb704ebeb5799dbd0dcc3e5c3",
+    "table_01/anchor_training.jsonl": "8c00e48dc3c4c7c9ee3085e7cc1d4d0fe92ffd163f1d5b2c7f4fb81c6070974c",
+    "table_01/anchor_evaluation.jsonl": "062d8092690057c312f173c4106610a27ecaa129eb5b7379421ead6a5b8f2376",
+    "table_01/anchor_erased_evaluation.jsonl": "aeba25087a54af36e5216aa363fcc80ea77ea4d8319ac7fa0735ab49302afb7b",
+    "table_02/baseline_training.jsonl": "7519b791a6f22c5208ba03f896f70ac9bca988ab3c35a05a65283c8bad737cb6",
+    "table_02/baseline_evaluation.jsonl": "55bd7e62d8f3b39d272be4324b861227c28ccfc3839f9bf99cc70adbc3136273",
+    "table_02/anchor_training.jsonl": "1f301f8a092249b3f82149acbbd7488e38dfcfc1fe09a9d7e6551a8f1861a101",
+    "table_02/anchor_evaluation.jsonl": "31926976e54279681445c3414fd2a001cb07072da81a1e8579403f5269e8b45b",
+    "table_02/anchor_erased_evaluation.jsonl": "678d535d26f1bad9711f3793ede60655b8521387a14bad437eb08004de85c180",
+    "numbers_00/baseline_training.jsonl": "1f4da334e5cd5878753688317044e81af5de897da2f4a893adc601b4c52f2ef6",
+    "numbers_00/baseline_evaluation.jsonl": "efedadceccee24b83f3bf77d87c0edb541e96de74ad93003705917b314280e64",
+    "recovery/baseline_evaluation.recovered.jsonl": "28bfb22d59abce4ab0ab142e01f695b7189305ef0ae4688a7091ee1fa37bfdb2",
+    "numbers_00/anchor_training.jsonl": "02b6cb67dc0c9c6c4bf103ac0e208371ce53b1228ef17a65e4b10a2536ef3399",
+    "numbers_00/anchor_evaluation.jsonl": "f39e9ba3aee343eeeedbaa112a5e4734df6340878c750a743f06150e7b43b48d",
+    "numbers_00/anchor_erased_evaluation.jsonl": "489c9dc00315a2996bf1226bb0d51e54ea0f2add280fbec2ba84edbf39bfbe0c",
+    "numbers_01/baseline_training.jsonl": "0d7db9e6a30fb3f327c8295c866897142223e2e893fe03a2430d5123a1811109",
+    "numbers_01/baseline_evaluation.jsonl": "8fc26e100b904d1c40b24bdd702449f0d17cd79b75e4fb96a3fc40237dfbb787",
+    "numbers_01/anchor_training.jsonl": "d3ca9f7de138c3c70d59732c943e5a17aefd37c078fd5c71957b5ee1c47cc616",
+    "numbers_01/anchor_evaluation.jsonl": "3ac6d5e956dbf93403f767b30a23d136b18bb8ec56b2a9c7bb921a3c94c951c7",
+    "numbers_01/anchor_erased_evaluation.jsonl": "88bdf9ae1aea789263fea11a3e96506ea9542b51e82cef5893e433a486d13d33",
+    "numbers_02/baseline_training.jsonl": "bdd9b33cfe0b45db128bd6a1f5c5f2cab7f4d015495eab9c94057f3de9128ba4",
+    "numbers_02/baseline_evaluation.jsonl": "d276a059d7944a082da82e7d38ed63976ddbd94a2b6d800fbd869200e8781955",
+    "numbers_02/anchor_training.jsonl": "af7c31d86719b3511535941bab3e1b7d7679a3063080713a6a3b58c4205bf077",
+    "numbers_02/anchor_evaluation.jsonl": "098ef74a75ab74bd9561a399ad6ecfb29326d1456ce178b6f1db563c9d9b7bd1",
+    "numbers_02/anchor_erased_evaluation.jsonl": "c1f8dc23b0b2fc6cddb83cd1cfb30f54a84949fc6bedc01613cebd9ab3506d4a"
+  }
+}

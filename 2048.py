@@ -165,6 +165,7 @@ def policy_worker():
             # action, diagnostics and exact source identity for every decision.
             receipt = {key: result.get(key) for key in ('status', 'accepted', 'action', 'reason',
                        'source_hash', 'error_line', 'error_column', 'exception_type')}
+            receipt['executed_lines'] = result.get('metrics', {}).get('executed_lines', [])
         except Exception as error:
             receipt = {'status': 'worker_error', 'accepted': False,
                        'reason': type(error).__name__ + ': ' + str(error)[:200]}
@@ -256,6 +257,7 @@ def run_episode(source, seed, max_moves=128):
     game = Game2048(seed)
     initial = list(game.board)
     trajectory, status, diagnostic = [], 'move_limit', None
+    executed_lines = set()
     started = time.monotonic()
     with PolicyProcess(source) as worker:
         for index in range(max_moves):
@@ -267,6 +269,7 @@ def run_episode(source, seed, max_moves=128):
                 break
             obs = game.observation()
             decision = worker.decide(obs)
+            executed_lines.update(decision.get('executed_lines', []))
             if not decision.get('accepted'):
                 status, diagnostic = decision.get('status', 'worker_error'), decision
                 break
@@ -288,7 +291,8 @@ def run_episode(source, seed, max_moves=128):
     return {'seed': seed, 'status': status, 'completed': completed, 'score': game.score,
             'max_tile': max(game.board), 'moves': game.moves, 'reward': reward,
             'initial_board': initial, 'final_board': game.board, 'trajectory': trajectory,
-            'diagnostic': diagnostic, 'max_moves': max_moves}
+            'diagnostic': diagnostic, 'max_moves': max_moves,
+            'executed_lines': sorted(executed_lines)}
 
 
 def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128):
@@ -323,11 +327,15 @@ def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128):
             record.update(played=True, episode=episode, status=episode['status'], reward=episode['reward'])
             diagnostic = episode.get('diagnostic') or {'status': 'ok' if episode['completed'] else episode['status']}
             runtime_ok = episode['completed']
+    record['runtime_ok'] = runtime_ok
+    record['executed_lines'] = record.get('episode', {}).get('executed_lines', [])
     if learn:
         model.observe(generated, record['reward'], runtime_ok,
                       error_line=(diagnostic or {}).get('error_line'),
                       behavior=policy.get('behavior_hash') if policy and policy['accepted'] else None,
-                      diagnostic=diagnostic or {'status': record['status']})
+                      diagnostic=diagnostic or {'status': record['status']},
+                      executed_lines=record['executed_lines'],
+                      environment_observed=record['played'])
         record['training_applied'] = True
     elif fingerprint(model.state_dict()) != before:
         raise AssertionError('frozen episode changed organism')
@@ -355,10 +363,42 @@ def random_legal_episode(seed, max_moves=128):
             'max_moves': max_moves, 'baseline': 'uniform_random_legal'}
 
 
+def fixed_greedy_episode(seed, max_moves=128):
+    """Explicit baseline: immediate merge score, then empty cells, then L/D/R/U.
+
+    This policy is evaluated independently; generated programs never call it.
+    It sees the same board and performs no random-spawn lookahead.
+    """
+    game = Game2048(seed)
+    initial, trajectory = list(game.board), []
+    tie_order = ('left', 'down', 'right', 'up')
+    for _ in range(max_moves):
+        choices = []
+        for rank, action in enumerate(tie_order):
+            after, gained, changed = slide(game.board, action)
+            if changed:
+                choices.append(((gained, after.count(0), -rank), action))
+        if not choices:
+            break
+        trajectory.append(game.step(max(choices)[1]))
+    terminal = not game.legal_actions()
+    return {'seed': seed, 'status': 'terminal' if terminal else 'move_limit',
+            'completed': True, 'score': game.score, 'max_tile': max(game.board),
+            'moves': game.moves, 'reward': game.score / (game.score + 512.0),
+            'initial_board': initial, 'final_board': game.board, 'trajectory': trajectory,
+            'max_moves': max_moves, 'baseline': 'greedy_merge_then_empty_LDRU'}
+
+
 def summarize(records):
     episodes = [record['episode'] for record in records if record['played']]
     return {'raw_attempts': len(records), 'played': len(episodes),
+            'runtime_ok': sum(record.get('runtime_ok', record['played']) for record in records),
+            'syntax_error': sum(record['status'] == 'syntax_error' for record in records),
+            'corpus_replay': sum(record['status'] in ('corpus_source_replay', 'corpus_probe_behavior_replay') for record in records),
+            'distinct_played_sources': len({record['source_hash'] for record in records if record['played'] and record.get('source_hash')}),
             'completed': sum(episode['completed'] for episode in episodes),
+            'completed_score_per_raw_attempt': sum(episode['score'] for episode in episodes if episode['completed']) / max(1, len(records)),
+            'reward_per_raw_attempt': sum(record.get('reward', record.get('episode', {}).get('reward', 0.0)) for record in records) / max(1, len(records)),
             'score_per_raw_attempt': sum(episode['score'] for episode in episodes) / max(1, len(records)),
             'mean_played_score': sum(episode['score'] for episode in episodes) / max(1, len(episodes)),
             'best_score': max((episode['score'] for episode in episodes), default=0),
@@ -381,6 +421,9 @@ def run_cli():
         item.add_argument('--seed', type=int, default=3100000 if command == 'play' else 3500000)
         item.add_argument('--episode-seed', type=int, default=3200000 if command == 'play' else 3600000)
         item.add_argument('--max-moves', type=int, default=128)
+        if command == 'play':
+            item.add_argument('--control-learning', choices=('legacy', 'quality', 'trace', 'both'),
+                              help='optional learning experiment, stored in the saved state; omitted preserves its current choice')
     args = parser.parse_args()
     if args.command == 'init':
         programs = core.read_island(args.island)
@@ -393,12 +436,17 @@ def run_cli():
     if not 1 <= args.attempts <= 100000:
         parser.error('attempts must be 1..100000')
     model = core.Organism.load(args.state)
+    if args.command == 'play' and args.control_learning is not None:
+        model.configure_control_learning(quality=args.control_learning in ('quality', 'both'),
+                                         executed_credit=args.control_learning in ('trace', 'both'))
     args.out.mkdir(parents=True, exist_ok=False)
     protocol = {'command': args.command, 'attempts': args.attempts, 'sample_seed': args.seed,
                 'episode_seed': args.episode_seed, 'max_moves': args.max_moves,
                 'state_sha256': hashlib.sha256(args.state.read_bytes()).hexdigest(),
                 'bridge_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                 'core_sha256': hashlib.sha256(Path(core.__file__).read_bytes()).hexdigest()}
+    if args.command == 'play':
+        protocol['control_learning_override'] = args.control_learning
     save_json(args.out / 'protocol.json', protocol)
     reports = {}
     controls = [('trained', model)]
@@ -424,14 +472,15 @@ def run_cli():
             organism.save(args.state)
         reports[arm] = summarize(records)
     if args.command == 'evaluate':
-        records = []
-        with (args.out / 'random_legal.jsonl').open('w', encoding='utf-8') as stream:
-            for index in range(args.attempts):
-                episode = random_legal_episode(args.episode_seed + index, args.max_moves)
-                record = {'played': True, 'episode': episode, 'status': episode['status']}
-                records.append(record)
-                stream.write(json.dumps(record, allow_nan=False) + '\n')
-        reports['random_legal'] = summarize(records)
+        for name, baseline in (('random_legal', random_legal_episode), ('fixed_greedy', fixed_greedy_episode)):
+            records = []
+            with (args.out / (name + '.jsonl')).open('w', encoding='utf-8') as stream:
+                for index in range(args.attempts):
+                    episode = baseline(args.episode_seed + index, args.max_moves)
+                    record = {'played': True, 'episode': episode, 'status': episode['status']}
+                    records.append(record)
+                    stream.write(json.dumps(record, allow_nan=False) + '\n')
+            reports[name] = summarize(records)
         if hashlib.sha256(args.state.read_bytes()).hexdigest() != protocol['state_sha256']:
             raise AssertionError('evaluation mutated saved state')
     protocol['bridge_sha256_after'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()

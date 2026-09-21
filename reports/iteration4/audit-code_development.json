@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "directory": "/workspace/scratch/aea72c843013/netta_python/results/iteration4/code/development",
+  "protocol_sha256": "b44f059dcf2033b6638589ca4ba1c72e4db30278d3df02887787da44be098f73",
+  "counts": {
+    "training_attempts": 512,
+    "independent_cpython_executions": 6,
+    "evaluation_attempts": 768,
+    "checkpoint_replays": 31,
+    "recovered_evaluation_rows": 8
+  },
+  "measurements": [
+    {
+      "task": "table",
+      "replica": 0,
+      "arm": "baseline",
+      "attempts": 128,
+      "runtime_ok": 43,
+      "productive": 29,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 0,
+      "arm": "anchor",
+      "attempts": 128,
+      "runtime_ok": 67,
+      "productive": 38,
+      "task_passed": 0
+    },
+    {
+      "task": "table",
+      "replica": 0,
+      "arm": "anchor_erased",
+      "attempts": 128,
+      "runtime_ok": 48,
+      "productive": 30,
+      "task_passed": 0
+    },
+    {
+      "task": "numbers",
+      "replica": 0,
+      "arm": "baseline",
+      "attempts": 128,
+      "runtime_ok": 77,
+      "productive": 73,
+      "task_passed": 63
+    },
+    {
+      "task": "numbers",
+      "replica": 0,
+      "arm": "anchor",
+      "attempts": 128,
+      "runtime_ok": 95,
+      "productive": 87,
+      "task_passed": 78
+    },
+    {
+      "task": "numbers",
+      "replica": 0,
+      "arm": "anchor_erased",
+      "attempts": 128,
+      "runtime_ok": 76,
+      "productive": 68,
+      "task_passed": 61
+    }
+  ],
+  "raw_sha256": {
+    "table_00/baseline_training.jsonl": "f78da4796d5a8e75675dc77cb1ac81902c82cbb2e0eb029dba177971357cfdf1",
+    "table_00/baseline_evaluation.jsonl": "0ba3fcbb96ea715e1e87e908410653b250f0f7911ad41ca8f75a7b5b5bc98615",
+    "table_00/anchor_training.jsonl": "40bd6bac8714bda01411dbebd198670867320581414c74855c13b0a4fb557be4",
+    "table_00/anchor_evaluation.jsonl": "d8288c8e75acaa19f8040fddd6ee18568795923e84d39a54b1b9437cc086b097",
+    "table_00/anchor_erased_evaluation.jsonl": "d84e000617dfd8b103b5d983fc0497a3ccad7e997205a51f3526c09c7e8e2f5c",
+    "numbers_00/baseline_training.jsonl": "3728018792de88393c44b95c1c870448bac2cd584581ad21d82fda16f8aa88e4",
+    "numbers_00/baseline_evaluation.jsonl": "a70fc1afe1c8a4f8250511015036a53f8d531de53f6d0ad6488d9a8f79875a9a",
+    "numbers_00/anchor_training.jsonl": "11a2acdbd8b36482c49ed4fcf1e0b0f2cb44f4b513a6edf6a67443341bc4c424",
+    "numbers_00/anchor_evaluation.jsonl": "a97560994453e2725602e1162b72455558f459816919925787da06c534719046",
+    "numbers_00/anchor_erased_evaluation.jsonl": "fb8afc14e59a0c0c141fd62b1a13d555fbded3bbae357acbd8516c8e85505802",
+    "recovery/anchor_erased_evaluation.recovered.jsonl": "20c19c391b1ed8e190e30f43b2e4b66ffa5a8c8731b63ee20c28a1c0913d3e26"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "passed": true,
+  "final_route_sequence": [
+    "art",
+    "records",
+    "strings",
+    "code",
+    "2048",
+    "doom"
+  ],
+  "one_frontdoor": "nettalee",
+  "final_route_raw_attempts": 48,
+  "exact_source_reproductions": 48,
+  "independent_route_cpython_executions": 11,
+  "all_six_snapshots_unchanged_after_every_route": true,
+  "live_production_matches_audited_frozen_sources": true,
+  "final_model_sources": {
+    "nettalee.py": {
+      "sha256": "83de6758434272eb64ed9a4c74cea9e9ecd534e69a3f089bea24a8f1447091ee",
+      "nonstdlib_imports": [],
+      "imports_count": 21
+    },
+    "nettacode.py": {
+      "sha256": "41d1393c3149febf5354c40b98308b5f267af10e3ec59b69e744ae50bb76b354",
+      "nonstdlib_imports": [],
+      "imports_count": 21
+    }
+  },
+  "new_route_and_edge_regression_tests": 5,
+  "code_measurement_attempts": 8960,
+  "code_recovered_evaluation_rows": 22,
+  "code_checkpoint_replays": 116,
+  "code_independent_cpython_executions": 25,
+  "code_confirmation_task_passes": {
+    "numeric": {
+      "baseline": 377,
+      "anchor": 422,
+      "anchor_erased": 393,
+      "attempts_per_arm": 768
+    },
+    "table": {
+      "baseline": 0,
+      "anchor": 1,
+      "anchor_erased": 0,
+      "attempts_per_arm": 768
+    }
+  },
+  "game2048": {
+    "original_train_attempts": 1024,
+    "original_eval_attempts": 512,
+    "corrected_train_attempts": 512,
+    "corrected_eval_attempts": 256,
+    "recovered_rows": 319,
+    "independent_board_transitions": 155175,
+    "checkpoint_source_replays": 48,
+    "independent_cpython_action_traces": 72,
+    "reused_training_updates_causally_replayed": 512,
+    "corrected_trace_primary_delta": 0,
+    "corrected_both_primary_delta": -16.09375
+  },
+  "doom": {
+    "training_attempts": 128,
+    "paired_eval_attempts_per_arm": 64,
+    "main_agent_decisions_recomputed": 59501,
+    "control_decisions_recomputed": 17070,
+    "temporal_decisions_recomputed": 2176,
+    "independent_main_policy_observations": 1085,
+    "recovered_trajectories": 27,
+    "recovered_trajectory_rows": 3205,
+    "measured_map_barrels_independently_counted": 0,
+    "paired_reward_delta": 0.016271666932879788
+  },
+  "resolved_findings": [
+    "Cross-species caller selected correct snapshot then incompatible loader; fixed sibling dispatch and actual one-frontdoor route verified.",
+    "CR-only actual source trace line validation rejected before learning; regression passes without source rewriting.",
+    "Disabled quality configuration lost strength on erasure; preservation regression passes.",
+    "Trace gate removed negative novelty credit from unplayed attempts; corrected experiment separately frozen and original retained.",
+    "Native source-player attribution could credit stale barrel owner; final C excludes barrel inflictor, measured MAP02 independently has zero barrels.",
+    "Truncated raw logs retained; missing data explicitly replayed in separate recovery files and independently hashed/recounted."
+  ],
+  "interpretation_limits": [
+    "Code numeric gains are narrow; table task passes only 1/768.",
+    "Corrected 2048 adds no measured gain; game release state retained.",
+    "Doom paired reward gain is small and confidence interval includes zero; temporal run is isolated development, not paired improvement proof."
+  ],
+  "evidence": {
+    "code_development.json": {
+      "sha256": "bd1a66cf36704aadeae7e7e868f0cf07a1289d548de8fabe21d79e450f67ef8e",
+      "bytes": 2736
+    },
+    "code_confirmation.json": {
+      "sha256": "554502344d7dd1106e300f29476dac4cffb6d68e81b588b7042660844327c8eb",
+      "bytes": 7111
+    },
+    "2048_original_development.json": {
+      "sha256": "ef16d3683a50b6faa39c97d37f17f8690031cc0d79befb214ecef60914252939",
+      "bytes": 10116
+    },
+    "2048_corrected_development.json": {
+      "sha256": "2f2230805fe711866f06848a9501842134e42bcf532302413a229b874f6e005f",
+      "bytes": 6110
+    },
+    "2048_reuse_independent.json": {
+      "sha256": "a2bdfc619bf35c1d1b0ac7af564d82c4ac0af3dbf4ec9af1fad51d2fdf235dfd",
+      "bytes": 773
+    },
+    "doom_first_attribution.json": {
+      "sha256": "416eef60edc1304fb3f1f256c8298222d5a14f5a9ae4c812031b352ddaaa5806",
+      "bytes": 3474
+    },
+    "final_routes/summary.json": {
+      "sha256": "0a2c9e19c3f612e4132e25a8b11c88fe12bbb2ff867c3ba73aaf1901ea59c96d",
+      "bytes": 26584
+    },
+    "final_source_contracts.json": {
+      "sha256": "d0f943ccb4aba35a5894dc1ef9795a575d971fd1de2e70d8adc1452226901087",
+      "bytes": 322
+    }
+  }
+}

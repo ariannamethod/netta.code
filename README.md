@@ -86,9 +86,11 @@ This is where the Bruce Lee joke stops being decoration and turns into architect
 
 ## Netta Code
 
-`nettacode.py` keeps the same general organism while living in `corpora/mixed.txt`, where different program families share one world. Its default continuation context is four units, compared with Lee's six, giving heterogeneous structures a shorter local window in which to meet. Both bodies currently share the continuation-memory format, learned heads and search mechanism; each saved state carries its own acquired experience.
+`nettacode.py` lives in `corpora/mixed.txt`, where different program families share one world. Its default continuation context is four units, compared with Lee's six, giving heterogeneous structures a shorter local window in which to meet. Code also carries an optional distant continuation memory: the first learned unit of a program stays associated with the latest zero to two units and the possible next unit. The mixed island supplies the first associations; successful generated programs add acquired associations of their own.
 
-The two bodies therefore ask different questions with almost the same anatomy. Netta Lee asks what deep local experience becomes when each domain keeps its own life, while Netta Code asks what happens when executable habits from different domains are allowed to occupy the same memory and collide.
+`--anchor-memory` explicitly activates this additional memory for general Code. Its finite weighting changes the probabilities of existing continuations while the organism keeps writing the complete source and indentation. The setting and acquired counts survive in the saved state. Existing snapshots keep the feature off until it is requested; Lee keeps her local memory and separate island lives.
+
+The two bodies therefore ask different questions with a shared executable foundation and a growing difference in memory. Netta Lee asks what deep local experience becomes when each domain keeps its own life, while Netta Code asks what happens when executable habits from different domains are allowed to occupy the same memory and retain a distant connection to how the current program began.
 
 One practices the same kick ten thousand times. The other has wandered into several dojos and is taking notes.
 
@@ -98,7 +100,7 @@ Netta Code can also acquire declared task memory through the same execution loop
 
 ## what experience changed
 
-The first free-play courts established that accumulated experience changes productive generation. The current pass pushes the same idea into declared executable tasks: three independent runs per command, **512 learning attempts** followed by **256 fresh evaluation attempts** each. “Memory erased” keeps the rest of the same saved organism and removes only the acquired task memory.
+The first free-play courts established that accumulated experience changes productive generation. The command-learning court pushed the same idea into declared executable tasks: three independent runs per command, **512 learning attempts** followed by **256 fresh evaluation attempts** each. “Memory erased” keeps the rest of the same saved organism and removes only the acquired task memory.
 
 | organism / command | task memory | task memory erased | ordinary training |
 |---|---:|---:|---:|
@@ -111,7 +113,9 @@ The Code numeric task is the cleanest current example of command-shaped experien
 
 The earlier free-play result still matters underneath this layer: experience had already raised productive execution strongly across art, strings, records and the mixed Code island. The newer mechanism narrows that pressure toward a declared result while leaving ordinary no-task trajectories unchanged.
 
-The shared release suite now passes **166 tests**. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports.
+A separate memory comparison gave Code **422 / 768** sorted-number task completions with the distant anchor against **377 / 768** for the existing mechanism, after equal training budgets of 256 attempts in each of three runs. Switching the anchor off on the same candidate-trained checkpoints gave **393 / 768**. Table productive executions rose from **233 to 271**, while full table-task completions moved from **0 to 1**. The mixed corpus contains eight table examples from one family and 52 sorted-number examples; later context is the next concrete memory hypothesis for the record-processing variable families that still collide.
+
+The shared release suite now passes **212 tests**. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the memory and game comparisons; full raw trajectories remain in the separate experiment archives.
 
 ---
 
@@ -165,6 +169,10 @@ After **800 raw learning attempts**, the saved state produced **156 played episo
 
 The selected fixed-evaluation episode in the gallery reached **1,348 points** and a **128 tile**. Its generated policy is shown beside the complete real trajectory, and independent accounting reconciled all **96,029 recorded transitions** from training and evaluation.
 
+Both game bridges expose `--control-learning legacy|quality|trace|both` for explicit training experiments. `quality` adds a separate 545-parameter head learning the continuous game reward; `trace` assigns local game credit to generation choices on lines actually executed during play. Repeated loop execution cannot multiply that credit. Runtime and syntax learning remain separate, and rejected corpus copies retain their ordinary negative credit.
+
+The fixed 2048 comparison used two runs per setting, each with 128 training and 64 fresh evaluation attempts. Score per raw attempt was **557.91** for the existing mechanism, **541.81** with the quality head, **557.91** with executed-line credit and **541.81** with both. In the corrective training runs, 302 of 325 completed programs executed every statement line, with average coverage of 99.36%; an episode-wide line filter therefore has little room to distinguish useful parts of these short policies. The published 2048 state and default learning settings are preserved; the explicit switches keep these mechanisms available for further islands and experiments.
+
 The game is useful for the same reason the compiler is useful: it does not care how persuasive the code looks. The board moves or it does not.
 
 ---
@@ -184,11 +192,17 @@ strafe_right
 shoot
 ```
 
-Before play, the exact generated source is executed across the compact observation space and turned into the action table that the game will actually use. The environment then returns combat consequences through Netta's `observe()` path, with kills, damage and ammunition expenditure entering the episode reward.
+Before play, the exact generated source is executed across the compact observation space and turned into the action table that the game will actually use. The environment then returns combat consequences through Netta's `observe()` path, with the selected reward contract determining how combat enters learning.
+
+The Generic engine records actual monster health removed by player attacks, direct player kills, received damage after armor, ammunition expenditure and the separate native Doom killcount. `--reward-mode attributed` uses player-attributed damage, received damage and ammunition; monster infighting and barrel-explosion inflictors receive no direct attack credit. The existing saved life retains its legacy reward contract.
+
+The optional `--sensor temporal` adds the previous action, whether the player moved, whether damage was received and a coarse enemy distance. The separate `corpora/doom_temporal.txt` island contains 64 scripts in four structural families. Each new live observation executes the unchanged generated program and caches its result. This state learns under its own environment contract. One held-out generated policy in the development run used movement, previous-action and damage inputs and produced four direct kills during 128 decisions.
 
 The first real Doom pass used **24 generation attempts**. Twelve reached the game, representing **11 distinct generated programs** and **24 actual episodes**; the engine's total killcount was **88**, including monster infighting counted by Doom itself. A later frozen paired check over 16 shared generation/game seeds produced 11 played attempts with learned experience and 9 from the initial state, with a mean reward difference of **+0.0921** and bootstrap 95% interval **[-0.1267, 0.3128]**.
 
 One archived generated policy was replayed with the same engine seed and reproduced the trajectory and PNG hashes exactly. Saved Doom experience binds the backend, IWAD hash, map and difficulty to the state, because a life acquired in one Hell should at least remember which Hell it was.
+
+The attributed-reward comparison trained for another 128 attempts, then tested both checkpoints on the same 64 held-out engine starts. Direct player damage changed from **3,118 to 3,562**, direct kills from **92 to 97**, and received damage from **3,003 to 2,356**. Reward per raw attempt changed from **0.290485 to 0.306757**; the paired difference was **+0.016272**, with a bootstrap 95% interval of **[-0.055207, 0.084070]**. The published Doom state is preserved. Continuous turning earned the reward formula's neutral 0.5, giving the next reward experiment a specific passive behavior to account for.
 
 The combat frame and exact Python policy are in **[gallery.html](gallery.html)**. WOLFE learned to play Doom by choosing functions; Netta Lee now writes the policy that chooses among them, which was apparently the calm and proportionate next experiment.
 
@@ -199,6 +213,8 @@ The combat frame and exact Python policy are in **[gallery.html](gallery.html)**
 `select_state()` is the small Wolfe-inspired front door shared by the standalone organisms. It tokenizes an ordinary request, compares it with the declarations in `tools.json`, ranks evidence across the saved states and returns a route when one has earned a clear enough lead. The current table includes Lee specializations, the mixed Code state, 2048 and Doom.
 
 Its job is narrow on purpose: the caller chooses **which experience becomes active** and, when a declared command matches, which task contract is being asked for. Generation, execution and acquisition still belong to the organism that wakes behind that route.
+
+When a route selects the other model species, `ask` starts the matching neighbouring model file, which validates and loads its own state. Each body still runs its own islands independently as one Python file; placing both bodies together enables the shared front door to switch between them.
 
 That separation is what makes the design interesting inside larger systems. An upstream LLM can remain a language body, express an ordinary instruction and hand the executable part to a much smaller learned state without having to carry every tool policy inside its own training. WOLFE already showed how far a small neural caller can go when its vocabulary is functions; here the door can lead to a whole saved coding life.
 
@@ -232,6 +248,16 @@ python3 nettalee.py ask "draw a compact picture" \
   --save states/my-art-task.json --out runs/art-task
 ```
 
+Activate Code's distant memory while acquiring a command into a separate state:
+
+```bash
+python3 nettacode.py ask "code:sorted_values" \
+  --tools tools.json --attempts 256 --learn-task --anchor-memory \
+  --save states/my-code-anchor.json --out runs/code-anchor
+```
+
+`--anchor-memory` is also available on Code's `init` and `play` commands. Subsequent use loads the saved setting and acquired associations.
+
 Run a frozen 2048 comparison:
 
 ```bash
@@ -250,6 +276,18 @@ python3 doomer.py evaluate \
 ```
 
 `NETTA_DOOM_IWAD` can supply the IWAD path. The engine source lives in `doom/` and builds locally with `make` and a C compiler; game data stays external.
+
+Give temporal perception and attributed reward their own Doom life:
+
+```bash
+python3 doomer.py train \
+  --island corpora/doom_temporal.txt --state states/my-doom-temporal.json \
+  --sensor temporal --reward-mode attributed \
+  --iwad /path/to/freedoom2.wad --map 2 \
+  --attempts 32 --decisions 128 --output runs/doom-temporal
+```
+
+The optional game-learning switches belong to `2048.py play` and `doomer.py train`. Evaluation uses the settings saved inside the chosen state.
 
 ---
 
@@ -274,6 +312,7 @@ reports/
   historical/      retained reports from earlier experiments
   measurements/    protocols, summaries, audits and recovery receipts
   verification/    test output and bridge checks
+  iteration4/      compact memory and game comparisons
 
 corpora/
   art.txt
@@ -282,6 +321,7 @@ corpora/
   mixed.txt
   2048.txt
   doom.txt
+  doom_temporal.txt
 
 states/
   art.json
@@ -314,4 +354,3 @@ GPL-3.0-or-later.
 ---
 
 *Arianna Method.*
-

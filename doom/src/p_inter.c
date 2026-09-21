@@ -42,6 +42,35 @@
 
 #define BONUSADD	6
 
+/* Read-only host accounting. These counters do not alter Doom's damage,
+ * killcount, RNG, or player state. A new engine process starts each episode. */
+unsigned long netta_player_damage_dealt = 0;
+unsigned long netta_player_direct_kills = 0;
+unsigned long netta_player_damage_received = 0;
+
+/* Accounting only; called after immunity and armor adjustments. */
+void Netta_RecordDamage(mobj_t *target, mobj_t *inflictor, mobj_t *source, int damage)
+{
+    /* Attribute only actual lost health of a living counted monster directly
+     * damaged by the console player. Overkill, damage to barrels, and monster infighting
+     * cannot increase this counter. Damage already passed all immunity rules. */
+    if (damage > 0)
+    {
+        unsigned actual = damage < target->health ? damage : target->health;
+        if (source && source->player == &players[consoleplayer]
+            && (!inflictor || inflictor->type != MT_BARREL)
+            && !target->player && (target->flags & MF_COUNTKILL))
+        {
+            netta_player_damage_dealt += actual;
+            if (damage >= target->health) ++netta_player_direct_kills;
+        }
+        if (target->player == &players[consoleplayer])
+            netta_player_damage_received += actual;
+    }
+
+}
+
+
 
 
 
@@ -887,6 +916,8 @@ P_DamageMobj
 	    I_Tactile (40,10,40+temp*2);
     }
     
+    Netta_RecordDamage(target, inflictor, source, damage);
+
     // do the damage	
     target->health -= damage;	
     if (target->health <= 0)
@@ -919,4 +950,3 @@ P_DamageMobj
     }
 			
 }
-

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "Independent source-contract subagent replay of baseline/quality under corrected frozen core",
+  "corrected_core_sha256": "83de6758434272eb64ed9a4c74cea9e9ecd534e69a3f089bea24a8f1447091ee",
+  "training_observations_replayed": 512,
+  "final_checkpoints_exactly_reproduced": 4,
+  "evaluation_sources_and_state_fingerprints_checked": 256,
+  "paired_full_evaluation_outcomes_exactly_equal": {
+    "corrected_trace_vs_original_baseline": 128,
+    "corrected_both_vs_original_quality": 128
+  },
+  "final_learned_states_identical_except_control_flags": true,
+  "input_bridge_seeds_budgets_match": true,
+  "reuse_confounds_found": [],
+  "evidence_limit": "Original raw completeness verified separately by main audit using explicit recovery files."
+}

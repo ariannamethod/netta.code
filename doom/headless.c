@@ -1,4 +1,4 @@
-/* Netta's pipe/framebuffer platform for unmodified Doom Generic engine sources.
+/* Netta's pipe/framebuffer platform for Doom Generic engine sources.
  * GPL-2.0-or-later, like the engine. No window, sound, joystick, or network API.
  */
 #include <stdio.h>
@@ -15,6 +15,10 @@
 #include "p_local.h"
 #include "r_main.h"
 #include "m_random.h"
+
+extern unsigned long netta_player_damage_dealt;
+extern unsigned long netta_player_direct_kills;
+extern unsigned long netta_player_damage_received;
 
 static unsigned short events[64];
 static unsigned read_event, write_event, frames;
@@ -83,18 +87,21 @@ static void state(void) {
     int ammunition = kind == am_noammo ? 0 : player->ammo[kind];
     printf("NETTA {\"tic\":%d,\"frames\":%u,\"terminal\":%s,\"dead\":%s,"
            "\"gamestate\":%d,\"variables\":{\"health\":%d,\"ammo\":%d,\"weapon\":%d,\"kills\":%d,"
+           "\"player_damage_dealt\":%lu,\"player_direct_kills\":%lu,\"player_damage_received\":%lu,"
            "\"x\":%.6f,\"y\":%.6f,\"angle\":%.6f,\"ammo_inventory\":[%d,%d,%d,%d]},"
            "\"observation\":{\"health\":%d,\"ammo\":%d,\"scene\":\"%s\"},\"focus\":",
            gametic, frames, gamestate != GS_LEVEL || player->health <= 0 ? "true" : "false",
            player->health <= 0 ? "true" : "false", gamestate, player->health, ammunition,
            player->readyweapon, player->killcount,
+           netta_player_damage_dealt, netta_player_direct_kills, netta_player_damage_received,
            body ? body->x / 65536.0 : 0, body ? body->y / 65536.0 : 0,
            body ? body->angle * (360.0 / 4294967296.0) : 0,
            player->ammo[0], player->ammo[1], player->ammo[2], player->ammo[3],
            player->health <= 25 ? 25 : player->health <= 75 ? 60 : 100,
            ammunition > 0 ? 10 : 0, scene);
-    if (focus) printf("{\"type\":%d,\"health\":%d,\"angle_delta\":%.6f,\"relative_size\":%.6f}",
-                      focus->type, focus->health, direction, largest);
+    if (focus) printf("{\"type\":%d,\"health\":%d,\"angle_delta\":%.6f,\"relative_size\":%.6f,\"distance\":%.6f}",
+                      focus->type, focus->health, direction, largest,
+                      hypot((double)focus->x - body->x, (double)focus->y - body->y) / FRACUNIT);
     else printf("null");
     printf("}\n");
     fflush(stdout);

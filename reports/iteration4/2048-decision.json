@@ -1,0 +1,186 @@
+{
+  "experiment": "2048 iteration4 fixed budget factorial",
+  "primary_metric": "completed episode score per raw generation attempt",
+  "replicas": 2,
+  "train_per_arm_replica": 128,
+  "eval_per_arm_replica": 64,
+  "max_moves": 128,
+  "confirmation_rule": "Among quality/trace/both with positive completed-score/raw delta in both development replicas, aggregate gain >=25 points/raw and pooled mean played score >=baseline, select largest aggregate completed-score/raw gain. Tie priority trace,quality,both. Confirm chosen arm against baseline with 3 fresh replicas, 256 train and 128 eval each. If none qualifies, retain current release state and report optional mechanisms experimental without a confirmatory sweep.",
+  "aggregate_evaluation": {
+    "baseline": {
+      "raw_attempts": 128,
+      "played": 72,
+      "runtime_ok": 113,
+      "syntax_error": 15,
+      "corpus_replay": 41,
+      "distinct_played_sources": 35,
+      "completed": 72,
+      "completed_score_per_raw_attempt": 557.90625,
+      "reward_per_raw_attempt": 0.3603769566407972,
+      "score_per_raw_attempt": 557.90625,
+      "mean_played_score": 991.8333333333334,
+      "best_score": 1336,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 33,
+        "move_limit": 39,
+        "corpus_source_replay": 10,
+        "syntax_error": 15,
+        "corpus_probe_behavior_replay": 31
+      }
+    },
+    "quality": {
+      "raw_attempts": 128,
+      "played": 71,
+      "runtime_ok": 112,
+      "syntax_error": 15,
+      "corpus_replay": 41,
+      "distinct_played_sources": 38,
+      "completed": 71,
+      "completed_score_per_raw_attempt": 541.8125,
+      "reward_per_raw_attempt": 0.3534560252372952,
+      "score_per_raw_attempt": 541.8125,
+      "mean_played_score": 976.7887323943662,
+      "best_score": 1320,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 35,
+        "move_limit": 36,
+        "corpus_source_replay": 12,
+        "syntax_error": 15,
+        "corpus_probe_behavior_replay": 29,
+        "runtime_error": 1
+      }
+    },
+    "trace": {
+      "raw_attempts": 128,
+      "played": 72,
+      "runtime_ok": 113,
+      "syntax_error": 15,
+      "corpus_replay": 41,
+      "distinct_played_sources": 35,
+      "completed": 72,
+      "completed_score_per_raw_attempt": 557.90625,
+      "reward_per_raw_attempt": 0.3603769566407972,
+      "score_per_raw_attempt": 557.90625,
+      "mean_played_score": 991.8333333333334,
+      "best_score": 1336,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 33,
+        "move_limit": 39,
+        "corpus_source_replay": 10,
+        "syntax_error": 15,
+        "corpus_probe_behavior_replay": 31
+      }
+    },
+    "both": {
+      "raw_attempts": 128,
+      "played": 71,
+      "runtime_ok": 112,
+      "syntax_error": 15,
+      "corpus_replay": 41,
+      "distinct_played_sources": 38,
+      "completed": 71,
+      "completed_score_per_raw_attempt": 541.8125,
+      "reward_per_raw_attempt": 0.3534560252372952,
+      "score_per_raw_attempt": 541.8125,
+      "mean_played_score": 976.7887323943662,
+      "best_score": 1320,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 35,
+        "move_limit": 36,
+        "corpus_source_replay": 12,
+        "syntax_error": 15,
+        "corpus_probe_behavior_replay": 29,
+        "runtime_error": 1
+      }
+    },
+    "random_legal": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 969.3125,
+      "reward_per_raw_attempt": 0.6333934956346284,
+      "score_per_raw_attempt": 969.3125,
+      "mean_played_score": 969.3125,
+      "best_score": 1404,
+      "max_tile": 128,
+      "statuses": {
+        "terminal": 74,
+        "move_limit": 54
+      }
+    },
+    "fixed_greedy": {
+      "raw_attempts": 128,
+      "played": 128,
+      "runtime_ok": 128,
+      "syntax_error": 0,
+      "corpus_replay": 0,
+      "distinct_played_sources": 0,
+      "completed": 128,
+      "completed_score_per_raw_attempt": 1282.125,
+      "reward_per_raw_attempt": 0.7139617380702993,
+      "score_per_raw_attempt": 1282.125,
+      "mean_played_score": 1282.125,
+      "best_score": 1416,
+      "max_tile": 128,
+      "statuses": {
+        "move_limit": 127,
+        "terminal": 1
+      }
+    }
+  },
+  "selection": {
+    "quality": {
+      "per_replica_primary_delta": [
+        -21.1875,
+        -11.0
+      ],
+      "pooled_primary_delta": -16.09375,
+      "pooled_played_score_delta": -15.044600938967164,
+      "qualifies_for_confirmation": false
+    },
+    "trace": {
+      "per_replica_primary_delta": [
+        0.0,
+        0.0
+      ],
+      "pooled_primary_delta": 0.0,
+      "pooled_played_score_delta": 0.0,
+      "qualifies_for_confirmation": false
+    },
+    "both": {
+      "per_replica_primary_delta": [
+        -21.1875,
+        -11.0
+      ],
+      "pooled_primary_delta": -16.09375,
+      "pooled_played_score_delta": -15.044600938967164,
+      "qualifies_for_confirmation": false
+    }
+  },
+  "decision": "Keep existing release state and legacy defaults; optional quality and execution-eligibility experiments remain available. No candidate passes predeclared advancement rule, so no confirmatory sweep.",
+  "release_state_sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+  "initial_trace_issue": "Initial trace arm also removed unplayed replay penalties. Preserved as development; corrected gate limits filtering to real observed episodes.",
+  "source_and_trace_comparison": "development_corrected/trace_coverage_analysis.json",
+  "raw_accounting": {
+    "original_generated_attempts": 1536,
+    "original_control_episodes": 256,
+    "corrected_generated_attempts": 768,
+    "corrected_control_episodes": 256,
+    "recovered_rows": 319,
+    "original_logs_preserved": true,
+    "effective_recovery_hashes_verified": true,
+    "corrected_phase_logs_complete": true
+  },
+  "timing_seconds": {
+    "original_development": 412.24807006899937,
+    "corrective_development": 192.2003229759939
+  }
+}

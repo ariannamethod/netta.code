@@ -104,7 +104,7 @@ class OutcomeHead:
     """Small learned tanh network scoring continuation outcomes, from birth.
 
     Inputs describe unit identity/context/counts, without Python syntax facts.
-    Online binary outcome updates reach all layers; no pretrained parameters.
+    Online bounded-outcome updates reach all layers; no pretrained parameters.
     """
     DIM, HIDDEN = 32, 16
 
@@ -196,6 +196,17 @@ class Organism:
         self.lived = defaultdict(Counter)
         self.visits = {}
         self.tasks = {}
+        # Code's distant memory is opt-in. Legacy states keep their exact law.
+        self.anchor_strength = 0.0
+        self.anchor_base = None
+        self.anchor_lived = defaultdict(Counter)
+        # Environment quality and executed-branch credit are independent,
+        # opt-in experiments. Birth and existing snapshots retain their exact
+        # original sampling and learning when both switches are off.
+        self.control_learning = {"quality": False, "executed_credit": False,
+                                 "quality_strength": 1.6}
+        self.quality_head = None
+        self.quality_observations = 0
         self.exploration = .5
         self.memory_strength = 1.5
         # Locality is a learned choice too. These are sampling settings over
@@ -206,6 +217,78 @@ class Organism:
         self.behaviors = set()
         self.stats = {"games": 0, "accepted": 0, "runtime_ok": 0,
                       "source_replay": 0, "experience_replay": 0, "behavior_replay": 0}
+
+    def configure_control_learning(self, quality=False, executed_credit=False,
+                                   quality_strength=1.6):
+        """Select independently testable environment-learning mechanisms.
+
+        Turning quality off retains its learned parameters for frozen ablations.
+        The separate head uses a soft reward target in [0, 1]; runtime and syntax
+        heads keep their existing targets. No switch adds or repairs source.
+        """
+        if type(quality) is not bool or type(executed_credit) is not bool:
+            raise ValueError("control learning switches must be booleans")
+        if (isinstance(quality_strength, bool) or
+                not isinstance(quality_strength, (int, float)) or
+                not math.isfinite(quality_strength) or not 0 <= quality_strength <= 8):
+            raise ValueError("quality strength must be finite and in [0, 8]")
+        if self.mode != "control" and (quality or executed_credit):
+            raise ValueError("environment learning requires a control island")
+        self.control_learning = {"quality": quality, "executed_credit": executed_credit,
+                                 "quality_strength": quality_strength}
+        if quality and self.quality_head is None:
+            self.quality_head = OutcomeHead(self.seed ^ 0x5155414C)
+        return self
+
+    @staticmethod
+    def _executed_choices(generated, executed_lines):
+        """Select raw generation choices overlapping a traced source line.
+
+        Byte intervals exclude each line's newline, so a choice ending with a
+        newline cannot borrow credit from an unexecuted neighbouring line.
+        Trace frequency is discarded: one loop line receives one credit update.
+        """
+        source = generated.get("source")
+        spans, offset = [], 0
+        for number, raw in enumerate((source or "").encode().splitlines(keepends=True), 1):
+            if number in executed_lines:
+                spans.append((offset, offset + len(raw.rstrip(b"\r\n"))))
+            offset += len(raw)
+        return [choice for choice in generated["choices"]
+                if choice.get("byte_end", -1) > choice.get("byte_start", -1)
+                and any(end > start and choice.get("byte_start", -1) < end and
+                       choice.get("byte_end", -1) > start
+                       for start, end in spans)]
+
+    def configure_anchor_memory(self, strength=1.0):
+        """Enable Code's learned first-unit/suffix associations explicitly.
+
+        The ordinary units come only from this island and acquired programs.
+        Strength zero preserves the previous sampling distribution.
+        """
+        if (self.mode != "general" or type(strength) not in (int, float)
+                or not math.isfinite(strength) or not 0 <= strength <= 4):
+            raise ValueError("anchor memory requires general Code and finite strength in [0, 4]")
+        if strength and self.anchor_base is None:
+            self.anchor_base = defaultdict(Counter)
+            for program in self.programs:
+                self._anchor_acquire(self.units.encode(program), self.anchor_base)
+        self.anchor_strength = float(strength)
+        return self
+
+    def _anchor_acquire(self, tokens, destination):
+        if not tokens:
+            return
+        history, counted = [BOS], set()
+        for token in tokens + [EOS]:
+            if len(history) > self.order + 1:
+                for depth in (2, 1, 0):
+                    context = (history[1],) + (tuple(history[-depth:]) if depth else ())
+                    key = context + (token,)
+                    if key not in counted:
+                        destination[context][token] += 1
+                        counted.add(key)
+            history.append(token)
 
     def _distribution(self, history, rng, streak, strategy, exploring=False, task_state=None):
         locality = [(self.order, 0.0, 64), (self.order, .02, 24),
@@ -243,6 +326,20 @@ class Organism:
         if len(candidates) == 1:
             return candidates[0][0], 1, None
         total = sum(n for _, n in candidates)
+        anchored = None
+        if self.anchor_strength and len(history) > self.order + 1:
+            for depth in (2, 1, 0):
+                anchor = (history[1],) + (tuple(history[-depth:]) if depth else ())
+                base_anchor = self.anchor_base.get(anchor)
+                lived_anchor = None if exploring else self.anchor_lived.get(anchor)
+                if base_anchor or lived_anchor:
+                    anchored = Counter(base_anchor or {})
+                    if lived_anchor:
+                        scale = self.memory_strength * max(1, sum(anchored.values())) / sum(lived_anchor.values())
+                        for unit, frequency in lived_anchor.items():
+                            anchored[unit] += scale * frequency
+                    break
+        anchor_total = sum(anchored.get(t, 0) for t, _ in candidates) if anchored else 0
         entries = []
         for token, count in candidates:
             x = OutcomeHead.features(history, token, len(context), count, total, len(history))
@@ -256,6 +353,10 @@ class Organism:
             value += .8 * max(-4, min(4, logit - self.head.bias))
             syntax_logit, _ = self.syntax_head.forward(x)
             value += .8 * max(-4, min(4, syntax_logit - self.syntax_head.bias))
+            if self.control_learning["quality"]:
+                quality_logit, _ = self.quality_head.forward(x)
+                value += self.control_learning["quality_strength"] * max(
+                    -4, min(4, quality_logit - self.quality_head.bias))
             if task_state is not None:
                 task_logit, _ = task_state["head"].forward(x)
                 task_wins, task_trials = task_state["credit"].get(key, (0.0, 0.0))
@@ -263,6 +364,10 @@ class Organism:
                 task_evidence = task_trials / (task_trials + 4)
                 value += 1.6 * max(-4, min(4, task_logit - task_state["head"].bias))
                 value += 4.0 * task_evidence * (task_association - .5)
+            if anchor_total:
+                # Finite soft weighting: the candidate set is unchanged.
+                anchored_probability = (anchored.get(token, 0) + 2.0 * count / total) / (anchor_total + 2.0)
+                value += self.anchor_strength * math.log(anchored_probability / (count / total))
             entries.append((token, value, x, key))
         peak = max(e[1] for e in entries)
         weights = [math.exp(e[1] - peak) for e in entries]
@@ -434,6 +539,8 @@ class Organism:
             memory["head"].update(features[i * len(features) // min(12, len(features))], float(passed))
 
     def _acquire(self, tokens):
+        if self.anchor_strength:
+            self._anchor_acquire(tokens, self.anchor_lived)
         history, counted = [BOS], set()
         for token in tokens + [EOS]:
             for depth in range(1, min(self.order, len(history)) + 1):
@@ -444,7 +551,8 @@ class Organism:
                     counted.add(key)
             history.append(token)
 
-    def _learn(self, generated, reward, runtime_ok, error_line=None, result=None):
+    def _learn(self, generated, reward, runtime_ok, error_line=None, result=None,
+               reward_choices=None):
         exploring = generated.get("exploring", False)
         search = (self.explore_search if exploring else self.search)[generated["strategy"]]
         if search[1] >= 128:
@@ -479,7 +587,9 @@ class Organism:
             else:
                 chosen = chosen[-4:]
         unique = {choice["key"]: choice["x"] for choice in chosen}
-        for association, x in unique.items():
+        reward_unique = (unique if reward_choices is None else
+                         {choice["key"]: choice["x"] for choice in reward_choices})
+        for association, x in reward_unique.items():
             wins, trials = self.credit.get(association, (0.0, 0.0))
             if trials >= 64:
                 wins *= .95
@@ -497,7 +607,8 @@ class Organism:
             for i in range(min(12, len(grammar_values))):
                 self.syntax_head.update(grammar_values[i * len(grammar_values) // min(12, len(grammar_values))], float(syntax_ok))
 
-    def observe(self, generated, reward, runtime_ok, error_line=None, behavior=None, diagnostic=None):
+    def observe(self, generated, reward, runtime_ok, error_line=None, behavior=None, diagnostic=None,
+                executed_lines=None, environment_observed=False):
         """Acquire a bounded outcome supplied by an external environment.
 
         Used by the Doom bridge after real actions and consequences. A raw
@@ -509,11 +620,36 @@ class Organism:
             raise ValueError("environment reward must be finite and in [0, 1]")
         if behavior is not None and (not isinstance(behavior, str) or not re.fullmatch(r"[0-9a-f]{64}", behavior)):
             raise ValueError("environment behavior must be a SHA-256 action-table hash")
+        if type(environment_observed) is not bool:
+            raise ValueError("environment_observed must be a boolean")
+        if executed_lines is not None:
+            try:
+                lines = list(executed_lines)
+            except TypeError as error:
+                raise ValueError("executed lines must be source line numbers") from error
+            source_lines = (generated.get("source") or "").replace("\r\n", "\n").replace("\r", "\n")
+            last_line = source_lines.count("\n") + 1
+            if any(type(line) is not int or not 1 <= line <= last_line for line in lines):
+                raise ValueError("executed lines must be valid source line numbers")
+            executed_lines = set(lines)
+        reward_choices = None
+        # Replay rejection keeps its ordinary negative credit; only played
+        # outcomes have executed branches to select for environment feedback.
+        if runtime_ok and environment_observed and self.control_learning["executed_credit"]:
+            if executed_lines is None:
+                raise ValueError("executed credit requires an explicit source-line trace")
+            reward_choices = self._executed_choices(generated, executed_lines)
         self.stats["games"] += 1
         self.stats["runtime_ok"] += int(bool(runtime_ok))
         self.stats["accepted"] += int(reward > 0)
         self.stats["environment_reward"] = self.stats.get("environment_reward", 0.0) + reward
-        self._learn(generated, reward, bool(runtime_ok), error_line, diagnostic)
+        self._learn(generated, reward, bool(runtime_ok), error_line, diagnostic, reward_choices)
+        if self.control_learning["quality"] and runtime_ok and environment_observed:
+            choices = generated["choices"] if reward_choices is None else reward_choices
+            values = list({choice["key"]: choice["x"] for choice in choices}.values())
+            for i in range(min(12, len(values))):
+                self.quality_head.update(values[i * len(values) // min(12, len(values))], reward)
+            self.quality_observations += 1
         if runtime_ok and behavior:
             self.visits[behavior] = self.visits.get(behavior, 0) + 1
             if reward > .5 and behavior not in self.behaviors:
@@ -535,12 +671,21 @@ class Organism:
                 "reference": self.reference,
                 "credit": [[list(k), v] for k, v in sorted(self.credit.items())],
                 "seen": sorted(self.seen), "behaviors": sorted(self.behaviors)}
+        if self.anchor_strength or self.anchor_lived:
+            body["anchor_strength"] = self.anchor_strength
+            body["anchor_lived"] = [[list(k), sorted(v.items())] for k, v in sorted(self.anchor_lived.items())]
         if self.tasks:
             body["tasks"] = {key: {"head": value["head"].state(),
                                     "credit": [[list(k), v] for k, v in sorted(value["credit"].items())],
                                     "attempts": value["attempts"], "eligible": value["eligible"],
                                     "passed": value["passed"]}
                              for key, value in sorted(self.tasks.items())}
+        if (self.control_learning["quality"] or self.control_learning["executed_credit"] or
+                self.quality_head is not None):
+            body["control_learning"] = dict(self.control_learning,
+                                             observations=self.quality_observations,
+                                             head=(self.quality_head.state()
+                                                   if self.quality_head is not None else None))
         return body
 
     def save(self, path):
@@ -589,6 +734,44 @@ class Organism:
         organism.seen = set(body["seen"])
         organism.behaviors = set(body["behaviors"])
         organism.stats = body["stats"]
+        control = body.get("control_learning")
+        if control is not None:
+            if not isinstance(control, dict):
+                raise ValueError("invalid control learning memory")
+            organism.configure_control_learning(control.get("quality"), control.get("executed_credit"),
+                                                 control.get("quality_strength"))
+            observations = control.get("observations")
+            if type(observations) is not int or observations < 0:
+                raise ValueError("invalid environment observation count")
+            head = control.get("head")
+            if (head is None and (control["quality"] or observations)):
+                raise ValueError("missing environment quality head")
+            if head is not None:
+                organism.quality_head = OutcomeHead(state=head)
+            organism.quality_observations = observations
+        if "anchor_strength" in body or "anchor_lived" in body:
+            organism.configure_anchor_memory(body.get("anchor_strength", 0.0))
+            memories = body.get("anchor_lived", [])
+            if not isinstance(memories, list):
+                raise ValueError("invalid anchor continuations")
+            for entry in memories:
+                if not isinstance(entry, list) or len(entry) != 2:
+                    raise ValueError("invalid anchor continuation entry")
+                context, continuation = entry
+                if (not isinstance(context, list) or not 1 <= len(context) <= 3
+                        or any(type(t) is not int or not 0 <= t < len(organism.units.expansions) for t in context)
+                        or tuple(context) in organism.anchor_lived or not isinstance(continuation, list)):
+                    raise ValueError("invalid anchor context")
+                counts = Counter()
+                for pair in continuation:
+                    if not isinstance(pair, list) or len(pair) != 2:
+                        raise ValueError("invalid anchor unit count")
+                    unit, count = pair
+                    if (type(unit) is not int or not (unit == EOS or 0 <= unit < len(organism.units.expansions))
+                            or type(count) is not int or count <= 0 or unit in counts):
+                        raise ValueError("invalid anchor unit count")
+                    counts[unit] = count
+                organism.anchor_lived[tuple(context)] = counts
         task_states = body.get("tasks", {})
         if not isinstance(task_states, dict) or len(task_states) > 128:
             raise ValueError("invalid task memory")
@@ -606,8 +789,12 @@ class Organism:
         return organism
 
     def without_experience(self):
-        return Organism(self.programs, self.seed, self.order, mode=self.mode,
-                        _pairs=self.units.pairs, _reference=self.reference)
+        organism = Organism(self.programs, self.seed, self.order, mode=self.mode,
+                            _pairs=self.units.pairs, _reference=self.reference)
+        organism.configure_control_learning(**self.control_learning)
+        if self.anchor_strength:
+            organism.configure_anchor_memory(self.anchor_strength)
+        return organism
 
 
 def summarize(records):
@@ -652,11 +839,18 @@ def run_cli():
     ask.add_argument("--log")
     ask.add_argument("--learn-task", action="store_true", help="learn a declared command from executed outcomes")
     ask.add_argument("--save", help="explicit snapshot destination for --learn-task")
+    for command in (init, play, ask):
+        command.add_argument("--anchor-memory", action="store_true",
+                             help="explicitly enable Code's distant continuation memory")
     args = parser.parse_args()
+    if args.command == "ask" and args.anchor_memory and not args.learn_task:
+        parser.error("--anchor-memory on ask requires --learn-task and --save SNAPSHOT")
     if args.command == "init":
         if Path(args.state).exists():
             parser.error("state exists; choose a new path to preserve its experience")
         model = Organism(read_island(args.island), args.seed, args.order, args.merges, args.judge)
+        if args.anchor_memory:
+            model.configure_anchor_memory()
         model.save(args.state)
         print(json.dumps({"state": args.state, "programs": len(model.programs),
                           "units": len(model.units.expansions), "species": SPECIES}))
@@ -664,15 +858,31 @@ def run_cli():
     if args.command == "ask":
         config_path = Path(args.tools).resolve()
         call = select_state(args.request, json.loads(config_path.read_text(encoding="utf-8")))
-        print(json.dumps(call, ensure_ascii=False), file=sys.stderr)
         if call["status"] != "selected":
+            print(json.dumps(call, ensure_ascii=False), file=sys.stderr)
             return 2
         args.state = str(config_path.parent / call["selection"]["state"])
         if args.learn_task and (not args.save or call["task"]["status"] != "matched"):
             parser.error("--learn-task requires a declared command and --save SNAPSHOT")
         if args.save and not args.learn_task:
             parser.error("--save requires --learn-task")
+        # The JSON front door may select either standalone organism. The
+        # selected body validates and loads its own snapshot; no sibling
+        # implementation is imported into this file.
+        snapshot_path = Path(args.state)
+        if snapshot_path.stat().st_size > 64_000_000:
+            parser.error("snapshot exceeds 64 MB")
+        snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
+        selected_species = snapshot.get("body", {}).get("species")
+        if selected_species in ("nettalee", "nettacode") and selected_species != SPECIES:
+            sibling = Path(__file__).resolve().with_name(selected_species + ".py")
+            if not sibling.is_file():
+                parser.error("selected state requires " + sibling.name + " beside this file")
+            return subprocess.call([sys.executable, str(sibling)] + sys.argv[1:])
+        print(json.dumps(call, ensure_ascii=False), file=sys.stderr)
     model = Organism.load(args.state)
+    if getattr(args, "anchor_memory", False):
+        model.configure_anchor_memory()
     if args.command == "ask" and model.mode != call["selection"]["mode"]:
         parser.error("caller judge does not match selected snapshot")
     if args.command == "ask" and model.mode == "control":

@@ -2,8 +2,8 @@
 """Doomer: Netta Lee writes policies for Doom Generic or optional ViZDoom.
 
 The Generic backend uses the vendored C engine and an external IWAD. The exact source is executed on every
-possible compact observation before play. Its resulting table is a complete,
-finite memoization of that program; no handwritten policy chooses actions.
+possible legacy compact observation before play. The optional temporal sensor
+executes previously unseen inputs on demand in the same bounded Python judge.
 """
 import argparse
 from collections import Counter
@@ -41,8 +41,18 @@ def file_hash(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def atomic_text(path, text):
+    path = Path(path)
+    temporary = path.with_name(path.name + ".pending-" + str(os.getpid()))
+    with temporary.open("w", encoding="utf-8") as stream:
+        stream.write(text)
+        stream.flush()
+        os.fsync(stream.fileno())
+    temporary.replace(path)
+
+
 def write_json(path, value):
-    Path(path).write_text(json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8")
+    atomic_text(path, json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n")
 
 
 def load_config(path):
@@ -65,13 +75,35 @@ def load_config(path):
     for key in ("kill_weight", "damage_weight", "ammo_weight", "scale"):
         if type(reward[key]) not in (int, float) or not math.isfinite(reward[key]) or reward[key] <= 0:
             raise ValueError("reward coefficients must be positive finite numbers")
+    if config.get("sensor", "legacy") not in {"legacy", "temporal"}:
+        raise ValueError("Doom sensor must be legacy or temporal")
+    if config.get("reward_mode", "legacy") not in {"legacy", "attributed"}:
+        raise ValueError("Doom reward mode must be legacy or attributed")
     return config
 
 
 def observations(config):
     schema = config["observation"]
-    return [{"health": health, "ammo": ammo, "scene": scene}
+    base = [{"health": health, "ammo": ammo, "scene": scene}
             for health, ammo, scene in itertools.product(schema["health_values"], schema["ammo_values"], schema["scene_values"])]
+    if config.get("sensor", "legacy") == "legacy":
+        return base
+    # Public novelty/validity probes, not an exhaustive temporal truth table.
+    # Live inputs outside this set are executed on demand, never approximated.
+    return [dict(obs, previous_action=action, moved=bool(index & 1),
+                 took_damage=bool(index & 2),
+                 distance="none" if obs["scene"] == "empty" else ("near" if index & 1 else "far"))
+            for obs in base for index, action in enumerate(("none",) + ACTION_NAMES)]
+
+
+def temporal_observation(raw, previous, action):
+    variables = raw["variables"]
+    old = previous["variables"] if previous else variables
+    focus = raw.get("focus")
+    return dict(raw["observation"], previous_action=action or "none",
+                moved=math.hypot(variables["x"] - old["x"], variables["y"] - old["y"]) >= 1.0,
+                took_damage=variables["player_damage_received"] > old["player_damage_received"],
+                distance="none" if not focus else "near" if focus["distance"] <= 256 else "far")
 
 
 def observation_key(obs):
@@ -98,7 +130,10 @@ def validate_policy(source, config):
     """Return only actions actually produced by the unchanged source."""
     rows = []
     inputs = observations(config)
-    results = judge_batch(source, observations=[{"obs": obs} for obs in inputs], actions=list(ACTION_NAMES))
+    results = []
+    for offset in range(0, len(inputs), 48):
+        results.extend(judge_batch(source, observations=[{"obs": obs} for obs in inputs[offset:offset+48]],
+                                   actions=list(ACTION_NAMES)))
     if len(results) != len(inputs):
         raise RuntimeError("incomplete execution evidence")
     for obs, result in zip(inputs, results):
@@ -110,10 +145,13 @@ def validate_policy(source, config):
                      "executed_lines": result.get("metrics", {}).get("executed_lines", [])})
     table = {observation_key(row["observation"]): row["action"] for row in rows}
     reactive = len(set(table.values())) >= 2
-    return {"accepted": reactive, "status": "ready" if reactive else "unreactive",
+    policy = {"accepted": reactive, "status": "ready" if reactive else "unreactive",
             "reason": "" if reactive else "the same action for every observation",
             "rows": rows, "table": table, "behavior_hash": fingerprint(table),
             "source_hash": hashlib.sha256(source.encode()).hexdigest()}
+    if config.get("sensor", "legacy") == "temporal":
+        policy.update(source=source, sensor="temporal", novelty_scope="168 fixed probes; live inputs executed on demand")
+    return policy
 
 
 def check_table(policy, config):
@@ -123,6 +161,11 @@ def check_table(policy, config):
         raise ValueError("policy must map every compact observation to one literal action")
     if policy.get("behavior_hash") != fingerprint(table):
         raise ValueError("policy action table changed after source execution")
+    if config.get("sensor", "legacy") == "temporal":
+        if policy.get("sensor") != "temporal" or not isinstance(policy.get("source"), str):
+            raise ValueError("temporal policy requires unchanged source")
+        if hashlib.sha256(policy["source"].encode()).hexdigest() != policy.get("source_hash"):
+            raise ValueError("temporal policy source changed after validation")
 
 
 def prepare_reference(organism, config):
@@ -171,6 +214,11 @@ def save_frame(game, path):
 
 def reward_from_totals(totals, config):
     weights = config["reward"]
+    if config.get("reward_mode", "legacy") == "attributed":
+        score = (totals["player_damage_dealt"] / 100.0 - weights["damage_weight"] * totals["player_damage_received"]
+                 - weights["ammo_weight"] * totals["ammo_spent"])
+        return {"score": score, "normalized": 0.5 + 0.5 * math.tanh(score / weights["scale"]),
+                "formula": "0.5 + 0.5*tanh((player_damage_dealt/100 - damage_weight*player_damage_received - ammo_weight*ammo_spent)/scale)"}
     score = (weights["kill_weight"] * totals["kills"] - weights["damage_weight"] * totals["damage"]
              - weights["ammo_weight"] * totals["ammo_spent"])
     return {"score": score, "normalized": 0.5 + 0.5 * math.tanh(score / weights["scale"]),
@@ -227,6 +275,11 @@ def environment_contract(config):
         contract["perception"] = "generic-los-angular-v1"
     else:
         contract.update(scenario=config["scenario"], perception="vizdoom-label-thirds-v1")
+    if config.get("sensor", "legacy") == "temporal":
+        contract["perception"] = "generic-los-temporal-v2"
+        contract["sensor"] = "temporal"
+    if config.get("reward_mode", "legacy") == "attributed":
+        contract["reward_mode"] = "player-attributed-v1"
     return contract
 
 
@@ -250,6 +303,9 @@ def bind_environment(config, environment=None, backend=None, iwad=None, engine=N
                                episode if episode is not None else environment.get("episode"),
                                level if level is not None else environment.get("map"),
                                skill if skill is not None else environment.get("skill"))
+    if config["backend"] != "generic" and (config.get("sensor", "legacy") != "legacy" or
+                                             config.get("reward_mode", "legacy") != "legacy"):
+        raise ValueError("temporal observations and attributed reward require the Generic backend")
     if environment and environment != environment_contract(config):
         raise ValueError("saved Doom environment differs; use a new state for another backend, IWAD, map, or control setup")
     return config
@@ -338,31 +394,57 @@ def run_generic(config, seed, output, policy=None):
             meta.update(status="ready", executed_actions=0, gameplay=False)
             write_json(output / "engine-check.json", meta)
             return meta
-        totals = {"kills": 0.0, "damage": 0.0, "ammo_spent": 0.0, "engine_reward": None}
+        totals = {"kills": 0.0, "damage": 0.0, "ammo_spent": 0.0, "engine_reward": None,
+                  "player_damage_dealt": 0, "player_direct_kills": 0, "player_damage_received": 0}
         counts, steps = Counter(), 0
+        cache = {observation_key(row["observation"]): (row["action"], row.get("executed_lines", []))
+                 for row in policy.get("rows", [])}
+        temporal = config.get("sensor", "legacy") == "temporal"
+        previous, previous_action, executed_lines, policy_failure = None, None, set(), None
+        trajectory = []
         with (output / "trajectory.jsonl").open("w", encoding="utf-8") as journal:
             while not before["terminal"] and steps < config["max_decisions"]:
-                obs = before["observation"]
-                action = policy["table"][observation_key(obs)]
+                obs = temporal_observation(before, previous, previous_action) if temporal else before["observation"]
+                key = observation_key(obs)
+                if temporal and key not in cache:
+                    result = judge_batch(policy["source"], [{"obs": obs}], list(ACTION_NAMES))[0]
+                    if not result.get("accepted") or result.get("action") not in ACTION_NAMES:
+                        policy_failure = dict(result, failed_observation=obs)
+                        break
+                    cache[key] = result["action"], result.get("metrics", {}).get("executed_lines", [])
+                action = cache[key][0] if temporal else policy["table"][key]
+                used_lines = cache.get(key, (None, []))[1]
+                executed_lines.update(used_lines)
                 after = session.send("step %s %d" % (action, config["decision_quantum"]))
                 changes = {"kills": max(0, after["variables"]["kills"] - before["variables"]["kills"]),
                            "damage": max(0, before["variables"]["health"] - after["variables"]["health"]),
                            "ammo_spent": sum(max(0, a - b) for a, b in zip(before["variables"]["ammo_inventory"],
                                                                           after["variables"]["ammo_inventory"])),
                            "engine_reward": None}
-                for name in ("kills", "damage", "ammo_spent"):
+                for name in ("player_damage_dealt", "player_direct_kills", "player_damage_received"):
+                    changes[name] = after["variables"][name] - before["variables"][name]
+                for name in ("kills", "damage", "ammo_spent", "player_damage_dealt", "player_direct_kills", "player_damage_received"):
                     totals[name] += changes[name]
-                journal.write(canonical({"step": steps, "before": before, "observation": obs, "action": action,
-                                         "after": after, "consequences": changes}) + "\n")
+                line = canonical({"step": steps, "before": before, "observation": obs, "action": action,
+                                  "executed_lines": used_lines, "after": after, "consequences": changes}) + "\n"
+                trajectory.append(line)
+                journal.write(line)
+                previous, previous_action = before, action
                 before = after
                 counts[action] += 1
                 steps += 1
                 if steps in {1, 16, 64, config["max_decisions"]}:
                     session.frame("frame_%03d.png" % steps)
+        atomic_text(output / "trajectory.jsonl", "".join(trajectory))
         session.frame("frame_final.png")
         meta.update(decisions=steps, actions=dict(counts), final=before, totals=totals,
                     reward=reward_from_totals(totals, config), engine_total_reward=None,
+                    executed_lines=sorted(executed_lines), policy_failure=policy_failure,
+                    sensor=config.get("sensor", "legacy"),
+                    attribution="capped actual monster health lost directly to console player; infighting and barrel inflictors excluded",
                     policy_source_sha256=policy.get("source_hash"), policy_behavior_sha256=policy["behavior_hash"])
+        if policy_failure is not None:
+            meta["reward"] = {"normalized": 0.0, "score": None, "formula": "failed live policy"}
         write_json(output / "episode.json", meta)
         return meta
     finally:
@@ -417,6 +499,9 @@ def run_episode(policy, config, seed, output, visible=False):
     totals = {"kills": 0.0, "damage": 0.0, "ammo_spent": 0.0, "engine_reward": 0.0}
     counts = Counter()
     steps = 0
+    lines_by_input = {observation_key(row["observation"]): row.get("executed_lines", [])
+                      for row in policy.get("rows", [])}
+    executed_lines, trajectory = set(), []
     try:
         game.init()
         save_frame(game, output / "frame_000.png")
@@ -426,6 +511,8 @@ def run_episode(policy, config, seed, output, visible=False):
                 before = snapshot(game, variables)
                 obs = perceive(before, game.get_screen_width(), config)
                 action = policy["table"][observation_key(obs)]
+                used_lines = lines_by_input.get(observation_key(obs), [])
+                executed_lines.update(used_lines)
                 vector = [name == action for name in ACTION_NAMES]
                 raw_reward = float(game.make_action(vector, config["decision_quantum"]))
                 after = snapshot(game, variables)
@@ -435,13 +522,18 @@ def run_episode(policy, config, seed, output, visible=False):
                            "engine_reward": raw_reward}
                 for name, value in changes.items():
                     totals[name] += value
-                journal.write(canonical({"step": steps, "before": before, "observation": obs, "action": action,
-                                         "buttons": vector, "after": after, "consequences": changes}) + "\n")
+                line = canonical({"step": steps, "before": before, "observation": obs, "action": action,
+                                  "executed_lines": used_lines, "buttons": vector, "after": after,
+                                  "consequences": changes}) + "\n"
+                trajectory.append(line)
+                journal.write(line)
                 counts[action] += 1
                 steps += 1
                 if steps in {1, 16, 64, config["max_decisions"]}:
                     save_frame(game, output / ("frame_%03d.png" % steps))
+        atomic_text(output / "trajectory.jsonl", "".join(trajectory))
         result = {"seed": seed, "decisions": steps, "actions": dict(counts), "initial": initial,
+                  "executed_lines": sorted(executed_lines),
                   "final": snapshot(game, variables), "totals": totals, "reward": reward_from_totals(totals, config),
                   "engine_total_reward": float(game.get_total_reward()), "vizdoom": version,
                   "policy_source_sha256": policy.get("source_hash"),
@@ -511,11 +603,14 @@ def evaluate_policy(policy, config, seeds, output, visible=False):
     if len(episodes) == 1:
         return episodes[0]
     return {"episodes": episodes, "episode_seeds": seeds,
+            "executed_lines": sorted({line for episode in episodes for line in episode.get("executed_lines", [])}),
+            "policy_failure": next((episode.get("policy_failure") for episode in episodes if episode.get("policy_failure")), None),
             "totals": {key: (sum(item["totals"][key] for item in episodes)
                              if all(item["totals"][key] is not None for item in episodes) else None)
                        for key in episodes[0]["totals"]},
-            "reward": {"normalized": sum(item["reward"]["normalized"] for item in episodes) / len(episodes),
-                       "aggregation": "arithmetic mean over every specified game seed"}}
+            "reward": {"normalized": (0.0 if any(item.get("policy_failure") for item in episodes) else
+                                       sum(item["reward"]["normalized"] for item in episodes) / len(episodes)),
+                       "aggregation": "zero on any live policy failure; otherwise arithmetic mean over every specified game seed"}}
 
 
 def attempt(organism, config, reference, generation_seed, episode_seed, output, learn, visible=False, play=True,
@@ -548,14 +643,24 @@ def attempt(organism, config, reference, generation_seed, episode_seed, output, 
             receipt["episode"] = episode
             receipt["status"] = "engine_unavailable" if "error" in episode else "played"
             receipt["reward"] = None if "error" in episode else episode["reward"]["normalized"]
+            if episode.get("policy_failure"):
+                receipt["status"], receipt["runtime_ok"] = "live_policy_failure", False
     if not play:
         receipt["reward"] = None
     receipt["training_applied"] = bool(learn and receipt["reward"] is not None)
     if receipt["training_applied"]:
         diagnostic = None if policy["accepted"] else policy.get("judge", {
             "status": policy["status"], "reason": policy.get("reason", ""), "error_line": policy.get("error_line")})
-        organism.observe(generated, receipt["reward"], receipt["runtime_ok"], policy.get("error_line"),
-                         behavior=policy.get("behavior_hash"), diagnostic=diagnostic)
+        if receipt.get("episode", {}).get("policy_failure"):
+            diagnostic = receipt["episode"]["policy_failure"]
+        feedback = {}
+        if callable(getattr(organism, "configure_control_learning", None)):
+            episode = receipt.get("episode", {})
+            feedback = {"executed_lines": episode.get("executed_lines", []),
+                        "environment_observed": receipt["status"] in {"played", "live_policy_failure"}}
+        organism.observe(generated, receipt["reward"], receipt["runtime_ok"],
+                         diagnostic.get("error_line") if diagnostic else policy.get("error_line"),
+                         behavior=policy.get("behavior_hash"), diagnostic=diagnostic, **feedback)
     receipt["state_after"] = fingerprint(organism.state_dict())
     if not learn and receipt["state_after"] != before:
         raise RuntimeError("frozen Doom evaluation changed the organism")
@@ -589,6 +694,10 @@ Vanilla Doom has 256 RNG phases; seeds separated by 256 select the same phase.
     parser.add_argument("--episode", type=int, help="Doom 1 episode, 1..4")
     parser.add_argument("--map", type=int, dest="level", help="Map number")
     parser.add_argument("--skill", type=int, help="Engine difficulty, 1..5")
+    parser.add_argument("--sensor", choices=["legacy", "temporal"], help="Explicit sensor contract; temporal requires a separate state")
+    parser.add_argument("--reward-mode", choices=["legacy", "attributed"], help="Explicit reward contract; a changed contract requires a separate state")
+    parser.add_argument("--control-learning", choices=["legacy", "quality", "trace", "both"],
+                        help="Training only: opt in to a learned outcome head, executed-branch credit, or both")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--episodes", "--attempts", type=int, default=16, help="Generated policy attempts; invalid attempts also count")
     parser.add_argument("--seed", type=int, default=701)
@@ -600,12 +709,18 @@ Vanilla Doom has 256 RNG phases; seeds separated by 256 select the same phase.
     args = parser.parse_args(argv)
     if args.command != "doctor" and args.state is None:
         parser.error("--state is required for check, train, and evaluate")
+    if args.control_learning is not None and args.command != "train":
+        parser.error("--control-learning is a training option; evaluation preserves the saved settings")
     if not 1 <= args.episodes <= 10000 or not 0 <= args.seed <= 2**30:
         parser.error("episodes must be 1..10000 and seed 0..2**30")
     game_seed = args.seed + 100000 if args.game_seed is None else args.game_seed
     if not 0 <= game_seed <= 2**30 or not 1 <= args.episode_repeats <= 16:
         parser.error("game seed must be 0..2**30 and episode repeats 1..16")
     config = load_config(args.config)
+    if args.sensor is not None:
+        config["sensor"] = args.sensor
+    if args.reward_mode is not None:
+        config["reward_mode"] = args.reward_mode
     if args.command != "check":
         try:
             config = bind_environment(config, saved_environment(args.state), args.backend, args.iwad, args.engine,
@@ -649,6 +764,9 @@ Vanilla Doom has 256 RNG phases; seeds separated by 256 select the same phase.
         organism = Organism(programs, seed=args.seed, mode="control", _reference=reference)
     else:
         parser.error("supply an existing state, or --island when training a new one")
+    if args.control_learning is not None:
+        organism.configure_control_learning(quality=args.control_learning in {"quality", "both"},
+                                             executed_credit=args.control_learning in {"trace", "both"})
     reference = prepare_reference(organism, config)
     if args.command == "train" or new_state:
         organism.reference["control"] = reference
@@ -666,7 +784,9 @@ Vanilla Doom has 256 RNG phases; seeds separated by 256 select the same phase.
                "vizdoom": engine_version, "bridge_sha256": file_hash(__file__),
                "engine_execution": args.command != "check",
                "organism_sha256": file_hash(ROOT / "nettalee.py"), "initial_state": fingerprint(organism.state_dict()),
-               "policy_scope": "one unchanged generated program per episode; all 24 inputs exhaustively memoized"})
+               "policy_scope": ("one unchanged generated program per episode; 168 public novelty probes and exact on-demand live execution"
+                                if config.get("sensor", "legacy") == "temporal" else
+                                "one unchanged generated program per episode; all 24 inputs exhaustively memoized")})
     records = []
     for index in range(args.episodes):
         item = attempt(organism, config, reference, args.seed + offset + index,

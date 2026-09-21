@@ -2,7 +2,11 @@
 
 Current behavior is described in the [project README](../README.md). Technical changes belong in [NETTALEELOG](../NETTALEELOG.md) and [NETTACODELOG](../NETTACODELOG.md); visible outputs belong in [gallery.html](../gallery.html).
 
-## Current measurements
+## Fourth engineering pass
+
+[Measured changes, decisions and next hypotheses](iteration4/REPORT.md). Code distant memory, 2048 controls, Doom attribution and temporal sensing, plus independent audit receipts. The public states remain unchanged. [212-test output](iteration4/tests.log), [six-route receipt](iteration4/routes.json), [audit summary](iteration4/audit-summary.json), [separate archive inventory](iteration4/private-archive-inventory.json).
+
+## Earlier measurements
 
 | Experiment | Report |
 |---|---|

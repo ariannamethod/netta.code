@@ -1,0 +1,848 @@
+# === PROGRAM ===
+action = 'move_forward'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage'] and obs['distance'] == 'near':
+    action = 'strafe_left'
+# === PROGRAM ===
+action = 'move_forward'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage'] and obs['distance'] == 'near':
+    action = 'strafe_right'
+# === PROGRAM ===
+action = 'move_forward'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30 and obs['distance'] == 'near':
+    action = 'strafe_left'
+# === PROGRAM ===
+action = 'move_forward'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30 and obs['distance'] == 'near':
+    action = 'strafe_right'
+# === PROGRAM ===
+action = 'strafe_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage'] and obs['distance'] == 'near':
+    action = 'strafe_left'
+# === PROGRAM ===
+action = 'strafe_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage'] and obs['distance'] == 'near':
+    action = 'strafe_right'
+# === PROGRAM ===
+action = 'strafe_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30 and obs['distance'] == 'near':
+    action = 'strafe_left'
+# === PROGRAM ===
+action = 'strafe_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30 and obs['distance'] == 'near':
+    action = 'strafe_right'
+# === PROGRAM ===
+action = 'strafe_right'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage'] and obs['distance'] == 'near':
+    action = 'strafe_left'
+# === PROGRAM ===
+action = 'strafe_right'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage'] and obs['distance'] == 'near':
+    action = 'strafe_right'
+# === PROGRAM ===
+action = 'strafe_right'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30 and obs['distance'] == 'near':
+    action = 'strafe_left'
+# === PROGRAM ===
+action = 'strafe_right'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30 and obs['distance'] == 'near':
+    action = 'strafe_right'
+# === PROGRAM ===
+action = 'turn_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage'] and obs['distance'] == 'near':
+    action = 'strafe_left'
+# === PROGRAM ===
+action = 'turn_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage'] and obs['distance'] == 'near':
+    action = 'strafe_right'
+# === PROGRAM ===
+action = 'turn_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30 and obs['distance'] == 'near':
+    action = 'strafe_left'
+# === PROGRAM ===
+action = 'turn_left'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+elif obs['scene'] == 'right':
+    action = 'turn_right'
+elif obs['scene'] == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30 and obs['distance'] == 'near':
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'move_forward' and not obs['moved']
+if obs['took_damage']:
+    action = 'strafe_left'
+elif stuck and scene == 'empty':
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'move_forward' and not obs['moved']
+if obs['took_damage']:
+    action = 'strafe_right'
+elif stuck and scene == 'empty':
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'move_forward' and not obs['moved']
+if obs['health'] < 30:
+    action = 'strafe_left'
+elif stuck and scene == 'empty':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'move_forward' and not obs['moved']
+if obs['health'] < 30:
+    action = 'strafe_right'
+elif stuck and scene == 'empty':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'move_forward'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'strafe_left' and not obs['moved']
+if obs['took_damage']:
+    action = 'strafe_left'
+elif stuck and scene == 'empty':
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_left'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'strafe_left' and not obs['moved']
+if obs['took_damage']:
+    action = 'strafe_right'
+elif stuck and scene == 'empty':
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_left'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'strafe_left' and not obs['moved']
+if obs['health'] < 30:
+    action = 'strafe_left'
+elif stuck and scene == 'empty':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_left'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'strafe_left' and not obs['moved']
+if obs['health'] < 30:
+    action = 'strafe_right'
+elif stuck and scene == 'empty':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_left'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'strafe_right' and not obs['moved']
+if obs['took_damage']:
+    action = 'strafe_left'
+elif stuck and scene == 'empty':
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'strafe_right' and not obs['moved']
+if obs['took_damage']:
+    action = 'strafe_right'
+elif stuck and scene == 'empty':
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'strafe_right' and not obs['moved']
+if obs['health'] < 30:
+    action = 'strafe_left'
+elif stuck and scene == 'empty':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'strafe_right' and not obs['moved']
+if obs['health'] < 30:
+    action = 'strafe_right'
+elif stuck and scene == 'empty':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'strafe_right'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'turn_left' and not obs['moved']
+if obs['took_damage']:
+    action = 'strafe_left'
+elif stuck and scene == 'empty':
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'turn_left' and not obs['moved']
+if obs['took_damage']:
+    action = 'strafe_right'
+elif stuck and scene == 'empty':
+    action = 'turn_left'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'turn_left' and not obs['moved']
+if obs['health'] < 30:
+    action = 'strafe_left'
+elif stuck and scene == 'empty':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+scene = obs['scene']
+stuck = obs['previous_action'] == 'turn_left' and not obs['moved']
+if obs['health'] < 30:
+    action = 'strafe_right'
+elif stuck and scene == 'empty':
+    action = 'turn_right'
+elif scene == 'center' and obs['ammo'] > 0:
+    action = 'shoot'
+elif scene == 'left':
+    action = 'turn_left'
+elif scene == 'right':
+    action = 'turn_right'
+else:
+    action = 'turn_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'move_forward')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage']:
+    action = 'strafe_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'move_forward')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage']:
+    action = 'strafe_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'move_forward')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30:
+    action = 'strafe_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'move_forward')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30:
+    action = 'strafe_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'strafe_left')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage']:
+    action = 'strafe_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'strafe_left')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage']:
+    action = 'strafe_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'strafe_left')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30:
+    action = 'strafe_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'strafe_left')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30:
+    action = 'strafe_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'strafe_right')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage']:
+    action = 'strafe_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'strafe_right')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage']:
+    action = 'strafe_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'strafe_right')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30:
+    action = 'strafe_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'strafe_right')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30:
+    action = 'strafe_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'turn_left')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage']:
+    action = 'strafe_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'turn_left')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_left'
+if obs['took_damage']:
+    action = 'strafe_right'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'turn_left')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_left'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30:
+    action = 'strafe_left'
+# === PROGRAM ===
+turns = {'left': 'turn_left', 'right': 'turn_right'}
+action = turns.get(obs['scene'], 'turn_left')
+if obs['scene'] == 'center':
+    action = 'shoot' if obs['ammo'] > 0 else 'strafe_right'
+if obs['distance'] == 'far' and obs['scene'] == 'center':
+    action = 'move_forward'
+if obs['previous_action'] == 'move_forward' and not obs['moved']:
+    action = 'turn_right'
+if obs['health'] < 30:
+    action = 'strafe_right'
+# === PROGRAM ===
+action = 'move_forward'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['took_damage']:
+    action = 'strafe_left'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'move_forward':
+        action = 'turn_left'
+# === PROGRAM ===
+action = 'move_forward'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['took_damage']:
+    action = 'strafe_right'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'move_forward':
+        action = 'turn_left'
+# === PROGRAM ===
+action = 'move_forward'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['health'] < 30:
+    action = 'strafe_left'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'move_forward':
+        action = 'turn_right'
+# === PROGRAM ===
+action = 'move_forward'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['health'] < 30:
+    action = 'strafe_right'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'move_forward':
+        action = 'turn_right'
+# === PROGRAM ===
+action = 'strafe_left'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['took_damage']:
+    action = 'strafe_left'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'strafe_left':
+        action = 'turn_left'
+# === PROGRAM ===
+action = 'strafe_left'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['took_damage']:
+    action = 'strafe_right'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'strafe_left':
+        action = 'turn_left'
+# === PROGRAM ===
+action = 'strafe_left'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['health'] < 30:
+    action = 'strafe_left'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'strafe_left':
+        action = 'turn_right'
+# === PROGRAM ===
+action = 'strafe_left'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['health'] < 30:
+    action = 'strafe_right'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'strafe_left':
+        action = 'turn_right'
+# === PROGRAM ===
+action = 'strafe_right'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['took_damage']:
+    action = 'strafe_left'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'strafe_right':
+        action = 'turn_left'
+# === PROGRAM ===
+action = 'strafe_right'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['took_damage']:
+    action = 'strafe_right'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'strafe_right':
+        action = 'turn_left'
+# === PROGRAM ===
+action = 'strafe_right'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['health'] < 30:
+    action = 'strafe_left'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'strafe_right':
+        action = 'turn_right'
+# === PROGRAM ===
+action = 'strafe_right'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['health'] < 30:
+    action = 'strafe_right'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'strafe_right':
+        action = 'turn_right'
+# === PROGRAM ===
+action = 'turn_left'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['took_damage']:
+    action = 'strafe_left'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'turn_left':
+        action = 'turn_left'
+# === PROGRAM ===
+action = 'turn_left'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['took_damage']:
+    action = 'strafe_right'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'turn_left':
+        action = 'turn_left'
+# === PROGRAM ===
+action = 'turn_left'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['health'] < 30:
+    action = 'strafe_left'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'turn_left':
+        action = 'turn_right'
+# === PROGRAM ===
+action = 'turn_left'
+loaded = obs['ammo'] > 0
+close = obs['distance'] == 'near'
+if obs['scene'] == 'center' and loaded:
+    action = 'shoot'
+if obs['scene'] == 'left':
+    action = 'turn_left'
+if obs['scene'] == 'right':
+    action = 'turn_right'
+if close and obs['health'] < 30:
+    action = 'strafe_right'
+if obs['scene'] == 'empty' and not obs['moved']:
+    if obs['previous_action'] == 'turn_left':
+        action = 'turn_right'
