@@ -1,0 +1,48 @@
+{
+  "name": "iteration9-five-variant-frozen-generation-assay",
+  "created_before_assay_and_without_examining_quality_outcomes": true,
+  "scope": {
+    "code": {
+      "checkpoints": 4,
+      "seeds_each": 128,
+      "generations": 2560
+    },
+    "lee": {
+      "checkpoints": 2,
+      "seeds_each": 64,
+      "generations": 640
+    }
+  },
+  "checkpoint_selection": "All development sequence-arm final states; table/numbers 2 replicas Code and 2 replicas Lee. Same ordered evaluation seeds; no selection by outcome.",
+  "variants": {
+    "genuine": "Unchanged acquired final state.",
+    "readout_off": "Same acquired state; configure_sequence_memory(False). Frozen generation only.",
+    "initial_transitions": "Restore wc,wz,bc,bz from SequenceMemory(model.seed); retain acquired v,bias,steps and all other organism state.",
+    "state_zero": "At each distribution call pass zero hidden prefix; retain every learned parameter. Actual generation state/history/RNG untouched.",
+    "prefix_permuted": "At each distribution call recompute only recurrent hidden prefix over permuted actual history. Copy history then swap adjacent entries at i,i+1 for i in range(2,len(history)-9,2). Preserve BOS, first ordinary unit, last eight, multiset and length. Actual emitted source, context lookup, candidate support and RNG untouched."
+  },
+  "permutation_provenance": "Exact operator already frozen in tools/run_lee_iteration9.py prefix_permutation; not a new reverse-middle operator.",
+  "measurement": "Observe original _distribution frame return; exact weights/sum(weights), all candidates. Match actual token prefixes across variants until first token divergence; no canonical source re-encoding.",
+  "record_identity": "Genuine and readout_off complete generated dicts must equal closed evaluation journals after tuple/list JSON normalization, including source/raw_hex/tokens/choices/strategy/exploring/truncated.",
+  "probability_change_threshold": 1e-15,
+  "metrics": [
+    "all raw generations",
+    "different complete source bytes",
+    "different generated records",
+    "first token differences",
+    "matched prefix count",
+    "TV sum and maximum without thresholding",
+    "probability changes above declared threshold",
+    "gate/proposal/readout parameter deltas vs initialization",
+    "same before/after serialized state"
+  ],
+  "controls_interpretation": "state_zero retains learned token effects but removes prior-unit state; prefix_permuted changes order with protected first and recent units. Hidden difference alone does not establish probability or utility effect. initial_transitions separates trained transitions from fixed random transitions with learned readout.",
+  "raw_trace": "Private gzip JSONL includes each original generated dict, all histories/candidate probabilities/hidden states and every intervention comparison. Summary is compact.",
+  "quality": "No CPython program runtime, no game episodes, no learning or model selection. Quality only in separate previously frozen experiments.",
+  "example_selection": "First source/token difference in fixed checkpoint/seed order for each intervention; separate root gallery follows original prospective gameplay rule.",
+  "helper_sha256": "7ca9eea1bb9faa059d3e10f62115084abf419e9d0365897df5b2703f3dbfb437",
+  "candidate_sha256": {
+    "code": "85bef4b5b3c947798ee926805d2dae61f5a91372d8f3bab2e8d46314811c7c4f",
+    "lee": "a18375a2e8990d68cd0c1d840896af221c8f47290fd4eaaa48ad1ca9691745b2"
+  }
+}

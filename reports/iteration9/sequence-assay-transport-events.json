@@ -1,0 +1,38 @@
+{
+  "events": [
+    {
+      "stage": "original long-open gzip run",
+      "log": "../code/sequence-assay.log",
+      "completed_generation_seed_slots": 128,
+      "variants_per_slot": 5,
+      "measured_runtime_or_game_attempts": 0,
+      "outcome": "Mandatory gzip readback failed; no summary accepted. Preserved incomplete bytes and original helper."
+    },
+    {
+      "stage": "first atomic launch",
+      "log": "../code/sequence-assay-atomic.log",
+      "completed_generation_seed_slots": 0,
+      "outcome": "Refused existing output directory. Previous path reappeared after rename; no overwriting and no generation."
+    },
+    {
+      "stage": "active atomic launch",
+      "log": "../code/sequence-assay-atomic-run.log",
+      "output": "../code/development/sequence-assay-atomic",
+      "outcome": "Completed all512 Code seed slots (2560 generations), all atomic compressed shards verified. Final summary authoritative; no training or game rerun."
+    }
+  ],
+  "transport_change_only": true,
+  "candidate_or_training_changes": false,
+  "final_assays": {
+    "code": {
+      "path": "../code/development/sequence-assay-atomic/summary.json",
+      "seed_slots": 512,
+      "generations": 2560
+    },
+    "lee": {
+      "path": "../lee/development/sequence-assay-atomic/summary.json",
+      "seed_slots": 128,
+      "generations": 640
+    }
+  }
+}

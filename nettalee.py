@@ -164,6 +164,169 @@ class OutcomeHead:
         self.steps += 1
 
 
+class SequenceMemory:
+    """Eight bounded recurrent channels with learned input-dependent writes.
+
+    The hashed input is only a learned byte-unit identity. Both gate/proposal
+    matrices and the readout learn from actual execution feedback by full BPTT.
+    """
+    DIM, HIDDEN = 32, 8
+
+    def __init__(self, seed=0):
+        rng = random.Random(seed ^ 0x53455139)
+        self.wc = [[rng.gauss(0, .16) for _ in range(self.DIM)] for _ in range(self.HIDDEN)]
+        self.wz = [[rng.gauss(0, .08) for _ in range(self.DIM)] for _ in range(self.HIDDEN)]
+        self.bc = [0.0] * self.HIDDEN
+        self.bz = [-2.0] * self.HIDDEN
+        self.v = [0.0] * self.HIDDEN
+        self.bias = 0.0
+        self.steps = 0
+
+    @staticmethod
+    def features(unit):
+        # Four signed half-units; collisions sum. Fixed 32-bit avalanche avoids
+        # giving the same coordinate/sign pattern to every unit modulo 32.
+        x = [0.0] * 32
+        for salt in range(1, 5):
+            h = (unit + 3 + salt * 0x9E3779B9) & 0xffffffff
+            h = ((h ^ (h >> 16)) * 0x85EBCA6B) & 0xffffffff
+            h = ((h ^ (h >> 13)) * 0xC2B2AE35) & 0xffffffff
+            h ^= h >> 16
+            x[h % 32] += .5 if h & 0x80000000 else -.5
+        return x
+
+    @staticmethod
+    def sigmoid(value):
+        if value >= 0:
+            return 1.0 / (1.0 + math.exp(-value))
+        exp = math.exp(value)
+        return exp / (1.0 + exp)
+
+    def _step(self, previous, unit):
+        x = self.features(unit)
+        active = [(i, value) for i, value in enumerate(x) if value]
+        c = [math.tanh(sum(row[i] * value for i, value in active) + bias)
+             for row, bias in zip(self.wc, self.bc)]
+        z = [self.sigmoid(sum(row[i] * value for i, value in active) + bias)
+             for row, bias in zip(self.wz, self.bz)]
+        h = [(1 - gate) * old + gate * proposal
+             for old, gate, proposal in zip(previous, z, c)]
+        return {"x": x, "previous": previous[:], "c": c, "z": z, "h": h}
+
+    def advance(self, previous, unit):
+        return self._step(previous, unit)["h"]
+
+    def trace(self, units):
+        previous, tape = [0.0] * self.HIDDEN, []
+        for unit in units:
+            item = self._step(previous, unit)
+            tape.append(item)
+            previous = item["h"]
+        return tape
+
+    def state(self):
+        # Snapshot callers may compare/mutate dictionaries without touching life.
+        return {"wc": [row[:] for row in self.wc], "wz": [row[:] for row in self.wz],
+                "bc": self.bc[:], "bz": self.bz[:], "v": self.v[:],
+                "bias": self.bias, "steps": self.steps}
+
+    @classmethod
+    def restore(cls, state):
+        expected = {"wc", "wz", "bc", "bz", "v", "bias", "steps"}
+        if not isinstance(state, dict) or set(state) != expected:
+            raise ValueError("invalid sequence head fields")
+        def vector(value, length):
+            return (isinstance(value, list) and len(value) == length
+                    and all(type(v) in (int, float) and math.isfinite(v) for v in value))
+        for name in ("wc", "wz"):
+            matrix = state[name]
+            if (not isinstance(matrix, list) or len(matrix) != cls.HIDDEN
+                    or not all(vector(row, cls.DIM) for row in matrix)):
+                raise ValueError("invalid sequence head matrix")
+        if any(not vector(state[name], cls.HIDDEN) for name in ("bc", "bz", "v")):
+            raise ValueError("invalid sequence head vector")
+        if (type(state["bias"]) not in (int, float) or not math.isfinite(state["bias"])
+                or type(state["steps"]) is not int or state["steps"] < 0):
+            raise ValueError("invalid sequence head scalar")
+        result = cls()
+        for name in ("wc", "wz"):
+            setattr(result, name, [row[:] for row in state[name]])
+        for name in ("bc", "bz", "v"):
+            setattr(result, name, state[name][:])
+        result.bias, result.steps = state["bias"], state["steps"]
+        return result
+
+    def loss_and_gradients(self, units, targets):
+        """Average BCE over selected real choices, one full reverse-time pass.
+
+        units includes BOS and, for terminated generation, EOS. Targets map
+        indices in that exact unit stream to bounded observed rewards.
+        """
+        if (not isinstance(targets, dict) or any(type(i) is not int or not 0 <= i < len(units)
+                or type(y) not in (int, float) or not math.isfinite(y) or not 0 <= y <= 1
+                for i, y in targets.items())):
+            raise ValueError("invalid sequence training targets")
+        gradients = {"wc": [[0.0] * self.DIM for _ in range(self.HIDDEN)],
+                     "wz": [[0.0] * self.DIM for _ in range(self.HIDDEN)],
+                     "bc": [0.0] * self.HIDDEN, "bz": [0.0] * self.HIDDEN,
+                     "v": [0.0] * self.HIDDEN, "bias": 0.0}
+        if not targets:
+            return 0.0, gradients
+        tape = self.trace(units)
+        loss, following = 0.0, [0.0] * self.HIDDEN
+        size = len(targets)
+        for index in range(len(tape) - 1, -1, -1):
+            item = tape[index]
+            h, old, c, z = item["h"], item["previous"], item["c"], item["z"]
+            dh = following[:]
+            if index in targets:
+                target = targets[index]
+                logit = self.bias + sum(weight * value for weight, value in zip(self.v, h))
+                loss += (max(logit, 0.0) + math.log1p(math.exp(-abs(logit))) - target * logit) / size
+                error = (self.sigmoid(logit) - target) / size
+                gradients["bias"] += error
+                for j in range(self.HIDDEN):
+                    gradients["v"][j] += error * h[j]
+                    dh[j] += error * self.v[j]
+            active = [(i, value) for i, value in enumerate(item["x"]) if value]
+            following = [0.0] * self.HIDDEN
+            for j in range(self.HIDDEN):
+                dc = dh[j] * z[j] * (1 - c[j] * c[j])
+                dz = dh[j] * (c[j] - old[j]) * z[j] * (1 - z[j])
+                gradients["bc"][j] += dc
+                gradients["bz"][j] += dz
+                for i, value in active:
+                    gradients["wc"][j][i] += dc * value
+                    gradients["wz"][j][i] += dz * value
+                following[j] = dh[j] * (1 - z[j])
+        return loss, gradients
+
+    def train(self, units, targets):
+        loss, gradients = self.loss_and_gradients(units, targets)
+        if not targets:
+            return {"loss": loss, "gradient_norm": 0.0, "targets": 0}
+        squares = [gradients["bias"] ** 2]
+        squares += [value * value for name in ("wc", "wz") for row in gradients[name] for value in row]
+        squares += [value * value for name in ("bc", "bz", "v") for value in gradients[name]]
+        norm = math.sqrt(math.fsum(squares))
+        if not math.isfinite(loss) or not math.isfinite(norm):
+            raise ValueError("non-finite sequence gradient")
+        rate = .05 / math.sqrt(1 + self.steps / 4000)
+        step = rate / max(1.0, norm)
+        for name in ("wc", "wz"):
+            matrix = getattr(self, name)
+            for j in range(self.HIDDEN):
+                for i in range(self.DIM):
+                    matrix[j][i] -= step * gradients[name][j][i]
+        for name in ("bc", "bz", "v"):
+            vector = getattr(self, name)
+            for j in range(self.HIDDEN):
+                vector[j] -= step * gradients[name][j]
+        self.bias -= step * gradients["bias"]
+        self.steps += 1
+        return {"loss": loss, "gradient_norm": norm, "targets": len(targets)}
+
+
 class Organism:
     def __init__(self, programs, seed=1, order=DEFAULT_ORDER, merges=256,
                  mode="general", _pairs=None, _reference=None):
@@ -196,6 +359,8 @@ class Organism:
         self.lived = defaultdict(Counter)
         self.visits = {}
         self.tasks = {}
+        self.sequence_memory_enabled = False
+        self.sequence_head = SequenceMemory(seed)
         # Lee can admit actually experienced continuations from a shorter suffix.
         # Zero leaves the original support, random stream and snapshot unchanged.
         self.experience_support_mass = 0.0
@@ -220,6 +385,57 @@ class Organism:
         self.behaviors = set()
         self.stats = {"games": 0, "accepted": 0, "runtime_ok": 0,
                       "source_replay": 0, "experience_replay": 0, "behavior_replay": 0}
+
+    def configure_sequence_memory(self, enabled=True):
+        if type(enabled) is not bool:
+            raise ValueError("sequence memory switch must be a boolean")
+        self.sequence_memory_enabled = enabled
+        return self
+
+    def _sequence_choice_positions(self, generated):
+        """Bind selected choices to actual emitted bytes before any learning."""
+        tokens = generated.get("tokens")
+        if (not isinstance(tokens, list) or len(tokens) > 1024
+                or any(type(t) is not int or not 0 <= t < len(self.units.expansions) for t in tokens)
+                or type(generated.get("truncated")) is not bool):
+            raise ValueError("invalid sequence token history")
+        raw = self.units.decode(tokens)
+        source = generated.get("source")
+        if source is None:
+            try:
+                raw.decode("utf-8")
+            except UnicodeDecodeError:
+                if generated.get("raw_hex") != raw.hex():
+                    raise ValueError("sequence bytes do not match encoded source")
+            else:
+                raise ValueError("missing sequence source")
+        elif not isinstance(source, str) or source.encode("utf-8") != raw:
+            raise ValueError("sequence bytes do not match source")
+        choices = generated.get("choices")
+        if not isinstance(choices, list):
+            raise ValueError("invalid sequence choices")
+        history, offset, expected = [BOS], 0, {}
+        stream = tokens + ([] if generated["truncated"] else [EOS])
+        for position, unit in enumerate(stream, 1):
+            end = offset + (len(self.units.expansions[unit]) if unit >= 0 else 0)
+            expected[offset] = (end, unit, tuple(history[-3:]) + (unit,), position)
+            history.append(unit)
+            offset = end
+        result, visited = {}, set()
+        for choice in choices:
+            if not isinstance(choice, dict):
+                raise ValueError("invalid sequence choice")
+            start, end = choice.get("byte_start"), choice.get("byte_end")
+            item = expected.get(start) if type(start) is int else None
+            key = choice.get("key")
+            if (item is None or type(end) is not int or end != item[0]
+                    or type(choice.get("token")) is not int or choice["token"] != item[1]
+                    or not isinstance(key, (tuple, list)) or any(type(t) is not int for t in key)
+                    or tuple(key) != item[2] or item[3] in visited):
+                raise ValueError("sequence choice does not belong to generated history")
+            result[id(choice)] = item[3]
+            visited.add(item[3])
+        return result
 
     def configure_control_learning(self, quality=False, executed_credit=False,
                                    quality_strength=1.6):
@@ -472,7 +688,8 @@ class Organism:
             return candidates + [(token, prior * count / total) for token, count in extras]
         return candidates
 
-    def _distribution(self, history, rng, streak, strategy, exploring=False, task_state=None):
+    def _distribution(self, history, rng, streak, strategy, exploring=False, task_state=None,
+                      sequence_state=None):
         locality = [(self.order, 0.0, 64), (self.order, .02, 24),
                     (self.order, .04, 12), (max(1, self.order - 2), .02, 24),
                     (max(1, self.order - 2), .08, 8)]
@@ -538,6 +755,13 @@ class Organism:
                 task_evidence = task_trials / (task_trials + 4)
                 value += 1.6 * max(-4, min(4, task_logit - task_state["head"].bias))
                 value += 4.0 * task_evidence * (task_association - .5)
+            if sequence_state is not None:
+                candidate_state = self.sequence_head.advance(sequence_state, token)
+                # The trainable common output bias is a calibration term and
+                # cancels from the categorical law, so only the interaction enters.
+                sequence_logit = sum(weight * activation for weight, activation in
+                                     zip(self.sequence_head.v, candidate_state))
+                value += .8 * max(-4.0, min(4.0, sequence_logit))
             entries.append((token, value, x, key))
         peak = max(e[1] for e in entries)
         weights = [math.exp(e[1] - peak) for e in entries]
@@ -571,8 +795,15 @@ class Organism:
         history, tokens, choices, streak, size = [BOS], [], [], 0, 0
         line = 1
         terminated = False
+        sequence_state = (self.sequence_head.advance([0.0] * self.sequence_head.HIDDEN, BOS)
+                          if self.sequence_memory_enabled else None)
         for _ in range(1024):
-            token, alternatives, choice = self._distribution(history, rng, streak, strategy, exploring, task_state)
+            if self.sequence_memory_enabled:
+                token, alternatives, choice = self._distribution(
+                    history, rng, streak, strategy, exploring, task_state, sequence_state=sequence_state)
+                sequence_state = self.sequence_head.advance(sequence_state, token)
+            else:
+                token, alternatives, choice = self._distribution(history, rng, streak, strategy, exploring, task_state)
             if alternatives > 1:
                 choice["line"] = line
                 choice["end_line"] = line + (self.units.expansions[token].count(b"\n") if token >= 0 else 0)
@@ -721,6 +952,8 @@ class Organism:
 
     def _learn(self, generated, reward, runtime_ok, error_line=None, result=None,
                reward_choices=None):
+        sequence_positions = (self._sequence_choice_positions(generated)
+                              if self.sequence_memory_enabled else None)
         exploring = generated.get("exploring", False)
         search = (self.explore_search if exploring else self.search)[generated["strategy"]]
         if search[1] >= 128:
@@ -775,6 +1008,14 @@ class Organism:
             for i in range(min(12, len(grammar_values))):
                 self.syntax_head.update(grammar_values[i * len(grammar_values) // min(12, len(grammar_values))], float(syntax_ok))
 
+        if sequence_positions is not None:
+            selected = chosen if reward_choices is None else reward_choices
+            positions = sorted({sequence_positions[id(choice)] for choice in selected})
+            size = min(12, len(positions))
+            targets = {positions[i * len(positions) // size]: reward for i in range(size)}
+            stream = [BOS] + generated["tokens"] + ([] if generated["truncated"] else [EOS])
+            self.sequence_head.train(stream, targets)
+
     def observe(self, generated, reward, runtime_ok, error_line=None, behavior=None, diagnostic=None,
                 executed_lines=None, environment_observed=False, decision_feedback=None,
                 executed_spans=None):
@@ -783,6 +1024,8 @@ class Organism:
         Used by the Doom bridge after real actions and consequences. A raw
         generated attempt is charged once, including attempts that fail to run.
         """
+        if self.sequence_memory_enabled:
+            self._sequence_choice_positions(generated)
         if self.mode != "control":
             raise ValueError("external outcomes require a control island")
         if not isinstance(reward, (int, float)) or not math.isfinite(reward) or not 0 <= reward <= 1:
@@ -864,6 +1107,9 @@ class Organism:
                 credit=[[list(k), v] for k, v in sorted(self.decision_credit.items())])
         if self.experience_support_mass:
             body["experience_support_mass"] = self.experience_support_mass
+        if self.sequence_memory_enabled or self.sequence_head.steps:
+            body["sequence_memory"] = {"enabled": self.sequence_memory_enabled,
+                                       "head": self.sequence_head.state()}
         if self.tasks:
             body["tasks"] = {key: {"head": value["head"].state(),
                                     "credit": [[list(k), v] for k, v in sorted(value["credit"].items())],
@@ -971,6 +1217,12 @@ class Organism:
             organism.decision_credit_episodes, organism.decision_credit_steps = episodes, steps
         if "experience_support_mass" in body:
             organism.configure_experience_support(body["experience_support_mass"])
+        sequence = body.get("sequence_memory")
+        if sequence is not None:
+            if not isinstance(sequence, dict) or set(sequence) != {"enabled", "head"}:
+                raise ValueError("invalid sequence memory")
+            organism.configure_sequence_memory(sequence["enabled"])
+            organism.sequence_head = SequenceMemory.restore(sequence["head"])
         task_states = body.get("tasks", {})
         if not isinstance(task_states, dict) or len(task_states) > 128:
             raise ValueError("invalid task memory")
@@ -993,6 +1245,8 @@ class Organism:
         organism.configure_decision_credit(**self.decision_credit_config)
         organism.configure_control_learning(**self.control_learning)
         organism.configure_experience_support(self.experience_support_mass)
+        if self.sequence_memory_enabled:
+            organism.configure_sequence_memory(True)
         return organism
 
 
@@ -1041,13 +1295,20 @@ def run_cli():
     for command in (init, play, ask):
         command.add_argument("--experience-support", type=float, default=None,
                              help="Lee's count mass for experienced shorter-context choices (0..0.25)")
+    for command in (init, play, ask):
+        command.add_argument("--sequence-memory", action=argparse.BooleanOptionalAction,
+                             default=None, help="acquired recurrent memory of ordered code units")
     args = parser.parse_args()
+    if args.command == "ask" and args.sequence_memory is not None and not (args.learn_task and args.save):
+        parser.error("--sequence-memory on ask requires --learn-task and --save SNAPSHOT")
     if args.command == "ask" and args.experience_support is not None and not args.learn_task:
         parser.error("--experience-support on ask requires --learn-task and --save SNAPSHOT")
     if args.command == "init":
         if Path(args.state).exists():
             parser.error("state exists; choose a new path to preserve its experience")
         model = Organism(read_island(args.island), args.seed, args.order, args.merges, args.judge)
+        if args.sequence_memory is not None:
+            model.configure_sequence_memory(args.sequence_memory)
         if args.experience_support is not None:
             model.configure_experience_support(args.experience_support)
         model.save(args.state)
@@ -1080,6 +1341,8 @@ def run_cli():
             return subprocess.call([sys.executable, str(sibling)] + sys.argv[1:])
         print(json.dumps(call, ensure_ascii=False), file=sys.stderr)
     model = Organism.load(args.state)
+    if getattr(args, "sequence_memory", None) is not None:
+        model.configure_sequence_memory(args.sequence_memory)
     if getattr(args, "experience_support", None) is not None:
         model.configure_experience_support(args.experience_support)
     if args.command == "ask" and model.mode != call["selection"]["mode"]:
@@ -1108,6 +1371,11 @@ def run_cli():
                           "associations": len(model.credit), "neural_updates": model.head.steps,
                           "syntax_updates": model.syntax_head.steps, "exploration": model.exploration,
                           "lived_contexts": len(model.lived), "visited_behaviors": len(model.visits),
+                          **({"sequence_memory_enabled": model.sequence_memory_enabled,
+                              "sequence_updates": model.sequence_head.steps,
+                              "sequence_parameters": 2 * model.sequence_head.HIDDEN * model.sequence_head.DIM
+                                                     + 3 * model.sequence_head.HIDDEN + 1}
+                             if model.sequence_memory_enabled or model.sequence_head.steps else {}),
                           **({"experience_support_mass": model.experience_support_mass}
                              if model.experience_support_mass else {})}, indent=2))
         return 0

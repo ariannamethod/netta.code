@@ -1,0 +1,264 @@
+{
+  "base_commit": "1b872b089c8c21f36a2cac3971976e7ae7440bb5",
+  "all_unchanged": true,
+  "files": {
+    "core_part.py": {
+      "bytes": 60863,
+      "sha256": "e4f680b390f6a6185fe68d648bdcbc2054ed9cbb02d9eced33b9a80b41558fb5",
+      "current_sha256": "e4f680b390f6a6185fe68d648bdcbc2054ed9cbb02d9eced33b9a80b41558fb5",
+      "unchanged": true
+    },
+    "runtime_part.py": {
+      "bytes": 51969,
+      "sha256": "2f0c111880ea74b2567d271acd7218253728d69c49018fcf6c909a201f936946",
+      "current_sha256": "2f0c111880ea74b2567d271acd7218253728d69c49018fcf6c909a201f936946",
+      "unchanged": true
+    },
+    "novelty_part.py": {
+      "bytes": 11512,
+      "sha256": "27092cd6cfce26cbdad00df179eed8e00951385651748540c7c6f65e751731e9",
+      "current_sha256": "27092cd6cfce26cbdad00df179eed8e00951385651748540c7c6f65e751731e9",
+      "unchanged": true
+    },
+    "caller_part.py": {
+      "bytes": 17950,
+      "sha256": "54f7442bf54d4774f63a22cce03fff8510ff3cc373bcc59a998b6240485c21cc",
+      "current_sha256": "54f7442bf54d4774f63a22cce03fff8510ff3cc373bcc59a998b6240485c21cc",
+      "unchanged": true
+    },
+    "code_memory_build.py": {
+      "bytes": 8037,
+      "sha256": "00c308905f88706684f6204d9295d197f16bff3e2e2489b97a7bcd39b0f4d799",
+      "current_sha256": "00c308905f88706684f6204d9295d197f16bff3e2e2489b97a7bcd39b0f4d799",
+      "unchanged": true
+    },
+    "code_context_build.py": {
+      "bytes": 8484,
+      "sha256": "0381e5c1d7e687f737d3ca16a9bdf6345e8b6386274b0f86419df2bc4c597fd4",
+      "current_sha256": "0381e5c1d7e687f737d3ca16a9bdf6345e8b6386274b0f86419df2bc4c597fd4",
+      "unchanged": true
+    },
+    "lee_memory_build.py": {
+      "bytes": 5710,
+      "sha256": "c69acf97fc76e0bc480df3bd4581aa33df556ae0f490cbf644d699e94396d9b9",
+      "current_sha256": "c69acf97fc76e0bc480df3bd4581aa33df556ae0f490cbf644d699e94396d9b9",
+      "unchanged": true
+    },
+    "doom.py": {
+      "bytes": 241,
+      "sha256": "a28295346f238be3348ab5c728e484b8829bdb2dfae7644d4c5ff9c13aa074fe",
+      "current_sha256": "a28295346f238be3348ab5c728e484b8829bdb2dfae7644d4c5ff9c13aa074fe",
+      "unchanged": true
+    },
+    "tools.json": {
+      "bytes": 6512,
+      "sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+      "current_sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753",
+      "unchanged": true
+    },
+    "doom.json": {
+      "bytes": 868,
+      "sha256": "aa2967900d2e4d3f9908187183764f933e1da0909f0494fe7e206321fcf5bc09",
+      "current_sha256": "aa2967900d2e4d3f9908187183764f933e1da0909f0494fe7e206321fcf5bc09",
+      "unchanged": true
+    },
+    "requirements.txt": {
+      "bytes": 264,
+      "sha256": "fa4ba2099e8215c6de9cc42a094b93ccee9f33416670a5b732661bff7ef7f4f0",
+      "current_sha256": "fa4ba2099e8215c6de9cc42a094b93ccee9f33416670a5b732661bff7ef7f4f0",
+      "unchanged": true
+    },
+    "requirements-doom.txt": {
+      "bytes": 207,
+      "sha256": "05368e2111dfba5f33795a947d74a99c6fbf1399c756329d272c47a9c85327cd",
+      "current_sha256": "05368e2111dfba5f33795a947d74a99c6fbf1399c756329d272c47a9c85327cd",
+      "unchanged": true
+    },
+    "states/2048-dev.json": {
+      "bytes": 167737,
+      "sha256": "ee6d037ff8d4dacffe7cf664e438262ffe1943b3b3ada8f0d4f456a147cb5b8e",
+      "current_sha256": "ee6d037ff8d4dacffe7cf664e438262ffe1943b3b3ada8f0d4f456a147cb5b8e",
+      "unchanged": true
+    },
+    "states/2048.json": {
+      "bytes": 182435,
+      "sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+      "current_sha256": "a7e6f2bf59dea4c4100921961b51a224909bd07a9ee84653cd7eb0854f8fb33b",
+      "unchanged": true
+    },
+    "states/art-dev.json": {
+      "bytes": 102807,
+      "sha256": "d7fd40646c4ed6a9d59e25ea56dcba79cd609a7e04818c6e3402cf472b79b5f0",
+      "current_sha256": "d7fd40646c4ed6a9d59e25ea56dcba79cd609a7e04818c6e3402cf472b79b5f0",
+      "unchanged": true
+    },
+    "states/art.json": {
+      "bytes": 477910,
+      "sha256": "158bb4c3361ccaec62518b49acd4598ff05e589f9694328773d5fc607a3c8060",
+      "current_sha256": "158bb4c3361ccaec62518b49acd4598ff05e589f9694328773d5fc607a3c8060",
+      "unchanged": true
+    },
+    "states/code.json": {
+      "bytes": 362734,
+      "sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+      "current_sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+      "unchanged": true
+    },
+    "states/doom-generic-map02.json": {
+      "bytes": 266922,
+      "sha256": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+      "current_sha256": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+      "unchanged": true
+    },
+    "states/doom-generic.json": {
+      "bytes": 238273,
+      "sha256": "24e0d43283054b46e2a29012609021b7ec7935a17a8569f0829bd7912175e3f9",
+      "current_sha256": "24e0d43283054b46e2a29012609021b7ec7935a17a8569f0829bd7912175e3f9",
+      "unchanged": true
+    },
+    "states/doom.json": {
+      "bytes": 266922,
+      "sha256": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+      "current_sha256": "69040c8242ea4673a4b51d190b9f8ae6bb58e1f38337039fab1625130bf67e2b",
+      "unchanged": true
+    },
+    "states/records.json": {
+      "bytes": 378437,
+      "sha256": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+      "current_sha256": "2b05796e59ce0867b712e900486c937b643640aba75bec0c5ee6b42b25578db7",
+      "unchanged": true
+    },
+    "states/strings.json": {
+      "bytes": 387065,
+      "sha256": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+      "current_sha256": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+      "unchanged": true
+    },
+    "states/v3_expanded/art.json": {
+      "bytes": 448875,
+      "sha256": "09f18f76d7a2956d3885440d102d9df9c863871b14cadc95e01d9d3b5aa4bca1",
+      "current_sha256": "09f18f76d7a2956d3885440d102d9df9c863871b14cadc95e01d9d3b5aa4bca1",
+      "unchanged": true
+    },
+    "states/v3_expanded/code.json": {
+      "bytes": 328279,
+      "sha256": "f01efe79263c9b2b37b514210dac9bb78ab6662886598135ce1cefec4b01cdde",
+      "current_sha256": "f01efe79263c9b2b37b514210dac9bb78ab6662886598135ce1cefec4b01cdde",
+      "unchanged": true
+    },
+    "states/v3_expanded/records.json": {
+      "bytes": 350560,
+      "sha256": "bd7bd233c6198f921e7ae2e984cd744201e4bca68d087cfddd52cde53129d2f2",
+      "current_sha256": "bd7bd233c6198f921e7ae2e984cd744201e4bca68d087cfddd52cde53129d2f2",
+      "unchanged": true
+    },
+    "states/v3_expanded/strings.json": {
+      "bytes": 387065,
+      "sha256": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+      "current_sha256": "7b56eefd0488760f30c7cfa519f9c620f292059b62b6dc6681cf21bdb79c57f4",
+      "unchanged": true
+    },
+    "corpora/2048.txt": {
+      "bytes": 32127,
+      "sha256": "a9aeeb7efe2c33d5fefbbd3a9cf4869baf8e7cbe1bf92e74df211d1fddfb6c52",
+      "current_sha256": "a9aeeb7efe2c33d5fefbbd3a9cf4869baf8e7cbe1bf92e74df211d1fddfb6c52",
+      "unchanged": true
+    },
+    "corpora/art.txt": {
+      "bytes": 61944,
+      "sha256": "5ccfe3b151f793ba28b9f06fef7ec288b344f91e426b05af2549c308bfa6ee65",
+      "current_sha256": "5ccfe3b151f793ba28b9f06fef7ec288b344f91e426b05af2549c308bfa6ee65",
+      "unchanged": true
+    },
+    "corpora/doom.txt": {
+      "bytes": 19591,
+      "sha256": "088499ffe15e50f262e64671050411176b5f82c9fc33bdf5df82a9cd4d0ce931",
+      "current_sha256": "088499ffe15e50f262e64671050411176b5f82c9fc33bdf5df82a9cd4d0ce931",
+      "unchanged": true
+    },
+    "corpora/doom_temporal.txt": {
+      "bytes": 27096,
+      "sha256": "e858937143d70bf1cef706f19c290d7eaf5f7b92c2249b76d4ba532b2d860630",
+      "current_sha256": "e858937143d70bf1cef706f19c290d7eaf5f7b92c2249b76d4ba532b2d860630",
+      "unchanged": true
+    },
+    "corpora/families_v3.json": {
+      "bytes": 349840,
+      "sha256": "d1833450c248857c566a48778c39ad0ad27d44b0a66ed72e7df909a58095fb25",
+      "current_sha256": "d1833450c248857c566a48778c39ad0ad27d44b0a66ed72e7df909a58095fb25",
+      "unchanged": true
+    },
+    "corpora/heldout/art.txt": {
+      "bytes": 5456,
+      "sha256": "bfcffdc840f88882fe417356c377806c5f5894eedc3486353406c2190a72c33b",
+      "current_sha256": "bfcffdc840f88882fe417356c377806c5f5894eedc3486353406c2190a72c33b",
+      "unchanged": true
+    },
+    "corpora/heldout/mixed.txt": {
+      "bytes": 3618,
+      "sha256": "351347c821999e001de6acc101d405fecdf3239784bcce42153bcf10ebb13912",
+      "current_sha256": "351347c821999e001de6acc101d405fecdf3239784bcce42153bcf10ebb13912",
+      "unchanged": true
+    },
+    "corpora/heldout/records.txt": {
+      "bytes": 5072,
+      "sha256": "2dc4520fe076225e79aba9776746fc33700f5572e8125f8a8d11946b2eb03c0e",
+      "current_sha256": "2dc4520fe076225e79aba9776746fc33700f5572e8125f8a8d11946b2eb03c0e",
+      "unchanged": true
+    },
+    "corpora/heldout/strings.txt": {
+      "bytes": 5073,
+      "sha256": "e118afff7b290a3c00eee95246b5aa0f534d9f31a374fd63e04ea3506d437e5b",
+      "current_sha256": "e118afff7b290a3c00eee95246b5aa0f534d9f31a374fd63e04ea3506d437e5b",
+      "unchanged": true
+    },
+    "corpora/mixed.txt": {
+      "bytes": 53294,
+      "sha256": "54c2d1415659be5ebf6f0022ccc44848b75906dcbafd9901ef5e953319dfc2c1",
+      "current_sha256": "54c2d1415659be5ebf6f0022ccc44848b75906dcbafd9901ef5e953319dfc2c1",
+      "unchanged": true
+    },
+    "corpora/records.txt": {
+      "bytes": 60384,
+      "sha256": "63d899aac1a8ed19dcd63d73bc3b17dfbbe36bcfcbfc238d4849ec747ad52a2e",
+      "current_sha256": "63d899aac1a8ed19dcd63d73bc3b17dfbbe36bcfcbfc238d4849ec747ad52a2e",
+      "unchanged": true
+    },
+    "corpora/strings.txt": {
+      "bytes": 54691,
+      "sha256": "1698bfa48a3fa17da6517441c2287bcf2cf614059b7fa4524eacf2181dce8024",
+      "current_sha256": "1698bfa48a3fa17da6517441c2287bcf2cf614059b7fa4524eacf2181dce8024",
+      "unchanged": true
+    },
+    "corpora/v1/art.txt": {
+      "bytes": 11837,
+      "sha256": "db8081c8c8a149ade8ecf60d26ece90df1cd9d9fae87ab121382b9db1f0a0f6d",
+      "current_sha256": "db8081c8c8a149ade8ecf60d26ece90df1cd9d9fae87ab121382b9db1f0a0f6d",
+      "unchanged": true
+    },
+    "corpora/v1/doom.txt": {
+      "bytes": 19591,
+      "sha256": "088499ffe15e50f262e64671050411176b5f82c9fc33bdf5df82a9cd4d0ce931",
+      "current_sha256": "088499ffe15e50f262e64671050411176b5f82c9fc33bdf5df82a9cd4d0ce931",
+      "unchanged": true
+    },
+    "corpora/v1/mixed.txt": {
+      "bytes": 14948,
+      "sha256": "283b70729d055c475b0c5e9c5e69d85b8781d54e37c2597c56fab7a100154bef",
+      "current_sha256": "283b70729d055c475b0c5e9c5e69d85b8781d54e37c2597c56fab7a100154bef",
+      "unchanged": true
+    },
+    "corpora/v1/records.txt": {
+      "bytes": 13120,
+      "sha256": "16bb235ead2266df7336db081f12de4466bfe3a020d6016b93dc347d6f9fd037",
+      "current_sha256": "16bb235ead2266df7336db081f12de4466bfe3a020d6016b93dc347d6f9fd037",
+      "unchanged": true
+    },
+    "corpora/v1/strings.txt": {
+      "bytes": 11960,
+      "sha256": "11c12fa957a93843ddc438dabcd2b9a7d70d6115dc65be6728e4026b8b3723db",
+      "current_sha256": "11c12fa957a93843ddc438dabcd2b9a7d70d6115dc65be6728e4026b8b3723db",
+      "unchanged": true
+    }
+  }
+}

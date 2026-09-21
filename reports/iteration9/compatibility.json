@@ -1,0 +1,16 @@
+{
+  "parity_cases": 7,
+  "exact_generation_records": 252,
+  "actual_learning_games": 20,
+  "successful_caller_routes": 6,
+  "selected_state_caller_raw_attempts": 24,
+  "builtin_2048_without_experience_attempts": 4,
+  "builtin_2048_scripted_baseline_episodes": 8,
+  "public_states_unchanged": true,
+  "frozen_input_states_unchanged": true,
+  "frozen_sources_unchanged": true,
+  "live_source_drift": {},
+  "protocol": "protocol.json",
+  "parity": "parity.json",
+  "routes": "routes.json"
+}

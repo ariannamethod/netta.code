@@ -2,6 +2,63 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Learned units compose an ordered recurrent state
+
+Added optional `sequence_memory` to the standalone body: eight hidden channels,
+two 8×32 input projections, learned write/proposal biases and an outcome readout,
+537 parameters in total. `--sequence-memory` / `--no-sequence-memory` work on
+init/play and task-learning ask with save; omission preserves the selected life.
+The hidden state resets per generated program, while acquired parameters and
+update count survive save/resume. OFF retains weights and stops their use and
+acquisition. Existing saved lives remain off.
+
+The bounded input-gated cell follows §3.1.1 of the minGRU paper. Every actual
+learned byte unit, BOS and actual EOS enter the recurrence, including deterministic
+continuations. Candidate states are hypothetical until a unit is selected. An
+independent RNG and zero initial readout preserve birth sampling. Actual ordinary
+execution/novelty reward trains up to twelve equally spaced eligible choice
+positions using averaged BCE, one full BPTT pass and one globally clipped SGD
+update per program. No source or indentation repair is performed.
+
+The actually.life review contributed the sequence principle: composed units
+change the state from which the next unit is chosen. Netta retains its own
+byte-pair alphabet. Learned weights belong to Code's mixed life; Lee keeps
+separate acquired parameters for each specialist life. Source/token/history/EOS
+alignment is checked before enabled external observation mutates state.
+
+The fixed Code comparison used 4,096 attempts, two replicas for each of table
+and sorted-number tasks, 128 training attempts per arm, then 128 task and 128
+separate no-task evaluations per arm. The existing first-unit anchor stays on;
+eight-unit context memory stays off. Table productive executions changed
+93→95/256 (+1 in each replica), complete table passes remained zero, numeric
+passes changed 171→172/256 and numeric corpus source replay 6→8. No-task productive
+execution changed 192→191/512. The gate failed three conditions; confirmation
+and public-state promotion were not performed.
+
+Same-trained-checkpoint OFF produced 94 table productive executions and 172
+numeric passes. Removing the readout changes four of 512 task-conditioned
+sources and one of 512 free-play sources. Independent reconstruction reproduces
+all 1,024 training generations/choices and whole final states, including 512
+recurrent updates at 3,378 independently bound loss positions.
+
+The five-way frozen assay covers 2,560 generations over 512 fixed seeds.
+OFF changes 4 sources; restoring initial transitions, zeroing the current
+hidden prefix and permuting protected early history each change zero sources.
+The order intervention still changes actual candidate probabilities, with
+maximum total variation 2.7586e−6. Every head makes 128 updates and all 537
+parameters change. The useful next target is candidate-specific access to the
+remembered prefix: the current common linear history term cancels between
+choices, leaving small gate differences to carry most contextual contrast.
+No additional quality sweep followed these measurements.
+
+The shared release passes 363 tests. All 537 derivatives agree with independent
+finite differences (maximum absolute error 1.763744713972025e−10). Compatibility
+reproduces 252 generation records, 20 learning attempts and all six caller routes.
+The gallery preserves the prospectively selected seed 222000039, its exact
+computed values and its `experience_replay`/failed-task status. The
+[ninth-pass report](reports/iteration9/REPORT.md) records the research, protocols,
+independent checks and compact results; raw evidence remains separately archived.
+
 ## 2026-09-21 — Acquired outcomes retain eight units of history
 
 Added optional general-Code `context_credit` and the saved `context_memory`

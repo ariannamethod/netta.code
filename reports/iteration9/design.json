@@ -1,0 +1,57 @@
+{
+  "baseline": "1b872b089c8c21f36a2cac3971976e7ae7440bb5",
+  "mechanism": "input-gated ordered unit-state with tanh proposals, following minGRU step1",
+  "scope": "unit sequence within one generated program; learned weights saved separately in each organism life",
+  "dimensions": {
+    "input": 32,
+    "state": 8,
+    "trainable_parameters": 537
+  },
+  "equations": {
+    "gate": "z=sigmoid(Wz*x+bz)",
+    "proposal": "c=tanh(Wc*x+bc)",
+    "state": "h_next=(1-z)*h+z*c",
+    "outcome": "sigmoid(bias+dot(v,h_next))",
+    "candidate_logit_residual": "0.8*clip(dot(v,h_next),-4,4)"
+  },
+  "initialization": {
+    "Wc_std": 0.16,
+    "Wz_std": 0.08,
+    "gate_bias": -2,
+    "proposal_bias": 0,
+    "readout_weights": 0,
+    "outcome_bias": 0,
+    "own_rng": true
+  },
+  "learning": {
+    "targets": "existing ordinary execution/novelty or game reward",
+    "eligible_positions": "original chosen failure-localized choices or explicit reward_choices; max12 equallyspaced distinct byte positions",
+    "loss": "average BCE at selected positions",
+    "backpropagation": "one full reverse pass through BOS and all generated units, including deterministic ones; actual EOS when present",
+    "updates_per_attempt_max": 1,
+    "learning_rate": "0.05/sqrt(1+steps/4000)",
+    "global_gradient_norm_clip": 1,
+    "model_input": "deterministic sparse signed hash of learned unit identity; no syntax or command text"
+  },
+  "controls": {
+    "default": "off; old snapshots and RNG unchanged",
+    "birth": "zero outputweights neutral sampling",
+    "readout_off": "same trainedcheckpoint disable onlymemoryduring frozen evaluation",
+    "transition_restored": "retaintrainedreadout, restore initial input/gate/proposal weights",
+    "sequence_order": "same firstunit,last8units,length,multiset; permuteearlierorder"
+  },
+  "invariants": [
+    "exactsourcebytes includingindentation",
+    "candidate support unchanged",
+    "hypothetical candidate states nevercommit",
+    "program hidden state reset",
+    "saved weights+optimizerstep exactresume",
+    "source-bound update inputs validate before mutation"
+  ],
+  "quality_comparison": {
+    "Code": "same first-anchor1,8unitcontextoff; two tasks two replicas128train128taskeval128frozenfreeplay,3evalarms",
+    "Lee": "experience support0,provenance2.5; two replicas128train64eval,2trained3evalarms",
+    "new_defaults": "only after registered development and conditional confirmation gates",
+    "hyperparameter_sweep": false
+  }
+}

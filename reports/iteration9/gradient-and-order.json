@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "candidate": "results/iteration9/sequence/lee.py",
+  "candidate_sha256": "a18375a2e8990d68cd0c1d840896af221c8f47290fd4eaaa48ad1ca9691745b2",
+  "finite_difference_parameters": 537,
+  "epsilon": 1e-06,
+  "maximum_absolute_gradient_error_by_family": {
+    "wc": 1.3228365907010098e-10,
+    "wz": 1.763744713972025e-10,
+    "bc": 1.0606645943489479e-10,
+    "bz": 6.519198017789635e-11,
+    "v": 6.674514239912721e-11,
+    "bias": 4.832570454915697e-11
+  },
+  "independent_loss": 0.7019075100906655,
+  "forward_steps": 6,
+  "order_oracle": {
+    "same_first_unit": true,
+    "same_last_eight": true,
+    "same_length_and_multiset": true,
+    "maximum_hidden_difference": 0.002086408246275581,
+    "relative_candidate_logit_difference": -4.664493309727846e-07,
+    "shared_suffix_retention_checked": true
+  },
+  "zero_readout_cold_start": {
+    "first_step_transition_unchanged": true,
+    "first_step_readout_changes": true,
+    "second_step_parameter_families_changed": {
+      "wc": true,
+      "wz": true,
+      "bc": true,
+      "bz": true,
+      "v": true,
+      "bias": true
+    }
+  },
+  "clipping": {
+    "unclipped_global_norm": 28.299052810459386,
+    "limit": 1.0,
+    "rate_at_step4000": 0.035355339059327376,
+    "maximum_update_error": 3.469446951953614e-18,
+    "one_update": true
+  },
+  "hypothetical_candidate_state_mutations": 0
+}

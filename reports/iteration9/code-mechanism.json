@@ -1,0 +1,398 @@
+{
+  "species": "code",
+  "experiment": "frozen recurrent-memory generation-only assay",
+  "raw_seed_slots": 512,
+  "raw_generations": 2560,
+  "variants": [
+    "genuine",
+    "readout_off",
+    "initial_transitions",
+    "state_zero",
+    "prefix_permuted"
+  ],
+  "candidate_sha256": "85bef4b5b3c947798ee926805d2dae61f5a91372d8f3bab2e8d46314811c7c4f",
+  "totals": {
+    "genuine": {
+      "generations": 512,
+      "generated_units": 35514,
+      "sampled_choices": 12246,
+      "branches_with_sequence_contrast": 12246
+    },
+    "readout_off": {
+      "generations": 512,
+      "generated_units": 35479,
+      "sampled_choices": 12219,
+      "branches_with_sequence_contrast": 0,
+      "different_sources": 4,
+      "different_generated_records": 4,
+      "different_first_tokens": 4,
+      "matched_histories": 35066,
+      "changed_hidden_states": 35066,
+      "changed_probabilities": 12048,
+      "total_variation_sum": 2.858328524230502,
+      "max_total_variation": 0.001985312659418148
+    },
+    "initial_transitions": {
+      "generations": 512,
+      "generated_units": 35514,
+      "sampled_choices": 12246,
+      "branches_with_sequence_contrast": 12246,
+      "different_sources": 0,
+      "different_generated_records": 0,
+      "different_first_tokens": 0,
+      "matched_histories": 35514,
+      "changed_hidden_states": 35514,
+      "changed_probabilities": 12246,
+      "total_variation_sum": 0.025327200435583064,
+      "max_total_variation": 2.58170304508476e-05
+    },
+    "state_zero": {
+      "generations": 512,
+      "generated_units": 35514,
+      "sampled_choices": 12246,
+      "branches_with_sequence_contrast": 12246,
+      "different_sources": 0,
+      "different_generated_records": 0,
+      "different_first_tokens": 0,
+      "matched_histories": 35514,
+      "changed_hidden_states": 35514,
+      "changed_probabilities": 12246,
+      "total_variation_sum": 0.04627675941116956,
+      "max_total_variation": 5.820028086750417e-05
+    },
+    "prefix_permuted": {
+      "generations": 512,
+      "generated_units": 35514,
+      "sampled_choices": 12246,
+      "branches_with_sequence_contrast": 12246,
+      "different_sources": 0,
+      "different_generated_records": 0,
+      "different_first_tokens": 0,
+      "matched_histories": 35514,
+      "changed_hidden_states": 29870,
+      "changed_probabilities": 10017,
+      "total_variation_sum": 0.0011078056191939755,
+      "max_total_variation": 2.75863508392149e-06
+    }
+  },
+  "states": [
+    {
+      "checkpoint": "table_00",
+      "checkpoint_sha256": "d415c4d95672b64a473a1d452cc04ba8ab4e3b758ba213363dee1b2b90aad45f",
+      "closed_on_journal_sha256": "e048df20dec158f2106ae3fb7f609a3cc9e9a7bc3b9f93d0ddba0d51e6ddaf1b",
+      "closed_off_journal_sha256": "2459f57121d0b2d9cbec5bdd2a78346beeb915287c95142a2542214dfdb61cb4",
+      "seeds": 128,
+      "state_fingerprints_before": {
+        "genuine": "31bdaf1109a6a37fd80cf0f148ce4e77385eab24d6cc2a271eae64d6742e61c3",
+        "readout_off": "954d120eb1f2666bee7bd1882dc9b40dce00db8244bb225be3a926aa761f132a",
+        "initial_transitions": "514b49ba92e96c3400180e93040432c390a080ee20275e0b6bc9a2e4b69c36e4",
+        "state_zero": "31bdaf1109a6a37fd80cf0f148ce4e77385eab24d6cc2a271eae64d6742e61c3",
+        "prefix_permuted": "31bdaf1109a6a37fd80cf0f148ce4e77385eab24d6cc2a271eae64d6742e61c3"
+      },
+      "state_fingerprints_after": {
+        "genuine": "31bdaf1109a6a37fd80cf0f148ce4e77385eab24d6cc2a271eae64d6742e61c3",
+        "readout_off": "954d120eb1f2666bee7bd1882dc9b40dce00db8244bb225be3a926aa761f132a",
+        "initial_transitions": "514b49ba92e96c3400180e93040432c390a080ee20275e0b6bc9a2e4b69c36e4",
+        "state_zero": "31bdaf1109a6a37fd80cf0f148ce4e77385eab24d6cc2a271eae64d6742e61c3",
+        "prefix_permuted": "31bdaf1109a6a37fd80cf0f148ce4e77385eab24d6cc2a271eae64d6742e61c3"
+      },
+      "parameters_vs_initial": {
+        "wc": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.006539574522331848,
+          "max_abs": 0.0015069777393144634
+        },
+        "wz": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.0008634797253171695,
+          "max_abs": 0.00018786747870464665
+        },
+        "bc": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.02083059140755445,
+          "max_abs": 0.011588776325949872
+        },
+        "bz": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.0001414726323148853,
+          "max_abs": 0.00010279836016535704
+        },
+        "v": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.08249369146762345,
+          "max_abs": 0.04981822202784623
+        },
+        "bias": {
+          "parameters": 1,
+          "changed_parameters": 1,
+          "l2": 1.1001489259430477,
+          "max_abs": 1.1001489259430477
+        }
+      },
+      "learned_updates": 128,
+      "all_complete_journal_matches": true,
+      "compressed_trace_bytes": 10253596,
+      "private_receipt_sha256": "3f4a27527b270f60a338298ca3605e1b3bb67dd299fc371671d6e7d1ac13f340",
+      "all_537_parameters_changed": true
+    },
+    {
+      "checkpoint": "table_01",
+      "checkpoint_sha256": "709fd9fc01c376bc4444c1408fa04e81b74d04076e06d6357f09f337443da9af",
+      "closed_on_journal_sha256": "7f2644983420fe53f8cc79a7a4f3c628491835b4b27e2f2e12843a4a8d455919",
+      "closed_off_journal_sha256": "7f2644983420fe53f8cc79a7a4f3c628491835b4b27e2f2e12843a4a8d455919",
+      "seeds": 128,
+      "state_fingerprints_before": {
+        "genuine": "c45e37c1fabbc3ce727724347f46fb60db79971e2ee98cb709e04c573ebbf4d6",
+        "readout_off": "5bfa8cfdb24b5844e77e291f57cd8ddb51c7bd4762f949c174a36cef755c7db5",
+        "initial_transitions": "022fea24f760a80174e29b34c12b9ac5fc2f223bda6df5d58eb5ace580d98342",
+        "state_zero": "c45e37c1fabbc3ce727724347f46fb60db79971e2ee98cb709e04c573ebbf4d6",
+        "prefix_permuted": "c45e37c1fabbc3ce727724347f46fb60db79971e2ee98cb709e04c573ebbf4d6"
+      },
+      "state_fingerprints_after": {
+        "genuine": "c45e37c1fabbc3ce727724347f46fb60db79971e2ee98cb709e04c573ebbf4d6",
+        "readout_off": "5bfa8cfdb24b5844e77e291f57cd8ddb51c7bd4762f949c174a36cef755c7db5",
+        "initial_transitions": "022fea24f760a80174e29b34c12b9ac5fc2f223bda6df5d58eb5ace580d98342",
+        "state_zero": "c45e37c1fabbc3ce727724347f46fb60db79971e2ee98cb709e04c573ebbf4d6",
+        "prefix_permuted": "c45e37c1fabbc3ce727724347f46fb60db79971e2ee98cb709e04c573ebbf4d6"
+      },
+      "parameters_vs_initial": {
+        "wc": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.004165401382376083,
+          "max_abs": 0.0011169267748543654
+        },
+        "wz": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.000788512440687837,
+          "max_abs": 0.00022621716698129068
+        },
+        "bc": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.027863105056127546,
+          "max_abs": 0.019144067526906113
+        },
+        "bz": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.00017711636926785184,
+          "max_abs": 0.0001304487516702313
+        },
+        "v": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.07008300415916414,
+          "max_abs": 0.0428810173030644
+        },
+        "bias": {
+          "parameters": 1,
+          "changed_parameters": 1,
+          "l2": 1.1831664182658763,
+          "max_abs": 1.1831664182658763
+        }
+      },
+      "learned_updates": 128,
+      "all_complete_journal_matches": true,
+      "compressed_trace_bytes": 8052356,
+      "private_receipt_sha256": "88785ddb4373de7329de514e7a4e81dc7e118df743a66aa9746fb522f4909bea",
+      "all_537_parameters_changed": true
+    },
+    {
+      "checkpoint": "numbers_00",
+      "checkpoint_sha256": "f75886e06cbb131ce78a8fd6aeda424bf28df601b8b2b870d461f87caf443bdb",
+      "closed_on_journal_sha256": "5fe4685e4a88cb65bbd9b146e81087d9063d234e35a8a0a01e5d887a9fdcb8c0",
+      "closed_off_journal_sha256": "5fe4685e4a88cb65bbd9b146e81087d9063d234e35a8a0a01e5d887a9fdcb8c0",
+      "seeds": 128,
+      "state_fingerprints_before": {
+        "genuine": "b120a7532228a488760e14a907e56747e0a7dbf6e2afa3098b437c660c4aef1f",
+        "readout_off": "2da7410c8fa006fa0caa2552f6d3ad97657767d01f82dab17cac54101e57c9d6",
+        "initial_transitions": "16e340cb13e92758534d7db6bb475f761fd4cd0cc4c1eca1bdaa5c89cc8db6b8",
+        "state_zero": "b120a7532228a488760e14a907e56747e0a7dbf6e2afa3098b437c660c4aef1f",
+        "prefix_permuted": "b120a7532228a488760e14a907e56747e0a7dbf6e2afa3098b437c660c4aef1f"
+      },
+      "state_fingerprints_after": {
+        "genuine": "b120a7532228a488760e14a907e56747e0a7dbf6e2afa3098b437c660c4aef1f",
+        "readout_off": "2da7410c8fa006fa0caa2552f6d3ad97657767d01f82dab17cac54101e57c9d6",
+        "initial_transitions": "16e340cb13e92758534d7db6bb475f761fd4cd0cc4c1eca1bdaa5c89cc8db6b8",
+        "state_zero": "b120a7532228a488760e14a907e56747e0a7dbf6e2afa3098b437c660c4aef1f",
+        "prefix_permuted": "b120a7532228a488760e14a907e56747e0a7dbf6e2afa3098b437c660c4aef1f"
+      },
+      "parameters_vs_initial": {
+        "wc": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.011861931783807591,
+          "max_abs": 0.003361971663619512
+        },
+        "wz": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.0022786844084194597,
+          "max_abs": 0.001081388341270452
+        },
+        "bc": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.05553409853898639,
+          "max_abs": 0.036409910052564345
+        },
+        "bz": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.0013976987508066926,
+          "max_abs": 0.0009685287777063678
+        },
+        "v": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.12938643807967237,
+          "max_abs": 0.08402496757101449
+        },
+        "bias": {
+          "parameters": 1,
+          "changed_parameters": 1,
+          "l2": 1.2497601113020045,
+          "max_abs": 1.2497601113020045
+        }
+      },
+      "learned_updates": 128,
+      "all_complete_journal_matches": true,
+      "compressed_trace_bytes": 7655786,
+      "private_receipt_sha256": "4e2d7bd4952d007c47fee4e05d177039f11b4ea94fa19020e1e1f17b47316df2",
+      "all_537_parameters_changed": true
+    },
+    {
+      "checkpoint": "numbers_01",
+      "checkpoint_sha256": "c9724d8f283a1bc210eee03670561691b1a52f19cdf7a5d707015290eb684e17",
+      "closed_on_journal_sha256": "80d0830d8dbc5977522cff559e6f4441a203eacc4f5b595df0c552a10971d49d",
+      "closed_off_journal_sha256": "a73ec651203b2424b0c077ed3bb714bab6d52a8f68e5eb0b9c73af32f5cdcdec",
+      "seeds": 128,
+      "state_fingerprints_before": {
+        "genuine": "593ddb3b565249fb8471329503c5a4f70e35fd57986e7aa394f38f9f0c93fcde",
+        "readout_off": "10712542ad3d29deb96e2be323dac2377d7f5f3c905bb893a2a2c30e5d0bf976",
+        "initial_transitions": "6162d5e469bfaf106c95b55c3aa86b8f03bbdda96fb1b5860fcd411f8f6ea0ec",
+        "state_zero": "593ddb3b565249fb8471329503c5a4f70e35fd57986e7aa394f38f9f0c93fcde",
+        "prefix_permuted": "593ddb3b565249fb8471329503c5a4f70e35fd57986e7aa394f38f9f0c93fcde"
+      },
+      "state_fingerprints_after": {
+        "genuine": "593ddb3b565249fb8471329503c5a4f70e35fd57986e7aa394f38f9f0c93fcde",
+        "readout_off": "10712542ad3d29deb96e2be323dac2377d7f5f3c905bb893a2a2c30e5d0bf976",
+        "initial_transitions": "6162d5e469bfaf106c95b55c3aa86b8f03bbdda96fb1b5860fcd411f8f6ea0ec",
+        "state_zero": "593ddb3b565249fb8471329503c5a4f70e35fd57986e7aa394f38f9f0c93fcde",
+        "prefix_permuted": "593ddb3b565249fb8471329503c5a4f70e35fd57986e7aa394f38f9f0c93fcde"
+      },
+      "parameters_vs_initial": {
+        "wc": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.008995764185035025,
+          "max_abs": 0.0024719625160027348
+        },
+        "wz": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.0020953961648278972,
+          "max_abs": 0.0011148017576665774
+        },
+        "bc": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.016839793635227373,
+          "max_abs": 0.009956912700166647
+        },
+        "bz": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.0018329497872487301,
+          "max_abs": 0.001523954709181874
+        },
+        "v": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.10463095223314957,
+          "max_abs": 0.07298510811694836
+        },
+        "bias": {
+          "parameters": 1,
+          "changed_parameters": 1,
+          "l2": 0.9569093682879152,
+          "max_abs": 0.9569093682879152
+        }
+      },
+      "learned_updates": 128,
+      "all_complete_journal_matches": true,
+      "compressed_trace_bytes": 7171049,
+      "private_receipt_sha256": "e47607bbe3667a85e27e3bbe3673473243c2710b553a09c3a5d7f495d83f7949",
+      "all_537_parameters_changed": true
+    }
+  ],
+  "first_token_witnesses": {
+    "readout_off": {
+      "checkpoint": "table_00",
+      "seed": 222000039,
+      "index": 39,
+      "unit_index": 1,
+      "shared_actual_history": [
+        -1,
+        350
+      ],
+      "genuine_selected_token": 49,
+      "altered_selected_token": 52,
+      "candidate_probabilities": {
+        "genuine": {
+          "49": 0.12615683605625788,
+          "52": 0.22875718617745955,
+          "53": 0.1912145312222885,
+          "54": 0.14250818638396556,
+          "55": 0.16000631439639085,
+          "56": 0.10430836298192858,
+          "57": 0.04704858278170916
+        },
+        "altered": {
+          "49": 0.12605376438444202,
+          "52": 0.22875935007301487,
+          "53": 0.19123656258429653,
+          "54": 0.1424128838703121,
+          "55": 0.16022997851923157,
+          "56": 0.10427084175905514,
+          "57": 0.0470366188096477
+        }
+      }
+    },
+    "initial_transitions": null,
+    "state_zero": null,
+    "prefix_permuted": null
+  },
+  "interpretation": {
+    "measured": "Learned recurrent parameters and actual order-dependent candidate probabilities both change. Fixed seed outcomes measure the size of the effect.",
+    "limitation": "Initial-transition, zero-prefix and earlier-order controls change probabilities but none changes complete source under these seeds. Observable ON/OFF source changes alone therefore do not establish useful sequential reasoning.",
+    "quality": "No quality improvement is inferred from this assay; use the separate fixed gameplay comparison and its gate."
+  },
+  "probability_change_threshold": 1e-15,
+  "tv_aggregates_include_values_below_threshold": true,
+  "on_and_off_complete_record_identity": true,
+  "unchanged_persistent_states": true,
+  "runtime_executions": 0,
+  "training_updates": 0,
+  "elapsed_seconds": 309.4949510979932,
+  "private_full_summary": "results/iteration9/code/development/sequence-assay-atomic/summary.json",
+  "private_full_summary_sha256": "52797e2acbd6547260b0176c467655eca75007d6273c321a3fc6a669ae10ab58",
+  "compressed_trace_bytes": 33132787,
+  "protocol": {
+    "file": "sequence-assay-protocol.json",
+    "sha256": "ca4dab2ebeb927f15b1b0b4323612f53da12b83a06665afaa73de815080a77f6",
+    "transport_amendment": "sequence-assay-transport-amendment.json",
+    "transport_amendment_sha256": "dd5db189060ceeb6ca20e65b675a61080ec4fd86518f6eb711f897f7475ccf57",
+    "events": "sequence-assay-transport-events.json",
+    "chronology": "Controls were requested before full gameplay launch; this separate generation-only protocol froze after gameplay had begun and partial quality outcomes had reached the team. No cases/seeds/operators were selected using outcomes. Preserve the original protocol and read its chronology clarification in the amendment."
+  },
+  "failed_transport_excluded": true,
+  "independent_audit": "Numerical gradients and operators passed before full assay; full trace reconstruction is recorded by the separate independent audit receipt."
+}

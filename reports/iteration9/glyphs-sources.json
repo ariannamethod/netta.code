@@ -1,0 +1,132 @@
+{
+  "repository": "ariannamethod/actually.life",
+  "branch": "main",
+  "github_head": "7f596883baa653c487127f420330b48501f962c9",
+  "github_tree": "692a11b04af2b657dc5390241e0cebd2f473da32",
+  "github_commit_timestamp": "2026-09-12T15:37:42Z",
+  "local_head": "7f596883baa653c487127f420330b48501f962c9",
+  "local_clean": true,
+  "retrieved_at_utc": "2026-09-21T13:27:32.225671+00:00",
+  "method": "Read-only GitHub connector: fetch commits/main, then immutable git tree and fetch_file l.c lines590..625 at the resolved commit. Entire local file git-object hashes match that remote immutable tree. Implementation assertions read from code, not inferred only from README.",
+  "endpoints": [
+    "https://api.github.com/repos/ariannamethod/actually.life/commits/main",
+    "https://api.github.com/repos/ariannamethod/actually.life/git/trees/692a11b04af2b657dc5390241e0cebd2f473da32",
+    "https://github.com/ariannamethod/actually.life/blob/7f596883baa653c487127f420330b48501f962c9/l.c#L590-L625"
+  ],
+  "files": {
+    "l.c": {
+      "bytes": 193701,
+      "sha256": "db2b9d0a667147a4d344644e2926064d2841cb2e44ad49d75d6de037fe4c3147",
+      "git_blob_sha1": "4006830d3adee119678dc3df13c5397e09b0cbff",
+      "github_tree_blob_sha1": "4006830d3adee119678dc3df13c5397e09b0cbff",
+      "local_matches_remote_tree": true,
+      "source_url": "https://github.com/ariannamethod/actually.life/blob/7f596883baa653c487127f420330b48501f962c9/l.c"
+    },
+    "l2.c": {
+      "bytes": 193704,
+      "sha256": "77c9b045db495a331b661257c79aa2e07e2e01fd385d0cf5528c074cf4e346b7",
+      "git_blob_sha1": "410cc8165faa3d28664fcafe30a0051e3f9ea1c0",
+      "github_tree_blob_sha1": "410cc8165faa3d28664fcafe30a0051e3f9ea1c0",
+      "local_matches_remote_tree": true,
+      "source_url": "https://github.com/ariannamethod/actually.life/blob/7f596883baa653c487127f420330b48501f962c9/l2.c"
+    },
+    "README.md": {
+      "bytes": 22849,
+      "sha256": "aea388487f5eaf36158153979a45b90fd8b03b4c47204991ad2f3bcbde9b277c",
+      "git_blob_sha1": "49f3db64f33bb056bfc9972148913fcc37835543",
+      "github_tree_blob_sha1": "49f3db64f33bb056bfc9972148913fcc37835543",
+      "local_matches_remote_tree": true,
+      "source_url": "https://github.com/ariannamethod/actually.life/blob/7f596883baa653c487127f420330b48501f962c9/README.md"
+    },
+    "llog.md": {
+      "bytes": 78478,
+      "sha256": "753bf4daed2d856305c834c7a52ad67b3eb35ee461c0ea523bd8471b77ccb262",
+      "git_blob_sha1": "c8142fccb6fd30ef1cdf264023479206a7c652ca",
+      "github_tree_blob_sha1": "c8142fccb6fd30ef1cdf264023479206a7c652ca",
+      "local_matches_remote_tree": true,
+      "source_url": "https://github.com/ariannamethod/actually.life/blob/7f596883baa653c487127f420330b48501f962c9/llog.md"
+    }
+  },
+  "code_ranges": {
+    "fixed_glyph_alphabet": [
+      19,
+      50
+    ],
+    "word_mapping": [
+      172,
+      259
+    ],
+    "micro_transformer_dimensions": [
+      264,
+      277
+    ],
+    "hebbian_update": [
+      432,
+      462
+    ],
+    "body_plasticity": [
+      465,
+      499
+    ],
+    "glyph_charge": [
+      502,
+      562
+    ],
+    "composition": [
+      590,
+      643
+    ],
+    "neural_forward": [
+      645,
+      678
+    ],
+    "digest": [
+      713,
+      760
+    ],
+    "recursive_naming": [
+      763,
+      784
+    ],
+    "sequence_memory_field": [
+      792,
+      875
+    ],
+    "sampling": [
+      883,
+      909
+    ],
+    "self_prediction": [
+      912,
+      938
+    ],
+    "whole_symbol_adoption": [
+      1010,
+      1050
+    ],
+    "autoregressive_speech": [
+      1095,
+      1117
+    ],
+    "heredity": [
+      1131,
+      1196
+    ],
+    "ingestion": [
+      1267,
+      1276
+    ],
+    "dream_composition": [
+      1293,
+      1305
+    ]
+  },
+  "netta_source_comparison": {
+    "file": "core_part.py",
+    "sha256": "e4f680b390f6a6185fe68d648bdcbc2054ed9cbb02d9eced33b9a80b41558fb5",
+    "readable_in_current_workspace": true,
+    "basis": "Units constructor/merge/encode/decode; learned byte-pair units are recursively composed at island initialization, keeping exact raw expansions."
+  },
+  "production_files_modified": false,
+  "experiments_run": false
+}

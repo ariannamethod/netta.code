@@ -2,6 +2,63 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Ordered neural memory belongs to each saved life
+
+Added the optional 537-parameter, eight-channel recurrent outcome head to Lee.
+The organism's learned byte units enter in emitted order; candidate next states
+are scored without committing them. Actual generation advances exactly one unit
+at a time, including deterministic choices. Hidden state resets at program
+boundaries and learned gates/proposals/readout survive separately inside each
+island life. This transfers the composition-and-sequence principle examined in
+actually.life through Netta's own alphabet.
+
+`--sequence-memory` / `--no-sequence-memory` work on init/play, task-learning ask
+with save, `2048.py play` and `doomer.py train`. Omitted flags retain the saved
+setting. OFF retains acquired weights, stops readout and stops updates. Normal
+read-only ask/evaluation uses the stored configuration. Both standalone bodies
+still need only the Python standard library; no extra package is installed.
+
+The cell is input-gated with a bounded tanh proposal, following the intermediate
+simplification in minGRU §3.1.1. Ordinary execution/environment reward supplies
+up to twelve source-bound loss positions. Mean BCE, full BPTT through actual
+units and one global-norm-clipped SGD update train all 537 parameters. Initial
+readout is zero and consumes no sampling RNG. One episode cannot multiply the
+number of recurrent optimizer updates.
+
+The fixed 2048 comparison preserves provenance strength 2.5 and support mass 0.
+Two baseline/candidate replicas train 128 attempts each; baseline, ON and the
+same trained checkpoint OFF then evaluate 64 each. All 896 generated attempts
+and 256 random/greedy controls are retained. Completed score/raw changed
+658.78125→663.34375, completed episodes 86→87/128. Replica deltas were −10.75 and
++19.875; the pooled +4.5625 has paired bootstrap 95% interval [−16.125, 29.8125]. OFF
+scores 658.78125 with 86 completions. Random legal play scores 986.09375 and fixed
+greedy 1275.5. The advancement gate failed; no confirmation or published-state
+replacement followed.
+
+The first-difference witness isolates generated code: the candidate changes a
+multiplier 4→2, and the same game seed changes score 1248→560; same-checkpoint OFF
+restores 4 and 1248. The prospectively selected showcase is separate: seed 173000000
+scores 1228 and baseline also completes it. Both exact programs and their status
+remain visible in the gallery and compact receipts.
+
+The five-way frozen assay covers 640 generations over 128 fixed seeds.
+OFF changes 2 sources; restoring initial transitions, zeroing the current
+hidden prefix and permuting protected early history each change zero sources.
+The order intervention still changes actual candidate probabilities, with
+maximum total variation 2.4430e−7. Every head makes 128 updates and all 537
+parameters change. The useful next target is candidate-specific access to the
+remembered prefix: the current common linear history term cancels between
+choices, leaving small gate differences to carry most contextual contrast.
+No additional quality sweep followed these measurements.
+
+The full shared release passes 363 tests, including 12 recurrent checks and 6 CLI
+checks. Independent finite differences cover all 537 parameters. Native CLI
+verification completes two short 2048 episodes and one short Doom episode while
+also checking rejection paths and save/resume. All six caller routes remain
+compatible. The [ninth-pass report](reports/iteration9/REPORT.md) holds compact
+research and measurements; full program, state and trajectory evidence stays
+in the separate archive.
+
 ## 2026-09-21 — Experience can reopen a local continuation
 
 Added optional saved `experience_support_mass`, exposed as

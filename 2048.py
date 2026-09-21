@@ -623,6 +623,8 @@ def run_cli():
         item.add_argument('--episode-seed', type=int, default=3200000 if command == 'play' else 3600000)
         item.add_argument('--max-moves', type=int, default=128)
         if command == 'play':
+            item.add_argument('--sequence-memory', action=argparse.BooleanOptionalAction,
+                              default=None, help='ordered-unit recurrent memory; omitted preserves saved choice')
             item.add_argument('--experience-support', type=float,
                               help='Lee experienced-suffix count mass (0..0.25); omitted preserves saved choice')
             item.add_argument('--control-learning', choices=('legacy', 'quality', 'trace', 'both'),
@@ -641,6 +643,8 @@ def run_cli():
     if not 1 <= args.attempts <= 100000:
         parser.error('attempts must be 1..100000')
     model = core.Organism.load(args.state)
+    if args.command == 'play' and args.sequence_memory is not None:
+        model.configure_sequence_memory(args.sequence_memory)
     if args.command == 'play' and args.experience_support is not None:
         model.configure_experience_support(args.experience_support)
     if args.command == 'play' and args.control_learning is not None:
@@ -658,6 +662,8 @@ def run_cli():
                 'bridge_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                 'core_sha256': hashlib.sha256(Path(core.__file__).read_bytes()).hexdigest()}
     if args.command == 'play':
+        if args.sequence_memory is not None:
+            protocol['sequence_memory_override'] = args.sequence_memory
         protocol['control_learning_override'] = args.control_learning
         protocol['decision_credit_override'] = args.decision_credit
         if args.experience_support is not None:

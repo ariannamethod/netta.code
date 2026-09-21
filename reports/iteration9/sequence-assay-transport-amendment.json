@@ -1,0 +1,35 @@
+{
+  "kind": "transport-only amendment; original mechanism protocol retained",
+  "created_utc": "2026-09-21T13:50:51Z",
+  "original_helper_sha256": "7ca9eea1bb9faa059d3e10f62115084abf419e9d0365897df5b2703f3dbfb437",
+  "original_protocol_sha256": "ca4dab2ebeb927f15b1b0b4323612f53da12b83a06665afaa73de815080a77f6",
+  "fixed_helper_sha256": "fcfce3fd00f6e6674e652293b4e8cd3a9349c3b20660d2f7bd167df5cc02e030",
+  "failure": {
+    "checkpoint": "code/table_00",
+    "all_generated_seed_slots": 128,
+    "complete_decompressed_rows": 34,
+    "error": "EOFError during mandatory gzip readback; compressed long-open stream lacked end-of-stream marker",
+    "disk_free_gib_at_failure": 26,
+    "cause": "undetermined transport truncation; no runtime or model failure",
+    "preserved_trace": "../code/development/sequence-assay-interrupted/table_00.interrupted.gz",
+    "preserved_original_helper": "assay-helper-original.py"
+  },
+  "writer_change": "one gzip-compressed exact JSON record per seed; temporary file, flush/fsync, atomic rename, immediate bytes/JSON readback; final checkpoint shard hash readback",
+  "mechanism_ast_identical": [
+    "prefix_permutation",
+    "intervene",
+    "trace_generation",
+    "compare_paths",
+    "expected_generation",
+    "parameter_changes",
+    "cases_for"
+  ],
+  "unchanged": "all original final checkpoints, evaluation seeds, five operators, probability instrumentation, counts, thresholds and state checks",
+  "replayed_generation_only": {
+    "code_first_checkpoint": 128,
+    "additional_runtime_or_games": 0,
+    "excluded_from_completed_assay_denominator": true
+  },
+  "raw_trace": "Each case directory contains <index>.json.gz; case.receipt.json lists bytes/SHA and original journal hashes; final summary as before.",
+  "chronology_clarification": "The five controls were requested before full gameplay launch. This separate helper protocol froze after gameplay had started and root had received partial quality outputs. Its original created_before_assay_and_without_examining_quality_outcomes flag is overbroad as a project-wide claim: pre-assay timing is correct, but quality outcomes already existed and some were communicated within the team. All checkpoint cases, evaluation seeds, operators and thresholds were fixed; no outcome-driven optimization, selection, or change to gameplay protocols occurred."
+}

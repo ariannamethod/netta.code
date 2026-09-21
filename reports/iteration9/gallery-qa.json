@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "gallery_sha256": "e08749f9aaae21ff55ae4742746c7377047d686cd71767c816ef12a17a289cf1",
+  "gallery_bytes": 351514,
+  "previous_gallery_preserved_exactly": true,
+  "previous_gallery_sha256": "0a627dcf4340ad80377b7479783843347174e1b9cfdec2e57b545496769c831b",
+  "recorded_traces": [
+    {
+      "name": "code",
+      "seed": 222000039,
+      "source_sha256": "55428a39f94f57ff6bcc32e5a18ff89a8d3d2c490f23af7b1bda028b0c19aed5",
+      "selected_units": 26,
+      "hidden_states": 27,
+      "recorded_unit_and_state_identity": true
+    },
+    {
+      "name": "lee",
+      "seed": 173000000,
+      "source_sha256": "fabdfdcb0ec2919b5338a4baec112cd9a3b66eeb3f55b09c1d0ee3f5abca5a97",
+      "selected_units": 67,
+      "hidden_states": 68,
+      "recorded_unit_and_state_identity": true
+    },
+    {
+      "name": "lee_difference",
+      "seed": 173000020,
+      "source_sha256": "dbc49ce9e34b78cd15c79d81672f2fff492f20ee3cab326b718cbacca5d88454",
+      "selected_units": 68,
+      "hidden_states": 69,
+      "recorded_unit_and_state_identity": true
+    }
+  ],
+  "public_inline_trace_identity": true,
+  "actual_sources_exact": true,
+  "code_status": "experience_replay",
+  "code_accepted": false,
+  "code_task_passed": false,
+  "code_stdout_empty": true,
+  "code_final_result_exact": true,
+  "lee_trajectory_moves": 128,
+  "lee_score": 1228,
+  "analytical_witness": {
+    "source_byte_span": [
+      352,
+      353
+    ],
+    "before": "4",
+    "after": "2",
+    "scores": [
+      1248,
+      560,
+      1248
+    ]
+  },
+  "fixtures": [
+    {
+      "label": "three actual recorded sequences and 128-move episode",
+      "unit_checks": 191,
+      "state_value_checks": 3056,
+      "board_checks": 264
+    },
+    {
+      "label": "synthetic UTF-8 split-unit highlight, CRLF and less-than preservation",
+      "unit_checks": 13,
+      "state_value_checks": 208,
+      "board_checks": 12
+    }
+  ],
+  "node_version": "v24.19.0",
+  "scope": "Node VM with HTMLCollection-like minimal DOM: all real recorded units and hidden states, candidate probabilities, source bytes, heatmap/tape controls, all board states forward/backward and boundary controls. Synthetic UTF-8 is a test fixture only. CSS layout not rendered."
+}

@@ -728,7 +728,11 @@ Vanilla Doom has 256 RNG phases; seeds separated by 256 select the same phase.
                         help="Play each unchanged policy on this many consecutive engine seeds, then learn once")
     parser.add_argument("--decisions", type=int, help="Override the configuration's episode decision budget")
     parser.add_argument("--visible", action="store_true")
+    parser.add_argument("--sequence-memory", action=argparse.BooleanOptionalAction,
+                        default=None, help="Training only: acquired recurrent memory of ordered code units")
     args = parser.parse_args(argv)
+    if args.sequence_memory is not None and args.command != "train":
+        parser.error("--sequence-memory is a training option; evaluation preserves the saved settings")
     if args.command != "doctor" and args.state is None:
         parser.error("--state is required for check, train, and evaluate")
     if args.control_learning is not None and args.command != "train":
@@ -786,6 +790,8 @@ Vanilla Doom has 256 RNG phases; seeds separated by 256 select the same phase.
         organism = Organism(programs, seed=args.seed, mode="control", _reference=reference)
     else:
         parser.error("supply an existing state, or --island when training a new one")
+    if args.sequence_memory is not None:
+        organism.configure_sequence_memory(args.sequence_memory)
     if args.control_learning is not None:
         organism.configure_control_learning(quality=args.control_learning in {"quality", "both"},
                                              executed_credit=args.control_learning in {"trace", "both"})
@@ -803,6 +809,7 @@ Vanilla Doom has 256 RNG phases; seeds separated by 256 select the same phase.
     write_json(output / "manifest.json", {"config": config, "config_file_sha256": file_hash(args.config),
                "seed": args.seed, "attempt_offset": offset, "attempts": args.episodes, "learning": args.command == "train",
                "game_seed": game_seed, "episode_repeats": args.episode_repeats,
+               **({"sequence_memory_override": args.sequence_memory} if args.sequence_memory is not None else {}),
                "vizdoom": engine_version, "bridge_sha256": file_hash(__file__),
                "engine_execution": args.command != "check",
                "organism_sha256": file_hash(ROOT / "nettalee.py"), "initial_state": fingerprint(organism.state_dict()),

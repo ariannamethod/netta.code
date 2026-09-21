@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "candidate_sha256": "85bef4b5b3c947798ee926805d2dae61f5a91372d8f3bab2e8d46314811c7c4f",
+  "method": "Regenerate exact training source/choices, apply preserved actual judge receipts, independently bind recurrent targets, compare full final states; no new runtime games.",
+  "streams": 32,
+  "attempts": 4096,
+  "replicas": {
+    "table_00": {
+      "first": {
+        "training_attempts": 128,
+        "source_and_all_choices_exact": 128,
+        "final_state_exact": true,
+        "eligible_recurrent_updates": 0,
+        "independently_bound_recurrent_loss_positions": 0,
+        "final_sequence_steps": null
+      },
+      "sequence": {
+        "training_attempts": 128,
+        "source_and_all_choices_exact": 128,
+        "final_state_exact": true,
+        "eligible_recurrent_updates": 128,
+        "independently_bound_recurrent_loss_positions": 744,
+        "final_sequence_steps": 128
+      },
+      "off_differs_only_switch": true
+    },
+    "table_01": {
+      "first": {
+        "training_attempts": 128,
+        "source_and_all_choices_exact": 128,
+        "final_state_exact": true,
+        "eligible_recurrent_updates": 0,
+        "independently_bound_recurrent_loss_positions": 0,
+        "final_sequence_steps": null
+      },
+      "sequence": {
+        "training_attempts": 128,
+        "source_and_all_choices_exact": 128,
+        "final_state_exact": true,
+        "eligible_recurrent_updates": 128,
+        "independently_bound_recurrent_loss_positions": 752,
+        "final_sequence_steps": 128
+      },
+      "off_differs_only_switch": true
+    },
+    "numbers_00": {
+      "first": {
+        "training_attempts": 128,
+        "source_and_all_choices_exact": 128,
+        "final_state_exact": true,
+        "eligible_recurrent_updates": 0,
+        "independently_bound_recurrent_loss_positions": 0,
+        "final_sequence_steps": null
+      },
+      "sequence": {
+        "training_attempts": 128,
+        "source_and_all_choices_exact": 128,
+        "final_state_exact": true,
+        "eligible_recurrent_updates": 128,
+        "independently_bound_recurrent_loss_positions": 979,
+        "final_sequence_steps": 128
+      },
+      "off_differs_only_switch": true
+    },
+    "numbers_01": {
+      "first": {
+        "training_attempts": 128,
+        "source_and_all_choices_exact": 128,
+        "final_state_exact": true,
+        "eligible_recurrent_updates": 0,
+        "independently_bound_recurrent_loss_positions": 0,
+        "final_sequence_steps": null
+      },
+      "sequence": {
+        "training_attempts": 128,
+        "source_and_all_choices_exact": 128,
+        "final_state_exact": true,
+        "eligible_recurrent_updates": 128,
+        "independently_bound_recurrent_loss_positions": 903,
+        "final_sequence_steps": 128
+      },
+      "off_differs_only_switch": true
+    }
+  },
+  "training_attempts": 1024,
+  "recurrent_updates": 512,
+  "independently_bound_loss_positions": 3378
+}

@@ -1,0 +1,36 @@
+{
+  "stage": "development",
+  "gate": {
+    "passed": false,
+    "checks": {
+      "table_productive_pooled_plus5": false,
+      "table_productive_each_replica_positive": true,
+      "table_task_passes": true,
+      "numbers_task_passes": true,
+      "table_source_replay": true,
+      "numbers_source_replay": false,
+      "freeplay_productive": false
+    }
+  },
+  "confirmation_authorized": false,
+  "promotion_authorized": false,
+  "export_replica": {
+    "table": 0,
+    "numbers": 0
+  },
+  "public_states_modified": false,
+  "state_export_performed": false,
+  "comparison_sha256": "4bd7f9b1cc4b722c5915ed21dad6783a00c6e8bb0d869b13b55857b85a11db79",
+  "comparison_origin": {
+    "archive": "netta-iteration9-research.zip",
+    "path": "results/iteration9/code/development/comparison-compact.json",
+    "sha256": "4bd7f9b1cc4b722c5915ed21dad6783a00c6e8bb0d869b13b55857b85a11db79"
+  },
+  "public_comparison_file": "code-comparison.json",
+  "public_comparison_sha256": "17e2f8d4cc137b713381eae5249752960a4960b49595ae0be426e12deedc98e9",
+  "raw_origin": {
+    "archive": "netta-iteration9-research.zip",
+    "path": "results/iteration9/code/development/decision.json",
+    "sha256": "1666e9d95533180c930d5a377db3200ffe9533f3e5a87a963b82cbddbb17e027"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "stage": "development",
+  "task": "table",
+  "replica": 0,
+  "selection_rule": "first candidate productive and baseline not productive",
+  "found": true,
+  "seed": 222000039,
+  "arm_labels": {
+    "first": "Separately trained first-anchor baseline",
+    "sequence": "Sequence-trained checkpoint, recurrent path enabled"
+  },
+  "first": {
+    "source": "values = [4, 2, 9, 3, 2, 7, 11, 5, 6, 8]\nresult = [value * value for value in values if value % 2 == 1]\n",
+    "source_hash": "18a39218089cc5e0ba283df629a055fc305cb89ecae4cf02920cd07999064886",
+    "status": "source_replay",
+    "accepted": false,
+    "productive": false,
+    "runtime_ok": true,
+    "learning_reward": 0.0,
+    "task_check": {
+      "status": "ineligible",
+      "passed": false,
+      "profile": "code:table",
+      "checks": [],
+      "source_hash": "18a39218089cc5e0ba283df629a055fc305cb89ecae4cf02920cd07999064886",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output": "",
+    "runtime_status": "ok",
+    "runtime_accepted": true,
+    "final_values": {
+      "result": [
+        81,
+        9,
+        49,
+        121,
+        25
+      ],
+      "values": [
+        4,
+        2,
+        9,
+        3,
+        2,
+        7,
+        11,
+        5,
+        6,
+        8
+      ]
+    },
+    "computed_final_names": [
+      "result"
+    ],
+    "behavior_hash": "85f7f253029af172cf69fedc82bd65fa3ec2e12a840e57960bfbef1eff4ac638",
+    "instructions": 125
+  },
+  "sequence": {
+    "source": "values = [11, 2, 2, 3, 9, 7, 11, 10, 6, 13]\nresult = [value * value for value in values if value % 2 == 1]\n",
+    "source_hash": "55428a39f94f57ff6bcc32e5a18ff89a8d3d2c490f23af7b1bda028b0c19aed5",
+    "status": "experience_replay",
+    "accepted": false,
+    "productive": true,
+    "runtime_ok": true,
+    "learning_reward": 0.17677669529663687,
+    "task_check": {
+      "status": "failed",
+      "passed": false,
+      "profile": "code:table",
+      "checks": [
+        {
+          "constraint": "literal_type",
+          "expected": "list",
+          "actual": "SyntaxError",
+          "passed": false
+        },
+        {
+          "constraint": "min_items",
+          "expected": 2,
+          "actual": null,
+          "passed": false
+        },
+        {
+          "constraint": "item_type",
+          "expected": "record",
+          "actual": [],
+          "passed": false
+        }
+      ],
+      "source_hash": "55428a39f94f57ff6bcc32e5a18ff89a8d3d2c490f23af7b1bda028b0c19aed5",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output": "",
+    "runtime_status": "ok",
+    "runtime_accepted": true,
+    "final_values": {
+      "result": [
+        121,
+        9,
+        81,
+        49,
+        121,
+        169
+      ],
+      "values": [
+        11,
+        2,
+        2,
+        3,
+        9,
+        7,
+        11,
+        10,
+        6,
+        13
+      ]
+    },
+    "computed_final_names": [
+      "result"
+    ],
+    "behavior_hash": "b78345222d933f264c646f2d83d85592467802d9141cfa1b0463a7258cd72843",
+    "instructions": 129
+  },
+  "fixed_selection_independently_verified": true,
+  "source_repairs": 0,
+  "raw_origin": {
+    "archive": "netta-iteration9-research.zip",
+    "path": "results/iteration9/code/development/gallery-sample.json",
+    "sha256": "809c0e79b5f80e1358c069d84bcfc8aee36190e33290c04fe2e16959250ef66e"
+  }
+}

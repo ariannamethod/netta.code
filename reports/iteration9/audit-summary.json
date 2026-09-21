@@ -1,0 +1,281 @@
+{
+  "status": "passed",
+  "baseline_commit": "1b872b089c8c21f36a2cac3971976e7ae7440bb5",
+  "scope": "Independent numerical, execution-receipt, full-state replay, board-physics, candidate probability and frozen-intervention audit. Prior training is reconstructed on private copies from stored actual runtime receipts; the audit does not execute new candidate programs or environment episodes.",
+  "declared_experiments": {
+    "generated_attempts": 4992,
+    "scripted_control_episodes": 256,
+    "full_training_state_replays": 1536,
+    "recurrent_updates": 768,
+    "independently_bound_recurrent_loss_positions": 4977,
+    "code": {
+      "attempts": 4096,
+      "streams": 32,
+      "training_attempts": 1024,
+      "all_source_and_choices_exact": true,
+      "all_full_final_states_exact": true
+    },
+    "lee": {
+      "board_transitions": 95916,
+      "exact_source_and_choice_regenerations": 896,
+      "full_training_state_replays": 512,
+      "bound_action_provenance_receipts": 65596,
+      "independent_rational_temporal_targets": 65596,
+      "independently_checked_credit_updates": 1038,
+      "independently_bound_recurrent_loss_positions": 1599,
+      "recurrent_updates": 256,
+      "archived_rows_including_controls": 1152,
+      "generated_attempts": 896,
+      "scripted_control_episodes": 256
+    },
+    "failures_and_replays_retain_original_slots": true,
+    "both_quality_gates_independently_recomputed": "failed; no confirmation or public-state promotion"
+  },
+  "gradient_oracle": {
+    "parameters": 537,
+    "maximum_absolute_error": 1.763744713972025e-10,
+    "independent_forward_order_suffix_attenuation_cold_start_and_clipping": true
+  },
+  "generation_only_interventions": {
+    "code": {
+      "generations": 2560,
+      "independent_counters": {
+        "complete_journal_matches": 1024,
+        "candidate_forwards": 305209,
+        "hidden_prefixes": 177535,
+        "independently_recomputed_permuted_prefixes": 35514,
+        "checkpoints": 4
+      },
+      "interventions": {
+        "readout_off": {
+          "generations": 512,
+          "different_sources": 4,
+          "different_generated_records": 4,
+          "changed_probabilities": 12048,
+          "matched_histories": 35066,
+          "total_variation_sum": 2.8583285242305045,
+          "max_total_variation": 0.001985312659418148
+        },
+        "initial_transitions": {
+          "generations": 512,
+          "different_sources": 0,
+          "different_generated_records": 0,
+          "changed_probabilities": 12246,
+          "matched_histories": 35514,
+          "total_variation_sum": 0.02532720043558304,
+          "max_total_variation": 2.58170304508476e-05
+        },
+        "state_zero": {
+          "generations": 512,
+          "different_sources": 0,
+          "different_generated_records": 0,
+          "changed_probabilities": 12246,
+          "matched_histories": 35514,
+          "total_variation_sum": 0.04627675941116956,
+          "max_total_variation": 5.820028086750417e-05
+        },
+        "prefix_permuted": {
+          "generations": 512,
+          "different_sources": 0,
+          "different_generated_records": 0,
+          "changed_probabilities": 10017,
+          "matched_histories": 35514,
+          "total_variation_sum": 0.0011078056191939753,
+          "max_total_variation": 2.75863508392149e-06
+        }
+      }
+    },
+    "lee": {
+      "generations": 640,
+      "independent_counters": {
+        "complete_journal_matches": 256,
+        "candidate_forwards": 57364,
+        "hidden_prefixes": 44479,
+        "independently_recomputed_permuted_prefixes": 8896,
+        "checkpoints": 2
+      },
+      "interventions": {
+        "readout_off": {
+          "generations": 128,
+          "different_sources": 2,
+          "different_generated_records": 2,
+          "changed_probabilities": 936,
+          "matched_histories": 8875,
+          "total_variation_sum": 0.04582681246110468,
+          "max_total_variation": 0.0002646840928169636
+        },
+        "initial_transitions": {
+          "generations": 128,
+          "different_sources": 0,
+          "different_generated_records": 0,
+          "changed_probabilities": 937,
+          "matched_histories": 8896,
+          "total_variation_sum": 4.37074950975331e-05,
+          "max_total_variation": 3.470671567414735e-07
+        },
+        "state_zero": {
+          "generations": 128,
+          "different_sources": 0,
+          "different_generated_records": 0,
+          "changed_probabilities": 937,
+          "matched_histories": 8896,
+          "total_variation_sum": 0.0011963293101791795,
+          "max_total_variation": 6.101913582258131e-06
+        },
+        "prefix_permuted": {
+          "generations": 128,
+          "different_sources": 0,
+          "different_generated_records": 0,
+          "changed_probabilities": 424,
+          "matched_histories": 8896,
+          "total_variation_sum": 2.174517346339934e-05,
+          "max_total_variation": 2.443000524949418e-07
+        }
+      }
+    }
+  },
+  "learned_head_parameter_checks": {
+    "code/table_00": {
+      "updates": 128,
+      "parameters_changed": {
+        "wc": 256,
+        "wz": 256,
+        "bc": 8,
+        "bz": 8,
+        "v": 8,
+        "bias": 1
+      }
+    },
+    "code/table_01": {
+      "updates": 128,
+      "parameters_changed": {
+        "wc": 256,
+        "wz": 256,
+        "bc": 8,
+        "bz": 8,
+        "v": 8,
+        "bias": 1
+      }
+    },
+    "code/numbers_00": {
+      "updates": 128,
+      "parameters_changed": {
+        "wc": 256,
+        "wz": 256,
+        "bc": 8,
+        "bz": 8,
+        "v": 8,
+        "bias": 1
+      }
+    },
+    "code/numbers_01": {
+      "updates": 128,
+      "parameters_changed": {
+        "wc": 256,
+        "wz": 256,
+        "bc": 8,
+        "bz": 8,
+        "v": 8,
+        "bias": 1
+      }
+    },
+    "lee/replica_00": {
+      "updates": 128,
+      "parameters_changed": {
+        "wc": 256,
+        "wz": 256,
+        "bc": 8,
+        "bz": 8,
+        "v": 8,
+        "bias": 1
+      }
+    },
+    "lee/replica_01": {
+      "updates": 128,
+      "parameters_changed": {
+        "wc": 256,
+        "wz": 256,
+        "bc": 8,
+        "bz": 8,
+        "v": 8,
+        "bias": 1
+      }
+    }
+  },
+  "interpretation": "The trained recurrence changes conditional probabilities. Actual usefulness of ordered history must be judged separately from learned token scores: state-zero retains the learned token projection; initialized transitions retain the learned readout; order permutations preserve first unit, last eight, length and multiset. Neither quality gate passed.",
+  "transport_repair": {
+    "status": "passed",
+    "original_trace": "results/iteration9/code/development/sequence-assay-interrupted/table_00.interrupted.gz",
+    "original_sha256": "0f8aa4ccb5390e2853f6b3676e978ea7999fc3b94e08fab1ee21632db820da08",
+    "recoverable_complete_rows": 34,
+    "all_available_old_records_equal_sealed_replay_shards": true,
+    "new_runtime_executions": 0,
+    "notes": "The incomplete gzip has no valid completed assay receipt; its complete records are corroboration only, excluded from all final denominators.",
+    "mechanism_functions_ast_identical": 7,
+    "scope": "Same fixed source checkpoints, seeds, candidate laws and five controls. One truncated continuous gzip was preserved and excluded; every recoverable complete row matches the atomic shard replay. No runtime or training rerun."
+  },
+  "release": {
+    "standalone_bodies_and_game_hosts": [
+      {
+        "file": "nettalee.py",
+        "release_sha256": "82e77b48bccb1f9e9d54801fde0de7afa1b2ffc9e409ebc38ca80492c47032f2",
+        "measured_candidate": "results/iteration9/sequence/lee.py",
+        "candidate_sha256": "a18375a2e8990d68cd0c1d840896af221c8f47290fd4eaaa48ad1ca9691745b2",
+        "only_cli_changed": true,
+        "entry": "run_cli"
+      },
+      {
+        "file": "nettacode.py",
+        "release_sha256": "d614e940fa160461e626278afbcc3940710653406cf7dea5ec62390c4b837f76",
+        "measured_candidate": "results/iteration9/sequence/code.py",
+        "candidate_sha256": "85bef4b5b3c947798ee926805d2dae61f5a91372d8f3bab2e8d46314811c7c4f",
+        "only_cli_changed": true,
+        "entry": "run_cli"
+      },
+      {
+        "file": "2048.py",
+        "release_sha256": "37dea65416a1f7aff48a16d0b01ad62b4810725ebf6d83665d8d53add19a49cf",
+        "measured_candidate": "results/iteration9/baseline/2048.py",
+        "candidate_sha256": "8a01595aad0d616848910309c312d53e0ec70f913c0b644b42cf3b7d68968314",
+        "only_cli_changed": true,
+        "entry": "run_cli"
+      },
+      {
+        "file": "doomer.py",
+        "release_sha256": "09e27f6d4819863d0dc308a71b8f24647c087e716e7dbd017b8cef70edab4c75",
+        "measured_candidate": "results/iteration9/baseline/doomer.py",
+        "candidate_sha256": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd",
+        "only_cli_changed": true,
+        "entry": "main"
+      }
+    ],
+    "preserved_files": 43,
+    "regression_tests": 363,
+    "test_log_sha256": "2c1effdf5f3d0f7e2f5912d7c1dd53964559f924289b000148cffee912e764ac",
+    "compatibility": {
+      "parity_cases": 7,
+      "exact_generation_records": 252,
+      "actual_learning_games": 20,
+      "successful_caller_routes": 6,
+      "selected_state_caller_raw_attempts": 24,
+      "builtin_2048_without_experience_attempts": 4,
+      "builtin_2048_scripted_baseline_episodes": 8,
+      "public_states_unchanged": true,
+      "frozen_input_states_unchanged": true,
+      "frozen_sources_unchanged": true,
+      "live_source_drift": {},
+      "protocol": "protocol.json",
+      "parity": "parity.json",
+      "routes": "routes.json"
+    }
+  },
+  "receipt_sha256": {
+    "code-development.json": "9e1f16521c91642ef4ab3fce1a9e8e497ad9fa7bbbe4190f95bdb6fbbce49d42",
+    "code-metrics.json": "7f13fab9e4ab8e288ebb047b829a7f930ee91befef438ea2f09c39ab1a78342a",
+    "lee-development.json": "626b1372e329aba38ac4d69ba1fad9c179e25a88427a6d2ca82371ef3682fab7",
+    "gradient-and-order.json": "3f5853c6f5576ce7a14c3b3031395442c2bd24258130d2902044bef4abec4d8b",
+    "code-mechanism.json": "2820109718d01164270f86df975133a7b0838b90644ae2e603a02019e1b4bba0",
+    "lee-mechanism.json": "4c79311e3262a0cb3740720ba63a2310a1587d7cd05d2ee086bdde093fbd1c8d",
+    "transport-replay.json": "1e6def02337ae0dca44cb6a6482c2b855c3f3d25497667fb4e5177b9893fe4c2"
+  }
+}

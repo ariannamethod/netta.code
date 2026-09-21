@@ -1,0 +1,315 @@
+{
+  "species": "lee",
+  "experiment": "frozen recurrent-memory generation-only assay",
+  "raw_seed_slots": 128,
+  "raw_generations": 640,
+  "variants": [
+    "genuine",
+    "readout_off",
+    "initial_transitions",
+    "state_zero",
+    "prefix_permuted"
+  ],
+  "candidate_sha256": "a18375a2e8990d68cd0c1d840896af221c8f47290fd4eaaa48ad1ca9691745b2",
+  "totals": {
+    "genuine": {
+      "generations": 128,
+      "generated_units": 8896,
+      "sampled_choices": 937,
+      "branches_with_sequence_contrast": 937
+    },
+    "readout_off": {
+      "generations": 128,
+      "generated_units": 8895,
+      "sampled_choices": 936,
+      "branches_with_sequence_contrast": 0,
+      "different_sources": 2,
+      "different_generated_records": 2,
+      "different_first_tokens": 2,
+      "matched_histories": 8875,
+      "changed_hidden_states": 8875,
+      "changed_probabilities": 936,
+      "total_variation_sum": 0.04582681246110468,
+      "max_total_variation": 0.0002646840928169636
+    },
+    "initial_transitions": {
+      "generations": 128,
+      "generated_units": 8896,
+      "sampled_choices": 937,
+      "branches_with_sequence_contrast": 937,
+      "different_sources": 0,
+      "different_generated_records": 0,
+      "different_first_tokens": 0,
+      "matched_histories": 8896,
+      "changed_hidden_states": 8896,
+      "changed_probabilities": 937,
+      "total_variation_sum": 4.37074950975331e-05,
+      "max_total_variation": 3.470671567414735e-07
+    },
+    "state_zero": {
+      "generations": 128,
+      "generated_units": 8896,
+      "sampled_choices": 937,
+      "branches_with_sequence_contrast": 937,
+      "different_sources": 0,
+      "different_generated_records": 0,
+      "different_first_tokens": 0,
+      "matched_histories": 8896,
+      "changed_hidden_states": 8896,
+      "changed_probabilities": 937,
+      "total_variation_sum": 0.0011963293101791795,
+      "max_total_variation": 6.101913582258131e-06
+    },
+    "prefix_permuted": {
+      "generations": 128,
+      "generated_units": 8896,
+      "sampled_choices": 937,
+      "branches_with_sequence_contrast": 937,
+      "different_sources": 0,
+      "different_generated_records": 0,
+      "different_first_tokens": 0,
+      "matched_histories": 8896,
+      "changed_hidden_states": 7488,
+      "changed_probabilities": 424,
+      "total_variation_sum": 2.174517346339934e-05,
+      "max_total_variation": 2.443000524949418e-07
+    }
+  },
+  "states": [
+    {
+      "checkpoint": "replica_00",
+      "checkpoint_sha256": "3685c6d3dd0c3f9c58c2ea315fe577b46f0241003a5ceb869acf148b98dd48f2",
+      "closed_on_journal_sha256": "0bbce8e7db0fdea4e787a9fb99f4f11af9afa1eb08c7031b3a487042527f70e0",
+      "closed_off_journal_sha256": "107a8ddb5d5e778264319167093410ff1e90897a06e49a1bb7dc51bfc1f0b342",
+      "seeds": 64,
+      "state_fingerprints_before": {
+        "genuine": "260d972862f727be31af4ba97e48d2a5974f47db9303506bcd00ed6df8dd81d9",
+        "readout_off": "2cc27be1b86023b87f6db8a4bf8e89ec1fe0359a4ba997154dec96aae0b68c9f",
+        "initial_transitions": "aa07ec0d6236c5aa87cc855594f7974cc38358868238da9b83789bdbaf9dc8b9",
+        "state_zero": "260d972862f727be31af4ba97e48d2a5974f47db9303506bcd00ed6df8dd81d9",
+        "prefix_permuted": "260d972862f727be31af4ba97e48d2a5974f47db9303506bcd00ed6df8dd81d9"
+      },
+      "state_fingerprints_after": {
+        "genuine": "260d972862f727be31af4ba97e48d2a5974f47db9303506bcd00ed6df8dd81d9",
+        "readout_off": "2cc27be1b86023b87f6db8a4bf8e89ec1fe0359a4ba997154dec96aae0b68c9f",
+        "initial_transitions": "aa07ec0d6236c5aa87cc855594f7974cc38358868238da9b83789bdbaf9dc8b9",
+        "state_zero": "260d972862f727be31af4ba97e48d2a5974f47db9303506bcd00ed6df8dd81d9",
+        "prefix_permuted": "260d972862f727be31af4ba97e48d2a5974f47db9303506bcd00ed6df8dd81d9"
+      },
+      "parameters_vs_initial": {
+        "wc": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.0007204676411404276,
+          "max_abs": 0.00017635840446977163
+        },
+        "wz": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.00011100373043204159,
+          "max_abs": 3.3647087947459575e-05
+        },
+        "bc": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.0020774039652100705,
+          "max_abs": 0.001191637771728402
+        },
+        "bz": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 5.7875826939482186e-05,
+          "max_abs": 4.2687129085727804e-05
+        },
+        "v": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.02503565643031445,
+          "max_abs": 0.014339570410075053
+        },
+        "bias": {
+          "parameters": 1,
+          "changed_parameters": 1,
+          "l2": 0.32075181137571723,
+          "max_abs": 0.32075181137571723
+        }
+      },
+      "learned_updates": 128,
+      "all_complete_journal_matches": true,
+      "compressed_trace_bytes": 3135346,
+      "private_receipt_sha256": "46fdbae7cbb7d28ad3be454b04024d5a47c3c1f22c81d0f60453d73b724a670f",
+      "all_537_parameters_changed": true
+    },
+    {
+      "checkpoint": "replica_01",
+      "checkpoint_sha256": "566d398bdaa97e16dcc3cf967120be2bf81e364c943577e494c6eef93fdebcbe",
+      "closed_on_journal_sha256": "34bf1e407ec4edeb8111fbae3e9fc6aae6aed2d887b83d7f39805dc4b86ab631",
+      "closed_off_journal_sha256": "0c11c95fbcd19ddd58edca4d473919429111ecfa23ddd5f6598822da13430370",
+      "seeds": 64,
+      "state_fingerprints_before": {
+        "genuine": "7d8712323ce1a40a514d94b81974d2ee3aee2f5379fbdd519a469541d22d88f5",
+        "readout_off": "1800bd6e2f8894ff02b8177606b152b4920f37abfb5061d8aa9381c88073bf07",
+        "initial_transitions": "f91f3777272b89afa19bd6eea6341f4b4e2d794c748ba4146740c5dc3a802ae9",
+        "state_zero": "7d8712323ce1a40a514d94b81974d2ee3aee2f5379fbdd519a469541d22d88f5",
+        "prefix_permuted": "7d8712323ce1a40a514d94b81974d2ee3aee2f5379fbdd519a469541d22d88f5"
+      },
+      "state_fingerprints_after": {
+        "genuine": "7d8712323ce1a40a514d94b81974d2ee3aee2f5379fbdd519a469541d22d88f5",
+        "readout_off": "1800bd6e2f8894ff02b8177606b152b4920f37abfb5061d8aa9381c88073bf07",
+        "initial_transitions": "f91f3777272b89afa19bd6eea6341f4b4e2d794c748ba4146740c5dc3a802ae9",
+        "state_zero": "7d8712323ce1a40a514d94b81974d2ee3aee2f5379fbdd519a469541d22d88f5",
+        "prefix_permuted": "7d8712323ce1a40a514d94b81974d2ee3aee2f5379fbdd519a469541d22d88f5"
+      },
+      "parameters_vs_initial": {
+        "wc": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 0.0004414834609391281,
+          "max_abs": 0.00010012616358301418
+        },
+        "wz": {
+          "parameters": 256,
+          "changed_parameters": 256,
+          "l2": 6.708829783984727e-05,
+          "max_abs": 1.512526899076494e-05
+        },
+        "bc": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.0011816470138533315,
+          "max_abs": 0.0007046209831390055
+        },
+        "bz": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 3.181724919533483e-05,
+          "max_abs": 2.1853195691701188e-05
+        },
+        "v": {
+          "parameters": 8,
+          "changed_parameters": 8,
+          "l2": 0.017378789161421562,
+          "max_abs": 0.011265982249024054
+        },
+        "bias": {
+          "parameters": 1,
+          "changed_parameters": 1,
+          "l2": 0.2041630463084239,
+          "max_abs": 0.2041630463084239
+        }
+      },
+      "learned_updates": 128,
+      "all_complete_journal_matches": true,
+      "compressed_trace_bytes": 3132079,
+      "private_receipt_sha256": "a32a6981f13363c2b0856439886309ace62ec96208de42d2a675712e5f7f6223",
+      "all_537_parameters_changed": true
+    }
+  ],
+  "first_token_witnesses": {
+    "readout_off": {
+      "checkpoint": "replica_00",
+      "seed": 173000020,
+      "index": 20,
+      "unit_index": 56,
+      "shared_actual_history": [
+        -1,
+        389,
+        377,
+        387,
+        388,
+        384,
+        470,
+        472,
+        438,
+        267,
+        123,
+        443,
+        434,
+        266,
+        502,
+        505,
+        497,
+        366,
+        356,
+        499,
+        504,
+        495,
+        391,
+        469,
+        434,
+        321,
+        266,
+        496,
+        501,
+        383,
+        356,
+        494,
+        321,
+        500,
+        503,
+        508,
+        486,
+        415,
+        365,
+        371,
+        362,
+        380,
+        459,
+        40,
+        49,
+        32,
+        349,
+        277,
+        438,
+        506,
+        297,
+        287,
+        332,
+        429,
+        425,
+        48,
+        41
+      ],
+      "genuine_selected_token": 327,
+      "altered_selected_token": 353,
+      "candidate_probabilities": {
+        "genuine": {
+          "327": 0.9885432423468187,
+          "353": 0.011456757653181377
+        },
+        "altered": {
+          "327": 0.9885401070482637,
+          "353": 0.011459892951736212
+        }
+      }
+    },
+    "initial_transitions": null,
+    "state_zero": null,
+    "prefix_permuted": null
+  },
+  "interpretation": {
+    "measured": "Learned recurrent parameters and actual order-dependent candidate probabilities both change. Fixed seed outcomes measure the size of the effect.",
+    "limitation": "Initial-transition, zero-prefix and earlier-order controls change probabilities but none changes complete source under these seeds. Observable ON/OFF source changes alone therefore do not establish useful sequential reasoning.",
+    "quality": "No quality improvement is inferred from this assay; use the separate fixed gameplay comparison and its gate."
+  },
+  "probability_change_threshold": 1e-15,
+  "tv_aggregates_include_values_below_threshold": true,
+  "on_and_off_complete_record_identity": true,
+  "unchanged_persistent_states": true,
+  "runtime_executions": 0,
+  "training_updates": 0,
+  "elapsed_seconds": 33.507431100995746,
+  "private_full_summary": "results/iteration9/lee/development/sequence-assay-atomic/summary.json",
+  "private_full_summary_sha256": "a811c0b0b3d2a9512287df091cf6eb0ca7f490990c0174150c47b986a916ba52",
+  "compressed_trace_bytes": 6267425,
+  "protocol": {
+    "file": "sequence-assay-protocol.json",
+    "sha256": "ca4dab2ebeb927f15b1b0b4323612f53da12b83a06665afaa73de815080a77f6",
+    "transport_amendment": "sequence-assay-transport-amendment.json",
+    "transport_amendment_sha256": "dd5db189060ceeb6ca20e65b675a61080ec4fd86518f6eb711f897f7475ccf57",
+    "events": "sequence-assay-transport-events.json",
+    "chronology": "Controls were requested before full gameplay launch; this separate generation-only protocol froze after gameplay had begun and partial quality outcomes had reached the team. No cases/seeds/operators were selected using outcomes. Preserve the original protocol and read its chronology clarification in the amendment."
+  },
+  "failed_transport_excluded": true,
+  "independent_audit": "Numerical gradients and operators passed before full assay; full trace reconstruction is recorded by the separate independent audit receipt."
+}

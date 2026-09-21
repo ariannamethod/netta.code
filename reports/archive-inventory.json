@@ -308,6 +308,20 @@
       "historical_fixture_files": 204,
       "historical_fixture_bytes": 66870963,
       "scope": "Complete eighth-pass frozen sources, measured and interrupted attempts, checkpoints, independent audits, compact reports and reproduction tools, plus exact historical regression/diagnostic fixtures."
+    },
+    {
+      "archive": "netta-iteration9-research.zip",
+      "bytes": 97087321,
+      "sha256": "364295086990db09388185a85a7259bcd04082d10610f35a38cdf4baa3fa08ee",
+      "files": 7029,
+      "uncompressed_input_bytes": 548742222,
+      "uncompressed_zip_bytes": 550230983,
+      "manifest_sha256": "801dad474fccd6cb81c51f63efbd373ff91d28c2e2a661f9d692ab777038f036",
+      "verified_payload_sha256": 7029,
+      "verified_crc": true,
+      "historical_fixture_files": 255,
+      "historical_fixture_bytes": 72784698,
+      "scope": "Complete ninth-pass frozen sources, measured and interrupted attempts, checkpoints, independent audits, compact reports and reproduction tools, plus exact historical regression/diagnostic fixtures."
     }
   ]
 }

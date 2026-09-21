@@ -1,0 +1,144 @@
+{
+  "experiment": "iteration9-Code-generated-unit-recurrent-outcome-head",
+  "baseline_commit": "1b872b089c8c21f36a2cac3971976e7ae7440bb5",
+  "stages": {
+    "development": {
+      "replicas": 2,
+      "train": 128,
+      "evaluate": 128,
+      "freeplay": 128,
+      "train_seed": 221000000,
+      "eval_seed": 222000000,
+      "free_seed": 223000000
+    },
+    "confirmation": {
+      "replicas": 3,
+      "train": 256,
+      "evaluate": 128,
+      "freeplay": 128,
+      "train_seed": 231000000,
+      "eval_seed": 232000000,
+      "free_seed": 233000000
+    }
+  },
+  "task_stride": 100000,
+  "replica_stride": 10000,
+  "seed_namespace_note": "Prelaunch draft changed from 181/182/183M and 191/192/193M to 221/222/223M and 231/232/233M because earlier compatibility checks used some original seeds. No development or candidate-quality outputs existed at this change; tiny179M retained.",
+  "arms": [
+    "first",
+    "sequence",
+    "sequence_off"
+  ],
+  "trained_arms": [
+    "first",
+    "sequence"
+  ],
+  "first_anchor_strength_all_arms": 1.0,
+  "eight_unit_context_memory_all_arms": false,
+  "hypothesis": "A trainable input-gated recurrent state over actually generated units gives execution feedback an order-sensitive memory beyond fixed suffixes, improving productive generation.",
+  "candidate": {
+    "hidden_width": 8,
+    "input_dimensions": 32,
+    "parameters": 537,
+    "transition": "c=tanh(Wc*x+bc); z=sigmoid(Wz*x+bz); h=(1-z)*h_previous+z*c",
+    "residual": "0.8 * clip(dot(v,h_after_candidate), -4, 4); calibration bias omitted from categorical law",
+    "training": "Full BPTT through BOS + actual generated tokens + EOS if terminated; existing 1024 generation-step limit retained.",
+    "initialization": "Private Random(seed XOR 0x53455139); Wc Gaussian(0,0.16), Wz Gaussian(0,0.08), bc=0,bz=-2,v=0,bias=0.",
+    "input_mapping": "Four signed 0.5 coordinates with salts1..4; unit+3+salt*0x9E3779B9 modulo2^32; xor>>16,mul0x85EBCA6B,xor>>13,mul0xC2B2AE35,xor>>16. Coordinate hash%32; positive iff highbit set; collisions sum.",
+    "loss": "Mean binary cross-entropy using the unchanged general runtime/novelty learning_reward.",
+    "eligible_positions": "Existing chosen/reward_choices mapped to sorted distinct exact tape indices; for M positions select N=min(12,M) using positions[i*M//N].",
+    "optimizer": "One SGD update if N>0; learning_rate=0.05/sqrt(1+steps/4000); globalL2 clip1 over all537 gradients; then steps+=1.",
+    "initial_readout": "zero; exact baseline birth distribution",
+    "hidden_state_lifecycle": "Reset before BOS for each generated program; each selected unit advances once; hypothetical candidates do not mutate the prefix state.",
+    "candidate_support": "unchanged",
+    "source_repair": false,
+    "new_dependencies": false,
+    "exact_law_source": "Frozen standalone candidate source, independently reviewed and numerically checked before launch."
+  },
+  "sequence_off": "Same final sequence-trained memory and all acquired recurrent parameters; only sequence_memory.enabled becomes false. This disables the sequence path during frozen learn=False evaluation; no parameter or acquisition update occurs in any evaluation arm.",
+  "denominator": "Every raw generated attempt; failures and source replays remain in the original seed slot.",
+  "productive_definition": "Existing core field: runtime success and novelty relative to corpus; experience_replay can remain productive. Accepted/status counts and unique productive behavior hashes are reported separately.",
+  "freeplay": "Separate frozen task=None evaluation of each final arm and task-trained replica; no extra training.",
+  "development_gate": {
+    "table_productive_pooled_margin": 5,
+    "margin_units": "absolute number of productive attempts under equal fixed raw budget",
+    "table_productive_each_replica": "strictly greater than first",
+    "table_task_passes_pooled": "at least first",
+    "numbers_task_passes_pooled": "at least first",
+    "source_replay_per_task_pooled": "at most first separately for table and numbers",
+    "freeplay_productive_pooled_over_all_task_replicas": "at least first"
+  },
+  "confirmation": "Only if development gate passes; fixed fresh seeds and same gate, all three table replicas must improve; no sweep.",
+  "prospective_export_replica": {
+    "table": 0,
+    "numbers": 0
+  },
+  "gallery_selection": "Development table replica 0, first evaluation seed where sequence is productive and first is not; if absent first productive sequence seed; if absent no success sample.",
+  "mechanism_audit": "Frozen actual learned recurrence versus readout disabled, initial transitions restored with learned readout retained, and a fixed permutation of recurrent input sequence; matched-prefix probabilities and complete source hashes. Recurrent input intervention never edits emitted source.",
+  "plumbing": {
+    "replicas": 1,
+    "train": 2,
+    "evaluate": 3,
+    "freeplay": 2,
+    "train_seed": 179000000,
+    "eval_seed": 179300000,
+    "free_seed": 179600000,
+    "total_attempts": 38,
+    "excluded_from_development": true
+  },
+  "inputs": {
+    "baseline.py": {
+      "path": "results/iteration9/baseline/nettacode.py",
+      "bytes": 153470,
+      "sha256": "407869a04d85cbe1cf928bfc70a559b694c307a9faf64a4b4174607ffec59ef1"
+    },
+    "candidate.py": {
+      "path": "results/iteration9/sequence/code.py",
+      "bytes": 166316,
+      "sha256": "85bef4b5b3c947798ee926805d2dae61f5a91372d8f3bab2e8d46314811c7c4f"
+    },
+    "candidate_build.py": {
+      "path": "results/iteration9/sequence/candidate_build.py",
+      "bytes": 15649,
+      "sha256": "5d2796968de32782428973805fa8898c3f9bd237d6269194069346a4063e5921"
+    },
+    "runner.py": {
+      "path": "tools/run_code_iteration9.py",
+      "bytes": 22771,
+      "sha256": "3486c44a8469b0751e82de49f9474f17789add7efcddc3f4d7cdeeec1065cd0a"
+    },
+    "code.json": {
+      "path": "results/iteration9/baseline/states/code.json",
+      "bytes": 362734,
+      "sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6"
+    },
+    "tools.json": {
+      "path": "results/iteration9/baseline/tools.json",
+      "bytes": 6512,
+      "sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753"
+    }
+  },
+  "contracts": {
+    "table": {
+      "key": "9006de8b2f760d4d929e1baa52596558a7de43c8dbf7708834002c93c4a9dd65",
+      "profile": "code:table",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "record"
+      }
+    },
+    "numbers": {
+      "key": "a4cc5b8e409759adee90e618424324d7652b4cbbdd6d13959417e5f858fb1656",
+      "profile": "code:sorted_values",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "number",
+        "sorted": "ascending"
+      }
+    }
+  }
+}

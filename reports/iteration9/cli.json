@@ -1,0 +1,147 @@
+{
+  "tests": 6,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 21.975,
+  "sources": {
+    "nettalee.py": "82e77b48bccb1f9e9d54801fde0de7afa1b2ffc9e409ebc38ca80492c47032f2",
+    "nettacode.py": "d614e940fa160461e626278afbcc3940710653406cf7dea5ec62390c4b837f76",
+    "2048.py": "37dea65416a1f7aff48a16d0b01ad62b4810725ebf6d83665d8d53add19a49cf",
+    "doomer.py": "09e27f6d4819863d0dc308a71b8f24647c087e716e7dbd017b8cef70edab4c75",
+    "tests/test_iteration9_cli.py": "cc9e053fa1fb1c2628785789c73882e658812c52d69d5a94d52dd276370359f3"
+  },
+  "games": {
+    "2048": [
+      {
+        "override": true,
+        "enabled": true,
+        "sequence_updates": 1,
+        "summary": {
+          "trained": {
+            "best_score": 12,
+            "completed": 1,
+            "completed_score_per_raw_attempt": 12.0,
+            "corpus_replay": 0,
+            "distinct_played_sources": 1,
+            "max_tile": 4,
+            "mean_played_score": 12.0,
+            "played": 1,
+            "raw_attempts": 1,
+            "reward_per_raw_attempt": 0.022900763358778626,
+            "runtime_ok": 1,
+            "score_per_raw_attempt": 12.0,
+            "statuses": {
+              "move_limit": 1
+            },
+            "syntax_error": 0
+          }
+        }
+      },
+      {
+        "override": null,
+        "enabled": true,
+        "sequence_updates": 2,
+        "summary": {
+          "trained": {
+            "best_score": 28,
+            "completed": 1,
+            "completed_score_per_raw_attempt": 28.0,
+            "corpus_replay": 0,
+            "distinct_played_sources": 1,
+            "max_tile": 8,
+            "mean_played_score": 28.0,
+            "played": 1,
+            "raw_attempts": 1,
+            "reward_per_raw_attempt": 0.05185185185185185,
+            "runtime_ok": 1,
+            "score_per_raw_attempt": 28.0,
+            "statuses": {
+              "move_limit": 1
+            },
+            "syntax_error": 0
+          }
+        }
+      },
+      {
+        "override": false,
+        "enabled": false,
+        "sequence_updates": 2,
+        "summary": {
+          "trained": {
+            "best_score": 0,
+            "completed": 0,
+            "completed_score_per_raw_attempt": 0.0,
+            "corpus_replay": 0,
+            "distinct_played_sources": 0,
+            "max_tile": 0,
+            "mean_played_score": 0.0,
+            "played": 0,
+            "raw_attempts": 1,
+            "reward_per_raw_attempt": 0.0,
+            "runtime_ok": 0,
+            "score_per_raw_attempt": 0.0,
+            "statuses": {
+              "syntax_error": 1
+            },
+            "syntax_error": 1
+          }
+        }
+      }
+    ],
+    "doom": [
+      {
+        "override": true,
+        "enabled": true,
+        "sequence_updates": 2,
+        "summary": {
+          "attempts": 2,
+          "kills": 0.0,
+          "kills_metric": "Doom killcount (includes monster infighting)",
+          "learning": true,
+          "mean_reward_per_attempt": 0.25,
+          "played": 1,
+          "state_after": "bd896fbb49f649654abedf476d25be43cd0f242968aeb718c40fcdd06d0ac207",
+          "statuses": {
+            "corpus_behavior_replay": 1,
+            "played": 1
+          }
+        }
+      },
+      {
+        "override": null,
+        "enabled": true,
+        "sequence_updates": 3,
+        "summary": {
+          "attempts": 1,
+          "kills": 0,
+          "kills_metric": "Doom killcount (includes monster infighting)",
+          "learning": true,
+          "mean_reward_per_attempt": 0.0,
+          "played": 0,
+          "state_after": "f7513206ec9f8a5ecab0c5be8daf22f1cd68794854c7407a6840a612707ca7bf",
+          "statuses": {
+            "invalid_action": 1
+          }
+        }
+      },
+      {
+        "override": false,
+        "enabled": false,
+        "sequence_updates": 3,
+        "summary": {
+          "attempts": 1,
+          "kills": 0,
+          "kills_metric": "Doom killcount (includes monster infighting)",
+          "learning": true,
+          "mean_reward_per_attempt": 0.0,
+          "played": 0,
+          "state_after": "73a6c6f4c3dad37913b81a136096d6d86bf6e6464bc42b7fbcc56a9ad83a5156",
+          "statuses": {
+            "syntax_error": 1
+          }
+        }
+      }
+    ]
+  }
+}

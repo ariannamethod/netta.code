@@ -54,6 +54,10 @@ This is also why the environment can become more interesting without changing th
 
 The main bodies are ordinary Python files. `nettalee.py` and `nettacode.py` each carry their own organism, execution judge and caller; both models and the 2048 host use the Python standard library. The vendored Doom Generic engine builds locally with a C compiler and `make`, then loads an external IWAD. `requirements.txt` has no packages to install; `requirements-doom.txt` is only for the optional `--backend vizdoom` path. Hell has two entrances, and the default one is already in `doom/`.
 
+Both bodies can acquire an ordered neural memory with `--sequence-memory`. Every emitted byte unit updates an eight-channel recurrent state, including the units between sampled choices. Learned write gates, proposals and an outcome readout give this head **537 parameters**. Actual execution trains them by one backward pass through the generated sequence. The hidden state starts fresh for each program; the learned weights survive in that particular life. Lee therefore saves this memory separately for each craft, while Code acquires it across its mixed island.
+
+The design takes a useful principle from [actually.life](https://github.com/ariannamethod/actually.life): composed units form a sequence, and that sequence changes the state from which the next unit is chosen. Netta's own byte-pair units provide the alphabet. The recurrent cell uses input-dependent gates and bounded proposals from the first simplification step in [minGRU](https://arxiv.org/html/2410.01201v3). It scores existing continuations while the organism writes all source bytes and indentation itself. The option starts off; a saved life retains its setting, and `--no-sequence-memory` stops its influence and updates while keeping the acquired weights.
+
 ---
 
 ## the court learns too
@@ -125,7 +129,9 @@ A fixed comparison of the eight-unit outcome memory increased corpus-novel execu
 
 Lee's experienced suffix support also changes what she can try. In the fixed 2048 comparison, a support mass of 0.10 changed completed score per raw attempt from **713.56 to 607.63**, with **93 to 78** completed episodes out of 128. The mechanism opened choices, but extra syntax errors and rejected repetitions outweighed that opportunity. The gallery shows one exact 700-point policy alongside the whole comparison. Learning when to consult additional experience is the next concrete pressure point for both organisms.
 
-The shared regression suite passes **345 tests**. Compatibility checks reproduce **252 exact generation records**, **20 actual learning attempts** and all **six caller routes**, including native Doom. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the first memory and game comparisons; the [fifth-pass report](reports/iteration5/REPORT.md) follows decision-level credit, combat reward and the recent-anchor experiment. The [sixth-pass report](reports/iteration6/REPORT.md) adds temporal credit, branching-context memory and exact execution examples. The [seventh-pass report](reports/iteration7/REPORT.md) follows the executed derivation of the selected action back to sampled source choices. The [current refinement report](reports/iteration8/REPORT.md) examines experienced alternatives for Lee and acquired long-context outcomes for Code. Full raw trajectories remain in the separate experiment archives.
+The ordered recurrent head has also completed a fixed comparison. Code's table-request productive executions changed **93→95 / 256**, numeric task passes **171→172 / 256**, and separate no-task productive executions **192→191 / 512**. Lee's 2048 score per raw attempt changed **658.78→663.34**, with **86→87** completed episodes out of 128 and replica score differences of −10.75 and +19.875. Both advancement rules failed, so the head remains an explicit option and published lives retain their settings. The gallery follows a concrete consequence: one changed multiplier in a generated policy changes its score from 1,248 to 560, and disabling the acquired recurrent readout restores the original code and score.
+
+The shared regression suite passes **363 tests**. Compatibility checks reproduce **252 exact generation records**, **20 actual learning attempts** and all **six caller routes**, including native Doom. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the first memory and game comparisons; the [fifth-pass report](reports/iteration5/REPORT.md) follows decision-level credit, combat reward and the recent-anchor experiment. The [sixth-pass report](reports/iteration6/REPORT.md) adds temporal credit, branching-context memory and exact execution examples. The [seventh-pass report](reports/iteration7/REPORT.md) follows the executed derivation of the selected action back to sampled source choices. The [eighth-pass report](reports/iteration8/REPORT.md) examines experienced alternatives for Lee and acquired long-context outcomes for Code. The [current refinement report](reports/iteration9/REPORT.md) follows recurrent sequence memory from primary research through exact gradient checks, fixed comparisons and interventions in its acquired state. Full raw trajectories remain in the separate experiment archives.
 
 ---
 
@@ -378,7 +384,17 @@ python3 2048.py play \
   --decision-credit provenance --attempts 128 --out runs/2048-support
 ```
 
-The same support setting is available on Lee's `init`, `play` and `ask --learn-task --save`. Zero disables it; omission preserves the saved value. Both new memory mechanisms are optional experiments whose fixed comparisons are recorded in the current report.
+The same support setting is available on Lee's `init`, `play` and `ask --learn-task --save`. Zero disables it; omission preserves the saved value. These optional mechanisms have fixed comparisons recorded in the reports.
+
+Give a new specialist life an ordered recurrent memory:
+
+```bash
+python3 nettalee.py init --island corpora/art.txt \
+  --state states/my-art-sequence.json --judge art --sequence-memory
+python3 nettalee.py play --state states/my-art-sequence.json --games 100
+```
+
+The same `--sequence-memory` / `--no-sequence-memory` options work on both bodies' `init`, `play` and `ask --learn-task --save`, plus `2048.py play` and `doomer.py train`. Omit them to keep the saved setting. Each program starts with a fresh eight-channel state; each training result can update the weights that the next program uses. Ordinary evaluation reads the selected life without acquiring new experience.
 
 Run a frozen 2048 comparison:
 

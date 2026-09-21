@@ -1,0 +1,16 @@
+{
+  "tests": 363,
+  "seconds": 206.872,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "command": "python3 -m unittest discover -s tests -v",
+  "log_sha256": "2c1effdf5f3d0f7e2f5912d7c1dd53964559f924289b000148cffee912e764ac",
+  "source_sha256": {
+    "nettalee.py": "82e77b48bccb1f9e9d54801fde0de7afa1b2ffc9e409ebc38ca80492c47032f2",
+    "nettacode.py": "d614e940fa160461e626278afbcc3940710653406cf7dea5ec62390c4b837f76",
+    "2048.py": "37dea65416a1f7aff48a16d0b01ad62b4810725ebf6d83665d8d53add19a49cf",
+    "doomer.py": "09e27f6d4819863d0dc308a71b8f24647c087e716e7dbd017b8cef70edab4c75"
+  },
+  "scope": "Final emitted standalone bodies: 345 previous plus 12 recurrent and 6 CLI tests."
+}

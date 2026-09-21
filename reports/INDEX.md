@@ -2,6 +2,10 @@
 
 Current behavior is described in the [project README](../README.md). Technical changes belong in [NETTALEELOG](../NETTALEELOG.md) and [NETTACODELOG](../NETTACODELOG.md); visible outputs belong in [gallery.html](../gallery.html).
 
+## Ninth engineering pass
+
+[Ordered sequence memory](iteration9/REPORT.md). Primary research on GRU, minGRU, LSTM and RWKV alongside actually.life's glyph composition; a 537-parameter recurrent head in both standalone bodies. Fixed Code and 2048 comparisons, five frozen sequence interventions, [363 tests](iteration9/tests.json), [independent audits](iteration9/audit-summary.json), [Code receipt](iteration9/code-gallery.json), [Lee receipt](iteration9/lee-gallery.json) and [one changed byte's game consequence](iteration9/lee-neural-witness.json). Both bodies retain existing defaults. [Separate full archive](iteration9/private-archive-inventory.json).
+
 ## Eighth engineering pass
 
 [When experience can change the next choice](iteration8/REPORT.md). Lee's experienced suffix alternatives and Code's acquired eight-unit outcome memory, with fixed task and free-play comparisons. Both optional mechanisms retain existing state defaults. [345 tests](iteration8/tests.json), [5,248 generated attempts plus 256 game controls](iteration8/audit-summary.json), [Code receipt](iteration8/code-gallery.json), [Lee receipt](iteration8/lee-gallery.json), [separate archive](iteration8/private-archive-inventory.json).

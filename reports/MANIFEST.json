@@ -3,13 +3,13 @@
   "files": [
     {
       "path": "INDEX.md",
-      "bytes": 5956,
-      "sha256": "c9ce5e1822fe4bf696245b58ae79241062982c5192d2d6ac07a28a279a8cab75"
+      "bytes": 6615,
+      "sha256": "934568a2d5c04e8e56aaeb19ff123db7f29298e1434bbeb94c9a78ef35d62df2"
     },
     {
       "path": "archive-inventory.json",
-      "bytes": 10979,
-      "sha256": "7466cd8b876694de98321e6a9d8194e7b993ebb409c17565a29151e17a59b1ff"
+      "bytes": 11718,
+      "sha256": "1d45c6a5f8bc35e75b6ca44c6cd98a40871ee009c0ee55a216aa8ad9b726d8df"
     },
     {
       "path": "historical/AUDIT_V2.md",
@@ -580,6 +580,156 @@
       "path": "iteration8/tests.log",
       "bytes": 51652,
       "sha256": "406792e43e67f40cb666bedb163c09baf022aaea756f357c9c8767f64c2cd398"
+    },
+    {
+      "path": "iteration9/REPORT.md",
+      "bytes": 15292,
+      "sha256": "faab75ebd1b4996d2396002c0335e323525d4eb2ea67a2ffe859cb0ca942d617"
+    },
+    {
+      "path": "iteration9/audit-summary.json",
+      "bytes": 10402,
+      "sha256": "cd4601262960b348bc6e9d6a799530cb15242d29d93f6c2f23fefb2f670203e6"
+    },
+    {
+      "path": "iteration9/cli.json",
+      "bytes": 4257,
+      "sha256": "13d3221a8d9f1acf23a9f645877c75ab3f55a8f53e718740cfb079dbeaaf3f56"
+    },
+    {
+      "path": "iteration9/code-audit.json",
+      "bytes": 2954,
+      "sha256": "9e1f16521c91642ef4ab3fce1a9e8e497ad9fa7bbbe4190f95bdb6fbbce49d42"
+    },
+    {
+      "path": "iteration9/code-comparison.json",
+      "bytes": 23186,
+      "sha256": "17e2f8d4cc137b713381eae5249752960a4960b49595ae0be426e12deedc98e9"
+    },
+    {
+      "path": "iteration9/code-decision.json",
+      "bytes": 1256,
+      "sha256": "c54c111a5b238b2e07f4e550c38725695e208bfc48489a73e1aa8de44837fe77"
+    },
+    {
+      "path": "iteration9/code-gallery.json",
+      "bytes": 3421,
+      "sha256": "2fb99197bf08bda48f3ea7d907fded08eb8517a60d47a9d25103433ae350ac8b"
+    },
+    {
+      "path": "iteration9/code-mechanism.json",
+      "bytes": 16268,
+      "sha256": "af33a5c0f633b3ec5606e04dd57810ae25435c434cfa5767dc2c9278cdfd599b"
+    },
+    {
+      "path": "iteration9/code-protocol.json",
+      "bytes": 6857,
+      "sha256": "e302792d5b38f4e7fdaeae12adf930e3389fc00757761d3fde2d7303dbd5fa17"
+    },
+    {
+      "path": "iteration9/compatibility.json",
+      "bytes": 488,
+      "sha256": "19f7ae0b3e27170fe5770a8543ab69114711fa0118e922c5f47c4b9bef034098"
+    },
+    {
+      "path": "iteration9/design.json",
+      "bytes": 2477,
+      "sha256": "314882ebb476fdd4eb26854b9dd8dc6e5de63eb339661e896d40dc9b6e31a87e"
+    },
+    {
+      "path": "iteration9/gallery-qa.json",
+      "bytes": 2228,
+      "sha256": "6d966b5704a90a23f97a8635ab1e7d18b98323e02a3d652d67a710687e740fbb"
+    },
+    {
+      "path": "iteration9/gallery-traces.json",
+      "bytes": 97246,
+      "sha256": "00112f86c3d7e8a271f5e8649822e8e2da43f0040b6465a6a78c80cddd68f297"
+    },
+    {
+      "path": "iteration9/glyphs-sources.json",
+      "bytes": 4150,
+      "sha256": "55f815d405dbbab7ca33ec7d5a563aeea2058880a5c759149d830f1e5cd8d1da"
+    },
+    {
+      "path": "iteration9/gradient-and-order.json",
+      "bytes": 1370,
+      "sha256": "3f5853c6f5576ce7a14c3b3031395442c2bd24258130d2902044bef4abec4d8b"
+    },
+    {
+      "path": "iteration9/lee-comparison.json",
+      "bytes": 12445,
+      "sha256": "5ac0da37e90ba3d138a99ff1b5df6f98c5f6149372ae082b5916f0dadb69773a"
+    },
+    {
+      "path": "iteration9/lee-decision.json",
+      "bytes": 385,
+      "sha256": "88525c6359464da847674aa666198e09d125958a38f500aa75cc8c2695644529"
+    },
+    {
+      "path": "iteration9/lee-gallery.json",
+      "bytes": 9309,
+      "sha256": "fa839c59cdf5082fcb4fa98930fca743584e025e9d3bdf767a071f86b4c93fc0"
+    },
+    {
+      "path": "iteration9/lee-mechanism.json",
+      "bytes": 11208,
+      "sha256": "d7a1d6203c4165b795adb959805a1dc3492f8511d8fc5f2a01ae003971fe8a12"
+    },
+    {
+      "path": "iteration9/lee-neural-witness.json",
+      "bytes": 4246,
+      "sha256": "1cf05731e8d2b2b50c7e729faa81b316a9967619477949ce7cdf97b15927a302"
+    },
+    {
+      "path": "iteration9/lee-protocol.json",
+      "bytes": 11025,
+      "sha256": "d313f3ebb678f126d5a99c4edc9f998b5bb8274e8ade799580cc051c7e05ca91"
+    },
+    {
+      "path": "iteration9/preservation.json",
+      "bytes": 11226,
+      "sha256": "d37bc7cc556e064234c3f062edc76ed559fa38a607b07b7d8abd79a1f5e53d6e"
+    },
+    {
+      "path": "iteration9/private-archive-inventory.json",
+      "bytes": 682,
+      "sha256": "f694fb8d836bc840b56afd505513edb2fe6d855039b221e5601b3396687101de"
+    },
+    {
+      "path": "iteration9/release-assembly.json",
+      "bytes": 1518,
+      "sha256": "fdabbe28a4681f571c50025c8ee17468b673674c7e1fb7ee0435f6ba2c748db3"
+    },
+    {
+      "path": "iteration9/research-sources.json",
+      "bytes": 4125,
+      "sha256": "1e73ae7539f3145d91493b024f86fcdbd03a46e2e97d778088fd7f4a3bd9f638"
+    },
+    {
+      "path": "iteration9/sequence-assay-protocol.json",
+      "bytes": 3470,
+      "sha256": "ca4dab2ebeb927f15b1b0b4323612f53da12b83a06665afaa73de815080a77f6"
+    },
+    {
+      "path": "iteration9/sequence-assay-transport-amendment.json",
+      "bytes": 2353,
+      "sha256": "dd5db189060ceeb6ca20e65b675a61080ec4fd86518f6eb711f897f7475ccf57"
+    },
+    {
+      "path": "iteration9/sequence-assay-transport-events.json",
+      "bytes": 1355,
+      "sha256": "70c6f11e735bc0111fcfce1f5876c8cdda8c3a47b18252f5748035d4bf726535"
+    },
+    {
+      "path": "iteration9/tests.json",
+      "bytes": 695,
+      "sha256": "c5f53825549b3bf0786a096789baa6cd39f7a61757446470ecef70c6e9efce9c"
+    },
+    {
+      "path": "iteration9/tests.log",
+      "bytes": 54896,
+      "sha256": "2c1effdf5f3d0f7e2f5912d7c1dd53964559f924289b000148cffee912e764ac"
     },
     {
       "path": "measurements/doom/ask-frozen-verification.json",
