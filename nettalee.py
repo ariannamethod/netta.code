@@ -195,6 +195,7 @@ class Organism:
         # Acquired local transitions, not an archive of executable programs.
         self.lived = defaultdict(Counter)
         self.visits = {}
+        self.tasks = {}
         self.exploration = .5
         self.memory_strength = 1.5
         # Locality is a learned choice too. These are sampling settings over
@@ -206,7 +207,7 @@ class Organism:
         self.stats = {"games": 0, "accepted": 0, "runtime_ok": 0,
                       "source_replay": 0, "experience_replay": 0, "behavior_replay": 0}
 
-    def _distribution(self, history, rng, streak, strategy, exploring=False):
+    def _distribution(self, history, rng, streak, strategy, exploring=False, task_state=None):
         locality = [(self.order, 0.0, 64), (self.order, .02, 24),
                     (self.order, .04, 12), (max(1, self.order - 2), .02, 24),
                     (max(1, self.order - 2), .08, 8)]
@@ -255,6 +256,13 @@ class Organism:
             value += .8 * max(-4, min(4, logit - self.head.bias))
             syntax_logit, _ = self.syntax_head.forward(x)
             value += .8 * max(-4, min(4, syntax_logit - self.syntax_head.bias))
+            if task_state is not None:
+                task_logit, _ = task_state["head"].forward(x)
+                task_wins, task_trials = task_state["credit"].get(key, (0.0, 0.0))
+                task_association = (task_wins + 1) / (task_trials + 2)
+                task_evidence = task_trials / (task_trials + 4)
+                value += 1.6 * max(-4, min(4, task_logit - task_state["head"].bias))
+                value += 4.0 * task_evidence * (task_association - .5)
             entries.append((token, value, x, key))
         peak = max(e[1] for e in entries)
         weights = [math.exp(e[1] - peak) for e in entries]
@@ -269,7 +277,11 @@ class Organism:
         return token, len(entries), {"key": key, "x": x,
                                    "context": context, "token": token}
 
-    def generate(self, seed=None):
+    def generate(self, seed=None, task=None):
+        condition = task_condition(task) if task is not None else None
+        if condition is not None and condition["mode"] != self.mode:
+            raise ValueError("task judge does not match this island")
+        task_state = self.tasks.get(condition["key"]) if condition is not None else None
         rng = self.rng if seed is None else random.Random(seed)
         exploring = rng.random() < self.exploration
         search = self.explore_search if exploring else self.search
@@ -285,7 +297,7 @@ class Organism:
         line = 1
         terminated = False
         for _ in range(1024):
-            token, alternatives, choice = self._distribution(history, rng, streak, strategy, exploring)
+            token, alternatives, choice = self._distribution(history, rng, streak, strategy, exploring, task_state)
             if alternatives > 1:
                 choice["line"] = line
                 choice["end_line"] = line + (self.units.expansions[token].count(b"\n") if token >= 0 else 0)
@@ -315,12 +327,16 @@ class Organism:
         return {"source": source, "tokens": tokens, "choices": choices,
                 "truncated": not terminated, "strategy": strategy, "exploring": exploring}
 
-    def game(self, seed=None, learn=True):
+    def game(self, seed=None, learn=True, task=None):
+        condition = task_condition(task) if task is not None else None
+        if (learn and condition is not None and condition["key"] not in self.tasks
+                and len(self.tasks) >= 128):
+            raise ValueError("snapshot already contains 128 task conditions")
         if self.mode == "control":
             raise ValueError("control islands play through their environment bridge")
         rng_state = self.rng.getstate() if not learn and seed is None else None
         try:
-            generated = self.generate(seed)
+            generated = self.generate(seed, task=task) if task is not None else self.generate(seed)
         finally:
             if rng_state is not None:
                 self.rng.setstate(rng_state)
@@ -367,6 +383,10 @@ class Organism:
                   "strategy": generated["strategy"],
                   "exploring": generated["exploring"],
                   "judge": result}
+        feedback = task_feedback(task, record) if task is not None else None
+        if feedback is not None:
+            record["task_check"] = feedback["receipt"]
+            record["task_reward"] = feedback["reward"]
         if learn:
             self.stats["games"] += 1
             self.stats["runtime_ok"] += int(runtime_ok)
@@ -381,7 +401,37 @@ class Organism:
                 self.seen.add(key)
                 if behavior:
                     self.behaviors.add(behavior)
+            if feedback is not None and feedback["condition"] is not None:
+                self._learn_task(generated, feedback)
         return record
+
+    def _learn_task(self, generated, feedback):
+        """Learn a declared contract from its actual eligible execution receipt."""
+        condition, receipt = feedback["condition"], feedback["receipt"]
+        key = condition["key"]
+        if key not in self.tasks:
+            if len(self.tasks) >= 128:
+                raise ValueError("snapshot already contains 128 task conditions")
+            self.tasks[key] = {"head": OutcomeHead(self.seed ^ int(key[:16], 16)),
+                               "credit": {}, "attempts": 0, "eligible": 0, "passed": 0}
+        memory = self.tasks[key]
+        memory["attempts"] += 1
+        if receipt["status"] not in ("passed", "failed"):
+            return
+        memory["eligible"] += 1
+        passed = receipt["status"] == "passed"
+        memory["passed"] += int(passed)
+        reward = feedback["reward"]
+        unique = {tuple(choice["key"]): choice["x"] for choice in generated["choices"]}
+        for association in unique:
+            wins, trials = memory["credit"].get(association, (0.0, 0.0))
+            if trials >= 64:
+                wins *= .95
+                trials *= .95
+            memory["credit"][association] = [wins + reward, trials + 1]
+        features = list(unique.values())
+        for i in range(min(12, len(features))):
+            memory["head"].update(features[i * len(features) // min(12, len(features))], float(passed))
 
     def _acquire(self, tokens):
         history, counted = [BOS], set()
@@ -471,7 +521,7 @@ class Organism:
                 self.behaviors.add(behavior)
 
     def state_dict(self):
-        return {"format": FORMAT, "species": SPECIES,
+        body = {"format": FORMAT, "species": SPECIES,
                 "python_random_version": 3, "programs": self.programs,
                 "seed": self.seed, "order": self.order, "mode": self.mode,
                 "pairs": self.units.pairs, "rng": self.rng.getstate(),
@@ -485,6 +535,13 @@ class Organism:
                 "reference": self.reference,
                 "credit": [[list(k), v] for k, v in sorted(self.credit.items())],
                 "seen": sorted(self.seen), "behaviors": sorted(self.behaviors)}
+        if self.tasks:
+            body["tasks"] = {key: {"head": value["head"].state(),
+                                    "credit": [[list(k), v] for k, v in sorted(value["credit"].items())],
+                                    "attempts": value["attempts"], "eligible": value["eligible"],
+                                    "passed": value["passed"]}
+                             for key, value in sorted(self.tasks.items())}
+        return body
 
     def save(self, path):
         path = Path(path)
@@ -532,6 +589,20 @@ class Organism:
         organism.seen = set(body["seen"])
         organism.behaviors = set(body["behaviors"])
         organism.stats = body["stats"]
+        task_states = body.get("tasks", {})
+        if not isinstance(task_states, dict) or len(task_states) > 128:
+            raise ValueError("invalid task memory")
+        for key, memory in task_states.items():
+            if not isinstance(key, str) or not re.fullmatch(r"[0-9a-f]{64}", key):
+                raise ValueError("invalid task condition key")
+            if any(type(memory.get(name)) is not int or memory[name] < 0
+                   for name in ("attempts", "eligible", "passed")):
+                raise ValueError("invalid task outcome counters")
+            if not memory["passed"] <= memory["eligible"] <= memory["attempts"]:
+                raise ValueError("inconsistent task outcome counters")
+            organism.tasks[key] = {"head": OutcomeHead(state=memory["head"]),
+                                   "credit": {tuple(k): v for k, v in memory["credit"]},
+                                   **{name: memory[name] for name in ("attempts", "eligible", "passed")}}
         return organism
 
     def without_experience(self):
@@ -579,6 +650,8 @@ def run_cli():
     ask.add_argument("--seed", type=int, default=10001)
     ask.add_argument("--out")
     ask.add_argument("--log")
+    ask.add_argument("--learn-task", action="store_true", help="learn a declared command from executed outcomes")
+    ask.add_argument("--save", help="explicit snapshot destination for --learn-task")
     args = parser.parse_args()
     if args.command == "init":
         if Path(args.state).exists():
@@ -595,18 +668,31 @@ def run_cli():
         if call["status"] != "selected":
             return 2
         args.state = str(config_path.parent / call["selection"]["state"])
+        if args.learn_task and (not args.save or call["task"]["status"] != "matched"):
+            parser.error("--learn-task requires a declared command and --save SNAPSHOT")
+        if args.save and not args.learn_task:
+            parser.error("--save requires --learn-task")
     model = Organism.load(args.state)
     if args.command == "ask" and model.mode != call["selection"]["mode"]:
         parser.error("caller judge does not match selected snapshot")
     if args.command == "ask" and model.mode == "control":
         if not args.out:
-            parser.error("Doom calls require --out DIRECTORY for episode records")
-        bridge = Path(__file__).resolve().with_name("nettadoom.py")
+            parser.error("control calls require --out DIRECTORY for episode records")
+        kind = model.reference.get("kind", "doom")
+        if kind == "doom":
+            filename = "nettadoomer.py"
+            arguments = ["evaluate", "--state", args.state, "--episodes", str(args.attempts),
+                         "--seed", str(args.seed), "--output", args.out]
+        elif kind == "2048":
+            filename = "netta2048.py"
+            arguments = ["evaluate", "--state", args.state, "--attempts", str(args.attempts),
+                         "--seed", str(args.seed), "--out", args.out]
+        else:
+            parser.error("unsupported control environment: " + str(kind))
+        bridge = Path(__file__).resolve().with_name(filename)
         if not bridge.is_file():
-            parser.error("install the optional nettadoom.py bridge beside this file")
-        return subprocess.call([sys.executable, str(bridge), "evaluate", "--state", args.state,
-                                "--episodes", str(args.attempts), "--seed", str(args.seed),
-                                "--output", args.out])
+            parser.error("install the optional " + filename + " bridge beside this file")
+        return subprocess.call([sys.executable, str(bridge)] + arguments)
     if args.command == "inspect":
         print(json.dumps({"species": SPECIES, "stats": model.stats, "mode": model.mode,
                           "programs": len(model.programs), "units": len(model.units.expansions),
@@ -614,12 +700,13 @@ def run_cli():
                           "syntax_updates": model.syntax_head.steps, "exploration": model.exploration,
                           "lived_contexts": len(model.lived), "visited_behaviors": len(model.visits)}, indent=2))
         return 0
-    learning = args.command == "play"
-    if learning and args.explore is not None:
+    learning = args.command == "play" or (args.command == "ask" and args.learn_task)
+    save_path = args.save if args.command == "ask" and learning else args.state
+    if args.command == "play" and args.explore is not None:
         if not 0 <= args.explore <= 1:
             parser.error("--explore must be between 0 and 1")
         model.exploration = args.explore
-    attempts = args.games if learning else args.attempts
+    attempts = args.games if args.command == "play" else args.attempts
     if not 1 <= attempts <= 1_000_000:
         parser.error("attempt budget must be 1..1000000")
     statuses, unique = Counter(), set()
@@ -632,7 +719,7 @@ def run_cli():
             result.update(task_passed=task_statuses["passed"], task_statuses=dict(task_statuses))
         return result
     destination = None
-    if not learning and args.out:
+    if args.command != "play" and args.out:
         destination = Path(args.out)
         destination.mkdir(parents=True, exist_ok=True)
     log = None
@@ -641,10 +728,10 @@ def run_cli():
         log = open(args.log, "a" if learning else "w", encoding="utf-8")
     try:
         for i in range(attempts):
-            record = model.game(None if learning else args.seed + i, learn=learning)
+            seed = None if args.command == "play" else args.seed + i
+            record = model.game(seed, learn=learning, task=call if args.command == "ask" else None)
             exportable = record["productive"]
             if args.command == "ask":
-                record["task_check"] = check_task_output(call, record)
                 task_statuses[record["task_check"]["status"]] += 1
                 if call["task"]["status"] == "matched":
                     exportable = exportable and record["task_check"]["passed"]
@@ -661,17 +748,17 @@ def run_cli():
                 log.write(json.dumps(record, ensure_ascii=False) + "\n")
                 log.flush()
             if learning and (i + 1) % 50 == 0:
-                model.save(args.state)
+                model.save(save_path)
                 print(json.dumps({"completed": i + 1, **progress()}), file=sys.stderr)
         if learning:
-            model.save(args.state)
+            model.save(save_path)
         print(json.dumps(progress(), ensure_ascii=False, indent=2))
         if args.command == "ask" and call["task"]["status"] == "matched" and not task_statuses["passed"]:
             return 3
         return 0
     except KeyboardInterrupt:
         if learning:
-            model.save(args.state)
+            model.save(save_path)
         print(json.dumps(progress(), ensure_ascii=False), file=sys.stderr)
         return 130
     finally:
@@ -848,8 +935,8 @@ def _runtime_control_request(mode, inputs, actions):
     if type(inputs) is not dict or set(inputs) != {'obs'} or type(inputs['obs']) is not dict:
         raise ValueError("control requires explicit inputs={'obs': {...}}")
     obs = inputs['obs']
-    if not {'health', 'ammo', 'scene'} <= set(obs) or not 3 <= len(obs) <= 16:
-        raise ValueError('obs requires health, ammo, scene and at most 16 fields')
+    if not 1 <= len(obs) <= 32:
+        raise ValueError('obs requires 1..32 scalar fields')
     for name, value in obs.items():
         if type(name) is not str or len(name) > 48 or not name.isidentifier() or name.startswith('_') or keyword.iskeyword(name):
             raise ValueError('observation field names must be public identifiers')
@@ -1507,6 +1594,7 @@ selected snapshot generates code. Scores are evidence strengths, not probabiliti
 """
 import ast
 import hashlib
+import json
 import math
 import re
 import unicodedata
@@ -1779,6 +1867,49 @@ def check_task_output(call, record):
     receipt["passed"] = bool(receipt["checks"]) and all(check["passed"] for check in receipt["checks"])
     receipt["status"] = "passed" if receipt["passed"] else "failed"
     return receipt
+
+
+def task_condition(call):
+    """Identify a validated output contract independently of its aliases/path.
+
+    This compact identity indexes acquired task evidence inside the organism.
+    The identity contains no source template and supplies no Python tokens.
+    """
+    if not isinstance(call, dict):
+        raise ValueError("task call must be a dictionary")
+    task, selection = call.get("task", {}), call.get("selection")
+    if call.get("status") != "selected" or task.get("status") != "matched":
+        return None
+    if not isinstance(selection, dict) or selection.get("mode") not in ("art", "general"):
+        raise ValueError("task conditioning requires an art or general state")
+    name, profile = selection.get("name"), task.get("profile")
+    if not isinstance(name, str) or not isinstance(profile, str) or not re.fullmatch(
+            r"[a-z][a-z0-9_-]{0,47}:[a-z][a-z0-9_-]{0,47}", profile) or profile.split(":")[0] != name:
+        raise ValueError("task profile does not belong to selected state")
+    output = _caller_output_schema(task.get("output"))
+    if "contains" in output:
+        output["contains"] = sorted(set(output["contains"]))
+    contract = {"version": 1, "mode": selection["mode"], "output": output}
+    encoded = json.dumps(contract, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return {"key": hashlib.sha256(encoded.encode("utf-8")).hexdigest(),
+            "profile": profile, "mode": selection["mode"], "output": output}
+
+
+def task_feedback(call, record):
+    """Return measured task reward only after execution and source admission.
+
+    Full satisfaction earns 1. Productive partial results earn at most .25 from
+    explicitly passed constraints; their task status remains failed. Failed
+    execution, replay rejection, invalid receipts and unmatched requests earn 0.
+    """
+    condition = task_condition(call)
+    receipt = check_task_output(call, record)
+    reward = 0.0
+    if condition is not None and receipt["status"] == "passed":
+        reward = 1.0
+    elif condition is not None and receipt["status"] == "failed" and receipt["checks"]:
+        reward = .25 * sum(check["passed"] for check in receipt["checks"]) / len(receipt["checks"])
+    return {"condition": condition, "receipt": receipt, "reward": reward}
 
 
 if __name__ == "__main__":

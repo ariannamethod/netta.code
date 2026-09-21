@@ -192,6 +192,78 @@
         "сыграй партию в дум",
         "запусти опыт Doom"
       ]
+    },
+    {
+      "name": "code",
+      "state": "states/code.json",
+      "judge": "general",
+      "keywords": [
+        "code",
+        "python",
+        "код",
+        "программа"
+      ],
+      "phrases": [
+        "напиши код",
+        "смешанный остров"
+      ],
+      "examples": [
+        "generate a Python program",
+        "создай программу"
+      ],
+      "commands": [
+        {
+          "name": "unique_sorted_words",
+          "requests": [
+            "code: отсортированный список слов"
+          ],
+          "output": {
+            "literal_type": "list",
+            "min_items": 2,
+            "item_type": "string",
+            "unique": true,
+            "sorted": "ascending"
+          }
+        },
+        {
+          "name": "table",
+          "requests": [
+            "code: таблица имён и чисел"
+          ],
+          "output": {
+            "literal_type": "list",
+            "min_items": 2,
+            "item_type": "record"
+          }
+        },
+        {
+          "name": "sorted_values",
+          "requests": [
+            "code: отсортированный список чисел"
+          ],
+          "output": {
+            "literal_type": "list",
+            "min_items": 2,
+            "item_type": "number",
+            "sorted": "ascending"
+          }
+        }
+      ]
+    },
+    {
+      "name": "puzzle2048",
+      "state": "states/2048.json",
+      "judge": "control",
+      "keywords": [
+        "2048"
+      ],
+      "phrases": [
+        "играй в 2048",
+        "play 2048"
+      ],
+      "examples": [
+        "сыграй партию в 2048"
+      ]
     }
   ]
 }

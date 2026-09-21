@@ -4,11 +4,30 @@
   "decision_quantum": 4,
   "max_decisions": 128,
   "observation": {
-    "health_thresholds": [25, 75],
-    "health_values": [25, 60, 100],
-    "ammo_values": [0, 10],
-    "scene_values": ["empty", "left", "center", "right"],
-    "excluded_labels": ["DoomPlayer", "Blood", "BulletPuff"]
+    "health_thresholds": [
+      25,
+      75
+    ],
+    "health_values": [
+      25,
+      60,
+      100
+    ],
+    "ammo_values": [
+      0,
+      10
+    ],
+    "scene_values": [
+      "empty",
+      "left",
+      "center",
+      "right"
+    ],
+    "excluded_labels": [
+      "DoomPlayer",
+      "Blood",
+      "BulletPuff"
+    ]
   },
   "actions": {
     "turn_left": "TURN_LEFT",
@@ -23,5 +42,11 @@
     "damage_weight": 0.01,
     "ammo_weight": 0.005,
     "scale": 3.0
+  },
+  "backend": "generic",
+  "generic": {
+    "episode": 1,
+    "map": 1,
+    "skill": 3
   }
 }

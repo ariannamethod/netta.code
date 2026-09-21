@@ -1,0 +1,856 @@
+# === PROGRAM ===
+actions = ['left', 'right', 'up', 'down']
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+actions = ['left', 'up', 'down', 'right']
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+actions = ['right', 'left', 'up', 'down']
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+actions = ['right', 'up', 'down', 'left']
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+actions = ['up', 'left', 'right', 'down']
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+actions = ['up', 'right', 'down', 'left']
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+actions = ['down', 'left', 'right', 'up']
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+actions = ['down', 'right', 'up', 'left']
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'right', 'up', 'down']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(board[index] for index in edges[direction]) * 1
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'up', 'down', 'right']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(board[index] for index in edges[direction]) * 2
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'left', 'up', 'down']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(board[index] for index in edges[direction]) * -1
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'up', 'down', 'left']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(board[index] for index in edges[direction]) * 3
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'left', 'right', 'down']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(board[index] for index in edges[direction]) * -2
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'right', 'down', 'left']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(board[index] for index in edges[direction]) * 4
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'left', 'right', 'up']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(board[index] for index in edges[direction]) * -3
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'right', 'up', 'left']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(board[index] for index in edges[direction]) * 5
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'right', 'up', 'down']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * 1
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'up', 'down', 'right']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * 2
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'left', 'up', 'down']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * -1
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'up', 'down', 'left']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * 3
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'left', 'right', 'down']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * -2
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'right', 'down', 'left']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * 4
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'left', 'right', 'up']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * -3
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'right', 'up', 'left']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            for column in range(3):
+                first = row * 4 + column if direction in ('left', 'right') else column * 4 + row
+                second = first + 1 if direction in ('left', 'right') else first + 4
+                if board[first] == board[second] and board[first] > 0:
+                    score += board[first] * 5
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'right', 'up', 'down']
+maximum = max(board)
+position = board.index(maximum)
+preferred = 'left' if position % 4 < 1 else 'right'
+if position // 4 >= 1:
+    preferred = 'down'
+for direction in [preferred] + actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'up', 'down', 'right']
+maximum = max(board)
+position = board.index(maximum)
+preferred = 'left' if position % 4 < 2 else 'right'
+if position // 4 >= 2:
+    preferred = 'down'
+for direction in [preferred] + actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'left', 'up', 'down']
+maximum = max(board)
+position = board.index(maximum)
+preferred = 'left' if position % 4 < 3 else 'right'
+if position // 4 >= 3:
+    preferred = 'down'
+for direction in [preferred] + actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'up', 'down', 'left']
+maximum = max(board)
+position = board.index(maximum)
+preferred = 'left' if position % 4 < 1 else 'right'
+if position // 4 >= 1:
+    preferred = 'down'
+for direction in [preferred] + actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'left', 'right', 'down']
+maximum = max(board)
+position = board.index(maximum)
+preferred = 'left' if position % 4 < 2 else 'right'
+if position // 4 >= 2:
+    preferred = 'down'
+for direction in [preferred] + actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'right', 'down', 'left']
+maximum = max(board)
+position = board.index(maximum)
+preferred = 'left' if position % 4 < 3 else 'right'
+if position // 4 >= 3:
+    preferred = 'down'
+for direction in [preferred] + actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'left', 'right', 'up']
+maximum = max(board)
+position = board.index(maximum)
+preferred = 'left' if position % 4 < 1 else 'right'
+if position // 4 >= 1:
+    preferred = 'down'
+for direction in [preferred] + actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'right', 'up', 'left']
+maximum = max(board)
+position = board.index(maximum)
+preferred = 'left' if position % 4 < 2 else 'right'
+if position // 4 >= 2:
+    preferred = 'down'
+for direction in [preferred] + actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'right', 'up', 'down']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(1 for index in edges[direction] if board[index] == 0) * 1
+        score -= actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'up', 'down', 'right']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(1 for index in edges[direction] if board[index] == 0) * 2
+        score -= actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'left', 'up', 'down']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(1 for index in edges[direction] if board[index] == 0) * -1
+        score -= actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'up', 'down', 'left']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(1 for index in edges[direction] if board[index] == 0) * 3
+        score -= actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'left', 'right', 'down']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(1 for index in edges[direction] if board[index] == 0) * -2
+        score -= actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'right', 'down', 'left']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(1 for index in edges[direction] if board[index] == 0) * 4
+        score -= actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'left', 'right', 'up']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(1 for index in edges[direction] if board[index] == 0) * -3
+        score -= actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'right', 'up', 'left']
+edges = {'left': [0, 4, 8, 12], 'right': [3, 7, 11, 15], 'up': [0, 1, 2, 3], 'down': [12, 13, 14, 15]}
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = sum(1 for index in edges[direction] if board[index] == 0) * 5
+        score -= actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'right', 'up', 'down']
+empty = sum(value == 0 for value in board)
+if empty < 1 + 3:
+    actions = list(reversed(actions))
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'up', 'down', 'right']
+empty = sum(value == 0 for value in board)
+if empty < 2 + 3:
+    actions = list(reversed(actions))
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'left', 'up', 'down']
+empty = sum(value == 0 for value in board)
+if empty < 3 + 3:
+    actions = list(reversed(actions))
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'up', 'down', 'left']
+empty = sum(value == 0 for value in board)
+if empty < 1 + 3:
+    actions = list(reversed(actions))
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'left', 'right', 'down']
+empty = sum(value == 0 for value in board)
+if empty < 2 + 3:
+    actions = list(reversed(actions))
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'right', 'down', 'left']
+empty = sum(value == 0 for value in board)
+if empty < 3 + 3:
+    actions = list(reversed(actions))
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'left', 'right', 'up']
+empty = sum(value == 0 for value in board)
+if empty < 1 + 3:
+    actions = list(reversed(actions))
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'right', 'up', 'left']
+empty = sum(value == 0 for value in board)
+if empty < 2 + 3:
+    actions = list(reversed(actions))
+for direction in actions:
+    if obs['valid_' + direction]:
+        action = direction
+        break
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'right', 'up', 'down']
+horizontal = 0
+vertical = 0
+for row in range(4):
+    for column in range(3):
+        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])
+        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = -horizontal if direction in ('left', 'right') else -vertical
+        score = score * 1 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'up', 'down', 'right']
+horizontal = 0
+vertical = 0
+for row in range(4):
+    for column in range(3):
+        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])
+        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = -horizontal if direction in ('left', 'right') else -vertical
+        score = score * 2 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'left', 'up', 'down']
+horizontal = 0
+vertical = 0
+for row in range(4):
+    for column in range(3):
+        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])
+        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = -horizontal if direction in ('left', 'right') else -vertical
+        score = score * -1 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'up', 'down', 'left']
+horizontal = 0
+vertical = 0
+for row in range(4):
+    for column in range(3):
+        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])
+        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = -horizontal if direction in ('left', 'right') else -vertical
+        score = score * 3 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'left', 'right', 'down']
+horizontal = 0
+vertical = 0
+for row in range(4):
+    for column in range(3):
+        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])
+        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = -horizontal if direction in ('left', 'right') else -vertical
+        score = score * -2 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'right', 'down', 'left']
+horizontal = 0
+vertical = 0
+for row in range(4):
+    for column in range(3):
+        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])
+        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = -horizontal if direction in ('left', 'right') else -vertical
+        score = score * 4 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'left', 'right', 'up']
+horizontal = 0
+vertical = 0
+for row in range(4):
+    for column in range(3):
+        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])
+        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = -horizontal if direction in ('left', 'right') else -vertical
+        score = score * -3 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'right', 'up', 'left']
+horizontal = 0
+vertical = 0
+for row in range(4):
+    for column in range(3):
+        horizontal += abs(board[row * 4 + column] - board[row * 4 + column + 1])
+        vertical += abs(board[column * 4 + row] - board[(column + 1) * 4 + row])
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = -horizontal if direction in ('left', 'right') else -vertical
+        score = score * 5 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'right', 'up', 'down']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            cells = [board[row * 4 + column] for column in range(4)] if direction in ('left', 'right') else [board[column * 4 + row] for column in range(4)]
+            if direction in ('right', 'down'):
+                cells = list(reversed(cells))
+            cells = [value for value in cells if value]
+            index = 0
+            while index + 1 < len(cells):
+                if cells[index] == cells[index + 1]:
+                    score += cells[index] * 2
+                    index += 2
+                else:
+                    index += 1
+        score = score * 1 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['left', 'up', 'down', 'right']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            cells = [board[row * 4 + column] for column in range(4)] if direction in ('left', 'right') else [board[column * 4 + row] for column in range(4)]
+            if direction in ('right', 'down'):
+                cells = list(reversed(cells))
+            cells = [value for value in cells if value]
+            index = 0
+            while index + 1 < len(cells):
+                if cells[index] == cells[index + 1]:
+                    score += cells[index] * 2
+                    index += 2
+                else:
+                    index += 1
+        score = score * 2 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'left', 'up', 'down']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            cells = [board[row * 4 + column] for column in range(4)] if direction in ('left', 'right') else [board[column * 4 + row] for column in range(4)]
+            if direction in ('right', 'down'):
+                cells = list(reversed(cells))
+            cells = [value for value in cells if value]
+            index = 0
+            while index + 1 < len(cells):
+                if cells[index] == cells[index + 1]:
+                    score += cells[index] * 2
+                    index += 2
+                else:
+                    index += 1
+        score = score * -1 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['right', 'up', 'down', 'left']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            cells = [board[row * 4 + column] for column in range(4)] if direction in ('left', 'right') else [board[column * 4 + row] for column in range(4)]
+            if direction in ('right', 'down'):
+                cells = list(reversed(cells))
+            cells = [value for value in cells if value]
+            index = 0
+            while index + 1 < len(cells):
+                if cells[index] == cells[index + 1]:
+                    score += cells[index] * 2
+                    index += 2
+                else:
+                    index += 1
+        score = score * 3 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'left', 'right', 'down']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            cells = [board[row * 4 + column] for column in range(4)] if direction in ('left', 'right') else [board[column * 4 + row] for column in range(4)]
+            if direction in ('right', 'down'):
+                cells = list(reversed(cells))
+            cells = [value for value in cells if value]
+            index = 0
+            while index + 1 < len(cells):
+                if cells[index] == cells[index + 1]:
+                    score += cells[index] * 2
+                    index += 2
+                else:
+                    index += 1
+        score = score * -2 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['up', 'right', 'down', 'left']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            cells = [board[row * 4 + column] for column in range(4)] if direction in ('left', 'right') else [board[column * 4 + row] for column in range(4)]
+            if direction in ('right', 'down'):
+                cells = list(reversed(cells))
+            cells = [value for value in cells if value]
+            index = 0
+            while index + 1 < len(cells):
+                if cells[index] == cells[index + 1]:
+                    score += cells[index] * 2
+                    index += 2
+                else:
+                    index += 1
+        score = score * 4 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'left', 'right', 'up']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            cells = [board[row * 4 + column] for column in range(4)] if direction in ('left', 'right') else [board[column * 4 + row] for column in range(4)]
+            if direction in ('right', 'down'):
+                cells = list(reversed(cells))
+            cells = [value for value in cells if value]
+            index = 0
+            while index + 1 < len(cells):
+                if cells[index] == cells[index + 1]:
+                    score += cells[index] * 2
+                    index += 2
+                else:
+                    index += 1
+        score = score * -3 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction
+# === PROGRAM ===
+board = [obs['c' + str(index)] for index in range(16)]
+actions = ['down', 'right', 'up', 'left']
+best = -1000000
+for direction in actions:
+    if obs['valid_' + direction]:
+        score = 0
+        for row in range(4):
+            cells = [board[row * 4 + column] for column in range(4)] if direction in ('left', 'right') else [board[column * 4 + row] for column in range(4)]
+            if direction in ('right', 'down'):
+                cells = list(reversed(cells))
+            cells = [value for value in cells if value]
+            index = 0
+            while index + 1 < len(cells):
+                if cells[index] == cells[index + 1]:
+                    score += cells[index] * 2
+                    index += 2
+                else:
+                    index += 1
+        score = score * 5 - actions.index(direction)
+        if score > best:
+            best = score
+            action = direction

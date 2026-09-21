@@ -1,0 +1,451 @@
+#!/usr/bin/env python3
+"""Real, seeded 2048 for Netta Lee's generated Python policies (stdlib only).
+
+Policies receive the actual board and legal-move flags as
+scalar observations. The bridge never substitutes a move: invalid output ends
+that policy's episode. Every episode uses a bounded isolated CPython worker.
+"""
+import argparse
+from collections import Counter
+import hashlib
+import itertools
+import json
+import math
+import os
+from pathlib import Path
+import random
+import selectors
+import subprocess
+import sys
+import time
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import nettalee as core
+
+ROOT = Path(__file__).resolve().parent
+ACTIONS = ('left', 'right', 'up', 'down')
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False)
+
+
+def fingerprint(value):
+    return hashlib.sha256(canonical(value).encode()).hexdigest()
+
+
+def save_json(path, value):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+
+def validate_board(board):
+    if type(board) not in (list, tuple) or len(board) != 16:
+        raise ValueError('board requires sixteen cells')
+    if any(type(value) is not int or value < 0 or value > 2 ** 29 or
+           value and (value < 2 or value & (value - 1)) for value in board):
+        raise ValueError('cells must be zero or bounded powers of two')
+    return list(board)
+
+
+def merge_line(line):
+    values = [value for value in line if value]
+    merged, score, index = [], 0, 0
+    while index < len(values):
+        if index + 1 < len(values) and values[index] == values[index + 1]:
+            value = 2 * values[index]
+            merged.append(value)
+            score += value
+            index += 2
+        else:
+            merged.append(values[index])
+            index += 1
+    return merged + [0] * (4 - len(merged)), score
+
+
+def slide(board, action):
+    """Pure 2048 transition before spawning; each tile merges at most once."""
+    board = validate_board(board)
+    if action not in ACTIONS:
+        raise ValueError('unknown action')
+    result, score = list(board), 0
+    for line in range(4):
+        cells = ([line * 4 + column for column in range(4)] if action in ('left', 'right')
+                 else [row * 4 + line for row in range(4)])
+        if action in ('right', 'down'):
+            cells.reverse()
+        merged, gained = merge_line([board[index] for index in cells])
+        for index, value in zip(cells, merged):
+            result[index] = value
+        score += gained
+    return result, score, result != board
+
+
+class Game2048:
+    def __init__(self, seed=1, board=None):
+        self.rng = random.Random(seed)
+        self.seed = seed
+        self.board = [0] * 16 if board is None else validate_board(board)
+        self.score = 0
+        self.moves = 0
+        if board is None:
+            self.spawn()
+            self.spawn()
+
+    def spawn(self):
+        empty = [index for index, value in enumerate(self.board) if value == 0]
+        if not empty:
+            return None
+        index = self.rng.choice(empty)
+        value = 2 if self.rng.random() < .9 else 4
+        self.board[index] = value
+        return {'cell': index, 'value': value}
+
+    def legal_actions(self):
+        return [action for action in ACTIONS if slide(self.board, action)[2]]
+
+    def observation(self):
+        obs = {'c' + str(index): value for index, value in enumerate(self.board)}
+        for action in ACTIONS:
+            _, _, changed = slide(self.board, action)
+            obs['valid_' + action] = changed
+        return obs
+
+    def step(self, action):
+        before = list(self.board)
+        moved, gained, changed = slide(before, action)
+        if not changed:
+            return {'action': action, 'before': before, 'after': before,
+                    'valid': False, 'gain': 0, 'spawn': None, 'score': self.score}
+        self.board = moved
+        self.score += gained
+        self.moves += 1
+        spawned = self.spawn()
+        return {'action': action, 'before': before, 'after': list(self.board),
+                'valid': True, 'gain': gained, 'spawn': spawned, 'score': self.score}
+
+
+def probe_observations():
+    """Fixed non-rewarded legal positions; an anti-copy screen, not a full state space."""
+    boards = []
+    for index in (0, 3, 12, 15):
+        board = [0] * 16
+        board[index] = 2
+        boards.append(board)
+    for seed in range(5):
+        game = Game2048(17000 + seed)
+        chooser = random.Random(29000 + seed)
+        for move in range(16):
+            legal = game.legal_actions()
+            if not legal:
+                break
+            game.step(chooser.choice(legal))
+            if move in (3, 7, 11, 15):
+                boards.append(list(game.board))
+    return [Game2048(board=board).observation() for board in boards]
+
+
+def policy_worker():
+    """Fresh process per policy; bounded CPython runtime reset on every observation."""
+    import resource
+    resource.setrlimit(resource.RLIMIT_AS, (256 << 20, 256 << 20))
+    resource.setrlimit(resource.RLIMIT_CPU, (10, 10))
+    resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
+    resource.setrlimit(resource.RLIMIT_NOFILE, (16, 16))
+    request = json.loads(sys.stdin.readline(core.RUNTIME_SOURCE_LIMIT * 8))
+    source = request['source']
+    if type(source) is not str or len(source.encode()) > core.RUNTIME_SOURCE_LIMIT:
+        raise ValueError('source limit')
+    for line in sys.stdin:
+        try:
+            obs = json.loads(line)
+            result = core._runtime_execute(source, 'control', {'obs': obs}, list(ACTIONS))
+            # Compact receipts avoid pipe backpressure while retaining the actual
+            # action, diagnostics and exact source identity for every decision.
+            receipt = {key: result.get(key) for key in ('status', 'accepted', 'action', 'reason',
+                       'source_hash', 'error_line', 'error_column', 'exception_type')}
+        except Exception as error:
+            receipt = {'status': 'worker_error', 'accepted': False,
+                       'reason': type(error).__name__ + ': ' + str(error)[:200]}
+        print(json.dumps(receipt, allow_nan=False), flush=True)
+
+
+class PolicyProcess:
+    def __init__(self, source, timeout=1.5):
+        self.timeout = timeout
+        self.process = subprocess.Popen([sys.executable, '-P', '-s', str(Path(__file__).resolve()), '--policy-worker'],
+                                        stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                        stderr=subprocess.DEVNULL, text=True, bufsize=1,
+                                        cwd='/tmp', env={'PATH': os.defpath, 'PYTHONHASHSEED': '0'})
+        self.process.stdin.write(canonical({'source': source}) + '\n')
+        self.process.stdin.flush()
+        self.selector = selectors.DefaultSelector()
+        self.selector.register(self.process.stdout, selectors.EVENT_READ)
+
+    def decide(self, obs):
+        try:
+            self.process.stdin.write(canonical(obs) + '\n')
+            self.process.stdin.flush()
+            if not self.selector.select(self.timeout):
+                self.close()
+                return {'accepted': False, 'status': 'timeout', 'reason': 'policy response timeout'}
+            line = self.process.stdout.readline()
+            if not line:
+                return {'accepted': False, 'status': 'worker_error', 'reason': 'policy process exited'}
+            return json.loads(line)
+        except (BrokenPipeError, OSError, ValueError) as error:
+            return {'accepted': False, 'status': 'worker_error', 'reason': str(error)[:200]}
+
+    def close(self):
+        if getattr(self, 'selector', None):
+            self.selector.close()
+            self.selector = None
+        if self.process.poll() is None:
+            self.process.kill()
+        self.process.wait(timeout=2)
+        for pipe in (self.process.stdin, self.process.stdout):
+            if pipe:
+                pipe.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        self.close()
+
+
+def validate_policy(source, probes=None):
+    if not isinstance(source, str) or len(source.encode()) > core.RUNTIME_SOURCE_LIMIT:
+        return {'accepted': False, 'status': 'encoding', 'reason': 'missing or oversized source'}
+    probes = probe_observations() if probes is None else probes
+    actions = []
+    with PolicyProcess(source) as worker:
+        for obs in probes:
+            result = worker.decide(obs)
+            if not result.get('accepted'):
+                return dict(result, accepted=False)
+            action = result.get('action')
+            if action not in ACTIONS or not obs['valid_' + action]:
+                return {'accepted': False, 'status': 'invalid_move', 'reason': 'policy chose an immobile direction'}
+            actions.append(action)
+    if len(set(actions)) < 2:
+        return {'accepted': False, 'status': 'unreactive', 'reason': 'constant action on fixed probes'}
+    return {'accepted': True, 'status': 'ready', 'actions': actions,
+            'behavior_hash': fingerprint(actions), 'source_hash': hashlib.sha256(source.encode()).hexdigest()}
+
+
+def make_reference(programs):
+    probes = probe_observations()
+    records = []
+    for index, source in enumerate(programs):
+        result = validate_policy(source, probes)
+        if not result['accepted']:
+            raise ValueError('corpus policy %d failed: %s' % (index + 1, result))
+        records.append({'index': index, 'source_key': core.program_key(source),
+                        'behavior_hash': result['behavior_hash']})
+    return {'kind': '2048', 'format': 1, 'probes': probes, 'records': records,
+            'programs_hash': fingerprint(programs),
+            'behavior_hashes': sorted({record['behavior_hash'] for record in records}),
+            'source_keys': sorted({record['source_key'] for record in records})}
+
+
+def run_episode(source, seed, max_moves=128):
+    if type(max_moves) is not int or not 1 <= max_moves <= 2048:
+        raise ValueError('max_moves must be 1..2048')
+    game = Game2048(seed)
+    initial = list(game.board)
+    trajectory, status, diagnostic = [], 'move_limit', None
+    started = time.monotonic()
+    with PolicyProcess(source) as worker:
+        for index in range(max_moves):
+            if not game.legal_actions():
+                status = 'terminal'
+                break
+            if time.monotonic() - started > 30:
+                status = 'timeout'
+                break
+            obs = game.observation()
+            decision = worker.decide(obs)
+            if not decision.get('accepted'):
+                status, diagnostic = decision.get('status', 'worker_error'), decision
+                break
+            action = decision.get('action')
+            if action not in ACTIONS:
+                status = 'invalid_action'
+                break
+            transition = game.step(action)
+            transition.update(observation=obs, decision=decision)
+            trajectory.append(transition)
+            if not transition['valid']:
+                status = 'invalid_move'
+                break
+    if status == 'move_limit' and not game.legal_actions():
+        status = 'terminal'
+    completed = status in ('terminal', 'move_limit')
+    # Real merge score only. An invalid/failed policy receives no learning reward.
+    reward = game.score / (game.score + 512.0) if completed else 0.0
+    return {'seed': seed, 'status': status, 'completed': completed, 'score': game.score,
+            'max_tile': max(game.board), 'moves': game.moves, 'reward': reward,
+            'initial_board': initial, 'final_board': game.board, 'trajectory': trajectory,
+            'diagnostic': diagnostic, 'max_moves': max_moves}
+
+
+def attempt(model, sample_seed, episode_seed, learn=True, max_moves=128):
+    before = fingerprint(model.state_dict())
+    generated = model.generate(seed=sample_seed)
+    source = generated.get('source')
+    reference = model.reference
+    if reference.get('kind') != '2048' or reference.get('programs_hash') != fingerprint(model.programs):
+        raise ValueError('state is not a matching 2048 island')
+    record = {'sample_seed': sample_seed, 'episode_seed': episode_seed, 'source': source,
+              'source_hash': hashlib.sha256(source.encode()).hexdigest() if isinstance(source, str) else None,
+              'reward': 0.0, 'played': False, 'training_applied': False}
+    policy, runtime_ok, diagnostic = None, False, None
+    if source is None:
+        record['status'] = 'encoding'
+    elif generated.get('truncated'):
+        record['status'] = 'truncated'
+    elif core.program_key(source) in reference['source_keys']:
+        record['status'] = 'corpus_source_replay'
+        runtime_ok = True
+    else:
+        policy = validate_policy(source, reference['probes'])
+        runtime_ok = policy['accepted']
+        diagnostic = policy
+        record['policy'] = policy
+        if not runtime_ok:
+            record['status'] = policy['status']
+        elif policy['behavior_hash'] in reference['behavior_hashes']:
+            record['status'] = 'corpus_probe_behavior_replay'
+        else:
+            episode = run_episode(source, episode_seed, max_moves)
+            record.update(played=True, episode=episode, status=episode['status'], reward=episode['reward'])
+            diagnostic = episode.get('diagnostic') or {'status': 'ok' if episode['completed'] else episode['status']}
+            runtime_ok = episode['completed']
+    if learn:
+        model.observe(generated, record['reward'], runtime_ok,
+                      error_line=(diagnostic or {}).get('error_line'),
+                      behavior=policy.get('behavior_hash') if policy and policy['accepted'] else None,
+                      diagnostic=diagnostic or {'status': record['status']})
+        record['training_applied'] = True
+    elif fingerprint(model.state_dict()) != before:
+        raise AssertionError('frozen episode changed organism')
+    record['state_before'] = before
+    record['state_after'] = fingerprint(model.state_dict())
+    return record
+
+
+def random_legal_episode(seed, max_moves=128):
+    """Explicit nonlearned baseline, using its own seeded action RNG."""
+    game = Game2048(seed)
+    chooser = random.Random(seed ^ 0x2048)
+    initial, trajectory = list(game.board), []
+    for index in range(max_moves):
+        actions = game.legal_actions()
+        if not actions:
+            break
+        transition = game.step(chooser.choice(actions))
+        trajectory.append(transition)
+    terminal = not game.legal_actions()
+    return {'seed': seed, 'status': 'terminal' if terminal else 'move_limit',
+            'completed': True, 'score': game.score, 'max_tile': max(game.board),
+            'moves': game.moves, 'reward': game.score / (game.score + 512.0),
+            'initial_board': initial, 'final_board': game.board, 'trajectory': trajectory,
+            'max_moves': max_moves, 'baseline': 'uniform_random_legal'}
+
+
+def summarize(records):
+    episodes = [record['episode'] for record in records if record['played']]
+    return {'raw_attempts': len(records), 'played': len(episodes),
+            'completed': sum(episode['completed'] for episode in episodes),
+            'score_per_raw_attempt': sum(episode['score'] for episode in episodes) / max(1, len(records)),
+            'mean_played_score': sum(episode['score'] for episode in episodes) / max(1, len(episodes)),
+            'best_score': max((episode['score'] for episode in episodes), default=0),
+            'max_tile': max((episode['max_tile'] for episode in episodes), default=0),
+            'statuses': dict(Counter(record['status'] for record in records))}
+
+
+def run_cli():
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest='command', required=True)
+    init = sub.add_parser('init')
+    init.add_argument('--island', type=Path, default=ROOT / 'corpora' / '2048.txt')
+    init.add_argument('--state', type=Path, required=True)
+    init.add_argument('--seed', type=int, default=71)
+    for command in ('play', 'evaluate'):
+        item = sub.add_parser(command)
+        item.add_argument('--state', type=Path, required=True)
+        item.add_argument('--out', type=Path, required=True)
+        item.add_argument('--attempts', type=int, default=100)
+        item.add_argument('--seed', type=int, default=3100000 if command == 'play' else 3500000)
+        item.add_argument('--episode-seed', type=int, default=3200000 if command == 'play' else 3600000)
+        item.add_argument('--max-moves', type=int, default=128)
+    args = parser.parse_args()
+    if args.command == 'init':
+        programs = core.read_island(args.island)
+        reference = make_reference(programs)
+        model = core.Organism(programs, seed=args.seed, mode='control', _reference=reference)
+        model.save(args.state)
+        print(canonical({'state': str(args.state), 'programs': len(programs),
+                         'probe_behavior_count': len(reference['behavior_hashes'])}))
+        return
+    if not 1 <= args.attempts <= 100000:
+        parser.error('attempts must be 1..100000')
+    model = core.Organism.load(args.state)
+    args.out.mkdir(parents=True, exist_ok=False)
+    protocol = {'command': args.command, 'attempts': args.attempts, 'sample_seed': args.seed,
+                'episode_seed': args.episode_seed, 'max_moves': args.max_moves,
+                'state_sha256': hashlib.sha256(args.state.read_bytes()).hexdigest(),
+                'bridge_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                'core_sha256': hashlib.sha256(Path(core.__file__).read_bytes()).hexdigest()}
+    save_json(args.out / 'protocol.json', protocol)
+    reports = {}
+    controls = [('trained', model)]
+    if args.command == 'evaluate':
+        control = model.without_experience()
+        control.seen, control.behaviors = set(model.seen), set(model.behaviors)
+        control.visits, control.stats = dict(model.visits), dict(model.stats)
+        control.exploration, control.memory_strength = model.exploration, model.memory_strength
+        control.rng.setstate(model.rng.getstate())
+        controls.append(('without_experience', control))
+    for arm, organism in controls:
+        records = []
+        with (args.out / (arm + '.jsonl')).open('w', encoding='utf-8') as stream:
+            for index in range(args.attempts):
+                record = attempt(organism, args.seed + index, args.episode_seed + index,
+                                 args.command == 'play', args.max_moves)
+                records.append(record)
+                stream.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + '\n')
+                stream.flush()
+                if args.command == 'play' and (index + 1) % 25 == 0:
+                    organism.save(args.state)
+        if args.command == 'play':
+            organism.save(args.state)
+        reports[arm] = summarize(records)
+    if args.command == 'evaluate':
+        records = []
+        with (args.out / 'random_legal.jsonl').open('w', encoding='utf-8') as stream:
+            for index in range(args.attempts):
+                episode = random_legal_episode(args.episode_seed + index, args.max_moves)
+                record = {'played': True, 'episode': episode, 'status': episode['status']}
+                records.append(record)
+                stream.write(json.dumps(record, allow_nan=False) + '\n')
+        reports['random_legal'] = summarize(records)
+        if hashlib.sha256(args.state.read_bytes()).hexdigest() != protocol['state_sha256']:
+            raise AssertionError('evaluation mutated saved state')
+    protocol['bridge_sha256_after'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    protocol['core_sha256_after'] = hashlib.sha256(Path(core.__file__).read_bytes()).hexdigest()
+    protocol['frozen_sources'] = all(protocol[key] == protocol[key + '_after'] for key in ('bridge_sha256', 'core_sha256'))
+    save_json(args.out / 'protocol.json', protocol)
+    if not protocol['frozen_sources']:
+        raise RuntimeError('bridge/core changed during this run; raw evidence retained, rerun frozen sources')
+    save_json(args.out / 'summary.json', reports)
+    print(json.dumps(reports, indent=2))
+
+
+if __name__ == '__main__':
+    if sys.argv[1:] == ['--policy-worker']:
+        policy_worker()
+    else:
+        run_cli()
