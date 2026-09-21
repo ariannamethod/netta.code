@@ -1,0 +1,107 @@
+{
+  "source": "iteration6 first-law frozen evaluation; exact generation-only replay, no learning or new CPython attempts",
+  "totals": {
+    "replayed_sources": 512,
+    "name_errors": 20,
+    "error_span_has_choice": 16,
+    "fallback_credit": 4
+  },
+  "negative_keys": 18,
+  "negative_keys_with_positive_runtime": 9,
+  "negative_keys_with_other_first_anchor_positives": 0,
+  "negative_keys_with_same_first_anchor_positives": 9,
+  "negative_keys_still_conflicted_at_context8": 7,
+  "dominant_example": {
+    "local_key": [
+      49,
+      307,
+      412,
+      293
+    ],
+    "failure_occurrences": 11,
+    "successful_occurrences": 8,
+    "long_context_conflict": [],
+    "differentiating_history_position": -7,
+    "pair": [
+      {
+        "seed": 3200100087,
+        "source": "size = 15\nmark = 'X'\ncanvas = [[' ' for column in range(size)] for row in range(size)]\nfor column in range(1, size - 1):\n    canvas[row][-1] = mark\ncanvas[2][-3] = 'x'\nfor column in range(2, size - 2):\n    canvas[-3][column] = '_'\nfor row in canvas:\n    print(''.join(row))\n",
+        "source_sha256": "af5e25612e6c817812e2b7db69451b68e83d74c46b807725cdbbc0647d8e12ef",
+        "runtime_ok": false,
+        "productive": false,
+        "status": "runtime_error",
+        "exception": "NameError: name 'row' is not defined",
+        "context8": [
+          285,
+          326,
+          303,
+          479,
+          447,
+          49,
+          307,
+          412,
+          293
+        ]
+      },
+      {
+        "seed": 3200100071,
+        "source": "size = 11\nmark = '+'\ncanvas = [[' ' for column in range(size)] for row in range(size)]\nfor column in range(1, size - 1):\n    canvas[0][column] = mark\n    canvas[-1][column] = mark\nfor row in range(1, size - 1):\n    canvas[row][0] = mark\n    canvas[row][-1] = mark\ncanvas[2][-1] = mark\ncanvas[2][-3] = 'x'\nfor column in range(2, size - 2):\n    canvas[-3][column] = '_'\nfor row in canvas:\n    print(''.join(row))\n",
+        "source_sha256": "8f41875a22460f7029f06670c23549bde964e84649fd44f8badb5999396ca942",
+        "runtime_ok": true,
+        "productive": true,
+        "status": "behavior_replay",
+        "exception": "",
+        "context8": [
+          378,
+          293,
+          303,
+          479,
+          447,
+          49,
+          307,
+          412,
+          293
+        ]
+      }
+    ]
+  },
+  "candidate": {
+    "name": "acquired eight-unit outcome residual",
+    "context": 8,
+    "strength": 2.5,
+    "evidence_smoothing": 4.0,
+    "mean_smoothing": [
+      1.0,
+      2.0
+    ],
+    "formula": "2.5 * n8/(n8+4) * ((w8+1)/(n8+2) - (w3+1)/(n3+2))",
+    "target": "unchanged existing general learning_reward",
+    "eligible_choices": "same ordinary _learn chosen/reward_choices before local-key dedup",
+    "dedup": "once per long key per generated program",
+    "corpus_prior": "unchanged first anchor",
+    "candidate_set": "unchanged",
+    "source_repair": false,
+    "new_dependencies": false,
+    "initialization": "zero acquired counts, exact baseline selection until learning",
+    "off": "retain memory without retrieving or updating it"
+  },
+  "sources": {
+    "results/iteration8/baseline/nettacode.py": "d9eb1a8de6dc2678533ac4dbb6d1a534e639440a116533859ffe7e95bd4d2af3",
+    "results/iteration8/baseline/states/code.json": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6",
+    "code_memory_build.py": "00c308905f88706684f6204d9295d197f16bff3e2e2489b97a7bcd39b0f4d799",
+    "results/iteration8/code/candidate_build.py": "28193647ac502c8dadfbc1d82df0abc404a3816babf671230de52258d3b8b621",
+    "results/iteration8/code/candidate.py": "dfabaaea7a25262a5ec78a4c0ba887206f8327b999848232d48ec28082d3098e",
+    "tests/test_code_iteration8.py": "cddb8e2a8718152f88ee1cb464bbe61a26f1f33bddf4f925b9beb0fae2cc41d6"
+  },
+  "focused_tests": {
+    "count": 11,
+    "seconds": 19.293,
+    "result": "PASS",
+    "log": "results/iteration8/code/tests.log"
+  },
+  "raw_origin": {
+    "archive": "netta-iteration8-research.zip",
+    "path": "results/iteration8/code_diagnosis/summary.json",
+    "sha256": "8d98b66ee4d3d7c4e2c06e31467537ea4003636248dca8c1eaf7b0ae63cc15e4"
+  }
+}

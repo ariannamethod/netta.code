@@ -623,6 +623,8 @@ def run_cli():
         item.add_argument('--episode-seed', type=int, default=3200000 if command == 'play' else 3600000)
         item.add_argument('--max-moves', type=int, default=128)
         if command == 'play':
+            item.add_argument('--experience-support', type=float,
+                              help='Lee experienced-suffix count mass (0..0.25); omitted preserves saved choice')
             item.add_argument('--control-learning', choices=('legacy', 'quality', 'trace', 'both'),
                               help='optional learning experiment, stored in the saved state; omitted preserves its current choice')
             item.add_argument('--decision-credit', choices=('off', 'uniform', 'advantage', 'temporal', 'provenance'),
@@ -639,6 +641,8 @@ def run_cli():
     if not 1 <= args.attempts <= 100000:
         parser.error('attempts must be 1..100000')
     model = core.Organism.load(args.state)
+    if args.command == 'play' and args.experience_support is not None:
+        model.configure_experience_support(args.experience_support)
     if args.command == 'play' and args.control_learning is not None:
         model.configure_control_learning(quality=args.control_learning in ('quality', 'both'),
                                          executed_credit=args.control_learning in ('trace', 'both'))
@@ -656,6 +660,8 @@ def run_cli():
     if args.command == 'play':
         protocol['control_learning_override'] = args.control_learning
         protocol['decision_credit_override'] = args.decision_credit
+        if args.experience_support is not None:
+            protocol['experience_support_override'] = args.experience_support
     save_json(args.out / 'protocol.json', protocol)
     reports = {}
     controls = [('trained', model)]

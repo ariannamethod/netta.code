@@ -1,0 +1,121 @@
+{
+  "status": "passed",
+  "candidate_sha256": "dfabaaea7a25262a5ec78a4c0ba887206f8327b999848232d48ec28082d3098e",
+  "receipt_streams_verified": 32,
+  "receipt_attempts_verified": 4096,
+  "training_generations_and_updates_reconstructed": 1024,
+  "replay_method": "regenerate original sources and apply their preserved judge receipts; no new CPython gameplay",
+  "independently_reconciled_long_context_updates": 4077,
+  "final_context_keys_across_four_states": 960,
+  "frozen_generations": 1536,
+  "genuine_generations_matching_original_sources": 512,
+  "comparison_seeds": 512,
+  "source_changes_when_off": 134,
+  "source_changes_when_permuted": 152,
+  "permutation": "Rotate count pairs by one over sorted long-context keys; preserve all keys and the counts multiset.",
+  "matched_prefix_tv": "Total variation distance between normalized next-unit probabilities on identical genuine histories.",
+  "twelve_frozen_memories_unchanged": true,
+  "replicas": {
+    "numbers_00": {
+      "training_updates_per_arm": 128,
+      "both_final_trained_states_exact": true,
+      "reconciled_long_context_updates": 916,
+      "final_context_keys": 207,
+      "raw_seeds": 128,
+      "source_changes": {
+        "off": 11,
+        "permuted": 19
+      },
+      "matched_prefix_tv_off": {
+        "count": 1851,
+        "nonzero": 1329,
+        "mean": 0.0076946558141192,
+        "max": 0.10883205960896541
+      },
+      "matched_prefix_tv_permuted": {
+        "count": 1851,
+        "nonzero": 1263,
+        "mean": 0.010944831830727851,
+        "max": 0.2895001743150217
+      },
+      "state_unchanged_all_three": true
+    },
+    "numbers_01": {
+      "training_updates_per_arm": 128,
+      "both_final_trained_states_exact": true,
+      "reconciled_long_context_updates": 804,
+      "final_context_keys": 159,
+      "raw_seeds": 128,
+      "source_changes": {
+        "off": 11,
+        "permuted": 9
+      },
+      "matched_prefix_tv_off": {
+        "count": 1635,
+        "nonzero": 908,
+        "mean": 0.0028419864621411343,
+        "max": 0.06673793467118891
+      },
+      "matched_prefix_tv_permuted": {
+        "count": 1635,
+        "nonzero": 835,
+        "mean": 0.004282491574268533,
+        "max": 0.20247282560852828
+      },
+      "state_unchanged_all_three": true
+    },
+    "table_00": {
+      "training_updates_per_arm": 128,
+      "both_final_trained_states_exact": true,
+      "reconciled_long_context_updates": 1396,
+      "final_context_keys": 309,
+      "raw_seeds": 128,
+      "source_changes": {
+        "off": 55,
+        "permuted": 56
+      },
+      "matched_prefix_tv_off": {
+        "count": 3543,
+        "nonzero": 2843,
+        "mean": 0.03250360590359116,
+        "max": 0.22738262980293145
+      },
+      "matched_prefix_tv_permuted": {
+        "count": 3543,
+        "nonzero": 2784,
+        "mean": 0.03392091483193482,
+        "max": 0.31891211148676724
+      },
+      "state_unchanged_all_three": true
+    },
+    "table_01": {
+      "training_updates_per_arm": 128,
+      "both_final_trained_states_exact": true,
+      "reconciled_long_context_updates": 961,
+      "final_context_keys": 285,
+      "raw_seeds": 128,
+      "source_changes": {
+        "off": 57,
+        "permuted": 68
+      },
+      "matched_prefix_tv_off": {
+        "count": 2796,
+        "nonzero": 2077,
+        "mean": 0.032950013591491724,
+        "max": 0.25807481838490376
+      },
+      "matched_prefix_tv_permuted": {
+        "count": 2796,
+        "nonzero": 2001,
+        "mean": 0.0314057887173635,
+        "max": 0.42375031814492
+      },
+      "state_unchanged_all_three": true
+    }
+  },
+  "raw_origin": {
+    "archive": "netta-iteration8-research.zip",
+    "path": "results/iteration8/audit/code-development-compact.json",
+    "sha256": "34add1ce0baece0891be059388aff560cdf6ea797e6fce875698d28b77582b3d"
+  }
+}

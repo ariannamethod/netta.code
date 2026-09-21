@@ -78,6 +78,8 @@ The caller configuration lives in `tools.json`. Each route declares words, phras
 
 Declared commands add another layer of experience. `ask --learn-task --save SNAPSHOT` gives a matched command its own **545-parameter outcome head** and continuation credit, and actual execution decides what that memory reinforces. The TXT islands stay code-only; the command is not smuggled into the corpus as a prompt/answer lesson. A normal `ask` keeps the saved state frozen and simply uses what was already acquired.
 
+Lee can also explicitly reopen a local choice using experience. `--experience-support 0.10` reserves ten percent of the continuation-count prior for missing alternatives with ordinary execution credit from the nearest eligible shorter learned suffix. The suffix must retain at least three units of context; corpus frequency alone cannot open this door. Existing candidates keep their counts, and the organism's learned outcome machinery still weighs the resulting choice. The setting belongs to the saved life and defaults to zero.
+
 A request for a compact drawing wakes the art life, a request for sorted records wakes another, `play 2048` routes into a policy world, and Doom wakes something with worse manners. The caller opens the right door and gets out of the way while the coding behavior comes from the experience behind it.
 
 This is where the Bruce Lee joke stops being decoration and turns into architecture: separate lives let one state spend thousands of games inside one family of movements while another life learns an entirely different environment. Bruce Lee probably meant martial arts, but this repository saved the dojo to JSON and kept going.
@@ -89,6 +91,8 @@ This is where the Bruce Lee joke stops being decoration and turns into architect
 `nettacode.py` lives in `corpora/mixed.txt`, where different program families share one world. Its default continuation context is four units, compared with Lee's six, giving heterogeneous structures a shorter local window in which to meet. Code also carries an optional distant continuation memory: the first learned unit of a program stays associated with the latest zero to two units and the possible next unit. The mixed island supplies the first associations; successful generated programs add acquired associations of their own.
 
 `--anchor-memory` explicitly activates this additional memory for general Code. Its finite weighting changes the probabilities of existing continuations while the organism keeps writing the complete source and indentation. The setting and acquired counts survive in the saved state. Existing snapshots keep the feature off until it is requested; Lee keeps her local memory and separate island lives.
+
+An independent `--context-memory` option lets Code acquire outcome associations over the previous eight units. It begins empty and learns only from actual runtime and novelty feedback. A bounded residual compares this longer association with the ordinary three-unit outcome memory, so two locally identical continuations can carry different experience when their earlier contexts differ. The first-unit anchor keeps its own role. `--no-context-memory` stops the longer memory's influence and updates while retaining its acquired counts; both settings survive save and resume.
 
 The two bodies therefore ask different questions with a shared executable foundation and a growing difference in memory. Netta Lee asks what deep local experience becomes when each domain keeps its own life, while Netta Code asks what happens when executable habits from different domains are allowed to occupy the same memory and retain a distant connection to how the current program began.
 
@@ -117,7 +121,11 @@ A separate memory comparison gave Code **422 / 768** sorted-number task completi
 
 A follow-up tested a more recent learned context as the distant anchor. Over 256 table-task evaluations, runtime successes rose **148 to 159** and `NameError` fell **18 to 11**, but source copies rose **56 to 100** and productive executions fell **91 to 57**. Sorted-number task completions fell **140 to 129 / 256**. The published first-unit anchor is retained; the recent-anchor candidate stays with its experiment.
 
-The shared regression suite passes **315 tests**; a subsequent ten-test bridge check also passes, including three added archive-persistence regressions. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the first memory and game comparisons; the [fifth-pass report](reports/iteration5/REPORT.md) follows decision-level credit, combat reward and the recent-anchor experiment. The [sixth-pass report](reports/iteration6/REPORT.md) adds temporal credit, branching-context memory and exact execution examples. The [current refinement report](reports/iteration7/REPORT.md) follows the executed derivation of the selected action back to sampled source choices. Full raw trajectories remain in the separate experiment archives.
+A fixed comparison of the eight-unit outcome memory increased corpus-novel executable programs under the table request from **83 to 97 / 256**, with gains in both replicas; distinct productive behaviors increased **67 to 84**. Complete table-task passes remained **zero**. Sorted-number task completions changed **146 to 142 / 256**, and separate no-task generation on the same checkpoints changed **200 to 181 / 512** productive programs. The memory changes generation, but its usefulness depends on the regime: turning only its readout off changes **134 / 512** task-conditioned sources. The advancement rule failed, so the option remains explicit and published lives keep their settings.
+
+Lee's experienced suffix support also changes what she can try. In the fixed 2048 comparison, a support mass of 0.10 changed completed score per raw attempt from **713.56 to 607.63**, with **93 to 78** completed episodes out of 128. The mechanism opened choices, but extra syntax errors and rejected repetitions outweighed that opportunity. The gallery shows one exact 700-point policy alongside the whole comparison. Learning when to consult additional experience is the next concrete pressure point for both organisms.
+
+The shared regression suite passes **345 tests**. Compatibility checks reproduce **252 exact generation records**, **20 actual learning attempts** and all **six caller routes**, including native Doom. Technical changes and measured runs live in [NETTALEELOG.md](NETTALEELOG.md) and [NETTACODELOG.md](NETTACODELOG.md); the README follows the current organisms. [reports/INDEX.md](reports/INDEX.md) links the experiment protocols, measured summaries, independent audits and historical reports. The [fourth-pass report](reports/iteration4/REPORT.md) records the first memory and game comparisons; the [fifth-pass report](reports/iteration5/REPORT.md) follows decision-level credit, combat reward and the recent-anchor experiment. The [sixth-pass report](reports/iteration6/REPORT.md) adds temporal credit, branching-context memory and exact execution examples. The [seventh-pass report](reports/iteration7/REPORT.md) follows the executed derivation of the selected action back to sampled source choices. The [current refinement report](reports/iteration8/REPORT.md) examines experienced alternatives for Lee and acquired long-context outcomes for Code. Full raw trajectories remain in the separate experiment archives.
 
 ---
 
@@ -350,6 +358,27 @@ python3 nettacode.py ask "code:sorted_values" \
 ```
 
 `--anchor-memory` is also available on Code's `init` and `play` commands. Subsequent use loads the saved setting and acquired associations.
+
+Acquire the additional eight-unit outcome memory in a separate Code life:
+
+```bash
+python3 nettacode.py ask "code:sorted_values" \
+  --tools tools.json --attempts 128 --learn-task --anchor-memory --context-memory \
+  --save states/my-code-context.json --out runs/code-context
+```
+
+`--context-memory` and `--no-context-memory` also work on `init` and `play`. An omitted option preserves the saved setting. `ask` changes memory configuration only with `--learn-task --save`; ordinary requests use the selected snapshot as it stands.
+
+Open experienced suffix alternatives in a separate Lee life:
+
+```bash
+cp states/2048.json states/my-2048-support.json
+python3 2048.py play \
+  --state states/my-2048-support.json --experience-support 0.10 \
+  --decision-credit provenance --attempts 128 --out runs/2048-support
+```
+
+The same support setting is available on Lee's `init`, `play` and `ask --learn-task --save`. Zero disables it; omission preserves the saved value. Both new memory mechanisms are optional experiments whose fixed comparisons are recorded in the current report.
 
 Run a frozen 2048 comparison:
 

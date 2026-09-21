@@ -2,6 +2,10 @@
 
 Current behavior is described in the [project README](../README.md). Technical changes belong in [NETTALEELOG](../NETTALEELOG.md) and [NETTACODELOG](../NETTACODELOG.md); visible outputs belong in [gallery.html](../gallery.html).
 
+## Eighth engineering pass
+
+[When experience can change the next choice](iteration8/REPORT.md). Lee's experienced suffix alternatives and Code's acquired eight-unit outcome memory, with fixed task and free-play comparisons. Both optional mechanisms retain existing state defaults. [345 tests](iteration8/tests.json), [5,248 generated attempts plus 256 game controls](iteration8/audit-summary.json), [Code receipt](iteration8/code-gallery.json), [Lee receipt](iteration8/lee-gallery.json), [separate archive](iteration8/private-archive-inventory.json).
+
 ## Seventh engineering pass
 
 [Credit follows the stored action](iteration7/REPORT.md). Exact source-span attribution, corrected iterator provenance, static projection caching and the fixed three-arm 2048 comparison. [315 tests](iteration7/tests.json), [independent audit](iteration7/audit-summary.json), [exact gallery decision](iteration7/gallery-sample.json), [separate archive](iteration7/private-archive-inventory.json).

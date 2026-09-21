@@ -1,0 +1,16 @@
+{
+  "tests": 345,
+  "seconds": 183.739,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "command": "python3 -m unittest discover -s tests -v",
+  "log_sha256": "406792e43e67f40cb666bedb163c09baf022aaea756f357c9c8767f64c2cd398",
+  "source_sha256": {
+    "nettalee.py": "2a0a5b02468643928a19683627cb735fbc1f8493d7327eddc3fc49e4143b4593",
+    "nettacode.py": "407869a04d85cbe1cf928bfc70a559b694c307a9faf64a4b4174607ffec59ef1",
+    "2048.py": "8a01595aad0d616848910309c312d53e0ec70f913c0b644b42cf3b7d68968314",
+    "doomer.py": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd"
+  },
+  "scope": "Full suite against final emitted standalone release bodies; 318 existing plus 27 new memory and CLI checks."
+}

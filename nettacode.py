@@ -200,6 +200,8 @@ class Organism:
         self.anchor_strength = 0.0
         self.anchor_base = None
         self.anchor_lived = defaultdict(Counter)
+        self.context_memory_enabled = False
+        self.context_credit = {}
         # Environment quality and executed-branch credit are independent,
         # opt-in experiments. Birth and existing snapshots retain their exact
         # original sampling and learning when both switches are off.
@@ -440,6 +442,37 @@ class Organism:
                        choice.get("byte_end", -1) > start
                        for start, end in spans)]
 
+    def configure_context_memory(self, enabled=False):
+        """Remember acquired eight-unit outcomes over the mixed Code island.
+
+        Only observed feedback supplies counts. The fixed residual corrects the
+        existing local association; no source corpus prior or candidate changes.
+        Disabling retrieval retains acquired counts for a frozen ablation.
+        """
+        if type(enabled) is not bool or self.mode != "general":
+            raise ValueError("context memory requires general Code and a boolean")
+        self.context_memory_enabled = enabled
+        return self
+
+    def _context_choice_keys(self, generated):
+        history, offset, expected = [BOS], 0, {}
+        for unit in generated["tokens"] + [EOS]:
+            end = offset + (len(self.units.expansions[unit]) if unit >= 0 else 0)
+            expected[offset] = (end, unit, tuple(history[-3:]) + (unit,),
+                                tuple(history[-8:]) + (unit,))
+            history.append(unit)
+            offset = end
+        result = {}
+        for choice in generated["choices"]:
+            item = expected.get(choice.get("byte_start"))
+            if (item is None or choice.get("byte_end") != item[0]
+                    or choice.get("token") != item[1]
+                    or tuple(choice.get("key", ())) != item[2]
+                    or tuple(choice.get("context8", ())) != item[3]):
+                raise ValueError("context choice does not belong to generated history")
+            result[id(choice)] = item[3]
+        return result
+
     def configure_anchor_memory(self, strength=1.0):
         """Enable Code's learned first-unit/suffix associations explicitly.
 
@@ -553,6 +586,13 @@ class Organism:
                 # Finite soft weighting: the candidate set is unchanged.
                 anchored_probability = (anchored.get(token, 0) + 2.0 * count / total) / (anchor_total + 2.0)
                 value += self.anchor_strength * math.log(anchored_probability / (count / total))
+            if self.context_memory_enabled:
+                context_wins, context_trials = self.context_credit.get(
+                    tuple(history[-8:]) + (token,), (0.0, 0.0))
+                if context_trials:
+                    context_mean = (context_wins + 1) / (context_trials + 2)
+                    context_evidence = context_trials / (context_trials + 4)
+                    value += 2.5 * context_evidence * (context_mean - association)
             entries.append((token, value, x, key))
         peak = max(e[1] for e in entries)
         weights = [math.exp(e[1] - peak) for e in entries]
@@ -564,8 +604,10 @@ class Organism:
                 chosen = i
                 break
         token, _, x, key = entries[chosen]
-        return token, len(entries), {"key": key, "x": x,
-                                   "context": context, "token": token}
+        choice = {"key": key, "x": x, "context": context, "token": token}
+        if self.context_memory_enabled:
+            choice["context8"] = tuple(history[-8:]) + (token,)
+        return token, len(entries), choice
 
     def generate(self, seed=None, task=None):
         condition = task_condition(task) if task is not None else None
@@ -738,6 +780,8 @@ class Organism:
 
     def _learn(self, generated, reward, runtime_ok, error_line=None, result=None,
                reward_choices=None):
+        context_keys = (self._context_choice_keys(generated)
+                        if self.context_memory_enabled else None)
         exploring = generated.get("exploring", False)
         search = (self.explore_search if exploring else self.search)[generated["strategy"]]
         if search[1] >= 128:
@@ -774,6 +818,16 @@ class Organism:
         unique = {choice["key"]: choice["x"] for choice in chosen}
         reward_unique = (unique if reward_choices is None else
                          {choice["key"]: choice["x"] for choice in reward_choices})
+        if context_keys is not None:
+            # Preserve distinct long contexts before the legacy local-key dedup.
+            contexts = {context_keys[id(choice)] for choice in
+                        (chosen if reward_choices is None else reward_choices)}
+            for association in sorted(contexts):
+                wins, trials = self.context_credit.get(association, (0.0, 0.0))
+                if trials >= 64:
+                    wins *= .95
+                    trials *= .95
+                self.context_credit[association] = [wins + reward, trials + 1]
         for association, x in reward_unique.items():
             wins, trials = self.credit.get(association, (0.0, 0.0))
             if trials >= 64:
@@ -882,6 +936,9 @@ class Organism:
         if self.anchor_strength or self.anchor_lived:
             body["anchor_strength"] = self.anchor_strength
             body["anchor_lived"] = [[list(k), sorted(v.items())] for k, v in sorted(self.anchor_lived.items())]
+        if self.context_memory_enabled or self.context_credit:
+            body["context_memory"] = {"enabled": self.context_memory_enabled,
+                                      "credit": [[list(k), v] for k, v in sorted(self.context_credit.items())]}
         if self.tasks:
             body["tasks"] = {key: {"head": value["head"].state(),
                                     "credit": [[list(k), v] for k, v in sorted(value["credit"].items())],
@@ -1010,6 +1067,29 @@ class Organism:
                         raise ValueError("invalid anchor unit count")
                     counts[unit] = count
                 organism.anchor_lived[tuple(context)] = counts
+        context_memory = body.get("context_memory")
+        if context_memory is not None:
+            if not isinstance(context_memory, dict) or set(context_memory) != {"enabled", "credit"}:
+                raise ValueError("invalid context memory")
+            organism.configure_context_memory(context_memory["enabled"])
+            credits = context_memory["credit"]
+            if not isinstance(credits, list):
+                raise ValueError("invalid context credit")
+            for entry in credits:
+                if not isinstance(entry, list) or len(entry) != 2:
+                    raise ValueError("invalid context credit entry")
+                key, counts = entry
+                if (not isinstance(key, list) or not 2 <= len(key) <= 9
+                        or any(type(unit) is not int or not 0 <= unit < len(organism.units.expansions)
+                               for unit in key[1:-1])
+                        or type(key[0]) is not int or not BOS <= key[0] < len(organism.units.expansions)
+                        or type(key[-1]) is not int or not (key[-1] == EOS or 0 <= key[-1] < len(organism.units.expansions))
+                        or tuple(key) in organism.context_credit
+                        or not isinstance(counts, list) or len(counts) != 2
+                        or any(type(count) not in (int, float) or not math.isfinite(count) for count in counts)
+                        or not 0 <= counts[0] <= counts[1] or counts[1] <= 0):
+                    raise ValueError("invalid context credit association")
+                organism.context_credit[tuple(key)] = counts
         task_states = body.get("tasks", {})
         if not isinstance(task_states, dict) or len(task_states) > 128:
             raise ValueError("invalid task memory")
@@ -1033,6 +1113,8 @@ class Organism:
         organism.configure_control_learning(**self.control_learning)
         if self.anchor_strength:
             organism.configure_anchor_memory(self.anchor_strength)
+        if self.context_memory_enabled:
+            organism.configure_context_memory(True)
         return organism
 
 
@@ -1081,13 +1163,20 @@ def run_cli():
     for command in (init, play, ask):
         command.add_argument("--anchor-memory", action="store_true",
                              help="explicitly enable Code's distant continuation memory")
+    for command in (init, play, ask):
+        command.add_argument("--context-memory", action=argparse.BooleanOptionalAction,
+                             default=None, help="Code's acquired eight-unit outcome memory")
     args = parser.parse_args()
+    if args.command == "ask" and args.context_memory is not None and not args.learn_task:
+        parser.error("--context-memory on ask requires --learn-task and --save SNAPSHOT")
     if args.command == "ask" and args.anchor_memory and not args.learn_task:
         parser.error("--anchor-memory on ask requires --learn-task and --save SNAPSHOT")
     if args.command == "init":
         if Path(args.state).exists():
             parser.error("state exists; choose a new path to preserve its experience")
         model = Organism(read_island(args.island), args.seed, args.order, args.merges, args.judge)
+        if args.context_memory is not None:
+            model.configure_context_memory(args.context_memory)
         if args.anchor_memory:
             model.configure_anchor_memory()
         model.save(args.state)
@@ -1120,6 +1209,8 @@ def run_cli():
             return subprocess.call([sys.executable, str(sibling)] + sys.argv[1:])
         print(json.dumps(call, ensure_ascii=False), file=sys.stderr)
     model = Organism.load(args.state)
+    if getattr(args, "context_memory", None) is not None:
+        model.configure_context_memory(args.context_memory)
     if getattr(args, "anchor_memory", False):
         model.configure_anchor_memory()
     if args.command == "ask" and model.mode != call["selection"]["mode"]:
@@ -1147,7 +1238,10 @@ def run_cli():
                           "programs": len(model.programs), "units": len(model.units.expansions),
                           "associations": len(model.credit), "neural_updates": model.head.steps,
                           "syntax_updates": model.syntax_head.steps, "exploration": model.exploration,
-                          "lived_contexts": len(model.lived), "visited_behaviors": len(model.visits)}, indent=2))
+                          "lived_contexts": len(model.lived), "visited_behaviors": len(model.visits),
+                          **({"context_memory_enabled": model.context_memory_enabled,
+                              "context_associations": len(model.context_credit)}
+                             if model.context_memory_enabled or model.context_credit else {})}, indent=2))
         return 0
     learning = args.command == "play" or (args.command == "ask" and args.learn_task)
     save_path = args.save if args.command == "ask" and learning else args.state

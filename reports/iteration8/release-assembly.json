@@ -1,0 +1,26 @@
+{
+  "files": [
+    {
+      "file": "nettalee.py",
+      "release_sha256": "2a0a5b02468643928a19683627cb735fbc1f8493d7327eddc3fc49e4143b4593",
+      "measured_candidate": "results/iteration8/lee/nettalee.py",
+      "candidate_sha256": "6ca486808ab6ae42eff8bb366fe29435a0c442a9e7403370ba3855ed8adda193",
+      "only_run_cli_changed": true
+    },
+    {
+      "file": "nettacode.py",
+      "release_sha256": "407869a04d85cbe1cf928bfc70a559b694c307a9faf64a4b4174607ffec59ef1",
+      "measured_candidate": "results/iteration8/code/candidate.py",
+      "candidate_sha256": "dfabaaea7a25262a5ec78a4c0ba887206f8327b999848232d48ec28082d3098e",
+      "only_run_cli_changed": true
+    },
+    {
+      "file": "2048.py",
+      "release_sha256": "8a01595aad0d616848910309c312d53e0ec70f913c0b644b42cf3b7d68968314",
+      "measured_candidate": "results/iteration8/baseline/2048.py",
+      "candidate_sha256": "38a31075eb0ad454093ef335f41fc813bde1562a54097ebefec975cb8fb15302",
+      "only_run_cli_changed": true
+    }
+  ],
+  "scope": "Standalone emitted bodies match fixed candidates outside explicit CLI configuration and inspect output."
+}

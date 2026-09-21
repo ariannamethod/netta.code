@@ -1,0 +1,127 @@
+{
+  "experiment": "iteration8-Code-eight-unit-acquired-outcome-residual",
+  "baseline_commit": "e67b23a828b549c62a04f430f705c5f8e2bab817",
+  "stages": {
+    "development": {
+      "replicas": 2,
+      "train": 128,
+      "evaluate": 128,
+      "freeplay": 128,
+      "train_seed": 151000000,
+      "eval_seed": 152000000,
+      "free_seed": 153000000
+    },
+    "confirmation": {
+      "replicas": 3,
+      "train": 256,
+      "evaluate": 128,
+      "freeplay": 128,
+      "train_seed": 161000000,
+      "eval_seed": 162000000,
+      "free_seed": 163000000
+    }
+  },
+  "task_stride": 100000,
+  "replica_stride": 10000,
+  "arms": [
+    "first",
+    "context",
+    "context_off"
+  ],
+  "trained_arms": [
+    "first",
+    "context"
+  ],
+  "first_anchor_strength_all_arms": 1.0,
+  "hypothesis": "Acquired eight-unit outcomes separate long contexts that share the existing three-unit outcome association, increasing productive new Code programs.",
+  "candidate": {
+    "context_units": 8,
+    "ordinary_credit_units": 3,
+    "strength": 2.5,
+    "prior_wins": 1,
+    "prior_trials": 2,
+    "evidence_prior": 4,
+    "formula": "2.5*(trials8/(trials8+4))*((wins8+1)/(trials8+2)-(wins3+1)/(trials3+2))",
+    "evidence": "actual general Code runtime/novelty feedback only; no added corpus prior"
+  },
+  "context_off": "Same final context-trained memory, including all long-key counts, with only context_memory.enabled set to false; no retraining.",
+  "denominator": "Every raw generated attempt; failures and source replays remain in the original seed slot.",
+  "productive_definition": "Existing core field: runtime success and novelty relative to corpus; experience_replay can remain productive. Accepted/status counts and unique productive behavior hashes are reported separately.",
+  "freeplay": "Separate frozen task=None evaluation of each final arm and task-trained replica; no extra training.",
+  "development_gate": {
+    "table_productive_pooled_margin": 5,
+    "margin_units": "absolute number of productive attempts under equal fixed raw budget",
+    "table_productive_each_replica": "strictly greater than first",
+    "table_task_passes_pooled": "at least first",
+    "numbers_task_passes_pooled": "at least first",
+    "source_replay_per_task_pooled": "at most first separately for table and numbers",
+    "freeplay_productive_pooled_over_all_task_replicas": "at least first"
+  },
+  "confirmation": "Only if development gate passes; fixed fresh seeds and same gate, all three table replicas must improve; no sweep.",
+  "prospective_export_replica": {
+    "table": 0,
+    "numbers": 0
+  },
+  "gallery_selection": "Development table replica 0, first evaluation seed where context is productive and first is not; if absent first productive context seed; if absent no success sample.",
+  "mechanism_audit": "Frozen final memory: retrieval-off and deterministic long-key-count permutation, paired prefixes/probabilities and generated-source comparisons; no source editing.",
+  "inputs": {
+    "baseline.py": {
+      "path": "results/iteration8/baseline/nettacode.py",
+      "bytes": 147768,
+      "sha256": "d9eb1a8de6dc2678533ac4dbb6d1a534e639440a116533859ffe7e95bd4d2af3"
+    },
+    "candidate.py": {
+      "path": "results/iteration8/code/candidate.py",
+      "bytes": 152583,
+      "sha256": "dfabaaea7a25262a5ec78a4c0ba887206f8327b999848232d48ec28082d3098e"
+    },
+    "candidate_build.py": {
+      "path": "results/iteration8/code/candidate_build.py",
+      "bytes": 6976,
+      "sha256": "28193647ac502c8dadfbc1d82df0abc404a3816babf671230de52258d3b8b621"
+    },
+    "runner.py": {
+      "path": "tools/run_code_iteration8.py",
+      "bytes": 19832,
+      "sha256": "8abbe5cf3442c37623dce911686b09a87f91b17f91e61d18e0fcd90597367cba"
+    },
+    "code.json": {
+      "path": "results/iteration8/baseline/states/code.json",
+      "bytes": 362734,
+      "sha256": "8a3d638578f1e0748c6311a29c685990ae77dbf8327ceda09f167187462ffed6"
+    },
+    "tools.json": {
+      "path": "results/iteration8/baseline/tools.json",
+      "bytes": 6512,
+      "sha256": "54e8b3c09a5c914a01a16c22be4eeca6e5bd811007a8aafd0397e598ca23c753"
+    }
+  },
+  "contracts": {
+    "table": {
+      "key": "9006de8b2f760d4d929e1baa52596558a7de43c8dbf7708834002c93c4a9dd65",
+      "profile": "code:table",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "record"
+      }
+    },
+    "numbers": {
+      "key": "a4cc5b8e409759adee90e618424324d7652b4cbbdd6d13959417e5f858fb1656",
+      "profile": "code:sorted_values",
+      "mode": "general",
+      "output": {
+        "literal_type": "list",
+        "min_items": 2,
+        "item_type": "number",
+        "sorted": "ascending"
+      }
+    }
+  },
+  "raw_origin": {
+    "archive": "netta-iteration8-research.zip",
+    "path": "results/iteration8/code/protocol.json",
+    "sha256": "511e68d253d20f680b6d18b929721193210db13b68667cb72e6966b6e58f1450"
+  }
+}

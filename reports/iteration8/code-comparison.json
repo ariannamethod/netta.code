@@ -1,0 +1,648 @@
+{
+  "stage": "development",
+  "definitions": {
+    "productive": "Existing core field: runtime success and novelty relative to corpus; experience_replay can remain productive. Accepted/status counts and unique productive behavior hashes are reported separately.",
+    "accepted": "Novel relative to corpus and not already in the learned source/behavior memory; frozen evaluation does not update that memory.",
+    "unique_productive_behaviors": "Distinct runtime behavior hashes among productive attempts in this exact pooled or replica population.",
+    "task_passed": "Actual declared task judge pass, separately counted from productivity.",
+    "freeplay": "Task=None, no updates, same final memories and separate fixed seeds.",
+    "all_counts": "Every original raw attempt; no replacement after failure or replay."
+  },
+  "budgets": {
+    "training": 1024,
+    "task_evaluation": 1536,
+    "freeplay_evaluation": 1536,
+    "total": 4096,
+    "closed_streams": 32
+  },
+  "elapsed_seconds": 284.34123974700924,
+  "pooled": {
+    "table": {
+      "evaluation": {
+        "first": {
+          "attempts": 256,
+          "runtime_ok": 129,
+          "productive": 83,
+          "accepted": 43,
+          "task_passed": 0,
+          "source_replay": 45,
+          "unique_productive_sources": 70,
+          "unique_productive_behaviors": 67,
+          "statuses": {
+            "accepted": 43,
+            "behavior_replay": 5,
+            "experience_replay": 36,
+            "policy_rejected": 1,
+            "runtime_error": 25,
+            "source_replay": 45,
+            "syntax_error": 100,
+            "truncated": 1
+          }
+        },
+        "context": {
+          "attempts": 256,
+          "runtime_ok": 141,
+          "productive": 97,
+          "accepted": 62,
+          "task_passed": 0,
+          "source_replay": 44,
+          "unique_productive_sources": 85,
+          "unique_productive_behaviors": 84,
+          "statuses": {
+            "accepted": 62,
+            "behavior_replay": 1,
+            "experience_replay": 34,
+            "runtime_error": 27,
+            "source_replay": 44,
+            "syntax_error": 88
+          }
+        },
+        "context_off": {
+          "attempts": 256,
+          "runtime_ok": 127,
+          "productive": 83,
+          "accepted": 48,
+          "task_passed": 0,
+          "source_replay": 44,
+          "unique_productive_sources": 69,
+          "unique_productive_behaviors": 68,
+          "statuses": {
+            "accepted": 48,
+            "experience_replay": 35,
+            "runtime_error": 27,
+            "source_replay": 44,
+            "syntax_error": 102
+          }
+        }
+      },
+      "freeplay": {
+        "first": {
+          "attempts": 256,
+          "runtime_ok": 158,
+          "productive": 99,
+          "accepted": 50,
+          "task_passed": 0,
+          "source_replay": 59,
+          "unique_productive_sources": 67,
+          "unique_productive_behaviors": 67,
+          "statuses": {
+            "accepted": 50,
+            "experience_replay": 49,
+            "runtime_error": 6,
+            "source_replay": 59,
+            "syntax_error": 91,
+            "trivial": 1
+          }
+        },
+        "context": {
+          "attempts": 256,
+          "runtime_ok": 140,
+          "productive": 85,
+          "accepted": 33,
+          "task_passed": 0,
+          "source_replay": 55,
+          "unique_productive_sources": 49,
+          "unique_productive_behaviors": 49,
+          "statuses": {
+            "accepted": 33,
+            "experience_replay": 52,
+            "runtime_error": 12,
+            "source_replay": 55,
+            "syntax_error": 104
+          }
+        },
+        "context_off": {
+          "attempts": 256,
+          "runtime_ok": 151,
+          "productive": 99,
+          "accepted": 50,
+          "task_passed": 0,
+          "source_replay": 52,
+          "unique_productive_sources": 68,
+          "unique_productive_behaviors": 68,
+          "statuses": {
+            "accepted": 50,
+            "experience_replay": 49,
+            "runtime_error": 7,
+            "source_replay": 52,
+            "syntax_error": 98
+          }
+        }
+      }
+    },
+    "numbers": {
+      "evaluation": {
+        "first": {
+          "attempts": 256,
+          "runtime_ok": 167,
+          "productive": 157,
+          "accepted": 24,
+          "task_passed": 146,
+          "source_replay": 10,
+          "unique_productive_sources": 31,
+          "unique_productive_behaviors": 30,
+          "statuses": {
+            "accepted": 24,
+            "behavior_replay": 1,
+            "experience_replay": 132,
+            "runtime_error": 5,
+            "source_replay": 10,
+            "syntax_error": 83,
+            "truncated": 1
+          }
+        },
+        "context": {
+          "attempts": 256,
+          "runtime_ok": 171,
+          "productive": 153,
+          "accepted": 8,
+          "task_passed": 142,
+          "source_replay": 18,
+          "unique_productive_sources": 17,
+          "unique_productive_behaviors": 17,
+          "statuses": {
+            "accepted": 8,
+            "experience_replay": 145,
+            "runtime_error": 7,
+            "source_replay": 18,
+            "syntax_error": 77,
+            "truncated": 1
+          }
+        },
+        "context_off": {
+          "attempts": 256,
+          "runtime_ok": 169,
+          "productive": 154,
+          "accepted": 5,
+          "task_passed": 145,
+          "source_replay": 15,
+          "unique_productive_sources": 12,
+          "unique_productive_behaviors": 12,
+          "statuses": {
+            "accepted": 5,
+            "experience_replay": 149,
+            "runtime_error": 8,
+            "source_replay": 15,
+            "syntax_error": 78,
+            "truncated": 1
+          }
+        }
+      },
+      "freeplay": {
+        "first": {
+          "attempts": 256,
+          "runtime_ok": 147,
+          "productive": 101,
+          "accepted": 49,
+          "task_passed": 0,
+          "source_replay": 43,
+          "unique_productive_sources": 75,
+          "unique_productive_behaviors": 75,
+          "statuses": {
+            "accepted": 49,
+            "behavior_replay": 3,
+            "experience_replay": 52,
+            "policy_rejected": 1,
+            "runtime_error": 9,
+            "source_replay": 43,
+            "syntax_error": 96,
+            "trivial": 3
+          }
+        },
+        "context": {
+          "attempts": 256,
+          "runtime_ok": 152,
+          "productive": 96,
+          "accepted": 45,
+          "task_passed": 0,
+          "source_replay": 54,
+          "unique_productive_sources": 67,
+          "unique_productive_behaviors": 67,
+          "statuses": {
+            "accepted": 45,
+            "behavior_replay": 2,
+            "experience_replay": 51,
+            "runtime_error": 5,
+            "source_replay": 54,
+            "syntax_error": 95,
+            "trivial": 4
+          }
+        },
+        "context_off": {
+          "attempts": 256,
+          "runtime_ok": 149,
+          "productive": 98,
+          "accepted": 48,
+          "task_passed": 0,
+          "source_replay": 49,
+          "unique_productive_sources": 68,
+          "unique_productive_behaviors": 68,
+          "statuses": {
+            "accepted": 48,
+            "behavior_replay": 2,
+            "experience_replay": 50,
+            "runtime_error": 5,
+            "source_replay": 49,
+            "syntax_error": 98,
+            "trivial": 4
+          }
+        }
+      }
+    },
+    "freeplay_all": {
+      "first": {
+        "attempts": 512,
+        "runtime_ok": 305,
+        "productive": 200,
+        "accepted": 99,
+        "task_passed": 0,
+        "source_replay": 102,
+        "unique_productive_sources": 124,
+        "unique_productive_behaviors": 124,
+        "statuses": {
+          "accepted": 99,
+          "behavior_replay": 3,
+          "experience_replay": 101,
+          "policy_rejected": 1,
+          "runtime_error": 15,
+          "source_replay": 102,
+          "syntax_error": 187,
+          "trivial": 4
+        }
+      },
+      "context": {
+        "attempts": 512,
+        "runtime_ok": 292,
+        "productive": 181,
+        "accepted": 78,
+        "task_passed": 0,
+        "source_replay": 109,
+        "unique_productive_sources": 99,
+        "unique_productive_behaviors": 99,
+        "statuses": {
+          "accepted": 78,
+          "behavior_replay": 2,
+          "experience_replay": 103,
+          "runtime_error": 17,
+          "source_replay": 109,
+          "syntax_error": 199,
+          "trivial": 4
+        }
+      },
+      "context_off": {
+        "attempts": 512,
+        "runtime_ok": 300,
+        "productive": 197,
+        "accepted": 98,
+        "task_passed": 0,
+        "source_replay": 101,
+        "unique_productive_sources": 121,
+        "unique_productive_behaviors": 121,
+        "statuses": {
+          "accepted": 98,
+          "behavior_replay": 2,
+          "experience_replay": 99,
+          "runtime_error": 12,
+          "source_replay": 101,
+          "syntax_error": 196,
+          "trivial": 4
+        }
+      }
+    }
+  },
+  "replicas": [
+    {
+      "task": "table",
+      "replica": 0,
+      "evaluation": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 65,
+          "productive": 46,
+          "accepted": 24,
+          "task_passed": 0,
+          "source_replay": 18,
+          "unique_productive_sources": 42,
+          "unique_productive_behaviors": 39
+        },
+        "context": {
+          "attempts": 128,
+          "runtime_ok": 77,
+          "productive": 54,
+          "accepted": 37,
+          "task_passed": 0,
+          "source_replay": 23,
+          "unique_productive_sources": 52,
+          "unique_productive_behaviors": 52
+        },
+        "context_off": {
+          "attempts": 128,
+          "runtime_ok": 65,
+          "productive": 43,
+          "accepted": 27,
+          "task_passed": 0,
+          "source_replay": 22,
+          "unique_productive_sources": 40,
+          "unique_productive_behaviors": 39
+        }
+      },
+      "freeplay": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 77,
+          "productive": 48,
+          "accepted": 26,
+          "task_passed": 0,
+          "source_replay": 29,
+          "unique_productive_sources": 37,
+          "unique_productive_behaviors": 37
+        },
+        "context": {
+          "attempts": 128,
+          "runtime_ok": 64,
+          "productive": 39,
+          "accepted": 19,
+          "task_passed": 0,
+          "source_replay": 25,
+          "unique_productive_sources": 29,
+          "unique_productive_behaviors": 29
+        },
+        "context_off": {
+          "attempts": 128,
+          "runtime_ok": 73,
+          "productive": 47,
+          "accepted": 26,
+          "task_passed": 0,
+          "source_replay": 26,
+          "unique_productive_sources": 35,
+          "unique_productive_behaviors": 35
+        }
+      }
+    },
+    {
+      "task": "table",
+      "replica": 1,
+      "evaluation": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 64,
+          "productive": 37,
+          "accepted": 19,
+          "task_passed": 0,
+          "source_replay": 27,
+          "unique_productive_sources": 33,
+          "unique_productive_behaviors": 33
+        },
+        "context": {
+          "attempts": 128,
+          "runtime_ok": 64,
+          "productive": 43,
+          "accepted": 25,
+          "task_passed": 0,
+          "source_replay": 21,
+          "unique_productive_sources": 36,
+          "unique_productive_behaviors": 36
+        },
+        "context_off": {
+          "attempts": 128,
+          "runtime_ok": 62,
+          "productive": 40,
+          "accepted": 21,
+          "task_passed": 0,
+          "source_replay": 22,
+          "unique_productive_sources": 34,
+          "unique_productive_behaviors": 34
+        }
+      },
+      "freeplay": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 81,
+          "productive": 51,
+          "accepted": 24,
+          "task_passed": 0,
+          "source_replay": 30,
+          "unique_productive_sources": 40,
+          "unique_productive_behaviors": 40
+        },
+        "context": {
+          "attempts": 128,
+          "runtime_ok": 76,
+          "productive": 46,
+          "accepted": 14,
+          "task_passed": 0,
+          "source_replay": 30,
+          "unique_productive_sources": 29,
+          "unique_productive_behaviors": 29
+        },
+        "context_off": {
+          "attempts": 128,
+          "runtime_ok": 78,
+          "productive": 52,
+          "accepted": 24,
+          "task_passed": 0,
+          "source_replay": 26,
+          "unique_productive_sources": 41,
+          "unique_productive_behaviors": 41
+        }
+      }
+    },
+    {
+      "task": "numbers",
+      "replica": 0,
+      "evaluation": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 76,
+          "productive": 73,
+          "accepted": 18,
+          "task_passed": 70,
+          "source_replay": 3,
+          "unique_productive_sources": 24,
+          "unique_productive_behaviors": 24
+        },
+        "context": {
+          "attempts": 128,
+          "runtime_ok": 82,
+          "productive": 74,
+          "accepted": 2,
+          "task_passed": 69,
+          "source_replay": 8,
+          "unique_productive_sources": 7,
+          "unique_productive_behaviors": 7
+        },
+        "context_off": {
+          "attempts": 128,
+          "runtime_ok": 82,
+          "productive": 76,
+          "accepted": 1,
+          "task_passed": 72,
+          "source_replay": 6,
+          "unique_productive_sources": 5,
+          "unique_productive_behaviors": 5
+        }
+      },
+      "freeplay": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 79,
+          "productive": 57,
+          "accepted": 29,
+          "task_passed": 0,
+          "source_replay": 21,
+          "unique_productive_sources": 44,
+          "unique_productive_behaviors": 44
+        },
+        "context": {
+          "attempts": 128,
+          "runtime_ok": 86,
+          "productive": 57,
+          "accepted": 30,
+          "task_passed": 0,
+          "source_replay": 28,
+          "unique_productive_sources": 44,
+          "unique_productive_behaviors": 44
+        },
+        "context_off": {
+          "attempts": 128,
+          "runtime_ok": 84,
+          "productive": 58,
+          "accepted": 32,
+          "task_passed": 0,
+          "source_replay": 25,
+          "unique_productive_sources": 44,
+          "unique_productive_behaviors": 44
+        }
+      }
+    },
+    {
+      "task": "numbers",
+      "replica": 1,
+      "evaluation": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 91,
+          "productive": 84,
+          "accepted": 6,
+          "task_passed": 76,
+          "source_replay": 7,
+          "unique_productive_sources": 10,
+          "unique_productive_behaviors": 9
+        },
+        "context": {
+          "attempts": 128,
+          "runtime_ok": 89,
+          "productive": 79,
+          "accepted": 6,
+          "task_passed": 73,
+          "source_replay": 10,
+          "unique_productive_sources": 12,
+          "unique_productive_behaviors": 12
+        },
+        "context_off": {
+          "attempts": 128,
+          "runtime_ok": 87,
+          "productive": 78,
+          "accepted": 4,
+          "task_passed": 73,
+          "source_replay": 9,
+          "unique_productive_sources": 10,
+          "unique_productive_behaviors": 10
+        }
+      },
+      "freeplay": {
+        "first": {
+          "attempts": 128,
+          "runtime_ok": 68,
+          "productive": 44,
+          "accepted": 20,
+          "task_passed": 0,
+          "source_replay": 22,
+          "unique_productive_sources": 37,
+          "unique_productive_behaviors": 37
+        },
+        "context": {
+          "attempts": 128,
+          "runtime_ok": 66,
+          "productive": 39,
+          "accepted": 15,
+          "task_passed": 0,
+          "source_replay": 26,
+          "unique_productive_sources": 30,
+          "unique_productive_behaviors": 30
+        },
+        "context_off": {
+          "attempts": 128,
+          "runtime_ok": 65,
+          "productive": 40,
+          "accepted": 16,
+          "task_passed": 0,
+          "source_replay": 24,
+          "unique_productive_sources": 31,
+          "unique_productive_behaviors": 31
+        }
+      }
+    }
+  ],
+  "paired_source_changes": {
+    "table": {
+      "evaluation": {
+        "first_to_context": 152,
+        "context_off_to_context": 112
+      },
+      "freeplay": {
+        "first_to_context": 144,
+        "context_off_to_context": 100
+      }
+    },
+    "numbers": {
+      "evaluation": {
+        "first_to_context": 111,
+        "context_off_to_context": 22
+      },
+      "freeplay": {
+        "first_to_context": 119,
+        "context_off_to_context": 32
+      }
+    }
+  },
+  "advancement_gate": {
+    "passed": false,
+    "checks": {
+      "table_productive_pooled_plus5": true,
+      "table_productive_each_replica_positive": true,
+      "table_task_passes": true,
+      "numbers_task_passes": false,
+      "table_source_replay": true,
+      "numbers_source_replay": false,
+      "freeplay_productive": false
+    }
+  },
+  "table_replica_productive_deltas": [
+    8,
+    6
+  ],
+  "independent_metrics_audit": "passed",
+  "raw_origins": [
+    {
+      "archive": "netta-iteration8-research.zip",
+      "path": "results/iteration8/code/development/comparison-compact.json",
+      "sha256": "f06a5c0d95da70bf0f13214a2b90ced4289f47707af77c78b8963dda2927bae7"
+    },
+    {
+      "archive": "netta-iteration8-research.zip",
+      "path": "results/iteration8/audit/code-metrics.json",
+      "sha256": "87395d22a19d6d4fe63216bdee554c3c8dc2518a023894525e88083e02a5f8e2"
+    }
+  ],
+  "raw_streams_archive_directory": "results/iteration8/code/development",
+  "plumbing_excluded": {
+    "completed_attempts": 38,
+    "preserved_pre_readback_failure_attempts": 2,
+    "receipt": {
+      "archive": "netta-iteration8-research.zip",
+      "path": "results/iteration8/code/plumbing-receipt.json",
+      "sha256": "6718112e909dcc6f472997786c3cdc8248a13cbb67a3df025af322373367b748"
+    }
+  }
+}

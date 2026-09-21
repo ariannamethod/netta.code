@@ -1,0 +1,74 @@
+{
+  "stage": "development",
+  "task": "table",
+  "replica": 0,
+  "selection_rule": "first candidate productive and baseline not productive",
+  "found": true,
+  "seed": 152000001,
+  "first": {
+    "source": "size = 15\nmark = 'X'\ncanvas = [[' ' for row in range(size)]\nfor column in range(1, size - 1):\n    canvas[row][0] = mark\n    canvas[row][-1] = mark\ncanvas[2][2] = 'x'\ncanvas[2][2] = 'x'\ncanvas[2][-3] = 'x'\nfor column in range(2, size - 2):\n    canvas[-3][column] = ordered[next_index], ordered[index]\nprint(ordered)\n",
+    "source_hash": "e7b9a518e86ab3479e08241695162670b326f516437037011530a922afa91e4a",
+    "status": "syntax_error",
+    "accepted": false,
+    "productive": false,
+    "runtime_ok": false,
+    "learning_reward": 0.0,
+    "task_check": {
+      "status": "runtime_failed",
+      "passed": false,
+      "profile": "code:table",
+      "checks": []
+    },
+    "output": "",
+    "runtime_status": "syntax_error",
+    "runtime_reason": "'[' was never closed at line 3",
+    "runtime_exception": "SyntaxError"
+  },
+  "context": {
+    "source": "size = 15\nmark = 'X'\nfor row in range(size // 2 + 1):\n    print('|' + ' ' * (size - 2) + '|')\nprint('+' + '-' * (size - 2) + '+')\n",
+    "source_hash": "ef1825981c054164a4fc951b66dd5b72322268190c68d05dfd75bfc9453370a9",
+    "status": "accepted",
+    "accepted": true,
+    "productive": true,
+    "runtime_ok": true,
+    "learning_reward": 1.0,
+    "task_check": {
+      "status": "failed",
+      "passed": false,
+      "profile": "code:table",
+      "checks": [
+        {
+          "constraint": "literal_type",
+          "expected": "list",
+          "actual": "SyntaxError",
+          "passed": false
+        },
+        {
+          "constraint": "min_items",
+          "expected": 2,
+          "actual": null,
+          "passed": false
+        },
+        {
+          "constraint": "item_type",
+          "expected": "record",
+          "actual": [],
+          "passed": false
+        }
+      ],
+      "source_hash": "ef1825981c054164a4fc951b66dd5b72322268190c68d05dfd75bfc9453370a9",
+      "output_sha256": "7b182bb18494a55865aa16a2a05176c17bb0ee7114a8b514473271050db2c16c"
+    },
+    "output": "|             |\n|             |\n|             |\n|             |\n|             |\n|             |\n|             |\n|             |\n+-------------+\n",
+    "runtime_status": "ok",
+    "runtime_reason": "",
+    "runtime_exception": null
+  },
+  "fixed_selection_independently_verified": true,
+  "source_repairs": 0,
+  "raw_origin": {
+    "archive": "netta-iteration8-research.zip",
+    "path": "results/iteration8/code/development/gallery-sample.json",
+    "sha256": "a61fac4cb18b61f6c89c172f3d7da65ef567e95c09f1781c850e83f3e56a5b92"
+  }
+}

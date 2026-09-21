@@ -1,0 +1,241 @@
+{
+  "status": "passed",
+  "baseline_commit": "e67b23a828b549c62a04f430f705c5f8e2bab817",
+  "baseline": {
+    "frozen_files": 49,
+    "remote_tracked_files_independently_blob_hashed": 30
+  },
+  "exact_probability_oracles": {
+    "controlled_categorical_draws": 10240,
+    "code": {
+      "status": "passed",
+      "categorical_draw_oracle_checks": 5120,
+      "on_probabilities": [
+        0.7823983298502624,
+        0.16266350220312914,
+        0.05493816794660845
+      ],
+      "off_probabilities": [
+        0.5502553715100824,
+        0.37354388521317117,
+        0.07620074327674634
+      ],
+      "counter_contexts": 7,
+      "counter_expected": [
+        30.65,
+        61.8
+      ],
+      "runtime_witness_source_sha256": "8720bd963b9da5e28210759b996eaf0aa3d21a9d2ae3842e81c744d5ee8cf4a5",
+      "runtime_witness_status": "ok"
+    },
+    "lee": {
+      "status": "passed",
+      "categorical_draw_oracle_checks": 5120,
+      "candidate_counts": [
+        [
+          70,
+          11
+        ],
+        [
+          71,
+          7
+        ],
+        [
+          72,
+          1.25
+        ],
+        [
+          73,
+          0.75
+        ]
+      ],
+      "probabilities": [
+        0.5739572980690167,
+        0.347355693028924,
+        0.04712628272195865,
+        0.03156072618010057
+      ],
+      "nearest_suffix_depth": 5,
+      "membership_reward_invariant": true
+    }
+  },
+  "code_closed_comparison": {
+    "raw_attempts": 4096,
+    "immutable_streams": 32,
+    "full_training_updates_replayed": 1024,
+    "long_context_association_updates_independently_reconciled": 4077,
+    "long_context_entries_across_four_final_checkpoints": 960,
+    "all_eight_final_training_snapshots_exact": true,
+    "gate_recomputed": {
+      "passed": false,
+      "checks": {
+        "table_productive_pooled_plus5": true,
+        "table_productive_each_replica_positive": true,
+        "table_task_passes": true,
+        "numbers_task_passes": false,
+        "table_source_replay": true,
+        "numbers_source_replay": false,
+        "freeplay_productive": false
+      }
+    },
+    "gallery": {
+      "fixed_selection_matches": true,
+      "seed": 152000001,
+      "source_sha256": "ef1825981c054164a4fc951b66dd5b72322268190c68d05dfd75bfc9453370a9",
+      "task_passed": false
+    }
+  },
+  "code_frozen_readout": {
+    "generated_variants": 1536,
+    "paired_original_seeds": 512,
+    "genuine_sources_match_closed_evaluation": true,
+    "off_changed_sources": 134,
+    "permuted_changed_sources": 152,
+    "all_twelve_intervention_states_unchanged": true,
+    "permutation": "Rotate learned [wins,trials] pairs by one over sorted eight-context keys; preserve all other state.",
+    "table_off_changed_sources": 112,
+    "table_paired_seeds": 256
+  },
+  "lee_closed_comparison": {
+    "counts": {
+      "raw_attempts": 1408,
+      "board_transitions": 109369,
+      "exact_source_and_choice_regenerations": 1152,
+      "full_training_state_replays": 768,
+      "bound_action_provenance_receipts": 79421,
+      "independent_rational_temporal_targets": 79340,
+      "independently_checked_credit_updates": 1359
+    },
+    "generated_model_attempts": 1152,
+    "separate_fixed_control_episodes": 256,
+    "all_six_final_training_snapshots_exact": true,
+    "gate_recomputed": false
+  },
+  "lee_frozen_readout": {
+    "status": "passed",
+    "immutable_mechanism_receipts": 128,
+    "underlying_variants": 640,
+    "genuine_sources_matched_closed_game_journals": 128,
+    "bounded_uninstrumented_regenerations": 10,
+    "genuine_admissions": {
+      "admission_steps": 217,
+      "newly_sampled_branches": 193,
+      "selected_admitted_tokens": 7
+    },
+    "changed_sources": {
+      "support_off": 88,
+      "decision_zero_readout": 14,
+      "ordinary_permuted": 60,
+      "decision_permuted": 24
+    },
+    "all_selected_counter_totals_recomputed": true,
+    "pooled_game_primary_recomputed": true,
+    "gallery_fixed_selection": {
+      "index": 14,
+      "seed": 133000014,
+      "source_sha256": "270f4334f12301d3387f4b369c56dfd8631a595349ae9750598716f3e0ce56d5",
+      "first_admission_and_episode_match": true
+    },
+    "sampling_effect": "A newly sampled branch consumes an RNG draw even when its existing token wins; changed-source counts and selected added-token counts are recorded separately."
+  },
+  "release": {
+    "model_and_bridge_semantics_match_measured_candidates_outside_run_cli": true,
+    "independently_checked_files": [
+      {
+        "file": "nettalee.py",
+        "release_sha256": "2a0a5b02468643928a19683627cb735fbc1f8493d7327eddc3fc49e4143b4593",
+        "measured_candidate": "results/iteration8/lee/nettalee.py",
+        "candidate_sha256": "6ca486808ab6ae42eff8bb366fe29435a0c442a9e7403370ba3855ed8adda193",
+        "only_run_cli_changed": true
+      },
+      {
+        "file": "nettacode.py",
+        "release_sha256": "407869a04d85cbe1cf928bfc70a559b694c307a9faf64a4b4174607ffec59ef1",
+        "measured_candidate": "results/iteration8/code/candidate.py",
+        "candidate_sha256": "dfabaaea7a25262a5ec78a4c0ba887206f8327b999848232d48ec28082d3098e",
+        "only_run_cli_changed": true
+      },
+      {
+        "file": "2048.py",
+        "release_sha256": "8a01595aad0d616848910309c312d53e0ec70f913c0b644b42cf3b7d68968314",
+        "measured_candidate": "results/iteration8/baseline/2048.py",
+        "candidate_sha256": "38a31075eb0ad454093ef335f41fc813bde1562a54097ebefec975cb8fb15302",
+        "only_run_cli_changed": true
+      }
+    ],
+    "full_suite_tests": 345,
+    "full_suite_log_sha256": "406792e43e67f40cb666bedb163c09baf022aaea756f357c9c8767f64c2cd398",
+    "tested_source_sha256": {
+      "nettalee.py": "2a0a5b02468643928a19683627cb735fbc1f8493d7327eddc3fc49e4143b4593",
+      "nettacode.py": "407869a04d85cbe1cf928bfc70a559b694c307a9faf64a4b4174607ffec59ef1",
+      "2048.py": "8a01595aad0d616848910309c312d53e0ec70f913c0b644b42cf3b7d68968314",
+      "doomer.py": "b506d68b3782dc06b416613eb9d5b43b2877b9993a0bc402d74c338a76545ddd"
+    },
+    "preserved_files_independently_rehashed": 42,
+    "default_compatibility": {
+      "parity_cases": 7,
+      "exact_generation_records": 252,
+      "actual_learning_games": 20,
+      "successful_caller_routes": 6,
+      "selected_state_caller_raw_attempts": 24,
+      "builtin_2048_without_experience_attempts": 4,
+      "builtin_2048_scripted_baseline_episodes": 8,
+      "public_states_unchanged": true,
+      "frozen_input_states_unchanged": true,
+      "frozen_sources_unchanged": true,
+      "live_source_drift": {},
+      "protocol": "protocol.json",
+      "parity": "parity.json",
+      "routes": "routes.json"
+    }
+  },
+  "separate_plumbing": {
+    "code_completed_attempts": 38,
+    "lee_generated_attempts": 12,
+    "lee_control_episodes": 4,
+    "failed_code_preserved_receipts": 2,
+    "failed_lee_preserved_receipts": 6,
+    "all_eight_preserved_receipts_exactly_match_repeated_plumbing_after_json_metadata_normalization": true,
+    "excluded_from_development": true
+  },
+  "replay_scope": "Regenerate exact original sources and choices, then reproduce complete memory updates from preserved actual CPython or environment receipts. Frozen memory interventions perform generation only. Source bytes and judge outcomes are retained.",
+  "public_state_disposition": "Both fixed development gates fail; no confirmation or state replacement. New memory laws remain explicit options.",
+  "private_evidence": {
+    "baseline.json": {
+      "sha256": "501eb8c32a58f56d18af8b26744cdcefac7049be736051a18750a812ae13c73f",
+      "bytes": 11416
+    },
+    "law-oracles.json": {
+      "sha256": "47e7d2f8bc6135155e5d3a0508772ec36a8b5b3233ee33a6cbf9718d99eba17e",
+      "bytes": 1212
+    },
+    "code-development-compact.json": {
+      "sha256": "34add1ce0baece0891be059388aff560cdf6ea797e6fce875698d28b77582b3d",
+      "bytes": 7390
+    },
+    "code-metrics.json": {
+      "sha256": "87395d22a19d6d4fe63216bdee554c3c8dc2518a023894525e88083e02a5f8e2",
+      "bytes": 7003
+    },
+    "lee-development.json": {
+      "sha256": "37ecef83ccb203cb96e3256f14c9efc7a4db1054e968152c0b92ea19c1cccbc6",
+      "bytes": 4549
+    },
+    "lee-mechanism-gallery.json": {
+      "sha256": "f3d79c918da25229db9391be88f4ba74de1bb44641c60df5a725559404d5466d",
+      "bytes": 949
+    },
+    "interrupted-plumbing.json": {
+      "sha256": "e22db6ac671b940abb2e210125d6ed4c3a059a9083456f40e8475b228ef2c99a",
+      "bytes": 2274
+    },
+    "release-assembly.json": {
+      "sha256": "26553f23aaba6fe7146c5212a1f610276859a3903f0b754d2cd0b9da06f546d2",
+      "bytes": 1161
+    },
+    "tested-release-and-preservation.json": {
+      "sha256": "22f0f1ddf635175e40ca01d973d0bc7752f4bb3086fca750325aad86e1539d02",
+      "bytes": 552
+    }
+  }
+}

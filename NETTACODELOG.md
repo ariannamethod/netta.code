@@ -2,6 +2,55 @@
 
 Newest entries first. Technical changes and measured experiments live here; README describes the current organism.
 
+## 2026-09-21 — Acquired outcomes retain eight units of history
+
+Added optional general-Code `context_credit` and the saved `context_memory`
+setting. `--context-memory` activates a sparse acquired outcome association
+over the preceding eight units and next sampled unit; `--no-context-memory`
+stops its readout and acquisition while retaining counts. The options work on
+init/play and task-learning ask with a separate save path. Old lives remain off;
+omitted options retain the saved configuration.
+
+The additional logit is
+`2.5*n8/(n8+4)*((w8+1)/(n8+2)-(w3+1)/(n3+2))`.
+It begins empty and uses actual general runtime/novelty outcomes, with the same
+eligible error/success choices and decay convention as ordinary credit. Each
+long association is updated once per program; different long histories sharing
+one local key stay distinct. Choice histories are source-validated before any
+mutation. First-unit anchor memory, ordinary three-unit credit, candidate
+support and exact-source execution retain their roles.
+
+The mechanism followed a 512-source historical diagnosis: nine local
+associations were shared by NameError failures and successful programs, all
+inside the same first-unit anchor. Eight-unit context separated two conflicts,
+including the dominant loop-variable confusion whose useful unit was seven
+positions back. No context-length sweep followed this choice.
+
+The fixed comparison contains 4,096 attempts across 32 closed streams. With
+two replicas of 128 training and 128 task-evaluation attempts, table-conditioned
+corpus-novel execution increased 83→97/256, gains +8 and +6; distinct productive
+behaviors increased 67→84. Actual table-contract passes remained zero. Numeric
+task completions changed 146→142/256 and source replay 10→18. Separate no-task
+evaluation of the same checkpoints changed 200→181/512 productive executions,
+with distinct productive behaviors 124→99. Three advancement conditions failed;
+confirmation and public-state promotion were not performed.
+
+Independent reconstruction reaches all eight trained final snapshots exactly
+after 1,024 updates. It reconciles 4,077 long-context updates and 960 stored
+entries across the four candidate lives. Frozen generation isolates readout:
+turning it off changes 134/512 original task-conditioned sources; permuting
+count pairs changes 152/512. All genuine sources match recorded evaluation and
+intervention states remain unchanged. Same-state readout-off restores 197/512
+no-task productive executions, identifying selective retrieval as a concrete
+next hypothesis.
+
+The gallery keeps the prospectively chosen seed 152000001: an accepted generated
+drawing beside the baseline's SyntaxError, explicitly recording that the table
+request failed. The final shared suite passes 345 tests, including exact
+save/resume and source-validation checks. The [eighth-pass report](reports/iteration8/REPORT.md)
+holds compact evidence; complete sources, receipts and checkpoints remain in
+the separate archive. Public states, corpora and caller contracts keep their bytes.
+
 ## 2026-09-21 — Execution provenance reaches the shared byte-credit interface
 
 The standalone Code body now includes the optional CPython 3.12 action

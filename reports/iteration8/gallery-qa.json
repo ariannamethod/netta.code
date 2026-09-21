@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "gallery_sha256": "0a627dcf4340ad80377b7479783843347174e1b9cfdec2e57b545496769c831b",
+  "gallery_bytes": 231013,
+  "previous_gallery_preserved_exactly": true,
+  "previous_gallery_sha256": "978be591b3a2131bffaf37d80d80b5f090ae9277e31c09379effb886040ebea6",
+  "code_source_sha256": "ef1825981c054164a4fc951b66dd5b72322268190c68d05dfd75bfc9453370a9",
+  "code_stdout_exact": true,
+  "code_task_passed": false,
+  "lee_source_sha256": "270f4334f12301d3387f4b369c56dfd8631a595349ae9750598716f3e0ce56d5",
+  "lee_trajectory_moves": 93,
+  "lee_score": 700,
+  "public_receipts_and_inline_data_exact": true,
+  "static_preformatted_source_and_stdout_exact": true,
+  "fixtures": [
+    {
+      "label": "actual93moveepisode",
+      "board_checks": 194,
+      "highlight_checks": 4,
+      "exact_source_bytes": 477
+    },
+    {
+      "label": "UTF-8 partial-byte overlap and CRLF",
+      "board_checks": 12,
+      "highlight_checks": 4,
+      "exact_source_bytes": 28
+    }
+  ],
+  "node_version": "v24.19.0",
+  "scope": "Node VM with minimal DOM: all real trajectory steps forward/backward, slider bounds, endpoint buttons, source highlighting, UTF-8 and preserved previous sections. CSS layout is not rendered."
+}

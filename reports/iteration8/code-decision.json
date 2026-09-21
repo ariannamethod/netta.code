@@ -1,0 +1,30 @@
+{
+  "stage": "development",
+  "gate": {
+    "passed": false,
+    "checks": {
+      "table_productive_pooled_plus5": true,
+      "table_productive_each_replica_positive": true,
+      "table_task_passes": true,
+      "numbers_task_passes": false,
+      "table_source_replay": true,
+      "numbers_source_replay": false,
+      "freeplay_productive": false
+    }
+  },
+  "confirmation_authorized": false,
+  "promotion_authorized": false,
+  "export_replica": {
+    "table": 0,
+    "numbers": 0
+  },
+  "public_states_modified": false,
+  "state_export_performed": false,
+  "comparison_sha256": "973a963f56b01407335170aac45d1d248d03ece99a32096b91c37f15d798cf16",
+  "comparison_file": "code-comparison.json",
+  "raw_origin": {
+    "archive": "netta-iteration8-research.zip",
+    "path": "results/iteration8/code/development/decision.json",
+    "sha256": "177d9af7566d15a5f239456d270097462f279351369298bd1bfc39f79c9b0aee"
+  }
+}

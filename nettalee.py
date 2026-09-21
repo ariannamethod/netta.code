@@ -196,6 +196,9 @@ class Organism:
         self.lived = defaultdict(Counter)
         self.visits = {}
         self.tasks = {}
+        # Lee can admit actually experienced continuations from a shorter suffix.
+        # Zero leaves the original support, random stream and snapshot unchanged.
+        self.experience_support_mass = 0.0
         # Environment quality and executed-branch credit are independent,
         # opt-in experiments. Birth and existing snapshots retain their exact
         # original sampling and learning when both switches are off.
@@ -436,6 +439,39 @@ class Organism:
                        choice.get("byte_end", -1) > start
                        for start, end in spans)]
 
+    def configure_experience_support(self, mass=0.10):
+        """Allocate a bounded count prior to Lee's experienced suffix choices.
+
+        Support membership uses actual ordinary-credit trials, independently of
+        reward values. This setting never inserts or repairs source bytes.
+        """
+        if (type(mass) not in (int, float) or not math.isfinite(mass)
+                or not 0 <= mass <= .25):
+            raise ValueError("experience support mass must be finite and in [0, .25]")
+        self.experience_support_mass = float(mass)
+        return self
+
+    def _experience_candidates(self, history, context, available, candidates, veto):
+        mass = self.experience_support_mass
+        if not mass or len(context) <= 3:
+            return candidates
+        admitted = {token for token, count in candidates}
+        prefix = tuple(history[-3:])
+        for shorter, counts in available:
+            if not 3 <= len(shorter) < len(context):
+                continue
+            extras = [(token, count) for token, count in counts.items()
+                      if token not in admitted and token != veto
+                      and self.credit.get(prefix + (token,), (0.0, 0.0))[1] > 0]
+            if not extras:
+                continue
+            extras.sort(key=lambda item: (-item[1], item[0]))
+            extras = extras[:24]
+            prior = sum(count for token, count in candidates) * mass / (1 - mass)
+            total = sum(count for token, count in extras)
+            return candidates + [(token, prior * count / total) for token, count in extras]
+        return candidates
+
     def _distribution(self, history, rng, streak, strategy, exploring=False, task_state=None):
         locality = [(self.order, 0.0, 64), (self.order, .02, 24),
                     (self.order, .04, 12), (max(1, self.order - 2), .02, 24),
@@ -469,6 +505,7 @@ class Organism:
         candidates = [(t, n) for t, n in counts.items() if t != veto]
         candidates.sort(key=lambda item: (-item[1], item[0]))
         candidates = candidates[:24]
+        candidates = self._experience_candidates(history, context, available, candidates, veto)
         if len(candidates) == 1:
             return candidates[0][0], 1, None
         total = sum(n for _, n in candidates)
@@ -825,6 +862,8 @@ class Organism:
             body["decision_credit"] = dict(self.decision_credit_config,
                 episodes=self.decision_credit_episodes, decisions=self.decision_credit_steps,
                 credit=[[list(k), v] for k, v in sorted(self.decision_credit.items())])
+        if self.experience_support_mass:
+            body["experience_support_mass"] = self.experience_support_mass
         if self.tasks:
             body["tasks"] = {key: {"head": value["head"].state(),
                                     "credit": [[list(k), v] for k, v in sorted(value["credit"].items())],
@@ -930,6 +969,8 @@ class Organism:
                     raise ValueError("invalid decision credit association")
                 organism.decision_credit[tuple(key)] = counts
             organism.decision_credit_episodes, organism.decision_credit_steps = episodes, steps
+        if "experience_support_mass" in body:
+            organism.configure_experience_support(body["experience_support_mass"])
         task_states = body.get("tasks", {})
         if not isinstance(task_states, dict) or len(task_states) > 128:
             raise ValueError("invalid task memory")
@@ -951,6 +992,7 @@ class Organism:
                             _pairs=self.units.pairs, _reference=self.reference)
         organism.configure_decision_credit(**self.decision_credit_config)
         organism.configure_control_learning(**self.control_learning)
+        organism.configure_experience_support(self.experience_support_mass)
         return organism
 
 
@@ -996,11 +1038,18 @@ def run_cli():
     ask.add_argument("--log")
     ask.add_argument("--learn-task", action="store_true", help="learn a declared command from executed outcomes")
     ask.add_argument("--save", help="explicit snapshot destination for --learn-task")
+    for command in (init, play, ask):
+        command.add_argument("--experience-support", type=float, default=None,
+                             help="Lee's count mass for experienced shorter-context choices (0..0.25)")
     args = parser.parse_args()
+    if args.command == "ask" and args.experience_support is not None and not args.learn_task:
+        parser.error("--experience-support on ask requires --learn-task and --save SNAPSHOT")
     if args.command == "init":
         if Path(args.state).exists():
             parser.error("state exists; choose a new path to preserve its experience")
         model = Organism(read_island(args.island), args.seed, args.order, args.merges, args.judge)
+        if args.experience_support is not None:
+            model.configure_experience_support(args.experience_support)
         model.save(args.state)
         print(json.dumps({"state": args.state, "programs": len(model.programs),
                           "units": len(model.units.expansions), "species": SPECIES}))
@@ -1031,6 +1080,8 @@ def run_cli():
             return subprocess.call([sys.executable, str(sibling)] + sys.argv[1:])
         print(json.dumps(call, ensure_ascii=False), file=sys.stderr)
     model = Organism.load(args.state)
+    if getattr(args, "experience_support", None) is not None:
+        model.configure_experience_support(args.experience_support)
     if args.command == "ask" and model.mode != call["selection"]["mode"]:
         parser.error("caller judge does not match selected snapshot")
     if args.command == "ask" and model.mode == "control":
@@ -1056,7 +1107,9 @@ def run_cli():
                           "programs": len(model.programs), "units": len(model.units.expansions),
                           "associations": len(model.credit), "neural_updates": model.head.steps,
                           "syntax_updates": model.syntax_head.steps, "exploration": model.exploration,
-                          "lived_contexts": len(model.lived), "visited_behaviors": len(model.visits)}, indent=2))
+                          "lived_contexts": len(model.lived), "visited_behaviors": len(model.visits),
+                          **({"experience_support_mass": model.experience_support_mass}
+                             if model.experience_support_mass else {})}, indent=2))
         return 0
     learning = args.command == "play" or (args.command == "ask" and args.learn_task)
     save_path = args.save if args.command == "ask" and learning else args.state

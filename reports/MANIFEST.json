@@ -3,13 +3,13 @@
   "files": [
     {
       "path": "INDEX.md",
-      "bytes": 5403,
-      "sha256": "a1f5378c31f82b42ab0b4946065e7f1542572921283d125328baa182f28d04e8"
+      "bytes": 5956,
+      "sha256": "c9ce5e1822fe4bf696245b58ae79241062982c5192d2d6ac07a28a279a8cab75"
     },
     {
       "path": "archive-inventory.json",
-      "bytes": 10239,
-      "sha256": "8d1b566ecac5947505b9edc5d8b02a0818c26f79a47a49fa120a8fbd012b9650"
+      "bytes": 10979,
+      "sha256": "7466cd8b876694de98321e6a9d8194e7b993ebb409c17565a29151e17a59b1ff"
     },
     {
       "path": "historical/AUDIT_V2.md",
@@ -475,6 +475,111 @@
       "path": "iteration7/tests.log",
       "bytes": 47056,
       "sha256": "1e22e68ed848346ff6b4176b2ed03bcdea69c5af400b3d43556baeb4ce167447"
+    },
+    {
+      "path": "iteration8/REPORT.md",
+      "bytes": 12465,
+      "sha256": "da49b30d9cc448518960d1ae8ac07b31fbe5ac7409045ee136d604bb40323703"
+    },
+    {
+      "path": "iteration8/audit-summary.json",
+      "bytes": 8710,
+      "sha256": "f5b6f595ed0a9bd960dd86026b0f50cf1d3d3dde23fad9ba3ab1183148ff03db"
+    },
+    {
+      "path": "iteration8/code-comparison.json",
+      "bytes": 18295,
+      "sha256": "973a963f56b01407335170aac45d1d248d03ece99a32096b91c37f15d798cf16"
+    },
+    {
+      "path": "iteration8/code-decision.json",
+      "bytes": 917,
+      "sha256": "214cdf2e6c60e0eb54bc25f64f0e81ec89d0e45d25bbf4c870b9c80a0c7c3275"
+    },
+    {
+      "path": "iteration8/code-diagnosis.json",
+      "bytes": 4166,
+      "sha256": "ef1fe0256ea423e568a801c6b2ae608606f1d89eaeb6c3d76770bdd001f69129"
+    },
+    {
+      "path": "iteration8/code-gallery.json",
+      "bytes": 2720,
+      "sha256": "ebc8ca2845fddf78f7c408c46b9349d78eb92392c838501adaa2a1766564f4b6"
+    },
+    {
+      "path": "iteration8/code-mechanism.json",
+      "bytes": 3824,
+      "sha256": "7d38d2554c04eb56b17738c2bd15cf0ae9df256b1d60ac6355fed1d01bee00bb"
+    },
+    {
+      "path": "iteration8/code-protocol.json",
+      "bytes": 4942,
+      "sha256": "5091a665b3aa2c0c190278b43895b34e61e9628d2086c486e4d99aa02b29562e"
+    },
+    {
+      "path": "iteration8/compatibility.json",
+      "bytes": 488,
+      "sha256": "19f7ae0b3e27170fe5770a8543ab69114711fa0118e922c5f47c4b9bef034098"
+    },
+    {
+      "path": "iteration8/gallery-qa.json",
+      "bytes": 1225,
+      "sha256": "a12a4313f9ff2808885003d13a10a70173bc1ab6ce6163356eb4d256ce934b5f"
+    },
+    {
+      "path": "iteration8/lee-comparison.json",
+      "bytes": 13084,
+      "sha256": "7096592b44338715487be9d89b9dea10b207b54b71317fef3eadbfc34e15daa0"
+    },
+    {
+      "path": "iteration8/lee-decision.json",
+      "bytes": 383,
+      "sha256": "1c7a71757ac4a2c4b473da47b8b50e5d2f089dfd1c85270bcc5a72b2add93475"
+    },
+    {
+      "path": "iteration8/lee-diagnosis.json",
+      "bytes": 4074,
+      "sha256": "351b488795c69b0fe0403d217ba0f7db05ee56bb77af33a52b56394ecfad89b3"
+    },
+    {
+      "path": "iteration8/lee-gallery.json",
+      "bytes": 8915,
+      "sha256": "75b54b8b5fb78cc33a992b1770b63f51372517fb60250d299ec50454f5b66a7c"
+    },
+    {
+      "path": "iteration8/lee-mechanism.json",
+      "bytes": 6851,
+      "sha256": "6830b82a8171d7ec91bae9c0391fa9819c67329c0857b39209f885b87a649033"
+    },
+    {
+      "path": "iteration8/lee-protocol.json",
+      "bytes": 6071,
+      "sha256": "71fb5ed157ef7f1935e67e2d6e7a7615615ce81f58a5569614b907905a7982ed"
+    },
+    {
+      "path": "iteration8/preservation.json",
+      "bytes": 10958,
+      "sha256": "d26615727565c4865164f00eb6c27da8a67c4431f9effa669400e19adf132afc"
+    },
+    {
+      "path": "iteration8/private-archive-inventory.json",
+      "bytes": 683,
+      "sha256": "9aa25fb083c1e68b1f10e48a60fee5b4e3dd38599d10e58511be9a86402f889f"
+    },
+    {
+      "path": "iteration8/release-assembly.json",
+      "bytes": 1125,
+      "sha256": "936f94de7fd82a77f19e3ff68aabcaf90f79ed3934c325816ea761432ea493d8"
+    },
+    {
+      "path": "iteration8/tests.json",
+      "bytes": 722,
+      "sha256": "9241dd56360b62b71fd683483086d333737afcdba9c48810fedcb2d23f92fb6d"
+    },
+    {
+      "path": "iteration8/tests.log",
+      "bytes": 51652,
+      "sha256": "406792e43e67f40cb666bedb163c09baf022aaea756f357c9c8767f64c2cd398"
     },
     {
       "path": "measurements/doom/ask-frozen-verification.json",

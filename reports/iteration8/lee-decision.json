@@ -1,0 +1,1 @@
+{"stage":"development","candidate":"support","reference":"baseline","replica_deltas":[-109.0625,-102.8125],"pooled_delta":-105.9375,"conditions":{"positive_in_every_replica":false,"pooled_gain_at_least_25":false,"no_loss_of_completed_episodes":false},"gate_passed":false,"prospective_export_replica":0,"zero_readout_arm_is_explanatory":true,"release_state_modified_by_runner":false}

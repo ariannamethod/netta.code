@@ -1,0 +1,14 @@
+{
+  "archive": "netta-iteration8-research.zip",
+  "bytes": 53260602,
+  "sha256": "ba476213a39997f2dcdb6bd8692c92116737ab3b34bcee147d4f72970986065a",
+  "files": 6693,
+  "uncompressed_input_bytes": 534985013,
+  "uncompressed_zip_bytes": 536401211,
+  "manifest_sha256": "06d21e75a800a8d003fc3cb7c7be4dcaa7bb083d2d8fd9ab13b9fa6447fd6eea",
+  "verified_payload_sha256": 6693,
+  "verified_crc": true,
+  "historical_fixture_files": 204,
+  "historical_fixture_bytes": 66870963,
+  "scope": "Complete eighth-pass frozen sources, measured and interrupted attempts, checkpoints, independent audits, compact reports and reproduction tools, plus exact historical regression/diagnostic fixtures."
+}
