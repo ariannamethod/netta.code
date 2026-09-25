@@ -1,0 +1,87 @@
+{
+  "trained": {
+    "raw_attempts": 256,
+    "played": 149,
+    "runtime_ok": 226,
+    "syntax_error": 28,
+    "corpus_replay": 77,
+    "distinct_played_sources": 64,
+    "completed": 149,
+    "completed_score_per_raw_attempt": 608.859375,
+    "reward_per_raw_attempt": 0.37697507210210524,
+    "score_per_raw_attempt": 608.859375,
+    "mean_played_score": 1046.0939597315437,
+    "best_score": 1396,
+    "max_tile": 128,
+    "statuses": {
+      "move_limit": 95,
+      "syntax_error": 28,
+      "corpus_source_replay": 20,
+      "terminal": 54,
+      "corpus_probe_behavior_replay": 57,
+      "runtime_error": 2
+    }
+  },
+  "without_experience": {
+    "raw_attempts": 256,
+    "played": 26,
+    "runtime_ok": 76,
+    "syntax_error": 167,
+    "corpus_replay": 50,
+    "distinct_played_sources": 25,
+    "completed": 26,
+    "completed_score_per_raw_attempt": 116.265625,
+    "reward_per_raw_attempt": 0.06913638445960998,
+    "score_per_raw_attempt": 116.265625,
+    "mean_played_score": 1144.7692307692307,
+    "best_score": 1316,
+    "max_tile": 128,
+    "statuses": {
+      "syntax_error": 167,
+      "runtime_error": 11,
+      "move_limit": 20,
+      "corpus_source_replay": 19,
+      "corpus_probe_behavior_replay": 31,
+      "terminal": 6,
+      "invalid_action": 2
+    }
+  },
+  "random_legal": {
+    "raw_attempts": 256,
+    "played": 256,
+    "runtime_ok": 256,
+    "syntax_error": 0,
+    "corpus_replay": 0,
+    "distinct_played_sources": 0,
+    "completed": 256,
+    "completed_score_per_raw_attempt": 965.0625,
+    "reward_per_raw_attempt": 0.6321704665135828,
+    "score_per_raw_attempt": 965.0625,
+    "mean_played_score": 965.0625,
+    "best_score": 1536,
+    "max_tile": 128,
+    "statuses": {
+      "move_limit": 100,
+      "terminal": 156
+    }
+  },
+  "fixed_greedy": {
+    "raw_attempts": 256,
+    "played": 256,
+    "runtime_ok": 256,
+    "syntax_error": 0,
+    "corpus_replay": 0,
+    "distinct_played_sources": 0,
+    "completed": 256,
+    "completed_score_per_raw_attempt": 1265.546875,
+    "reward_per_raw_attempt": 0.7101291849172328,
+    "score_per_raw_attempt": 1265.546875,
+    "mean_played_score": 1265.546875,
+    "best_score": 1820,
+    "max_tile": 256,
+    "statuses": {
+      "move_limit": 244,
+      "terminal": 12
+    }
+  }
+}
