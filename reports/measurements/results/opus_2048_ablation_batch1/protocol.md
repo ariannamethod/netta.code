@@ -114,3 +114,52 @@ Arm flags: count=(none); full=--sequence-memory --experience-support 0.10
 --decision-credit temporal --control-learning both; head_off=full with
 --no-sequence-memory; credit_off=full with --decision-credit off;
 support_off=full with --experience-support 0.0.
+
+## Results at N=1024 (same trained states, eval widened to 1024 shared seeds)
+
+Same five trained states (play 800 unchanged); only the evaluation sample was
+widened from 256 to 1024 shared episode seeds to raise paired resolution. All
+rc=0, sequential, OOM-safe.
+
+| arm         | score/raw | mean_played | played/1024 | max_tile |
+|-------------|----------:|------------:|------------:|---------:|
+| count       |    589.21 |     1027.9  |         587 |      256 |
+| full        |    650.54 |     1095.6  |         608 |      256 |
+| head_off    |    610.26 |     1062.8  |         588 |      256 |
+| credit_off  |    583.25 |     1060.8  |         563 |      256 |
+| support_off |    615.83 |     1044.1  |         604 |      256 |
+| random_legal|    963.54 |             |             |          |
+| fixed_greedy|   1274.02 |             |             |          |
+
+Paired bootstrap on reward, matched by episode_seed (1024 shared seeds,
+10000 resamples, seed 20260925), full minus each arm:
+
+| comparison         | mean diff | 95% CI               | reading             |
+|--------------------|----------:|----------------------|---------------------|
+| full - count       |  +0.02561 | [+0.00249, +0.04881] | organs>body (sig)   |
+| full - head_off    |  +0.01999 | [+0.00359, +0.03679] | sequence-memory pays|
+| full - credit_off  |  +0.03515 | [+0.01592, +0.05397] | decision-credit pays|
+| full - support_off |  +0.01213 | [-0.01164, +0.03570] | crosses 0 (no pay)  |
+
+### Verdict against the frozen gate (N=1024)
+
+The N=256 null was resolution, not truth. At N=1024 the paired intervals
+separate:
+- sequence-memory (the BPTT reflex) PAYS FOR ITSELF: full-head_off CI
+  [+0.0036, +0.0368] excludes zero. Per Don's doctrine it is retained as an
+  organ beside the counting body.
+- decision-credit PAYS, strongest: full-credit_off CI [+0.0159, +0.0540].
+- experience-support DOES NOT pay: full-support_off CI [-0.0116, +0.0357]
+  crosses zero. Removal candidate, or its 0.10 mass/contract needs a redesign.
+- organs together beat the counting body: full-count CI [+0.0025, +0.0488].
+- G1 compass STILL not beaten: full 650.54 < random_legal 963.54 per raw
+  attempt; fixed_greedy 1274.02 is the ceiling. The hostile number stays.
+
+Awaiting Don's counter-run before any keep/remove is committed to the code.
+
+Receipts N=1024 (sha256, this directory):
+- count-summary-n1024.json      decd736adb0aee11a08d89293f84b01b7d8f059babc4d7eeff574cae458603d8
+- full-summary-n1024.json       d6962a6978e2abbbf9e6be74d90cc67a6a152af90ae65c09026580246e2add56
+- head_off-summary-n1024.json   f62556a1d2f14617145422f262ad8c1dc16d180c81e1781dba0165540da2f985
+- credit_off-summary-n1024.json 489e28a0bcbf6c47e585c1d4bd083e1a2233ac1f1542c8a3a89f214df14f6d38
+- support_off-summary-n1024.json 9854027b42abec4dd6b2e820a7b8421246830e632a7cc5cd0920a4ce7f9b7acf
