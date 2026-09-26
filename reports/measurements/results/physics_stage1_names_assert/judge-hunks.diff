@@ -1,0 +1,58 @@
+diff --git a/nettacode.py b/nettacode.py
+index 6edf4fb..f0e52e4 100644
+--- a/nettacode.py
++++ b/nettacode.py
+@@ -1611,7 +1611,7 @@ _SAFE_METHODS = set(('append extend insert pop remove reverse sort copy count in
+                      'partition rpartition splitlines zfill').split())
+ _ALLOWED_AST = {getattr(ast, name) for name in (
+     'Module Expr Constant Name Load Store List Tuple Set Dict Assign AnnAssign AugAssign '
+-    'BinOp UnaryOp BoolOp Compare If IfExp For Break Continue Pass FunctionDef arguments arg '
++    'BinOp UnaryOp BoolOp Compare If IfExp For Break Continue Pass Assert FunctionDef arguments arg '
+     'Return Call keyword Attribute Subscript Slice ListComp SetComp DictComp GeneratorExp comprehension While Starred '
+     'JoinedStr FormattedValue Add Sub Mult Div FloorDiv Mod Pow UAdd USub Not And Or Eq NotEq '
+     'Lt LtE Gt GtE In NotIn Is IsNot BitAnd BitOr BitXor LShift RShift Invert'
+@@ -1646,10 +1646,12 @@ def _runtime_tree(source):
+             name = node.id if isinstance(node, ast.Name) else node.arg
+             if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load) and name in functions and id(node) not in called_names:
+                 raise RuntimePolicyError('functions are called directly, not used as data')
+-            if name.startswith('_'):
+-                raise RuntimePolicyError('private names unavailable')
++            if name.startswith('__'):
++                raise RuntimePolicyError('dunder names unavailable')
+         if isinstance(node, ast.FunctionDef):
+-            if node.name.startswith('_') or node.decorator_list:
++            if node.name.startswith('__'):
++                raise RuntimePolicyError('dunder names unavailable')
++            if node.decorator_list:
+                 raise RuntimePolicyError('private functions/decorators unavailable')
+         if isinstance(node, ast.Attribute):
+             if not isinstance(node.ctx, ast.Load) or node.attr not in _SAFE_METHODS:
+diff --git a/nettalee.py b/nettalee.py
+index 639dd5c..799c2ca 100644
+--- a/nettalee.py
++++ b/nettalee.py
+@@ -1479,7 +1479,7 @@ _SAFE_METHODS = set(('append extend insert pop remove reverse sort copy count in
+                      'partition rpartition splitlines zfill').split())
+ _ALLOWED_AST = {getattr(ast, name) for name in (
+     'Module Expr Constant Name Load Store List Tuple Set Dict Assign AnnAssign AugAssign '
+-    'BinOp UnaryOp BoolOp Compare If IfExp For Break Continue Pass FunctionDef arguments arg '
++    'BinOp UnaryOp BoolOp Compare If IfExp For Break Continue Pass Assert FunctionDef arguments arg '
+     'Return Call keyword Attribute Subscript Slice ListComp SetComp DictComp GeneratorExp comprehension While Starred '
+     'JoinedStr FormattedValue Add Sub Mult Div FloorDiv Mod Pow UAdd USub Not And Or Eq NotEq '
+     'Lt LtE Gt GtE In NotIn Is IsNot BitAnd BitOr BitXor LShift RShift Invert'
+@@ -1514,10 +1514,12 @@ def _runtime_tree(source):
+             name = node.id if isinstance(node, ast.Name) else node.arg
+             if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load) and name in functions and id(node) not in called_names:
+                 raise RuntimePolicyError('functions are called directly, not used as data')
+-            if name.startswith('_'):
+-                raise RuntimePolicyError('private names unavailable')
++            if name.startswith('__'):
++                raise RuntimePolicyError('dunder names unavailable')
+         if isinstance(node, ast.FunctionDef):
+-            if node.name.startswith('_') or node.decorator_list:
++            if node.name.startswith('__'):
++                raise RuntimePolicyError('dunder names unavailable')
++            if node.decorator_list:
+                 raise RuntimePolicyError('private functions/decorators unavailable')
+         if isinstance(node, ast.Attribute):
+             if not isinstance(node.ctx, ast.Load) or node.attr not in _SAFE_METHODS:

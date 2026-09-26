@@ -1,0 +1,13 @@
+{
+  "attempts": 256,
+  "accepted": 21,
+  "productive": 78,
+  "unique_accepted": 20,
+  "new_shapes": 21,
+  "statuses": {
+    "accepted": 21,
+    "behavior_replay": 109,
+    "runtime_error": 15,
+    "syntax_error": 111
+  }
+}
