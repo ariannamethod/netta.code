@@ -1,0 +1,96 @@
+{
+  "name": {
+    "yield": 16,
+    "twin_ok": true,
+    "counts": {
+      "empty": 229,
+      "over_cap": 84,
+      "has_import": 1094,
+      "policy_rejected": 159,
+      "trivial": 13,
+      "accepted": 16,
+      "limit": 8,
+      "timeout": 1
+    }
+  },
+  "exc": {
+    "yield": 4,
+    "twin_ok": true,
+    "counts": {
+      "empty": 229,
+      "over_cap": 84,
+      "has_import": 1094,
+      "policy_rejected": 174,
+      "trivial": 19,
+      "accepted": 4
+    }
+  },
+  "priv": {
+    "yield": 4,
+    "twin_ok": true,
+    "counts": {
+      "empty": 229,
+      "over_cap": 84,
+      "has_import": 1094,
+      "policy_rejected": 179,
+      "trivial": 14,
+      "accepted": 4
+    }
+  },
+  "exc_name": {
+    "yield": 16,
+    "twin_ok": true,
+    "counts": {
+      "empty": 229,
+      "over_cap": 84,
+      "has_import": 1094,
+      "policy_rejected": 151,
+      "trivial": 19,
+      "accepted": 16,
+      "runtime_error": 1,
+      "limit": 9,
+      "timeout": 1
+    }
+  },
+  "name_priv": {
+    "yield": 23,
+    "twin_ok": true,
+    "counts": {
+      "empty": 229,
+      "over_cap": 84,
+      "has_import": 1094,
+      "policy_rejected": 148,
+      "accepted": 23,
+      "trivial": 17,
+      "limit": 8,
+      "timeout": 1
+    }
+  },
+  "exc_priv": {
+    "yield": 4,
+    "twin_ok": true,
+    "counts": {
+      "empty": 229,
+      "over_cap": 84,
+      "has_import": 1094,
+      "policy_rejected": 173,
+      "trivial": 20,
+      "accepted": 4
+    }
+  },
+  "exc_name_priv": {
+    "yield": 24,
+    "twin_ok": true,
+    "counts": {
+      "empty": 229,
+      "over_cap": 84,
+      "has_import": 1094,
+      "policy_rejected": 138,
+      "accepted": 24,
+      "trivial": 24,
+      "runtime_error": 1,
+      "limit": 9,
+      "timeout": 1
+    }
+  }
+}
